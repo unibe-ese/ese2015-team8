@@ -2,7 +2,7 @@ package org.sample.controller;
 
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.service.SampleService;
-import org.sample.model.dao.UserDao;
+import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +17,14 @@ public class ProfileController {
     SampleService sampleService;
     
 	@Autowired
-	UserDao userDao;
+	StudentDao studentDao;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile(@RequestParam("userId") long id) {
     	ModelAndView model;
         try {
         	model = new ModelAndView("profile");
-        	model.addObject(userDao.findOne(id));
+        	model.addObject(studentDao.findOne(id));
         } catch (InvalidUserException e) {
         	model = new ModelAndView("index");
         	model.addObject("page_error", e.getMessage());
