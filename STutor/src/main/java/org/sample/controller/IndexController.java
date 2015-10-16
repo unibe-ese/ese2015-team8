@@ -21,7 +21,7 @@ public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
-    	ModelAndView model = new ModelAndView("index");
+    	ModelAndView model = new ModelAndView("newAccount");
     	model.addObject("signupForm", new SignupForm());  
         return model;
     }
@@ -34,11 +34,11 @@ public class IndexController {
             	sampleService.saveFrom(signupForm);
             	model = new ModelAndView("show");
             } catch (InvalidUserException e) {
-            	model = new ModelAndView("index");
+            	model = new ModelAndView("newAccount");
             	model.addObject("page_error", e.getMessage());
             }
         } else {
-        	model = new ModelAndView("index");
+        	model = new ModelAndView("newAccount");
         }   	
     	return model;
     }

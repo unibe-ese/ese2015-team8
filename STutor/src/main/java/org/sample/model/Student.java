@@ -17,6 +17,7 @@ public class Student {
     private String username;
     private String email;
     private String password;
+    private boolean isTutor;
     
     public Long getId() {
         return id;
@@ -64,5 +65,13 @@ public class Student {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean getIsTutor() {
+		return isTutor;
+	}
+
+	public void setIsTutor(boolean isTutor) {
+		this.isTutor = isTutor;
 	}
 }

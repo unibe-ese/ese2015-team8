@@ -50,6 +50,8 @@
                 <form:errors path="password" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        <c:set var="isTutorErrors"><form:errors path="isTutor"/></c:set>
+    	<form:checkbox path="isTutor" value="true" label="Sign Up as Tutor" />
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <button type="button" class="btn">Cancel</button>

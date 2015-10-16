@@ -6,11 +6,10 @@
 <h1>Student Profile</h1>
 
 <table>
-	<tr>
-        <tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
-        <tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
-        <tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
-        <tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
-        <tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr>
-	</tr>
+	<tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
+	<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
+	<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
+	<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
+	<tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr>
+	<tr><td>Tutor: </td><td><c:out value="${student.isTutor}" /></td></tr>
 </table>

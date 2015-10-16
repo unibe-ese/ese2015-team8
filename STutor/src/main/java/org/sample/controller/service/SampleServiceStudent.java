@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
 
 
 @Service
-public class SampleServiceImpl implements SampleService {
+public class SampleServiceStudent implements SampleService {
 
     @Autowired    StudentDao userDao;
     
@@ -30,6 +30,7 @@ public class SampleServiceImpl implements SampleService {
         user.setUsername(signupForm.getUsername());
         user.setEmail(signupForm.getEmail());
         user.setPassword(signupForm.getPassword());
+        user.setIsTutor(signupForm.getIsTutor());
 
         user = userDao.save(user);   // save object to DB
         

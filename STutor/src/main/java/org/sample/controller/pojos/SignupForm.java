@@ -10,6 +10,7 @@ public class SignupForm {
     private String lastName;
     private String username;
     private String password;
+    private boolean isTutor;
 
     @NotNull
     @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", 
@@ -62,5 +63,13 @@ public class SignupForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean getIsTutor() {
+		return isTutor;
+	}
+
+	public void setIsTutor(boolean isTutor) {
+		this.isTutor = isTutor;
 	}
 }
