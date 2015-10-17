@@ -37,7 +37,7 @@
 
 
 
-<a href="/newAccount"> If you don't have an account, click here to sign up!</a>
+<a href="/Skeleton"> If you don't have an account, click here to sign up!</a>
 
 <%-- 	<c:if test="${page_error != null }">
         <div class="alert alert-error">

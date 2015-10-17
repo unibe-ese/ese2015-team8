@@ -11,6 +11,9 @@
 
 <h1> --Main Page after a log in (for TUTORS) --</h1>
 
-<body>${welcomeMsg}
-</body>
+<h2>${welcomeMsg}
+</h2>
+
+<body> <a href="<c:url value="logout" />" > Logout</a> </body>
+
 </html>

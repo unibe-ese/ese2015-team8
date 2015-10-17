@@ -21,7 +21,10 @@ for example, we could have a /Stutor/main/... -> pattern="/main*" structure wher
 
 	<security:authentication-manager>
 						<security:authentication-provider user-service-ref="customUserDetailsService">
+						 <security:password-encoder hash="sha">
+            				<security:salt-source user-property="username"/></security:password-encoder>
 						</security:authentication-provider>
+						
 	</security:authentication-manager>
 
 	

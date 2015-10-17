@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
+
 
 @Entity
 public class Student {
@@ -64,7 +69,8 @@ public class Student {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		ShaPasswordEncoder pwEncoder = new ShaPasswordEncoder();
+		this.password = pwEncoder.encodePassword(password, this.getUsername());
 	}
 
 	public boolean getIsTutor() {
