@@ -1,17 +1,16 @@
 package org.sample.model;
 
+import java.util.LinkedList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.sample.controller.exceptions.NotTutorException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
-
 
 @Entity
-public class Student {
+public class Student{
 
     @Id
     @GeneratedValue
@@ -24,31 +23,38 @@ public class Student {
     private String password;
     private boolean isTutor;
     
-    public Long getId() {
+    //Only for isTutor=true
+    private String sexe;
+	private LinkedList<Lecture> lectures;
+	private LinkedList<Comment> comments;
+	private double rating;
+	//-------------------------
+    
+	public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+	public void setId(Long id) {
         this.id = id;
     }
 
-    public String getFirstName() {
+	public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+	public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+	public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+	public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
@@ -60,7 +66,7 @@ public class Student {
         return email;
     }
 
-    public void setEmail(String email) {
+	public void setEmail(String email) {
         this.email = email;
     }
 
@@ -80,4 +86,59 @@ public class Student {
 	public void setIsTutor(boolean isTutor) {
 		this.isTutor = isTutor;
 	}
+	
+	public void setTutor(boolean isTutor) {
+		this.isTutor = isTutor;
+	}
+	
+	//Only for isTutor=true --------------------
+	public String getSexe() {
+		if(isTutor==false)
+			throw new NotTutorException("getSexe");
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		if(isTutor==false)
+			throw new NotTutorException("setSexe");
+		this.sexe = sexe;
+	}
+
+	public LinkedList<Lecture> getLectures() {
+		if(isTutor==false)
+			throw new NotTutorException("getLectures");
+		return lectures;
+	}
+
+	public void setLectures(LinkedList<Lecture> lectures) {
+		if(isTutor==false)
+			throw new NotTutorException("setLectures");
+		this.lectures = lectures;
+	}
+
+	public LinkedList<Comment> getComments() {
+		if(isTutor==false)
+			throw new NotTutorException("getComments");
+		return comments;
+	}
+
+	public void setComments(LinkedList<Comment> comments) {
+		if(isTutor==false)
+			throw new NotTutorException("setComments");
+		this.comments = comments;
+	}
+
+	public double getRating() {
+		if(isTutor==false)
+			throw new NotTutorException("getRating");
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		if(isTutor==false)
+			throw new NotTutorException("setRating");
+		this.rating = rating;
+	}
+	//------------------------------------------------
+	
 }

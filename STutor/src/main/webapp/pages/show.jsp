@@ -4,3 +4,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <h1>Sign Up Complete!</h1>
+
+<a href="/Skeleton"> Return to login</a>

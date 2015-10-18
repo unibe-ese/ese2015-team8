@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
+import org.sample.controller.pojos.TutorSignupForm;
 import org.sample.controller.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +16,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class IndexController {
+	
+	private SignupForm tempSignupForm;
 
     @Autowired
     SampleService sampleService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
+    	ModelAndView model = new ModelAndView("login");
+        return model;
+    }
+    
+    @RequestMapping(value = "/newAccount", method = RequestMethod.GET)
+    public ModelAndView newAccount() {
     	ModelAndView model = new ModelAndView("newAccount");
-    	model.addObject("signupForm", new SignupForm());  
+    	model.addObject("signupForm", new SignupForm());
         return model;
     }
 
@@ -31,8 +40,13 @@ public class IndexController {
     	ModelAndView model;    	
     	if (!result.hasErrors()) {
             try {
-            	sampleService.saveFrom(signupForm);
-            	model = new ModelAndView("show");
+            	if(signupForm.getIsTutor()){
+            		model = new ModelAndView("tutor_signUp");
+            		tempSignupForm = signupForm;
+            	}else{
+            		sampleService.saveStudentFrom(signupForm);
+            		model = new ModelAndView("show");
+            	}
             } catch (InvalidUserException e) {
             	model = new ModelAndView("newAccount");
             	model.addObject("page_error", e.getMessage());
@@ -40,6 +54,27 @@ public class IndexController {
         } else {
         	model = new ModelAndView("newAccount");
         }   	
+    	return model;
+    }
+    
+    @RequestMapping(value = "/tutor_signUp", method = RequestMethod.GET)
+    public ModelAndView tutorSignUp() {
+    	ModelAndView model = new ModelAndView("tutor_signUp");
+    	model.addObject("tutorSignupForm", new SignupForm());
+        return model;
+    }
+    
+    @RequestMapping(value = "/createTutor", method = RequestMethod.POST)
+    public ModelAndView createTutor(@Valid TutorSignupForm tutorSignupForm, BindingResult result, RedirectAttributes redirectAttributes) {
+    	ModelAndView model;
+        try {
+            sampleService.saveTutorFrom(tempSignupForm, tutorSignupForm);
+            tempSignupForm = null;
+            model = new ModelAndView("show");
+        } catch (InvalidUserException e) {
+           	model = new ModelAndView("tutor_signUp");
+           	model.addObject("page_error", e.getMessage());
+        }	
     	return model;
     }
     

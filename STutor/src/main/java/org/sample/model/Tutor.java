@@ -3,7 +3,7 @@ package org.sample.model;
 import java.util.LinkedList;
 
 /**
- * Not used yet
+ * Not in use
  * @author Christian
  *
  */

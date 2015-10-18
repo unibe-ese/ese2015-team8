@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.sample.model.Student;
 import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,7 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		org.sample.model.Student user = studentDao.findByUsername(username);
+		Student user = studentDao.findByUsername(username);
 		System.err.println("User found is " + user.getUsername());
 	
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), 
