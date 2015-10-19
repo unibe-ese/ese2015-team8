@@ -60,7 +60,7 @@ public class IndexController {
     @RequestMapping(value = "/tutor_signUp", method = RequestMethod.GET)
     public ModelAndView tutorSignUp() {
     	ModelAndView model = new ModelAndView("tutor_signUp");
-    	model.addObject("tutorSignupForm", new SignupForm());
+    	model.addObject("tutorSignupForm", new TutorSignupForm());
         return model;
     }
     

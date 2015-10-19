@@ -24,7 +24,7 @@ public class Student{
     private boolean isTutor;
     
     //Only for isTutor=true
-    private String sexe;
+    private String gender;
 	private LinkedList<Lecture> lectures;
 	private LinkedList<Comment> comments;
 	private double rating;
@@ -92,16 +92,16 @@ public class Student{
 	}
 	
 	//Only for isTutor=true --------------------
-	public String getSexe() {
+	public String getGender() {
 		if(isTutor==false)
-			throw new NotTutorException("getSexe");
-		return sexe;
+			throw new NotTutorException("getGender");
+		return gender;
 	}
 
-	public void setSexe(String sexe) {
+	public void setGender(String gender) {
 		if(isTutor==false)
 			throw new NotTutorException("setSexe");
-		this.sexe = sexe;
+		this.gender = gender;
 	}
 
 	public LinkedList<Lecture> getLectures() {

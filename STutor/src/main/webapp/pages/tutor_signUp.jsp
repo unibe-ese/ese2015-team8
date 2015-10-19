@@ -5,13 +5,13 @@
 
 <h1>Sign Up As Tutor!</h1>
 
-<form:form method="post" modelAttribute="signupForm" action="createTutor" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="signupForm" action="createTutor" id="tutorSignupForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Informations</legend>
 
-        <c:set var="sexeErrors"><form:errors path="sexe"/></c:set>
-    	<form:checkbox path="sexe" value="male" label="Male" />
-    	<form:checkbox path="sexe" value="female" label="Female" />
+        <c:set var="genderErrors"><form:errors path="gender"/></c:set>
+    	<form:radiobutton path="gender" value="male" label="Male"/>
+    	<form:radiobutton path="gender" value="female" label="Female"/>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <button type="button" class="btn">Cancel</button>

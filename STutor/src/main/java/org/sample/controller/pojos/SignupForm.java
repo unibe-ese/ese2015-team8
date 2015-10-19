@@ -11,7 +11,7 @@ public class SignupForm{
     private String username;
     private String password;
     private boolean isTutor;
-    private String sexe;
+    private String gender;
 
     @NotNull
     @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", 
@@ -74,11 +74,11 @@ public class SignupForm{
 		this.isTutor = isTutor;
 	}
 
-	public String getSexe() {
-		return sexe;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

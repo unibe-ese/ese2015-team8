@@ -1,13 +1,19 @@
 package org.sample.controller.pojos;
 
-public class TutorSignupForm{
-	private String sexe;
 
-	public String getSexe() {
-		return sexe;
+/**
+ * Not in use
+ * @author Christian
+ *
+ */
+public class TutorSignupForm{
+	private String gender;
+
+	public String getGender() {
+		return gender;
 	}
 
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

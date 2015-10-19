@@ -59,7 +59,7 @@ public class SampleServiceStudent implements SampleService {
         user.setEmail(signupForm.getEmail());
         user.setPassword(signupForm.getPassword());
         user.setIsTutor(signupForm.getIsTutor());
-        user.setSexe(tutorSignupForm.getSexe());
+        user.setGender(tutorSignupForm.getGender());
         
 
         user = userDao.save(user);   // save object to DB

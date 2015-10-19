@@ -1,6 +1,10 @@
-package org.sample.model;
+package notInUse;
 
 import java.util.LinkedList;
+
+import org.sample.model.Comment;
+import org.sample.model.Lecture;
+import org.sample.model.Student;
 
 /**
  * Not in use
@@ -13,11 +17,11 @@ public class Tutor extends Student {
 	private LinkedList<Comment> comments;
 	private double rating;
 
-	public String getSexe() {
+	public String getGender() {
 		return sexe;
 	}
 
-	public void setSexe(String sexe) {
+	public void setGender(String sexe) {
 		this.sexe = sexe;
 	}
 
