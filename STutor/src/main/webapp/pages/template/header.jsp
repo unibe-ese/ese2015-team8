@@ -41,6 +41,7 @@
 				
 					<!-- Logo -->
 						<div id="logo">
+							<img alt="icon" src="img/icon.png">
 							<h1><a >Welcome to STutor</a></h1>
 						</div>
 					
