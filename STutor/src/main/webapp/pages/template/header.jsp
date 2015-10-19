@@ -23,12 +23,8 @@
 		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/skel.css">
 		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style.css">
 		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style-desktop.css">
-		<noscript>
-			<link rel="stylesheet" href="/STutor/css/skel.css" />
-			<link rel="stylesheet" href="/STutor/css/style.css" />
-			<link rel="stylesheet" href="/STutor/css/style-desktop.css" />
-		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="/STutor/css/ie/v8.css" /><![endif]-->
+				
 	</head>
 	<body class="no-sidebar">
 	
@@ -39,7 +35,7 @@
 					<!-- Logo -->
 						<div id="logo">
 							<img alt="icon" src="img/icon.png" align="left">
-							<h1><a >Welcome to STutor</a></h1>
+							<h1><a style="font-family: Tahoma;">Welcome to STutor</a></h1>
 						</div>
 						<br></br>
 					
