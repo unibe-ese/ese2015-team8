@@ -1,5 +1,4 @@
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML>
 <!--
@@ -7,6 +6,11 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<!-- Blue Background -->
+<c:import url="template/background.jsp" />
+<!-- --------------- -->
+
 <html>
 	<head>
 		<title>No Sidebar - Verti by HTML5 UP</title>
@@ -30,7 +34,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="/STutor/css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="no-sidebar">
-
+	
 		<!-- Header -->
 			<div id="header-wrapper">
 				<header id="header" class="container">

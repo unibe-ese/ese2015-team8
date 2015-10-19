@@ -12,4 +12,9 @@
 	<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
 	<tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr>
 	<tr><td>Tutor: </td><td><c:out value="${student.isTutor}" /></td></tr>
+	<c:choose>
+		<c:when test="${student.isTutor}">
+			<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
+		</c:when>
+	</c:choose>
 </table>
