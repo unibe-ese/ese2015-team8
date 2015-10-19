@@ -3,6 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<head><title>Profile</title></head>
+<c:import url="template/header.jsp" />
 <h1>Student Profile</h1>
 
 <table>

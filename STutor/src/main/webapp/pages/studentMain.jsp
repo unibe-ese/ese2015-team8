@@ -9,6 +9,7 @@
 <title>Main Page</title>
 </head>
 
+<c:import url="template/header.jsp" />
 <h1> --Main Page after a log in (for STUDENTS)--</h1>
 
 <h2>${welcomeMsg}

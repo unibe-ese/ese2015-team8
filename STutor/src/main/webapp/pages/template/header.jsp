@@ -7,13 +7,10 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<!-- Blue Background -->
 <c:import url="template/background.jsp" />
-<!-- --------------- -->
 
 <html>
 	<head>
-		<title>No Sidebar - Verti by HTML5 UP</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -41,10 +38,10 @@
 				
 					<!-- Logo -->
 						<div id="logo">
-							<img alt="icon" src="img/icon.png">
+							<img alt="icon" src="img/icon.png" align="left">
 							<h1><a >Welcome to STutor</a></h1>
 						</div>
-					
+						<br></br>
 					
 				</header>
 			</div>

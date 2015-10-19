@@ -3,6 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<head><title>Sign Up Complete</title></head>
+
+<c:import url="template/header.jsp" />
 <h1>Sign Up Complete!</h1>
 
 <a href="/Skeleton"> Return to login</a>
