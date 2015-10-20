@@ -16,6 +16,7 @@
         <c:set var="genderErrors"><form:errors path="gender"/></c:set>
     	<form:radiobutton path="gender" value="male" label="Male"/>
     	<form:radiobutton path="gender" value="female" label="Female"/>
+        
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <button type="button" class="btn">Cancel</button>

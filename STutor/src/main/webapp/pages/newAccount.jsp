@@ -3,7 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Sign Up</title></head>
+<head>
+	<title>Sign Up</title>
+	<style>.help-inline{color: #BE1E1E}</style>
+</head>
 <c:import url="template/header.jsp" />
 <h1>Sign Up Here!</h1>
 
@@ -14,12 +17,12 @@
         <c:set var="emailErrors"><form:errors path="email"/></c:set>
         <div class="control-group<c:if test="${not empty emailErrors}"> error</c:if>">
             <label class="control-label" for="field-email">Email</label>
-
             <div class="controls">
                 <form:input path="email" id="field-email" tabindex="1" maxlength="45" placeholder="Email"/>
                 <form:errors path="email" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <c:set var="firstNameErrors"><form:errors path="firstName"/></c:set>
         <div class="control-group<c:if test="${not empty firstNameErrors}"> error</c:if>">
             <label class="control-label" for="field-firstName">First Name</label>
@@ -28,6 +31,7 @@
                 <form:errors path="firstName" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <c:set var="lastNameErrors"><form:errors path="lastName"/></c:set>
         <div class="control-group<c:if test="${not empty lastNameErrors}"> error</c:if>">
             <label class="control-label" for="field-lastName">Last Name</label>
@@ -36,6 +40,7 @@
                 <form:errors path="lastName" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <c:set var="usernameErrors"><form:errors path="username"/></c:set>
         <div class="control-group<c:if test="${not empty usernameErrors}"> error</c:if>">
             <label class="control-label" for="field-username">Username</label>
@@ -44,6 +49,7 @@
                 <form:errors path="username" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <c:set var="passwordErrors"><form:errors path="password"/></c:set>
         <div class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
             <label class="control-label" for="field-password">Password</label>
@@ -52,8 +58,10 @@
                 <form:errors path="password" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <c:set var="isTutorErrors"><form:errors path="isTutor"/></c:set>
     	<form:checkbox path="isTutor" value="true" label="Sign Up as Tutor" />
+        
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <button type="button" class="btn">Cancel</button>
