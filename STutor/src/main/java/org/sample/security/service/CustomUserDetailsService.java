@@ -43,7 +43,6 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		Student user = studentDao.findByUsername(username);
-		System.err.println("User found is " + user.getUsername());
 	
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), 
 													user.getPassword(), getAuthorities());
@@ -54,6 +53,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	/**
 	 * TEMPORARY! We could load the authorities by looking at the student and see if he is a tutor.
 	 * In this simple case, every logged in user just gets the authority "ROLE_USER" (can be arbitrary).
+	 * TODO: Have roles to a student and tutor, --->if<--- page restriction will become important
 	 * @return a collection of authorities the logged in student/tutor has. 
 	 */
 	private Collection<? extends GrantedAuthority> getAuthorities() {
