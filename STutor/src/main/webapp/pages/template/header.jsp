@@ -7,7 +7,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<c:import url="template/background.jsp" />
+<%-- <c:import url="template/background.jsp" /> --%>
 
 <html>
 	<head>
@@ -20,9 +20,9 @@
 		<script src="/STutor/js/skel.min.js"></script>
 		<script src="/STutor/js/skel-layers.min.js"></script>
 		<script src="/STutor/js/init.js"></script>
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/skel.css">
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style.css">
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style-desktop.css">
+		<link rel="stylesheet" type="text/css" href="css/skel.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style-desktop.css">
 		<!--[if lte IE 8]><link rel="stylesheet" href="/STutor/css/ie/v8.css" /><![endif]-->
 				
 	</head>

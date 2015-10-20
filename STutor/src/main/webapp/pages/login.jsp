@@ -3,12 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:import url="template/header.jsp" />
+<%-- <c:import url="template/header.jsp" /> --%>
 <h1>--Main Page--</h1>
 
 <html>
 <head>
-	<!-- <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css"/> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
 	<title>Login</title>
 </head>
 
