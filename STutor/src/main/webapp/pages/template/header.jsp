@@ -35,7 +35,8 @@
 					<!-- Logo -->
 						<div id="logo">
 							<img alt="icon" src="img/icon.png" align="left">
-							<h1><a style="font-family: Tahoma;">Welcome to STutor</a></h1>
+							<h1><a href="http://localhost:8080/Skeleton/studentMain" 
+							style="text-decoration:none; color:black; "font-family: Tahoma;">Welcome to STutor</a></h1>
 						</div>
 						<br></br>
 					
