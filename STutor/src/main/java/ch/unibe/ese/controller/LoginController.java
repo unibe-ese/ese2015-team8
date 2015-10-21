@@ -1,4 +1,4 @@
-package org.sample.controller;
+package ch.unibe.ese.controller;
 
 
 import org.springframework.stereotype.Controller;

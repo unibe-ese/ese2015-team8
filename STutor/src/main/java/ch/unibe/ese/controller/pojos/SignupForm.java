@@ -1,10 +1,11 @@
-package org.sample.controller.pojos;
+package ch.unibe.ese.controller.pojos;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import ch.unibe.ese.model.dao.StudentDao;
 
 public class SignupForm{
 	

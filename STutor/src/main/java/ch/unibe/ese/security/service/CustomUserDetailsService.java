@@ -1,11 +1,9 @@
-package org.sample.security.service;
+package ch.unibe.ese.security.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.sample.model.Student;
-import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.dao.StudentDao;
 
 
 

@@ -1,4 +1,4 @@
-package org.sample.model;
+package ch.unibe.ese.model;
 
 /**
  * Not used yet

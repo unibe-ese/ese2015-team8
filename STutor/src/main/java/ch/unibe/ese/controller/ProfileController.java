@@ -1,14 +1,15 @@
-package org.sample.controller;
+package ch.unibe.ese.controller;
 
-import org.sample.controller.exceptions.InvalidUserException;
-import org.sample.controller.service.SampleService;
-import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.model.dao.StudentDao;
 
 @Controller
 public class ProfileController {

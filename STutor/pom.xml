@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>Skeleton</groupId>
-	<artifactId>Skeleton</artifactId>
+	<groupId>Stutor</groupId>
+	<artifactId>Stutor</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
@@ -216,7 +216,7 @@
 						<version>6.1.26</version>
 						<configuration>
 							<useTestClasspath>true</useTestClasspath>
-							<contextPath>/Skeleton</contextPath>
+							<contextPath>/Stutor</contextPath>
 							<stopKey>1</stopKey>
 							<stopPort>9999</stopPort>
 						</configuration>

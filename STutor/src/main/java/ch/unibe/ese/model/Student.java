@@ -1,4 +1,4 @@
-package org.sample.model;
+package ch.unibe.ese.model;
 
 import java.util.LinkedList;
 
@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.sample.controller.exceptions.NotTutorException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+
+import ch.unibe.ese.controller.exceptions.NotTutorException;
 
 @Entity
 public class Student{

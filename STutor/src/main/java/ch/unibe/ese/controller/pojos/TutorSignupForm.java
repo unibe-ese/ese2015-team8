@@ -1,4 +1,4 @@
-package org.sample.controller.pojos;
+package ch.unibe.ese.controller.pojos;
 
 public class TutorSignupForm{
 	
