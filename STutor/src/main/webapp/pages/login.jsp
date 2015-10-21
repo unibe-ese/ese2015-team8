@@ -13,6 +13,16 @@
 </head>
 
 <body>
+	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+    	<font color=BE1E1E>
+        	Your login attempt was not successful due to 
+        	<c:choose>
+        		<c:when test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">wrong Password</c:when>
+        		<c:otherwise>wrong username or no input</c:otherwise>
+			</c:choose>
+    	</font>
+    	<br><br>
+    </c:if>
 	<form class="login-form" action="j_spring_security_check" method="post" >
 		<fieldset>
 			<legend>Login Here</legend>
