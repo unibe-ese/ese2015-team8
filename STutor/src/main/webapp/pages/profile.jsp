@@ -20,3 +20,10 @@
 		</c:when>
 	</c:choose>
 </table>
+
+<body>
+	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
+	<br><br>
+	<a href="<c:url value="logout" />" > Logout</a>
+</body>
+</html>
