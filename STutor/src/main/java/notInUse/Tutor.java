@@ -2,9 +2,9 @@ package notInUse;
 
 import java.util.LinkedList;
 
-import org.sample.model.Comment;
-import org.sample.model.Lecture;
-import org.sample.model.Student;
+import ch.unibe.ese.model.Comment;
+import ch.unibe.ese.model.Lecture;
+import ch.unibe.ese.model.Student;
 
 /**
  * Not in use

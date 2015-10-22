@@ -1,14 +1,15 @@
-package org.sample.controller.service;
+package ch.unibe.ese.controller.service;
 
-import org.sample.controller.exceptions.InvalidUserException;
-import org.sample.controller.pojos.SignupForm;
-import org.sample.controller.pojos.TutorSignupForm;
-import org.sample.model.Student;
-import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+
+import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.pojos.SignupForm;
+import ch.unibe.ese.controller.pojos.TutorSignupForm;
+import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.dao.StudentDao;
 
 
 @Service

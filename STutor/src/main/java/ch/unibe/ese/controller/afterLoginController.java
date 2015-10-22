@@ -1,14 +1,15 @@
-package org.sample.controller;
+package ch.unibe.ese.controller;
 
 import java.security.Principal;
 
-import org.sample.model.Student;
-import org.sample.model.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.dao.StudentDao;
 
 @Controller
 public class afterLoginController {
@@ -76,7 +77,7 @@ public class afterLoginController {
 		}
 		
 		model.addObject("user",loggedInStudent);
-
+		
 		return model;
 	}
 

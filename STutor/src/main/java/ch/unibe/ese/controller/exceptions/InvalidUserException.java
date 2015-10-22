@@ -1,4 +1,4 @@
-package org.sample.controller.exceptions;
+package ch.unibe.ese.controller.exceptions;
 
 public class InvalidUserException extends RuntimeException {
 	private static final long serialVersionUID = 5224978375261435026L;

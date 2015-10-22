@@ -1,4 +1,4 @@
-package org.sample.model;
+package ch.unibe.ese.model;
 
 import java.util.LinkedList;
 
@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.sample.controller.exceptions.NotTutorException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+
+import ch.unibe.ese.controller.exceptions.NotTutorException;
 
 @Entity
 public class Student{
@@ -126,16 +127,6 @@ public class Student{
 		if(isTutor==false)
 			throw new NotTutorException("setComments");
 		this.comments = comments;
-		
-		double rating = 0;
-		if(comments.isEmpty()){
-			this.rating = -1;
-		}else{
-			for(Comment temp : comments){
-				rating += temp.getRating();
-			}
-			this.rating = rating/comments.size();
-		}
 	}
 
 	public double getRating() {

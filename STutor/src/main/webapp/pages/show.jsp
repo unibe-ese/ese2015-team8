@@ -8,4 +8,4 @@
 <c:import url="template/header.jsp" />
 <h1>Sign Up Complete!</h1>
 
-<a href="/Skeleton"> Return to login</a>
+<a href="/Stutor/"> Return to login</a>

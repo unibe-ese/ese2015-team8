@@ -1,7 +1,8 @@
-package org.sample.model.dao;
+package ch.unibe.ese.model.dao;
 
-import org.sample.model.Student;
 import org.springframework.data.repository.CrudRepository;
+
+import ch.unibe.ese.model.Student;
 
 public interface StudentDao extends CrudRepository<Student,Long> {
 

@@ -8,7 +8,6 @@
 
 <html>
 <head>
-	<!-- <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css"/> -->
 	<title>Login</title>
 </head>
 
@@ -28,16 +27,16 @@
 			<legend>Login Here</legend>
 			
 			<p>
-			<label for="j_username">Username</label>:
+			<label for="j_username">Username:</label>
 			<input id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
 			</p>
 			
 			<p>
-			<label for="j_password">Password</label>:
+			<label for="j_password">Password:</label>
 			<input id="j_password" name="j_password" size="20" maxlength="50" type="password"/>
 			</p>
 			
-			<p><input type="submit" value="Login"/></p>
+			<p><input type="submit" class="submitButton" value="Login"/></p>
 		</fieldset>
 	</form>
 	<p class="message">${message}</p>
@@ -48,7 +47,7 @@
 
 
 
-<a href="/Skeleton/newAccount"> If you don't have an account, click here to sign up!</a>
+<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
 
 <%-- 	<c:if test="${page_error != null }">
         <div class="alert alert-error">

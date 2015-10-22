@@ -5,7 +5,7 @@
 
 <head>
 	<title>Sign Up</title>
-	<style>.help-inline{color: #BE1E1E}</style>
+<style>.help-inline{color: #BE1E1E}</style>
 </head>
 <c:import url="template/header.jsp" />
 <h1>Sign Up Here!</h1>

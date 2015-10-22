@@ -7,23 +7,14 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<c:import url="template/background.jsp" />
-
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="/STutor/css/ie/html5shiv.js"></script><![endif]-->
-		<script src="/STutor/js/jquery.min.js"></script>
-		<script src="/STutor/js/jquery.dropotron.min.js"></script>
-		<script src="/STutor/js/skel.min.js"></script>
-		<script src="/STutor/js/skel-layers.min.js"></script>
-		<script src="/STutor/js/init.js"></script>
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/skel.css">
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style.css">
-		<link rel="stylesheet" type="text/css" href="/STutor/main/webapp/css/style-desktop.css">
-		<!--[if lte IE 8]><link rel="stylesheet" href="/STutor/css/ie/v8.css" /><![endif]-->
+		<link rel="stylesheet" type="text/css" href="css/skel.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style-desktop.css">
 				
 	</head>
 	<body class="no-sidebar">
@@ -34,8 +25,8 @@
 				
 					<!-- Logo -->
 						<div id="logo">
-							<img alt="icon" src="img/icon.png" align="left">
-							<h1><a href="http://localhost:8080/Skeleton/afterLogin" 
+							<img alt="icon" src="img/st(260x150).png" align="left">
+							<h1><a href="http://localhost:8080/Stutor/afterLogin" 
 							style="text-decoration:none; color:black; font-family: Tahoma;">Welcome to STutor</a></h1>
 						</div>
 						<br></br>

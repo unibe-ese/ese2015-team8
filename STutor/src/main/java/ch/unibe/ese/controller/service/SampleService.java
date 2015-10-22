@@ -1,8 +1,8 @@
-package org.sample.controller.service;
+package ch.unibe.ese.controller.service;
 
-import org.sample.controller.exceptions.InvalidUserException;
-import org.sample.controller.pojos.SignupForm;
-import org.sample.controller.pojos.TutorSignupForm;
+import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.pojos.SignupForm;
+import ch.unibe.ese.controller.pojos.TutorSignupForm;
 
 public interface SampleService {
 

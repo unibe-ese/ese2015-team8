@@ -1,4 +1,0 @@
-Update SRS
-- NFR's: Webside Speed, Shouldn't be down, Usability
-- NR 6: Make it clearer (Payment must be really clear)
-- Implement SignUp and LogIn (see Trello)

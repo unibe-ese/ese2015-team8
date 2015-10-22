@@ -1,0 +1,267 @@
+@charset 'UTF-8';
+
+/********************************************************
+GENERAL
+********************************************************/
+
+html, body {
+    height: 80%;
+    width: 80%
+}
+
+body
+{
+	font-family: 'Open Sans', sans-serif;
+	background-color: #0070C0;	
+}
+
+#header
+{
+	margin-bottom: 1;
+	position: relative;
+}
+
+/********************************************************
+TEXT
+********************************************************/
+
+a
+{
+	font-family: 'Open Sans', sans-serif;
+	color: #0000a0;
+	text-decoration: underline;
+}
+
+	a:hover
+	{
+		text-decoration: none;
+	}
+	
+	h1, h2, h3, h4, h5, h6
+	{
+		font-family: 'Open Sans', sans-serif;
+		color: #000000;
+		font-weight: 800;
+	}
+	
+	legend
+	{
+		font-family: 'Open Sans', sans-serif;
+		color: #000000;
+	}
+	
+/********************************************************
+FORM
+********************************************************/
+	
+form
+{
+}
+		
+	form label
+	{
+		display: block;
+		font-weight: 800;
+		margin: 0 0 1em 0;
+		font-size: 0.8em;
+		color: #444;
+	}
+		
+	form input[type="text"],
+	form input[type="email"],
+	form input[type="password"],
+	form select,
+	form textarea
+	{
+		-webkit-appearance: none;
+		display: block;
+		width: 80%;
+		border-radius: 8px;
+		border: solid 1px #eee;
+	}
+
+		form input[type="text"]:focus,
+		form input[type="email"]:focus,
+		form input[type="password"]:focus,
+		form select:focus,
+		form textarea:focus
+		{
+			border-color: #0090c5;
+		}
+
+	form input[type="text"],
+	form input[type="email"],
+	form input[type="password"],
+	form select
+	{
+		line-height: 3em;
+		padding: 0 1em;
+	}
+				
+	form textarea
+	{
+		min-height: 9em;
+		padding: 1em;
+	}
+
+	form .formerize-placeholder
+	{
+		color: #555 !important;
+	}
+
+	form ::-webkit-input-placeholder
+	{
+		color: #555 !important;
+	}
+
+	form :-moz-placeholder
+	{
+		color: #555 !important;
+	}
+
+	form ::-moz-placeholder
+	{
+		color: #555 !important;
+	}
+
+	form :-ms-input-placeholder
+	{
+		color: #555 !important;
+	}
+
+	form ::-moz-focus-inner
+	{
+		border: 0;
+	}
+
+/********************************************************
+TABLE
+********************************************************/
+		
+table
+{
+	width: 100%;
+}
+
+	table.default
+	{
+		width: 100%;
+	}
+
+		table.default tr
+		{
+			border-top: solid 1px #eee;
+		}
+
+			table.default tr:first-child
+			{
+				border-top: 0;
+			}
+			
+		table.default td
+		{
+			padding: 0.5em 1em 0.5em 1em;
+		}
+				
+		table.default th
+		{
+			text-align: left;
+			padding: 0.5em 1em 0.5em 1em;
+			font-weight: 800;
+			margin: 0 0 1em 0;
+		}
+			
+		table.default thead
+		{
+			background: #404248;
+			color: #fff;
+		}
+				
+		table.default tfoot
+		{
+		}
+				
+		table.default tbody
+		{
+		}
+
+/********************************************************
+BUTTON
+********************************************************/
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button
+{
+	-webkit-appearance: none;
+	position: relative;
+	display: inline-block;
+	background: #0090c5;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 6px;
+	font-weight: 800;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	-moz-transition: background-color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out;
+	-o-transition: background-color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out;
+	transition: background-color .25s ease-in-out;
+}
+		
+	input[type="button"]:hover,
+	input[type="submit"]:hover,
+	input[type="reset"]:hover,
+	.button:hover
+	{
+		background: #10a0d5;
+	}
+		
+	input[type="button"]:active,
+	input[type="submit"]:active,
+	input[type="reset"]:active,
+	.button:active
+	{
+		background: #20b0e5;
+	}
+		
+	.button.icon
+	{
+	}
+			
+		.button.icon:before
+		{
+			position: relative;
+		}
+		
+	input[type="button"].alt,
+	input[type="submit"].alt,
+	input[type="reset"].alt,
+	.button.alt
+	{
+		background: #f1f1f1;
+		background: rgba(0,0,0,0.05);
+		color: #444;
+	}
+
+		input[type="button"].alt:hover,
+		input[type="submit"].alt:hover,
+		input[type="reset"].alt:hover,
+		.button.alt:hover
+		{
+			background: #e8e8e8;
+			background: rgba(0,0,0,0.085);
+		}
+
+		input[type="button"].alt:active,
+		input[type="submit"].alt:active,
+		input[type="reset"].alt:active,
+		.button.alt:active
+		{
+			background: #e4e4e4;
+			background: rgba(0,0,0,0.15);
+		}
+		
