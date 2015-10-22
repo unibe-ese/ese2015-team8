@@ -126,6 +126,16 @@ public class Student{
 		if(isTutor==false)
 			throw new NotTutorException("setComments");
 		this.comments = comments;
+		
+		double rating = 0;
+		if(comments.isEmpty()){
+			this.rating = -1;
+		}else{
+			for(Comment temp : comments){
+				rating += temp.getRating();
+			}
+			this.rating = rating/comments.size();
+		}
 	}
 
 	public double getRating() {

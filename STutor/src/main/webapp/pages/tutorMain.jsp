@@ -15,6 +15,8 @@
 <h2>${welcomeMsg}
 </h2>
 
-<body> <a href="<c:url value="logout" />" > Logout</a> </body>
-
+<body>
+	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
+	<br><br>
+	<a href="<c:url value="logout" />" > Logout</a> </body>
 </html>

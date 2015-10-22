@@ -74,6 +74,8 @@ public class afterLoginController {
 			model.addObject("welcomeMsg", welcomeText);
 
 		}
+		
+		model.addObject("user",loggedInStudent);
 
 		return model;
 	}
