@@ -25,11 +25,21 @@
 				
 					<!-- Logo -->
 						<div id="logo">
-							<img alt="icon" src="img/st(260x150).png" align="left">
+							<a href="http://localhost:8080/Stutor/afterLogin"><img alt="icon" src="img/st(260x150).png" align="left"></a>
 							<h1><a href="http://localhost:8080/Stutor/afterLogin" 
 							style="text-decoration:none; color:black; font-family: Tahoma;">Welcome to STutor</a></h1>
+							
+							<button type="button" onclick="location.href='http://localhost:8080/Stutor/logout';" class="btn">Logout</button>
+							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/logout">
+		        				<input type="text" class="tftextinput" name="q" size="10" 
+		        				maxlength="120"><input type="submit" value="search" class="tfbutton">
+							</form>
+							
 						</div>
 						<br></br>
 					
 				</header>
 			</div>
+			
+
+			

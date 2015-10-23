@@ -64,7 +64,7 @@
         
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
-            <button type="button" class="btn">Cancel</button>
+            <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
         </div>
     </fieldset>
 </form:form>
