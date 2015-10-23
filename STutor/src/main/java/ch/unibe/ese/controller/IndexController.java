@@ -5,29 +5,22 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.SignupForm;
-import ch.unibe.ese.controller.pojos.TutorSignupForm;
 import ch.unibe.ese.controller.service.SampleService;
-import ch.unibe.ese.model.Student;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 @Controller
 public class IndexController {
-
-	private SignupForm tempSignupForm;
 
 	@Autowired
 	SampleService sampleService;
