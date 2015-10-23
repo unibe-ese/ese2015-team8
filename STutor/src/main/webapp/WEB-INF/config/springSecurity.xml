@@ -11,9 +11,11 @@
 <!-- we need a structure to avoid things like this, otherwise we'd need to restrict access to each individual site.
 for example, we could have a /Stutor/main/... -> pattern="/main*" structure where only logged in users have access. -->
 
-	<security:http auto-config="true" use-expressions="true" access-denied-page="/access-denied">
-		<security:intercept-url pattern="/login" access="permitAll" />		
+	<security:http auto-config="true" use-expressions="true" access-denied-page="/accessDenied">
+		<security:intercept-url pattern="/login" access="isAnonymous()" />		
 		<security:intercept-url pattern="/afterLogin" access="hasRole('ROLE_USER')" />		
+			<security:intercept-url pattern="/newAccount" access="hasRole('ROLE_ANONYMOUS')" />		
+					<security:intercept-url pattern="/show" access="hasRole('ROLE_USER')" />		
 		<security:form-login login-page="/login" authentication-failure-url="/login?error=true" default-target-url="/afterLogin" />
 		<security:logout invalidate-session="true" logout-success-url="/login" logout-url="/logout" />
 	</security:http>
