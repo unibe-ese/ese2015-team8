@@ -20,9 +20,9 @@ import ch.unibe.ese.model.dao.StudentDao;
 /**
  * TEMPORARY EXPLANATION
  * 
- * This class is needed for the login. In the login form , you enter your username and your PW. (@see login.jsp)
+ * This class is needed for the login. In the login form, you enter your username and your PW. (@see login.jsp)
  * 
- * Based on the XML config in @see springSecurity.xml this serves as a "authentication provider"
+ * Based on the XML config in @see springSecurity.xml this serves as an "authentication provider"
  * 
  * It means that this class gives the needed dao (studentDao) in which springSec. can find the user
  * by (here) the username.

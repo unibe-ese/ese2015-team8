@@ -10,6 +10,7 @@
 
 <body>
 
-This is just a temporary solution. Maybe add some links to go back, or to go "home"? etc.
+<h1><a href="http://localhost:8080/Stutor/afterLogin" 
+style="text-decoration:none; color:black; font-family: Tahoma;">Go back to main page</a></h1>
 
 </body>
