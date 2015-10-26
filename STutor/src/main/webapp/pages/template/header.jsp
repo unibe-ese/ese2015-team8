@@ -30,8 +30,8 @@
 							style="text-decoration:none; color:black; font-family: Tahoma;">Welcome to STutor</a></h1>
 							
 							<button type="button" onclick="location.href='http://localhost:8080/Stutor/logout';" class="btn">Logout</button>
-							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/logout">
-		        				<input type="text" class="tftextinput" name="q" size="10" 
+							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/search">
+		        			  	<input type="text" class="tftextinput" name="q" size="10" placeholder="Search..." required
 		        				maxlength="120"><input type="submit" value="search" class="tfbutton">
 							</form>
 							
