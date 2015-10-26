@@ -1,5 +1,9 @@
 package ch.unibe.ese.model.dao;
-//still to be implemented
-public class NotificationDao {
+
+import org.springframework.data.repository.CrudRepository;
+
+import ch.unibe.ese.model.Notification;
+
+public interface NotificationDao extends CrudRepository<Notification,Long> {
 
 }

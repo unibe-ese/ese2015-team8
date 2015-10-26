@@ -1,21 +1,7 @@
-package ch.unibe.ese.model;
+package ch.unibe.ese.controller.pojos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-/**
- * @author Christian
- *
- */
-
-@Entity
-public class Comment {
-	
-	@Id
-    @GeneratedValue
+public class CommentForm {
 	private Long id;
-	
 	private int rating;
 	private String comment;
 	

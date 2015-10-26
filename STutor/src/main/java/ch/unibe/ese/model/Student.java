@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
@@ -26,6 +27,7 @@ public class Student{
     
     //Only for isTutor=true
     private String gender;
+    
 	private LinkedList<Lecture> lectures;
 	private LinkedList<Comment> comments;
 	private double rating;

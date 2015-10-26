@@ -1,21 +1,7 @@
-package ch.unibe.ese.model;
+package ch.unibe.ese.controller.pojos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-/**
- * @author Christian
- *
- */
-
-@Entity
-public class Lecture {
-	
-	@Id
-    @GeneratedValue
+public class LectureForm {
 	private long id;
-	
 	private String name;
 	private String subject;
 	private String university;

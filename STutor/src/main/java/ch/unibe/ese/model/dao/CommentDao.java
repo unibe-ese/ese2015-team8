@@ -1,5 +1,9 @@
 package ch.unibe.ese.model.dao;
-//still to be implemented
-public class CommentDao {
+
+import org.springframework.data.repository.CrudRepository;
+
+import ch.unibe.ese.model.Comment;
+
+public interface CommentDao extends CrudRepository<Comment,Long> {
 
 }
