@@ -132,4 +132,19 @@ public class SampleServiceImplementation implements SampleService {
     	
     	return timelapsForm;
     }
+    
+    @Transactional
+    public AddLectureForm saveTutorLecture(AddLectureForm lectureForm, Student loggedInTutor) throws InvalidUserException{
+		
+    	long lectureId = lectureForm.getLecture();
+    	
+    	Lecture chosenLecture = lectureDao.findOne(lectureId);
+    	System.err.println("Been here, the chosen lecture is " + chosenLecture.toString());
+    	loggedInTutor.addLecture(chosenLecture);
+    	lectureDao.save(chosenLecture);
+    	userDao.save(loggedInTutor);
+    	
+
+    	return lectureForm;
+    }
 }

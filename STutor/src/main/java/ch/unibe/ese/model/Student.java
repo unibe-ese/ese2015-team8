@@ -1,11 +1,11 @@
 package ch.unibe.ese.model;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
@@ -27,7 +27,6 @@ public class Student{
     
     //Only for isTutor=true
     private String gender;
-    
 	private LinkedList<Lecture> lectures;
 	private LinkedList<Comment> comments;
 	private double rating;
@@ -107,16 +106,13 @@ public class Student{
 		this.gender = gender;
 	}
 
-	public LinkedList<Lecture> getLectures() {
-		if(isTutor==false)
-			throw new NotTutorException("getLectures");
+	public List<Lecture> getLectures() {
+	
 		return lectures;
 	}
 
-	public void setLectures(LinkedList<Lecture> lectures) {
-		if(isTutor==false)
-			throw new NotTutorException("setLectures");
-		this.lectures = lectures;
+	public void addLecture(Lecture lecture){
+		lectures.add(lecture);
 	}
 
 	public LinkedList<Comment> getComments() {

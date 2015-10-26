@@ -2,6 +2,8 @@ package ch.unibe.ese.controller.service;
 
 import ch.unibe.ese.controller.exceptions.*;
 import ch.unibe.ese.controller.pojos.*;
+import ch.unibe.ese.model.Student;
+
 
 public interface SampleService {
 
@@ -11,4 +13,5 @@ public interface SampleService {
     public LectureForm saveFrom(LectureForm lectureForm) throws InvalidDataException;
     public NotificationForm saveFrom(NotificationForm notificationForm) throws InvalidDataException;
     public TimelapsForm saveFrom(TimelapsForm timelapsForm) throws InvalidDataException;
+    public AddLectureForm saveTutorLecture(AddLectureForm lectureForm, Student loggedInTutor) throws InvalidUserException;
 }

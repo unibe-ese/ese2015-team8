@@ -25,7 +25,8 @@ public class ProfileController {
     	ModelAndView model;
         try {
         	model = new ModelAndView("profile");
-        	model.addObject(studentDao.findOne(id));
+        	model.addObject("lecture", studentDao.findOne(id).getLectures().get(0).toString());
+
         } catch (InvalidUserException e) {
         	model = new ModelAndView("index");
         	model.addObject("page_error", e.getMessage());

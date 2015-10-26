@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Lecture {
 	
 	@Id
-    @GeneratedValue
+	@GeneratedValue
 	private long id;
 	
 	private String name;
