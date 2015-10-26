@@ -6,16 +6,20 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.pojos.AddLectureForm;
 import ch.unibe.ese.controller.pojos.SignupForm;
 import ch.unibe.ese.controller.pojos.TutorSignupForm;
+import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.dao.LectureDao;
 import ch.unibe.ese.model.dao.StudentDao;
 
 
 @Service
 public class SampleServiceStudent implements SampleService {
 
-    @Autowired    StudentDao userDao;
+    @Autowired    	StudentDao userDao;
+    @Autowired		LectureDao lectureDao;
     
     @Transactional
     public SignupForm saveStudentFrom(SignupForm signupForm) throws InvalidUserException{
@@ -69,4 +73,22 @@ public class SampleServiceStudent implements SampleService {
 
         return signupForm;
     }
+    
+    @Transactional
+    public AddLectureForm saveTutorLecture(AddLectureForm lectureForm, Student loggedInTutor) throws InvalidUserException{
+		
+    	long lectureId = lectureForm.getLecture();
+    	
+    	Lecture chosenLecture = lectureDao.findOne(lectureId);
+    	System.err.println("Been here, the chosen lecture is " + chosenLecture.toString());
+    	loggedInTutor.addLecture(chosenLecture);
+    	chosenLecture.addTutor(loggedInTutor);
+    	lectureDao.save(chosenLecture);
+    	userDao.save(loggedInTutor);
+    	
+
+    	return lectureForm;
+    	
+    }
+    
 }

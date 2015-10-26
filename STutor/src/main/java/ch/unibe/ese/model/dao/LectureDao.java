@@ -1,5 +1,10 @@
 package ch.unibe.ese.model.dao;
-//still to be implemented
-public class LectureDao {
+
+import org.springframework.data.repository.CrudRepository;
+
+import ch.unibe.ese.model.Lecture;
+
+
+public interface LectureDao extends CrudRepository<Lecture,Long> {
 
 }

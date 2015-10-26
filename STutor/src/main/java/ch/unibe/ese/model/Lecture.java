@@ -1,17 +1,34 @@
 package ch.unibe.ese.model;
 
-/**
- * Not used yet
- * @author Christian
- *
- */
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+@Entity
 public class Lecture {
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
-	private String subject;
-	private String university;
-	private long grade;
+	
+    @LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany
+	private List<Student> tutors = new LinkedList<Student>();
+	
+	@ManyToOne
+	private Subject subject;
+	
+	@ManyToOne
+	private University university;
+	
 	public long getId() {
 		return id;
 	}
@@ -24,22 +41,34 @@ public class Lecture {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubject() {
+	public Subject getSubject() {
 		return subject;
 	}
-	public void setSubject(String subject) {
+	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	public String getUniversity() {
+	public University getUniversity() {
 		return university;
 	}
-	public void setUniversity(String university) {
+	public void setUniversity(University university) {
 		this.university = university;
 	}
-	public long getGrade() {
-		return grade;
+	
+	public List<Student> getTutors(){
+		return tutors;
 	}
-	public void setGrade(long grade) {
-		this.grade = grade;
+	
+	public void setTutors(List<Student> tutors){
+		this.tutors = tutors;
 	}
+	
+	public void addTutor(Student tutor){
+		tutors.add(tutor);
+	}
+	
+	
+	public String toString(){
+		return name + ", " + subject + ", " +university; 
+	}
+
 }
