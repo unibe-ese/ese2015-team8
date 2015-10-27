@@ -3,31 +3,41 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Profile</title></head>
+<head><title>Search Page</title></head>
 <c:import url="template/header.jsp" />
 <h1>Search Page</h1>
 
-<table>
-<%-- 	<tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
-	<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
-	<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
-	<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
-	<tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr> --%>
-	<tr><td>Search Results: </td></tr>
-	<%-- <c:choose>
-		<c:when test="${student.isTutor}">
-			<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
-		</c:when>
-	</c:choose> --%>
-</table>
-
-	<table>
-		<tr><td>Name of a tutor of this lecture: </td><td><c:out value="${search}" /></td></tr>
-	</table>
-
-<body>
-	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
-	<br><br>
-	<a href="<c:url value="logout" />" > Logout</a>
-</body>
+<form:form method="post" modelAttribute="searchForm" action="search" id="searchForm" cssClass="form-horizontal"  autocomplete="off">
+    <fieldset>
+        <legend>Choose Search options</legend>
+		
+		<label class="control-label" for="field-university">Choose University</label>
+        <div class="controls">
+        	<form:select path="university">
+            	<form:options items="${universities}" itemValue="id"/>
+            </form:select>
+        </div>
+		
+        <label class="control-label" for="field-subject">Choose Subject</label>
+        <div class="controls">
+        	<form:select path="subject">
+            	<form:options items="${subjects}" itemValue="id"/>
+            </form:select>
+        </div>
+        
+        <c:set var="nameErrors"><form:errors path="name"/></c:set>
+        <div class="control-group<c:if test="${not empty nameErrors}"> error</c:if>">
+            <label class="control-label" for="field-email">Name</label>
+            <div class="controls">
+                <form:input path="name" id="field-name" tabindex="1" maxlength="45" placeholder="Name"/>
+                <form:errors path="name" cssClass="help-inline" element="span"/>
+            </div>
+        </div>
+                
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
+        </div>
+    </fieldset>
+</form:form>
 </html>

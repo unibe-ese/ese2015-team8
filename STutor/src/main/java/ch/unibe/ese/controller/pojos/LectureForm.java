@@ -1,9 +1,5 @@
 package ch.unibe.ese.controller.pojos;
 
-import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.Subject;
-import ch.unibe.ese.model.University;
-
 public class LectureForm {
 
 	private String name;

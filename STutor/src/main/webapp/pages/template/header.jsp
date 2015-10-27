@@ -26,10 +26,11 @@
 					<!-- Logo -->
 						<div id="logo">
 						
-							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/search">
+							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/basicSearch">
 		        				<input type="text" class="tftextinput" name="q" size="12" placeholder="Search..."
-		        				required maxlength="120"><input class="submitButton" type="button" value="search" >
+		        				required maxlength="120"><input class="submitButton" type="button" value="Search" >
 							</form>
+							
 							
 							
 							<a href="http://localhost:8080/Stutor/afterLogin"><img src="img/logo.png" align="left"></a>
@@ -39,7 +40,8 @@
 						    
 											
 						</div>
-					
+						
+						<input type="button" onclick="location.href='http://localhost:8080/Stutor/searchInitialisation';"  style="float: right;" value="Search 2" >
 		        		<input type="button" onclick="location.href='http://localhost:8080/Stutor/logout';"  style="float: right;" value="log out" >
 							
 						
