@@ -3,7 +3,7 @@ package ch.unibe.ese.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 /**
  * @author Christian
  *
@@ -17,9 +17,11 @@ public class Lecture {
 	private long id;
 	
 	private String name;
-	private String subject;
-	private String university;
 	private long grade;
+	
+	@ManyToOne
+	private Subject subject;
+	
 	public long getId() {
 		return id;
 	}
@@ -32,17 +34,11 @@ public class Lecture {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubject() {
+	public Subject getSubject() {
 		return subject;
 	}
-	public void setSubject(String subject) {
+	public void setSubject(Subject subject) {
 		this.subject = subject;
-	}
-	public String getUniversity() {
-		return university;
-	}
-	public void setUniversity(String university) {
-		this.university = university;
 	}
 	public long getGrade() {
 		return grade;

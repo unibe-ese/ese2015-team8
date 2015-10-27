@@ -1,11 +1,15 @@
 package ch.unibe.ese.controller.pojos;
 
+import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.Subject;
+
 public class LectureForm {
 	private long id;
 	private String name;
-	private String subject;
-	private String university;
+	private Subject subject;
 	private long grade;
+	private Student tutor;
+	
 	public long getId() {
 		return id;
 	}
@@ -18,22 +22,22 @@ public class LectureForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubject() {
+	public Subject getSubject() {
 		return subject;
 	}
-	public void setSubject(String subject) {
+	public void setSubject(Subject subject) {
 		this.subject = subject;
-	}
-	public String getUniversity() {
-		return university;
-	}
-	public void setUniversity(String university) {
-		this.university = university;
 	}
 	public long getGrade() {
 		return grade;
 	}
 	public void setGrade(long grade) {
 		this.grade = grade;
+	}
+	public Student getTutor() {
+		return tutor;
+	}
+	public void setTutor(Student tutor) {
+		this.tutor = tutor;
 	}
 }

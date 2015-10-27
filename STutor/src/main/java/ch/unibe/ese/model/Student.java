@@ -1,11 +1,12 @@
 package ch.unibe.ese.model;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
@@ -27,8 +28,16 @@ public class Student{
     
     //Only for isTutor=true
     private String gender;
-	private LinkedList<Lecture> lectures;
-	private LinkedList<Comment> comments;
+    
+    @OneToMany
+	private Set<Lecture> lectures;
+    
+    @OneToMany
+	private Set<Comment> comments;
+    
+    @ManyToOne
+    private University university;
+    
 	private double rating;
 	//-------------------------
     
@@ -106,22 +115,25 @@ public class Student{
 		this.gender = gender;
 	}
 
-	public List<Lecture> getLectures() {
-	
+	public Set<Lecture> getLectures() {
 		return lectures;
+	}
+	
+	public void setLectures(Set<Lecture> lectures) {
+		this.lectures = lectures;
 	}
 
 	public void addLecture(Lecture lecture){
 		lectures.add(lecture);
 	}
 
-	public LinkedList<Comment> getComments() {
+	public Set<Comment> getComments() {
 		if(isTutor==false)
 			throw new NotTutorException("getComments");
 		return comments;
 	}
 
-	public void setComments(LinkedList<Comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		if(isTutor==false)
 			throw new NotTutorException("setComments");
 		this.comments = comments;
@@ -138,6 +150,13 @@ public class Student{
 			throw new NotTutorException("setRating");
 		this.rating = rating;
 	}
-	//------------------------------------------------
 	
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+	//------------------------------------------------
 }

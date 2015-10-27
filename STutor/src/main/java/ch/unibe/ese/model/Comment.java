@@ -18,7 +18,7 @@ public class Comment {
 	
 	private int rating;
 	private String comment;
-	
+
 	public Long getId() {
 		return id;
 	}
