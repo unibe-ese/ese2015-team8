@@ -18,5 +18,5 @@
 <body>
 	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
 	<br><br>
-	<a href="<c:url value="logout" />" > Logout</a> </body>
+	<a href="<c:url value="addLecture" />" > Add Lectures</a> </body>
 </html>
