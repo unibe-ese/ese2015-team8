@@ -33,7 +33,13 @@ public class SampleServiceImplementation implements SampleService {
         
         user.setFirstName(signupForm.getFirstName());
         user.setLastName(signupForm.getLastName());
-        user.setUsername(signupForm.getUsername());
+        Student temp = userDao.findByUsername(signupForm.getUsername());
+        if(temp==null){
+            user.setUsername(signupForm.getUsername());
+        }
+        else{
+        	throw new InvalidUserException("Username already taken");
+        }
         user.setEmail(signupForm.getEmail());
         user.setPassword(signupForm.getPassword());
         user.setIsTutor(signupForm.getIsTutor());
