@@ -215,6 +215,7 @@
 						<artifactId>maven-jetty-plugin</artifactId>
 						<version>6.1.26</version>
 						<configuration>
+						    <webDefaultXml>src/main/webapp/WEB-INF/webdefault.xml</webDefaultXml>
 							<useTestClasspath>true</useTestClasspath>
 							<contextPath>/Stutor</contextPath>
 							<stopKey>1</stopKey>

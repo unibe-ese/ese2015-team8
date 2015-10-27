@@ -12,7 +12,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" type="text/css" href="css/skel.css">
+		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/style-desktop.css">
 				
@@ -25,17 +25,25 @@
 				
 					<!-- Logo -->
 						<div id="logo">
-							<a href="http://localhost:8080/Stutor/afterLogin"><img alt="icon" src="img/st(260x150).png" align="left"></a>
-							<h1><a href="http://localhost:8080/Stutor/afterLogin" 
-							style="text-decoration:none; color:black; font-family: Tahoma;">Welcome to STutor</a></h1>
-							
-							<button type="button" onclick="location.href='http://localhost:8080/Stutor/logout';" class="btn">Logout</button>
+						
 							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/search">
-		        			  	<input type="text" class="tftextinput" name="q" size="10" placeholder="Search..." required
-		        				maxlength="120"><input type="submit" value="search" class="tfbutton">
+		        				<input type="text" class="tftextinput" name="q" size="12" placeholder="Search..."
+		        				required maxlength="120"><input class="submitButton" type="button" value="search" >
 							</form>
 							
+							
+							<a href="http://localhost:8080/Stutor/afterLogin"><img src="img/logo.png" align="left"></a>
+							
+							
+							<h1><a href="http://localhost:8080/Stutor/afterLogin"><b>Welcome to STutor</b></a></h1>
+						    
+											
 						</div>
+					
+		        		<input type="button" onclick="location.href='http://localhost:8080/Stutor/logout';"  style="float: right;" value="log out" >
+							
+						
+						
 						<br></br>
 					
 				</header>

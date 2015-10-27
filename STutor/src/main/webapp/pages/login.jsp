@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:import url="template/header.jsp" />
-<h1>--Main Page--</h1>
+
 
 <html>
 <head>
@@ -23,9 +23,18 @@
     	<br><br>
     </c:if>
 	<form class="login-form" action="j_spring_security_check" method="post" >
-		<fieldset>
+		<fieldset >
 			<legend>Login Here</legend>
-			
+	        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+    	      <font color=BE1E1E>
+        	    Your login attempt was not successful due to 
+        	     <c:choose>
+        		  <c:when test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">wrong Password</c:when>
+        		  <c:otherwise>wrong username or no input</c:otherwise>
+			     </c:choose>
+    	      </font>
+    	     
+             </c:if>
 			<p>
 			<label for="j_username">Username:</label>
 			<input id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
@@ -37,6 +46,7 @@
 			</p>
 			
 			<p><input type="submit" class="submitButton" value="Login"/></p>
+			<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
 		</fieldset>
 	</form>
 	<p class="message">${message}</p>
@@ -46,8 +56,6 @@
 
 
 
-
-<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
 
 <%-- 	<c:if test="${page_error != null }">
         <div class="alert alert-error">
