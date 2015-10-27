@@ -16,12 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
-import ch.unibe.ese.controller.pojos.AddLectureForm;
+import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.controller.service.SampleService;
 import ch.unibe.ese.model.Lecture;
+import ch.unibe.ese.model.Subject;
 import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.University;
 import ch.unibe.ese.model.dao.LectureDao;
 import ch.unibe.ese.model.dao.StudentDao;
+import ch.unibe.ese.model.dao.SubjectDao;
+import ch.unibe.ese.model.dao.UniversityDao;
 
 @Controller
 public class AddLectureController {
@@ -35,8 +39,14 @@ public class AddLectureController {
 	@Autowired
 	LectureDao lectureDao;
 	
+	@Autowired
+	UniversityDao universityDao;
+	
+	@Autowired
+	SubjectDao subjectDao;
+	
 	@ModelAttribute("lectures")
-	public List<Lecture> allTeams(){
+	public List<Lecture> allLectures(){
 		List<Lecture> allLectures = new LinkedList<Lecture>();
 		Iterable<Lecture> lectures = lectureDao.findAll();
 		
@@ -46,25 +56,46 @@ public class AddLectureController {
 		
 		return allLectures;
 	}
-
-
+	
+	@ModelAttribute("universities")
+	public List<University> allUniversities(){
+		List<University> allUniversities = new LinkedList<University>();
+		Iterable<University> universities = universityDao.findAll();
+		
+		for (University university : universities) {
+			allUniversities.add(university);
+		}
+		
+		return allUniversities;
+	}
+	
+	@ModelAttribute("subjects")
+	public List<Subject> allSubjects(){
+		List<Subject> allSubjects = new LinkedList<Subject>();
+		Iterable<Subject> subjects = subjectDao.findAll();
+		
+		for (Subject subject : subjects) {
+			allSubjects.add(subject);
+		}
+		
+		return allSubjects;
+	}
 
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
-	public ModelAndView newAccount() {
+	public ModelAndView addLecture() {
 		ModelAndView model = new ModelAndView("addLecture");
-		model.addObject("addLectureForm", new AddLectureForm());
+		model.addObject("lectureForm", new LectureForm());
 		return model;
 	}
 
 	@RequestMapping(value = "/addedLecture", method = RequestMethod.POST)
-	public ModelAndView create(@Valid AddLectureForm lectureForm, BindingResult result,
-			RedirectAttributes redirectAttributes, Principal principal) {
+	public ModelAndView create(@Valid LectureForm lectureForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
 				String username = principal.getName();
 				Student loggedInTutor = studentDao.findByUsername(username);
-				sampleService.saveTutorLecture(lectureForm, loggedInTutor);
+				sampleService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView("profile");
 				return model;
 

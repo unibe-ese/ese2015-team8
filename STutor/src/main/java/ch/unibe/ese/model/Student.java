@@ -12,6 +12,11 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 import ch.unibe.ese.controller.exceptions.NotTutorException;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Student{
 
@@ -30,9 +35,13 @@ public class Student{
     private String gender;
     
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Cascade(CascadeType.ALL)
 	private Set<Lecture> lectures;
     
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Cascade(CascadeType.ALL)
 	private Set<Comment> comments;
     
     @ManyToOne

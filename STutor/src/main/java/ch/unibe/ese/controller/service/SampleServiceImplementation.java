@@ -19,6 +19,8 @@ public class SampleServiceImplementation implements SampleService {
     @Autowired		CommentDao commentDao;
     @Autowired		LectureDao lectureDao;
     @Autowired		TimelapsDao timelapsDao;
+    @Autowired		SubjectDao subjectDao;
+    @Autowired		UniversityDao universityDao;
     @Autowired		NotificationDao notificationDao;
     
     @Transactional
@@ -89,17 +91,18 @@ public class SampleServiceImplementation implements SampleService {
     }
     
     @Transactional
-    public LectureForm saveFrom(LectureForm lectureForm) throws InvalidDataException{
-    	Lecture lecture = new Lecture();
+    public LectureForm saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidDataException{
+
+    	Lecture chosenLecture = new Lecture();
+    	chosenLecture.setName(lectureForm.getName());
+    	chosenLecture.setGrade(lectureForm.getGrade());
+    	chosenLecture.setSubject(subjectDao.findOne(lectureForm.getSubject()));
+    	chosenLecture.setUniversity(universityDao.findOne(lectureForm.getUniversity()));
+    	loggedInTutor.addLecture(chosenLecture);
+    	lectureDao.save(chosenLecture);
+    	userDao.save(loggedInTutor);
     	
-    	lecture.setName(lectureForm.getName());
-    	lecture.setSubject(lectureForm.getSubject());
-    	lecture.setGrade(lectureForm.getGrade());
-    	
-    	lecture = lectureDao.save(lecture);
-    	
-    	lectureForm.setId(lecture.getId());
-    	
+
     	return lectureForm;
     }
     
