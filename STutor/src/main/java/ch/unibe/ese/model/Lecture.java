@@ -25,6 +25,9 @@ public class Lecture {
 	@ManyToOne
 	private University university;
 	
+	@ManyToOne
+	private Student tutor;
+	
 	public long getId() {
 		return id;
 	}
@@ -57,8 +60,19 @@ public class Lecture {
 	public void setUniversity(University university){
 		this.university = university;
 	}
+	
 	@Override
 	public String toString() {
 		return name + ", " + subject.getName() + ", " + university.getName();
+	}
+	
+	
+	public void setTutor(Student tutor) {
+		this.tutor = tutor;
+		
+	}
+	
+	public Student getTutor() {
+		return tutor;
 	}
 }

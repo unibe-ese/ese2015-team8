@@ -22,7 +22,7 @@
 </table>
 
 	<table>
-		<tr><td>Id: </td><td><c:out value="${search}" /></td></tr>
+		<tr><td>Name of a tutor of this lecture: </td><td><c:out value="${search}" /></td></tr>
 	</table>
 
 <body>

@@ -9,9 +9,5 @@ public interface SampleService {
 
     public SignupForm saveStudentFrom(SignupForm signupForm) throws InvalidUserException;
     public SignupForm saveTutorFrom(SignupForm signupForm, TutorSignupForm tutorSignupForm) throws InvalidUserException;
-    public CommentForm saveFrom(CommentForm commentForm) throws InvalidDataException;
     public LectureForm saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidDataException;
-    public NotificationForm saveFrom(NotificationForm notificationForm) throws InvalidDataException;
-    public TimelapsForm saveFrom(TimelapsForm timelapsForm) throws InvalidDataException;
-    public AddLectureForm saveTutorLecture(AddLectureForm lectureForm, Student loggedInTutor) throws InvalidUserException;
 }

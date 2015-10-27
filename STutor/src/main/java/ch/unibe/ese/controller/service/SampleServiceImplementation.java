@@ -16,12 +16,9 @@ import ch.unibe.ese.model.dao.*;
 public class SampleServiceImplementation implements SampleService {
 
     @Autowired		StudentDao userDao;
-    @Autowired		CommentDao commentDao;
     @Autowired		LectureDao lectureDao;
-    @Autowired		TimelapsDao timelapsDao;
     @Autowired		SubjectDao subjectDao;
     @Autowired		UniversityDao universityDao;
-    @Autowired		NotificationDao notificationDao;
     
     @Transactional
     public SignupForm saveStudentFrom(SignupForm signupForm) throws InvalidUserException{
@@ -76,77 +73,25 @@ public class SampleServiceImplementation implements SampleService {
         return signupForm;
     }
     
-    @Transactional
-    public CommentForm saveFrom(CommentForm commentForm) throws InvalidDataException{
-    	Comment comment = new Comment();
-    	
-    	comment.setComment(commentForm.getComment());
-    	comment.setRating(commentForm.getRating());
-    	
-    	comment = commentDao.save(comment);
-    	
-    	commentForm.setId(comment.getId());
-    	
-    	return commentForm;
-    }
+
     
     @Transactional
-    public LectureForm saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidDataException{
-
+    public LectureForm saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidUserException{
+		
     	Lecture chosenLecture = new Lecture();
     	chosenLecture.setName(lectureForm.getName());
-    	chosenLecture.setGrade(lectureForm.getGrade());
     	chosenLecture.setSubject(subjectDao.findOne(lectureForm.getSubject()));
     	chosenLecture.setUniversity(universityDao.findOne(lectureForm.getUniversity()));
+    	
+    	
     	loggedInTutor.addLecture(chosenLecture);
+    	chosenLecture.setTutor(loggedInTutor);
     	lectureDao.save(chosenLecture);
     	userDao.save(loggedInTutor);
     	
 
     	return lectureForm;
     }
-    
-    @Transactional
-    public NotificationForm saveFrom(NotificationForm notificationForm) throws InvalidDataException{
-    	Notification notification = new Notification();
-    	
-    	notification.setTitel(notificationForm.getTitel());
-    	notification.setMessage(notificationForm.getMessage());
-    	notification.setDate(notificationForm.getDate());
-    	
-    	notification = notificationDao.save(notification);
-    	
-    	notificationForm.setId(notification.getId());
-    	
-    	return notificationForm;
-    }
-    
-    @Transactional
-    public TimelapsForm saveFrom(TimelapsForm timelapsForm) throws InvalidDataException{
-    	Timelaps timelaps = new Timelaps();
-    	
-    	timelaps.setFromTime(timelapsForm.getFromTime());
-    	timelaps.setToTime(timelapsForm.getToTime());
-    	
-    	timelaps = timelapsDao.save(timelaps);
-    	
-    	timelapsForm.setId(timelaps.getId());
-    	
-    	return timelapsForm;
-    }
-    
-    @Transactional
-    public AddLectureForm saveTutorLecture(AddLectureForm lectureForm, Student loggedInTutor) throws InvalidUserException{
-		
-    	long lectureId = lectureForm.getLecture();
-    	
-    	Lecture chosenLecture = lectureDao.findOne(lectureId);
-    	System.err.println("Been here, the chosen lecture is " + chosenLecture.toString());
-    	loggedInTutor.addLecture(chosenLecture);
-    	lectureDao.save(chosenLecture);
-    	userDao.save(loggedInTutor);
-    	
 
-    	return lectureForm;
-    }
+
 }
