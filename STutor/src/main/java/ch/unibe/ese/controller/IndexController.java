@@ -60,10 +60,13 @@ public class IndexController {
 
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("newAccount");
-				model.addObject("page_error", e.getMessage());
+				model.addObject("page_error", e.getMessage());	
 			
-				
+			} catch (Exception e){
+				model = new ModelAndView("newAccount");
+				model.addObject("page_error", "This username is already taken!");	
 			}
+			
 		} else {
 			model = new ModelAndView("newAccount");
 		}

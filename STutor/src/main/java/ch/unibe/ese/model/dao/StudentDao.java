@@ -7,4 +7,5 @@ import ch.unibe.ese.model.Student;
 public interface StudentDao extends CrudRepository<Student,Long> {
 
 	Student findByUsername(String username);
+	
 }

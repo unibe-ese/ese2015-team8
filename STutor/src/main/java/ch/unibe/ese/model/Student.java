@@ -2,6 +2,7 @@ package ch.unibe.ese.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +27,10 @@ public class Student{
 
     private String firstName;
     private String lastName;
+    
+    @Column(unique = true)
     private String username;
+    
     private String email;
     private String password;
     private boolean isTutor;
