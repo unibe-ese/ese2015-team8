@@ -5,25 +5,38 @@
 
 <head><title>Profile</title></head>
 <c:import url="template/header.jsp" />
-<h1>Student Profile</h1>
-
-<table>
-<%-- 	<tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
-	<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
-	<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
-	<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
-	<tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr> --%>
-	<tr><td>Gives the following Lecture: </td><td><c:out value="${lecture}" /></td></tr>
-	<%-- <c:choose>
-		<c:when test="${student.isTutor}">
-			<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
-		</c:when>
-	</c:choose> --%>
-</table>
 
 <body>
-	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
+	<h1>Student Profile</h1>
+
+	<table>
+		<tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
+		<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
+		<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
+		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
+		<tr><td>Email: </td><td><c:out value="${student.email}" /></td></tr>
+		<c:choose>
+			<c:when test="${student.isTutor}">
+				<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
+			</c:when>
+		</c:choose>
+	</table>
+	
+	<c:choose>
+		<c:when test="${student.isTutor}">
+			<div id="lectureList">
+				<h1>Gives the following Lecture:</h1>
+				<c:forEach items="${lectures}" var="lecture">
+					<div id="table">
+						<label><c:out value="${lecture}" /></label>
+					</div>
+				</c:forEach>
+			</div>
+		</c:when>
+	</c:choose>
 	<br><br>
-	<a href="<c:url value="logout" />" > Logout</a>
+	<div>
+		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
+	</div>
 </body>
 </html>
