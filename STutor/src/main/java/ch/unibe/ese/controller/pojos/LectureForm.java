@@ -6,8 +6,6 @@ public class LectureForm {
 	private Long subject;
 	private Long university;
 	private float grade;
-
-	
 	
 	public String getName() {
 		return name;

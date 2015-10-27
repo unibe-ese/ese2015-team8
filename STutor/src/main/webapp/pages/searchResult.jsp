@@ -14,8 +14,9 @@
 }
 
 #table_list ul li{
-	display: inline;
-	padding: .2em 2em;
+	display: inline-block;
+	width: 150px;
+	
 }
 </style>
 
@@ -23,16 +24,17 @@
 	<h1>Search Result</h1>
 	<div id="lectureList">
 		<h1>Tutors for this Lecture:</h1>
-		<c:forEach var="loop" items="${lectures}" varStatus="status">
-			<div id="table_list">
+		<div id="table_list">
+			<ul><li>username</li><li>rating</li><li>grade</li><li>profile</li></ul>
+			<c:forEach var="loop" items="${lectures}" varStatus="status">
 			<ul>
 				<li><c:out value="${tutors[status.index].username}" /></li>
 				<li><c:out value="${tutors[status.index].rating}" /></li>
 				<li><c:out value="${lectures[status.index].grade}" /></li>
 				<li><a href="profile?userId=<c:out value="${tutors[status.index].id}"/>">See Profile</a></li>
 			</ul>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>

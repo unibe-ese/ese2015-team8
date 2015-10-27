@@ -111,28 +111,4 @@ public class AddLectureController {
 
 		return model;
 	}
-	
-
-//	@RequestMapping(value = "/tutor_signUp", method = RequestMethod.GET)
-//	public ModelAndView tutorSignUp() {
-//		ModelAndView model = new ModelAndView("tutor_signUp");
-//		model.addObject("tutorSignupForm", new TutorSignupForm());
-//		return model;
-//	}
-//
-//	@RequestMapping(value = "/createTutor", method = RequestMethod.POST)
-//	public ModelAndView createTutor(@Valid TutorSignupForm tutorSignupForm, BindingResult result,
-//			RedirectAttributes redirectAttributes) {
-//		ModelAndView model;
-//		try {
-//			sampleService.saveTutorFrom(tempSignupForm, tutorSignupForm);
-//			tempSignupForm = null;
-//			model = new ModelAndView("show");
-//		} catch (InvalidUserException e) {
-//			model = new ModelAndView("tutor_signUp");
-//			model.addObject("page_error", e.getMessage());
-//		}
-//		return model;
-//	}
-
 }

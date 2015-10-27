@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.model.dao.StudentDao;
 
 public class SignupForm {

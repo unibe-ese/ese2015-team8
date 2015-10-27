@@ -17,7 +17,7 @@ public class Lecture {
 	private long id;
 	
 	private String name;
-	private long grade;
+	private float grade;
 	
 	@ManyToOne
 	private Subject subject;
@@ -46,10 +46,10 @@ public class Lecture {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	public long getGrade() {
+	public float getGrade() {
 		return grade;
 	}
-	public void setGrade(long grade) {
+	public void setGrade(float grade) {
 		this.grade = grade;
 	}
 	

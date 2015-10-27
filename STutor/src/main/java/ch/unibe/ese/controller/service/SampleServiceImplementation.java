@@ -93,6 +93,7 @@ public class SampleServiceImplementation implements SampleService {
     	chosenLecture.setName(lectureForm.getName());
     	chosenLecture.setSubject(subjectDao.findOne(lectureForm.getSubject()));
     	chosenLecture.setUniversity(universityDao.findOne(lectureForm.getUniversity()));
+    	chosenLecture.setGrade(lectureForm.getGrade());
     	
     	
     	loggedInTutor.addLecture(chosenLecture);
