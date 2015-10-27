@@ -22,6 +22,9 @@ public class Lecture {
 	@ManyToOne
 	private Subject subject;
 	
+	@ManyToOne
+	private University university;
+	
 	public long getId() {
 		return id;
 	}

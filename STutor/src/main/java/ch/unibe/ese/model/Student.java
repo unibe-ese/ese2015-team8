@@ -36,7 +36,7 @@ public class Student{
 	private Set<Comment> comments;
     
     @ManyToOne
-    private University university;
+    private Town town;
     
 	private double rating;
 	//-------------------------
@@ -151,12 +151,12 @@ public class Student{
 		this.rating = rating;
 	}
 	
-	public University getUniversity() {
-		return university;
+	public Town getTown() {
+		return town;
 	}
 
-	public void setUniversity(University university) {
-		this.university = university;
+	public void setTown(Town town) {
+		this.town = town;
 	}
 	//------------------------------------------------
 }
