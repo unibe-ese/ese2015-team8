@@ -21,6 +21,10 @@
 	</c:choose> --%>
 </table>
 
+	<table>
+		<tr><td>Id: </td><td><c:out value="${search}" /></td></tr>
+	</table>
+
 <body>
 	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 	<br><br>
