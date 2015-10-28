@@ -6,6 +6,6 @@
 <head><title>Sign Up Complete</title></head>
 
 <c:import url="template/header.jsp" />
-<h1>Sign Up Complete!</h1>
+<h1>Request Send!</h1>
 
-<a href="/Stutor/"> Return to login</a>
+<a href="/Stutor/afterLogin">Return to main</a>

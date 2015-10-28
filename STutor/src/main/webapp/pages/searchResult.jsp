@@ -31,7 +31,7 @@
 				<li><c:out value="${tutors[status.index].username}" /></li>
 				<li><c:out value="${tutors[status.index].rating}" /></li>
 				<li><c:out value="${lectures[status.index].grade}" /></li>
-				<li><a href="profile?userId=<c:out value="${tutors[status.index].id}"/>">See Profile</a></li>
+				<li><a href="hiddenProfile?userId=<c:out value="${tutors[status.index].id}"/>">See Profile</a></li>
 			</ul>
 			</c:forEach>
 		</div>

@@ -33,6 +33,11 @@ public class Student{
     private String password;
     private boolean isTutor;
     
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Cascade(CascadeType.ALL)
+	private Set<Notification> notifications;
+    
     //Only for isTutor=true
     private String gender;
     
@@ -101,15 +106,23 @@ public class Student{
 		this.password = pwEncoder.encodePassword(password, this.getUsername());
 	}
 
+	public Set<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(Set<Notification> notifications) {
+		this.notifications = notifications;
+	}
+	
+	public void addNotification(Notification notification) {
+		notifications.add(notification);
+	}
+
 	public boolean getIsTutor() {
 		return isTutor;
 	}
 
 	public void setIsTutor(boolean isTutor) {
-		this.isTutor = isTutor;
-	}
-	
-	public void setTutor(boolean isTutor) {
 		this.isTutor = isTutor;
 	}
 	

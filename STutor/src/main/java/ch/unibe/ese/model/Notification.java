@@ -19,9 +19,17 @@ public class Notification {
 	private Long id;
 	
 	private String titel;
+	private String status;
 	private String message;
 	private Timestamp date;
+	private String fromEMail;
 	
+	public String getFromEMail() {
+		return fromEMail;
+	}
+	public void setFromEMail(String fromEMail) {
+		this.fromEMail = fromEMail;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -33,6 +41,12 @@ public class Notification {
 	}
 	public void setTitel(String titel) {
 		this.titel = titel;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getMessage() {
 		return message;
