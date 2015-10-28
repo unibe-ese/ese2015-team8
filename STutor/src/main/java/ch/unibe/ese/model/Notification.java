@@ -23,6 +23,7 @@ public class Notification {
 	private String message;
 	private Timestamp date;
 	private String fromEMail;
+	private Long toStudentId;
 	
 	public String getFromEMail() {
 		return fromEMail;
@@ -59,5 +60,11 @@ public class Notification {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public Long getToStudentId() {
+		return toStudentId;
+	}
+	public void setToStudentId(Long toStudentId) {
+		this.toStudentId = toStudentId;
 	}
 }

@@ -4,20 +4,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Main Page</title>
-</head>
 
 <c:import url="template/header.jsp" />
-<h1> --Main Page after a log in (for TUTORS) --</h1>
-
-<h2>${welcomeMsg}
-</h2>
+<h1> <c:out value="${notification.titel}"/> </h1>
 
 <body>
-	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
-	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
-	<br><br>
-	<a href="<c:url value="addLecture" />" > Add Lectures</a> </body>
+	<p><c:out value="${notification.message}" /> </p>
+</body>
+<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </html>

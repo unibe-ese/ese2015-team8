@@ -25,7 +25,7 @@
 				
 					<!-- Logo -->
 						<div id="logo">
-						
+							
 							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/basicSearch">
 		        				<input type="text" class="tftextinput" name="q" size="12" placeholder="Search..."
 		        				required maxlength="120"><input class="submitButton" type="button" value="Search" >
