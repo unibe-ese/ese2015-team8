@@ -12,7 +12,7 @@ import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 @Controller
-public class afterLoginController {
+public class AfterLoginController {
 
 	// as we get the username in the mapping, we can find the student by looking
 	// through the repo with the username.

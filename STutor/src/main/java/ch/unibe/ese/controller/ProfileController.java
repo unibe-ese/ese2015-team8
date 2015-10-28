@@ -24,7 +24,7 @@ public class ProfileController {
     public ModelAndView profile(@RequestParam("userId") long id) {
     	ModelAndView model;
         try {
-        	model = new ModelAndView("profile");
+        	model = new ModelAndView("profile?userId="+id);
         	model.addObject("lectures", studentDao.findOne(id).getLectures().toArray());
         	model.addObject("student",studentDao.findOne(id));
 
