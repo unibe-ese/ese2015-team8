@@ -1,6 +1,6 @@
 @charset 'UTF-8';
-@import url("font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
+
 
 /*
 	Verti by HTML5 UP
@@ -25,19 +25,6 @@
 		background-size:		100% 30em,														auto;
 	}
 
-		body.is-loading *
-		{
-			-moz-transition: none !important;
-			-webkit-transition: none !important;
-			-o-transition: none !important;
-			-ms-transition: none !important;
-			transition: none !important;
-			-moz-animation: none !important;
-			-webkit-animation: none !important;
-			-o-animation: none !important;
-			-ms-animation: none !important;
-		
-		}
 		
 	body,input,select,textarea
 	{
@@ -175,8 +162,17 @@
 				color: #444;
 			}
 		
-			form input[type="text"],
+			form input[type="search"]
+			{
+				-webkit-appearance: none;
+				display: block;
+				width: 100%;
+				border-radius: 8px;
+				border: solid 1px #eee;
+				min-height: 3em;
+			}
 			form input[type="email"],
+			form input[type="text"],
 			form input[type="password"],
 			form select,
 			form textarea

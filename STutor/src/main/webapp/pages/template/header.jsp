@@ -27,15 +27,13 @@
 						<div id="logo">
 							
 							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/basicSearch">
-		        				<input type="text" class="tftextinput" name="q" size="12" placeholder="Search..."
-		        				required maxlength="120"><input class="submitButton" type="button" value="Search" >
+		        				<input type="search" name="q" size="12" placeholder="Search..."
+		        				required maxlength="120">
+		        				<input type="submit" value="Search" >
 							</form>
-							
-							
-							
+												
 							<a href="http://localhost:8080/Stutor/afterLogin"><img src="img/logo.png" align="left"></a>
-							
-							
+														
 							<h1><a href="http://localhost:8080/Stutor/afterLogin"><b>Welcome to STutor</b></a></h1>
 						    
 											
