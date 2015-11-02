@@ -8,7 +8,6 @@ import org.springframework.util.StringUtils;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.controller.pojos.SignupForm;
-import ch.unibe.ese.controller.pojos.TutorSignupForm;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.LectureDao;
@@ -58,7 +57,7 @@ public class SampleServiceImplementation implements SampleService {
     }
     
     @Transactional
-    public SignupForm saveTutorFrom(SignupForm signupForm, TutorSignupForm tutorSignupForm) throws InvalidUserException{
+    public SignupForm saveTutorFrom(SignupForm signupForm) throws InvalidUserException{
 
         String firstName = signupForm.getFirstName();
 
@@ -74,7 +73,6 @@ public class SampleServiceImplementation implements SampleService {
         user.setEmail(signupForm.getEmail());
         user.setPassword(signupForm.getPassword());
         user.setIsTutor(signupForm.getIsTutor());
-        user.setGender(tutorSignupForm.getGender());
         
 
         user = userDao.save(user);   // save object to DB
@@ -103,6 +101,23 @@ public class SampleServiceImplementation implements SampleService {
     	
 
     	return lectureForm;
+    }
+    
+    @Transactional
+    public SignupForm modifieUserFrom(SignupForm signupForm, Student acctualStudent) throws InvalidUserException{
+        
+        acctualStudent.setFirstName(signupForm.getFirstName());
+        acctualStudent.setLastName(signupForm.getLastName());
+        acctualStudent.setUsername(signupForm.getUsername());
+        acctualStudent.setEmail(signupForm.getEmail());
+        acctualStudent.setPassword(signupForm.getPassword());
+        acctualStudent.setIsTutor(signupForm.getIsTutor());
+        acctualStudent.setGender(signupForm.getGender());
+        
+
+        acctualStudent = userDao.save(acctualStudent);   // save object to DB
+
+        return signupForm;
     }
 
 

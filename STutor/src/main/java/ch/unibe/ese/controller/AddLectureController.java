@@ -97,6 +97,7 @@ public class AddLectureController {
 				Student loggedInTutor = studentDao.findByUsername(username);
 				sampleService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView("profile");
+				model.getModelMap().addAttribute("userId",studentDao.findByUsername(principal.getName()).getId());
 				return model;
 
 			} catch (InvalidUserException e) {

@@ -40,6 +40,7 @@
 						</div>
 						
 						<input type="button" onclick="location.href='http://localhost:8080/Stutor/searchInitialisation';"  style="float: right;" value="Search 2" >
+						<input type="button" onclick="location.href='http://localhost:8080/Stutor/options';"  style="float: right;" value="Options" >
 		        		<input type="button" onclick="location.href='http://localhost:8080/Stutor/logout';"  style="float: right;" value="log out" >
 							
 						
