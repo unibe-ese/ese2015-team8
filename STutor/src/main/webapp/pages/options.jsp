@@ -66,12 +66,13 @@
         	<c:set var="genderErrors"><form:errors path="gender"/></c:set>
     		<form:radiobutton path="gender" value="male" label="Male"/>
     		<form:radiobutton path="gender" value="female" label="Female"/>
+    		<a href="<c:url value="addLecture" />" > Add Lectures</a>
         </c:if>
     </fieldset>
     
     <div class="form-actions">
-    	<button type="submit" class="btn btn-primary">Sign up</button>
-    	<button type="button" class="btn">Cancel</button>
+    	<button type="submit" class="btn btn-primary">Confirm</button>
+    	<button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
     </div>
        
 </form:form>
