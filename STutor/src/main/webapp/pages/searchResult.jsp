@@ -44,13 +44,13 @@
 			<label class="control-label" for="field-university">University</label>
 			<div class="controls">
 				<form:select path="university">
+
 					<form:options items="${universities}" itemValue="id" />
 				</form:select>
 			</div>
 
 			<div class="form-actions">
-				<button>Apply (NOT WORKING YET)</button>
-				
+				<button type="submit"> Apply (NOT WORKING YET)</button>
 			</div>
 
 		</form>
