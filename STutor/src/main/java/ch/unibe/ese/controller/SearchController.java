@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.pojos.RefinedSearchForm;
 import ch.unibe.ese.controller.pojos.SearchForm;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Notification;
@@ -108,7 +109,13 @@ public class SearchController {
 				model = new ModelAndView("searchResult");
 				model.addObject("tutors", tutors);
 				model.addObject("lectures",lectures);
-				model.addObject("university", allUniversities());
+				
+				RefinedSearchForm refSearchForm = new RefinedSearchForm();
+				refSearchForm.setName(searchForm.getName());
+				refSearchForm.setSubject(searchForm.getSubject());
+				refSearchForm.setUniversity(searchForm.getUniversity());
+				model.addObject("refinedSearchForm", refSearchForm);
+				
 				tempLectureName = searchForm.getName();
 											
 				return model;
@@ -140,7 +147,11 @@ public class SearchController {
 		model = new ModelAndView("searchResult");
 		model.addObject("tutors", tutors);
 		model.addObject("lectures",lectures);
-		model.addObject("university", allUniversities());
+		
+		RefinedSearchForm refSearchForm = new RefinedSearchForm();
+		refSearchForm.setName(term);
+		model.addObject("refinedSearchForm", refSearchForm);
+		
 		return model;
     }
     

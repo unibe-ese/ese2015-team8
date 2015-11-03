@@ -38,22 +38,61 @@
 
 	<div id="filter">
 		<h4>Refine your search:</h4>
-		<form>
+
+		<form:form method="post" modelAttribute="refinedSearchForm"
+			action="searchWFilters" id="refinedSearchForm" autocomplete="off">
 
 
-			<label class="control-label" for="field-university">University</label>
-			<div class="controls">
-				<form:select path="university">
+			<c:set var="nameErrors"><form:errors path="name" />	</c:set>
+			<label class="control-label" for="field-email">Lecture name</label>
+				<form:input path="name" id="field-name" tabindex="1" maxlength="45"
+					placeholder="Name" />
+				<form:errors path="name" cssClass="help-inline" element="span" />
 
-					<form:options items="${universities}" itemValue="id" />
-				</form:select>
-			</div>
+			<label class="control-label" for="field-university">
+				University</label>
+
+			<form:select path="university">
+				<form:option value="-1">All universities</form:option>
+				<form:options items="${universities}" itemValue="id" />
+			</form:select>
+
+
+			<label class="control-label" for="field-subject">Subject</label>
+
+			<form:select path="subject">
+				<form:option value="-1">All subjects</form:option>
+				<form:options items="${subjects}" itemValue="id" />
+			</form:select>
+
+			<label class="control-label" for="field-gender">Gender</label>
+
+			<form:select path="gender">
+				<option>doesn't matter</option>
+				<option>female</option>
+				<option>male</option>
+			</form:select>
+
+			<label class="control-label" for="field-minGrade">minimum
+				grade</label>
+
+			<form:select path="minGrade">
+				<option>0</option>
+				<option>4.0</option>
+				<option>4.5</option>
+				<option>5.0</option>
+				<option>5.5</option>
+				<option>6.0</option>
+			</form:select>
+
+
 
 			<div class="form-actions">
-				<button type="submit"> Apply (NOT WORKING YET)</button>
+				<button type="submit" class="btn btn-primary">Apply Filter [NOT WORKING]</button>
+
 			</div>
 
-		</form>
+		</form:form>
 
 	</div>
 
