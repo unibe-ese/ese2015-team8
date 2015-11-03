@@ -8,4 +8,6 @@ public interface StudentDao extends CrudRepository<Student,Long> {
 
 	Student findByUsername(String username);
 	
+	Student findByIdAndGender(long id, String gender);
+	
 }

@@ -68,9 +68,7 @@
 			<label class="control-label" for="field-gender">Gender</label>
 
 			<form:select path="gender">
-				<option>doesn't matter</option>
-				<option>female</option>
-				<option>male</option>
+				<form:options items="${gender}" />
 			</form:select>
 
 			<label class="control-label" for="field-minGrade">minimum
