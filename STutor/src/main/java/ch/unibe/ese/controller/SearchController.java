@@ -108,7 +108,9 @@ public class SearchController {
 				model = new ModelAndView("searchResult");
 				model.addObject("tutors", tutors);
 				model.addObject("lectures",lectures);
+				model.addObject("university", allUniversities());
 				tempLectureName = searchForm.getName();
+											
 				return model;
 
 			} catch (InvalidUserException e) {
@@ -122,6 +124,25 @@ public class SearchController {
 
 		return model;
 	}
+    
+    
+    
+    @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
+    public ModelAndView basicSearch(@RequestParam("q") String term) {
+    	ModelAndView model;
+    	Iterable<Lecture> lecturesTemp = lectureDao.findByName(term);
+		List<Student> tutors = new LinkedList<Student>();
+		List<Lecture> lectures = new LinkedList<Lecture>();
+		for(Lecture temp : lecturesTemp){
+			tutors.add(studentDao.findOne(temp.getTutor().getId()));
+			lectures.add(temp);
+		}
+		model = new ModelAndView("searchResult");
+		model.addObject("tutors", tutors);
+		model.addObject("lectures",lectures);
+		model.addObject("university", allUniversities());
+		return model;
+    }
     
     @RequestMapping(value = "/hiddenProfile", method = RequestMethod.GET)
     public ModelAndView profile(@RequestParam("userId") long id) {
@@ -147,7 +168,7 @@ public class SearchController {
     	notification = notificationDao.save(notification);
     	tempTutor = studentDao.save(tempTutor);
     	ModelAndView model = new ModelAndView("/show");
-    	model.addObject("text","Notification was Sent!");
+    	model.addObject("text","Notification was sent!");
 		return model;
 	 }
 }
