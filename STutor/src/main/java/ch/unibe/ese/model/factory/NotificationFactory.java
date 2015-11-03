@@ -7,13 +7,37 @@ import ch.unibe.ese.model.Notification;
 
 public class NotificationFactory {
 	
-	public static Notification getContactNotification(String senderEMail, String lecture, Long receverId){
+	public static Notification getContactNotification(Long senderId, String lecture, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Contact Request");
 		temp.setStatus("new");
 		temp.setMessage("A Student wants to contact you for the "+lecture+" lecture. Do you accept this?");
 		temp.setDate(new Timestamp(new Date().getTime()));
-		temp.setFromEMail(senderEMail);
+		temp.setFromStudentId(senderId);
+		temp.setToStudentId(receverId);
+		
+		return temp;
+	}
+	
+	public static Notification getDeclineNotification(String tutorUsername, Long receverId){
+		Notification temp = new Notification();
+		temp.setTitel("Request Declined");
+		temp.setStatus("new");
+		temp.setMessage("The Tutor "+tutorUsername+" declined your request.");
+		temp.setDate(new Timestamp(new Date().getTime()));
+		temp.setFromStudentId((long)0);
+		temp.setToStudentId(receverId);
+		
+		return temp;
+	}
+	
+	public static Notification getAcceptNotification(String tutorUsername, Long receverId){
+		Notification temp = new Notification();
+		temp.setTitel("Request Accepted");
+		temp.setStatus("new");
+		temp.setMessage("The Tutor "+tutorUsername+" accepted your request.");
+		temp.setDate(new Timestamp(new Date().getTime()));
+		temp.setFromStudentId((long)0);
 		temp.setToStudentId(receverId);
 		
 		return temp;

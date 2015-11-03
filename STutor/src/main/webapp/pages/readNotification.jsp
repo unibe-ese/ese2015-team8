@@ -10,6 +10,15 @@
 
 <body>
 	<p><c:out value="${notification.message}" /> </p>
+	<c:choose>
+		<c:when test="${notification.titel == 'Contact Request'}">
+			<a href="http://localhost:8080/Stutor/notificationAccept">Accept</a>
+			<a href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
+		</c:when>
+		<c:when test="${notification.titel == 'Request Accepted'}">
+			<p>Please <a href="http://localhost:8080/Stutor/commentTutor">RATE</a> the Tutor once he finished his teaching</p>
+		</c:when>
+	</c:choose>
 </body>
 <a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </html>

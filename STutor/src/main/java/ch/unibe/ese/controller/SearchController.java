@@ -142,10 +142,12 @@ public class SearchController {
     
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
 	 public ModelAndView contact(Principal principal) {
-    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentDao.findByUsername(principal.getName()).getEmail(),tempLectureName, tempTutor.getId());
+    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentDao.findByUsername(principal.getName()).getId(),tempLectureName, tempTutor.getId());
     	tempTutor.addNotification(notification);
     	notification = notificationDao.save(notification);
     	tempTutor = studentDao.save(tempTutor);
-		return new ModelAndView("/show");
+    	ModelAndView model = new ModelAndView("/show");
+    	model.addObject("text","Notification was Sent!");
+		return model;
 	 }
 }

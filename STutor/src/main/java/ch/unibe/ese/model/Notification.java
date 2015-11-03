@@ -22,14 +22,14 @@ public class Notification {
 	private String status;
 	private String message;
 	private Timestamp date;
-	private String fromEMail;
+	private Long fromStudentId;
 	private Long toStudentId;
 	
-	public String getFromEMail() {
-		return fromEMail;
+	public Long getFromStudentId() {
+		return fromStudentId;
 	}
-	public void setFromEMail(String fromEMail) {
-		this.fromEMail = fromEMail;
+	public void setFromStudentId(Long fromStudentId) {
+		this.fromStudentId = fromStudentId;
 	}
 	public Long getId() {
 		return id;
