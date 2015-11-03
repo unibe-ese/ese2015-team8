@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.admin.AdminData;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
@@ -53,6 +54,21 @@ public class NotificationController {
 	@RequestMapping("/notificationAccept")
 	public ModelAndView notificationAccept() {
 		ModelAndView model= new ModelAndView("notificationAccept");
+		model.addObject("notification",acctualNotification);
+		model.addObject("price",AdminData.getContactprice());
+		model.addObject("cards",AdminData.getCreditCards());
+		return model;
+	}
+	
+	@RequestMapping("/paymentDone")
+	public ModelAndView paymentDone() {
+		acctualNotification.setStatus("_/");
+		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
+		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent.getUsername(), acctualNotification.getFromStudentId()));
+		temp = studentDao.save(temp);
+		acctualNotification = notificationDao.save(acctualNotification);
+		ModelAndView model= new ModelAndView("/show");
+		model.addObject("text","Payment Done!");
 		return model;
 	}
 	
