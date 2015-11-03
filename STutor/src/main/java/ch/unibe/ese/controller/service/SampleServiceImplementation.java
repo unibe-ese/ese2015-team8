@@ -96,7 +96,6 @@ public class SampleServiceImplementation implements SampleService {
     	
     	loggedInTutor.addLecture(chosenLecture);
     	chosenLecture.setTutor(loggedInTutor);
-    	lectureDao.save(chosenLecture);
     	userDao.save(loggedInTutor);
     	
 

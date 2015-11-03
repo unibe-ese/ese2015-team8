@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
@@ -93,21 +94,17 @@ public class AddLectureController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				String username = principal.getName();
-				Student loggedInTutor = studentDao.findByUsername(username);
+				Student loggedInTutor = studentDao.findByUsername(principal.getName());
 				sampleService.saveFrom(lectureForm, loggedInTutor);
-				model = new ModelAndView("profile");
-				model.getModelMap().addAttribute("userId",studentDao.findByUsername(principal.getName()).getId());
+				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;
 
 			} catch (InvalidUserException e) {
-				model = new ModelAndView("newAccount");
-				model.addObject("page_error", e.getMessage());
-			
-				
+				model = new ModelAndView("addLecture");
+				model.addObject("page_error", e.getMessage());				
 			}
 		} else {
-			model = new ModelAndView("newAccount");
+			model = new ModelAndView("addLecture");
 		}
 
 		return model;

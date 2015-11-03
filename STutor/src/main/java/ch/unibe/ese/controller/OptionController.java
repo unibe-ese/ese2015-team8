@@ -20,6 +20,7 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.OptionForm;
 import ch.unibe.ese.controller.service.OptionService;
 import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
@@ -47,16 +48,17 @@ public class OptionController {
 	}
 	
 	@RequestMapping("/optionsSaved")
-	public RedirectView redirect(@Valid OptionForm optionForm, BindingResult result,
+	public ModelAndView redirect(@Valid OptionForm optionForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
-		RedirectView model;
+		ModelAndView model;
+		Student student = studentDao.findByUsername(principal.getName());
 		
 		if (!result.hasErrors()) {
 			try {
 				if(optionForm.getPassword()=="")
-					optionService.saveTutorFrom(studentDao.findByUsername(principal.getName()),optionForm,false);
+					optionService.saveTutorFrom(student,optionForm,false);
 				else{
-					optionService.saveTutorFrom(studentDao.findByUsername(principal.getName()),optionForm,true);
+					optionService.saveTutorFrom(student,optionForm,true);
 					
 					UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 
@@ -65,14 +67,14 @@ public class OptionController {
 					SecurityContextHolder.getContext().setAuthentication(auth);	
 				}
 		
-				model = new RedirectView("profile");
-				model.getAttributesMap().put("userId",studentDao.findByUsername(principal.getName()).getId());
-				return model;
+				model = new ModelAndView(new RedirectView("profile"), "userId", student.getId());
 			}catch(InvalidUserException e) {
-				return new RedirectView("options");
+				model = new ModelAndView("options");
+				model.addObject("page_error", e.getMessage());
 			}
 		}else{
-			return new RedirectView("options");
+			model = new ModelAndView("options");
 		}
+		return model;
 	}
 }
