@@ -86,7 +86,7 @@
 
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary">Apply Filter [NOT WORKING]</button>
+				<button type="submit" class="btn btn-primary">Apply Filter</button>
 
 			</div>
 

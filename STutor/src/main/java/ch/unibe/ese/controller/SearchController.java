@@ -145,60 +145,7 @@ public class SearchController {
     
     
     
-    @RequestMapping(value = "/searchWFilters", method = RequestMethod.POST)
- 	public ModelAndView create(@Valid RefinedSearchForm refSearchForm, BindingResult result, RedirectAttributes redirectAttributes) {
- 		ModelAndView model;
- 		if (!result.hasErrors()) {
- 			try {
- 				
- 					
- 				Iterable<Lecture> lecturesTemp = lectureDao.findByNameAndUniversity_idAndSubject_idAndGradeGreaterThan
- 							(refSearchForm.getName(), refSearchForm.getUniversity(), refSearchForm.getSubject(), (float) (refSearchForm.getMinGrade()-0.01));
- 				 				
- 				List<Student> tutors = new LinkedList<Student>();
- 				
- 				
- 				List<Lecture> lectures = new LinkedList<Lecture>();
- 				
- 				for(Lecture temp : lecturesTemp){
- 					Student tempTut = studentDao.findOne(temp.getTutor().getId());
- 					
- 					if((refSearchForm.getGender().equals(allGender().get(0))) || refSearchForm.getGender().equals(tempTut.getGender())){
- 						tutors.add(studentDao.findOne(temp.getTutor().getId()));
- 						lectures.add(temp);
- 					}
- 				}
- 				model = new ModelAndView("searchResult");
- 				
- 				model.addObject("tutors", tutors);
- 				model.addObject("lectures",lectures);
- 				
- 				
- 				RefinedSearchForm refSearchFormNew = new RefinedSearchForm();
- 				
- 				refSearchFormNew.setName(refSearchForm.getName());
- 				refSearchFormNew.setSubject(refSearchForm.getSubject());
- 				refSearchFormNew.setUniversity(refSearchForm.getUniversity());
- 				refSearchFormNew.setGender(refSearchForm.getGender());
- 				refSearchFormNew.setMinGrade(refSearchForm.getMinGrade());
- 				
- 				model.addObject("refinedSearchForm", refSearchFormNew);
- 				
- 				tempLectureName = refSearchForm.getName();
- 											
- 				return model;
-
- 			} catch (InvalidUserException e) {
- 				model = new ModelAndView("searchInitialisation");
- 				model.addObject("page_error", e.getMessage());
-
- 			}
- 		} else {
- 			model = new ModelAndView("searchInitialisation");
- 		}
-
- 		return model;
- 	}
+  
      
     
     

@@ -11,6 +11,9 @@ public interface LectureDao extends CrudRepository<Lecture,Long> {
 	List<Lecture> findByName(String name);
 	List<Lecture> findByNameAndUniversity_idAndSubject_id(String name, Long university_id, Long subject_id);
 	List<Lecture> findByNameAndUniversity_idAndSubject_idAndGradeGreaterThan(String name, Long university_id, Long subject_id, float grade);
+	List<Lecture> findByNameAndUniversity_idAndGradeGreaterThan(String name, Long university_id, float grade);
+	List<Lecture> findByNameAndSubject_idAndGradeGreaterThan(String name,Long subject_id, float grade);
+
 
 
 
