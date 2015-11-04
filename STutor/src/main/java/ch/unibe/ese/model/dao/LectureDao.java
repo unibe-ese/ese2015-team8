@@ -9,6 +9,7 @@ import ch.unibe.ese.model.Lecture;
 public interface LectureDao extends CrudRepository<Lecture,Long> {
 	
 	List<Lecture> findByName(String name);
+	List<Lecture> findByNameAndGradeGreaterThan(String name, float grade);
 	List<Lecture> findByNameAndUniversity_idAndSubject_id(String name, Long university_id, Long subject_id);
 	List<Lecture> findByNameAndUniversity_idAndSubject_idAndGradeGreaterThan(String name, Long university_id, Long subject_id, float grade);
 	List<Lecture> findByNameAndUniversity_idAndGradeGreaterThan(String name, Long university_id, float grade);

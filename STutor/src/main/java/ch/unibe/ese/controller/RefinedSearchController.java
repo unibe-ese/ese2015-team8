@@ -44,9 +44,6 @@ public class RefinedSearchController {
 	@Autowired
 	NotificationDao notificationDao;
 
-	private Student tempTutor;
-	private String tempLectureName;
-
 	@ModelAttribute("lectures")
 	public List<Lecture> allLectures() {
 		List<Lecture> allLectures = new LinkedList<Lecture>();
@@ -104,7 +101,7 @@ public class RefinedSearchController {
 	
 
 				if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
-					lecturesTemp = lectureDao.findByName(refSearchForm.getName());
+					lecturesTemp = lectureDao.findByNameAndGradeGreaterThan(refSearchForm.getName(), (float) (refSearchForm.getMinGrade() - 0.01));
 				}
 				
 				else if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() != -1)){
@@ -160,8 +157,6 @@ public class RefinedSearchController {
 				refSearchFormNew.setMinGrade(refSearchForm.getMinGrade());
 
 				model.addObject("refinedSearchForm", refSearchFormNew);
-
-				tempLectureName = refSearchForm.getName();
 
 				return model;
 
