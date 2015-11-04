@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import ch.unibe.ese.model.Notification;
+import ch.unibe.ese.model.Student;
 
 public class NotificationFactory {
 	
@@ -19,37 +20,37 @@ public class NotificationFactory {
 		return temp;
 	}
 	
-	public static Notification getDeclineNotification(String tutorUsername, Long receverId){
+	public static Notification getDeclineNotification(Student tutor, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Request Declined");
 		temp.setStatus("new");
-		temp.setMessage("The Tutor "+tutorUsername+" declined your request.");
+		temp.setMessage("The Tutor "+tutor.getUsername()+" declined your request.");
 		temp.setDate(new Timestamp(new Date().getTime()));
-		temp.setFromStudentId((long)0);
+		temp.setFromStudentId(tutor.getId());
 		temp.setToStudentId(receverId);
 		
 		return temp;
 	}
 	
-	public static Notification getAcceptNotification(String tutorUsername, Long receverId){
+	public static Notification getAcceptNotification(Student tutor, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Request Accepted");
 		temp.setStatus("new");
-		temp.setMessage("The Tutor "+tutorUsername+" accepted your request.");
+		temp.setMessage("The Tutor "+tutor.getUsername()+" accepted your request.");
 		temp.setDate(new Timestamp(new Date().getTime()));
-		temp.setFromStudentId((long)0);
+		temp.setFromStudentId(tutor.getId());
 		temp.setToStudentId(receverId);
 		
 		return temp;
 	}
 
-	public static Notification getStudentContactDetails(Long tutorId, String email) {
+	public static Notification getStudentContactDetails(Student student, Long tutorId) {
 		Notification temp = new Notification();
 		temp.setTitel("Student Infos");
 		temp.setStatus("new");
-		temp.setMessage("The Students E-Mail is: " + email);
+		temp.setMessage("The Students "+student.getUsername()+"'s E-Mail is: " + student.getEmail());
 		temp.setDate(new Timestamp(new Date().getTime()));
-		temp.setFromStudentId((long)0);
+		temp.setFromStudentId(student.getId());
 		temp.setToStudentId(tutorId);
 		return temp;
 	}

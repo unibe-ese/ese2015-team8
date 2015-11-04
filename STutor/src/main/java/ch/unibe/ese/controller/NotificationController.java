@@ -43,6 +43,7 @@ public class NotificationController {
         	acctualNotification = notificationDao.save(acctualNotification);
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
+        	model.addObject("tutorId",studentDao.findOne(acctualNotification.getFromStudentId()).getId());
         	
         } catch (InvalidUserException e) {
         	model = new ModelAndView("notifications");
@@ -65,11 +66,11 @@ public class NotificationController {
 		
 		acctualNotification.setStatus("_/");
 		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
-		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent.getUsername(), acctualNotification.getFromStudentId()));
+		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentDao.save(temp);
 		acctualNotification = notificationDao.save(acctualNotification);
 		
-		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(acctualStudent.getId(), studentDao.findOne(acctualNotification.getFromStudentId()).getEmail()));
+		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentDao.findOne(acctualNotification.getFromStudentId()), acctualStudent.getId()));
 		acctualStudent = studentDao.save(acctualStudent);
 		
 		ModelAndView model= new ModelAndView("/show");
@@ -81,19 +82,11 @@ public class NotificationController {
 	public ModelAndView notificationDecline() {
 		acctualNotification.setStatus("x");
 		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
-		temp.addNotification(NotificationFactory.getDeclineNotification(acctualStudent.getUsername(), acctualNotification.getFromStudentId()));
+		temp.addNotification(NotificationFactory.getDeclineNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentDao.save(temp);
 		acctualNotification = notificationDao.save(acctualNotification);
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Request Declined!");
-		return model;
-	}
-	
-	@RequestMapping("/commentTutor")
-	public ModelAndView commentTutor() {
-		ModelAndView model= new ModelAndView("commentTutor");
-		studentDao.findOne(acctualNotification.getFromStudentId()).addNotification(
-				NotificationFactory.getDeclineNotification(acctualStudent.getUsername(), acctualNotification.getFromStudentId()));
 		return model;
 	}
 }

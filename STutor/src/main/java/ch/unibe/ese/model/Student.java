@@ -1,5 +1,6 @@
 package ch.unibe.ese.model;
 
+import java.text.DecimalFormat;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -161,6 +162,14 @@ public class Student{
 		if(isTutor==false)
 			throw new NotTutorException("setComments");
 		this.comments = comments;
+	}
+	
+	public void addComment(Comment comment) {
+		comments.add(comment);
+		double temp = 0;
+		for(Comment acctual : comments)
+			temp += acctual.getRating();
+		rating = Double.parseDouble(new DecimalFormat("#.##").format(temp/comments.size()));
 	}
 
 	public double getRating() {

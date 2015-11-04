@@ -16,7 +16,7 @@
 			<a href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
 		</c:when>
 		<c:when test="${notification.titel == 'Request Accepted'}">
-			<p>Please <a href="http://localhost:8080/Stutor/commentTutor">RATE</a> the Tutor once he finished his teaching</p>
+			<p>Please <a href="http://localhost:8080/Stutor/rateTutor?tutorId=<c:out value='${tutorId}'/>">RATE</a> the Tutor once he finished his teaching</p>
 		</c:when>
 	</c:choose>
 </body>
