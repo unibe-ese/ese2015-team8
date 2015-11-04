@@ -20,6 +20,6 @@
 	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
 	<br><br>
 	<a href="<c:url value="addLecture" />" > Add Lectures</a>
-	<a href="<c:url value="addTimelaps" />" > Add Timelaps (not tested)</a>
+	<a href="<c:url value="addTimelaps" />" > Add Timelaps</a>
 </body>
 </html>

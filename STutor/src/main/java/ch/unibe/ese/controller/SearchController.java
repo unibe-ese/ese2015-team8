@@ -179,6 +179,7 @@ public class SearchController {
         try {
         	model = new ModelAndView("hiddenProfile");
         	model.addObject("lectures", studentDao.findOne(id).getLectures().toArray());
+        	model.addObject("timelapses", studentDao.findOne(id).getTimelapses().toArray());
         	tempTutor = studentDao.findOne(id);
         	model.addObject("student",tempTutor);
         	
