@@ -60,6 +60,8 @@ public class AddLectureController {
 	
 	@ModelAttribute("universities")
 	public List<University> allUniversities(){
+		if(universityDao.findOne((long)1)==null)
+			initializeUniversities();
 		List<University> allUniversities = new LinkedList<University>();
 		Iterable<University> universities = universityDao.findAll();
 		
@@ -70,8 +72,22 @@ public class AddLectureController {
 		return allUniversities;
 	}
 	
+	private void initializeUniversities(){
+		University temp = new University();
+		temp.setName("UNIBE");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("ETHZ");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("EPFL");
+		universityDao.save(temp);
+	}
+	
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects(){
+		if(subjectDao.findOne((long)1)==null)
+			initializeSubjects();
 		List<Subject> allSubjects = new LinkedList<Subject>();
 		Iterable<Subject> subjects = subjectDao.findAll();
 		
@@ -80,6 +96,21 @@ public class AddLectureController {
 		}
 		
 		return allSubjects;
+	}
+	
+	private void initializeSubjects(){
+		Subject temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Informatics");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Mathematics");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Physics");
+		subjectDao.save(temp);
 	}
 
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
