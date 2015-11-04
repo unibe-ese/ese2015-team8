@@ -32,6 +32,14 @@
 					</div>
 				</c:forEach>
 			</div>
+			<div id="timelapsList">
+				<h1>Is free during:</h1>
+				<c:forEach items="${timelapses}" var="timelaps">
+					<div id="table">
+						<label><c:out value="${timelaps}" /></label>
+					</div>
+				</c:forEach>
+			</div>
 		</c:when>
 	</c:choose>
 	<br><br>

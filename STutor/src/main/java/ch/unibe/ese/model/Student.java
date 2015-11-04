@@ -52,6 +52,11 @@ public class Student{
     @Cascade(CascadeType.ALL)
 	private Set<Comment> comments;
     
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Cascade(CascadeType.ALL)
+	private Set<Timelaps> timelapses;
+    
     @ManyToOne
     private Town town;
     
@@ -182,6 +187,24 @@ public class Student{
 		if(isTutor==false)
 			throw new NotTutorException("setRating");
 		this.rating = rating;
+	}
+	
+	public Set<Timelaps> getTimelapses() {
+		if(isTutor==false)
+			throw new NotTutorException("getTimelapses");
+		return timelapses;
+	}
+
+	public void setTimelapses(Set<Timelaps> timelapses) {
+		if(isTutor==false)
+			throw new NotTutorException("setTimelapses");
+		this.timelapses = timelapses;
+	}
+	
+	public void addTimelaps(Timelaps timelaps) {
+		if(isTutor==false)
+			throw new NotTutorException("addTimelaps");
+		timelapses.add(timelaps);
 	}
 	
 	public Town getTown() {

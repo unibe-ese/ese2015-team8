@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import ch.unibe.ese.admin.AdminData;
+
 /**
  * @author Christian
  *
@@ -38,5 +40,10 @@ public class Timelaps {
 	}
 	public void setToTime(Timestamp toTime) {
 		this.toTime = toTime;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public String toString(){
+		return AdminData.getDays().get(fromTime.getDay())+" from "+fromTime.getHours()+"h to "+toTime.getHours()+"h";
 	}
 }

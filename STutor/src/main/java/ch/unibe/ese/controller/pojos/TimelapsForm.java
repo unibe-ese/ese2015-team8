@@ -1,12 +1,11 @@
 package ch.unibe.ese.controller.pojos;
 
-import java.sql.Timestamp;
-
 public class TimelapsForm {
 
 	private Long id;
-	private Timestamp fromTime;
-	private Timestamp toTime;
+	private int fromTime;
+	private int toTime;
+	private int day;
 	
 	public Long getId() {
 		return id;
@@ -14,16 +13,22 @@ public class TimelapsForm {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Timestamp getFromTime() {
+	public int getFromTime() {
 		return fromTime;
 	}
-	public void setFromTime(Timestamp fromTime) {
+	public void setFromTime(int fromTime) {
 		this.fromTime = fromTime;
 	}
-	public Timestamp getToTime() {
+	public int getToTime() {
 		return toTime;
 	}
-	public void setToTime(Timestamp toTime) {
+	public void setToTime(int toTime) {
 		this.toTime = toTime;
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
 	}
 }

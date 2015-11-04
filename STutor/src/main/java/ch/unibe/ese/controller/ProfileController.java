@@ -26,6 +26,7 @@ public class ProfileController {
         try {
         	model = new ModelAndView("profile");
         	model.addObject("lectures", studentDao.findOne(id).getLectures().toArray());
+        	model.addObject("timelapses", studentDao.findOne(id).getTimelapses().toArray());
         	model.addObject("student",studentDao.findOne(id));
 
         } catch (InvalidUserException e) {
