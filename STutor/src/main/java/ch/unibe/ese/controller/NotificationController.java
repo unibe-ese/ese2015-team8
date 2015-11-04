@@ -62,11 +62,16 @@ public class NotificationController {
 	
 	@RequestMapping("/paymentDone")
 	public ModelAndView paymentDone() {
+		
 		acctualNotification.setStatus("_/");
 		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent.getUsername(), acctualNotification.getFromStudentId()));
 		temp = studentDao.save(temp);
 		acctualNotification = notificationDao.save(acctualNotification);
+		
+		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(acctualStudent.getId(), studentDao.findOne(acctualNotification.getFromStudentId()).getEmail()));
+		acctualStudent = studentDao.save(acctualStudent);
+		
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Payment Done!");
 		return model;

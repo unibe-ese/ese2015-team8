@@ -17,6 +17,8 @@
 
 <body>
 	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
+		<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
+	
 	<br><br>
 	<a href="<c:url value="logout" />" > Logout</a>
 </body>

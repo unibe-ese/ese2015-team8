@@ -42,4 +42,15 @@ public class NotificationFactory {
 		
 		return temp;
 	}
+
+	public static Notification getStudentContactDetails(Long tutorId, String email) {
+		Notification temp = new Notification();
+		temp.setTitel("Student Infos");
+		temp.setStatus("new");
+		temp.setMessage("The Students E-Mail is: " + email);
+		temp.setDate(new Timestamp(new Date().getTime()));
+		temp.setFromStudentId((long)0);
+		temp.setToStudentId(tutorId);
+		return temp;
+	}
 }

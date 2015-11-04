@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Notification {
 	
 	@Id
-    @GeneratedValue
+	@GeneratedValue
 	private Long id;
 	
 	private String titel;
