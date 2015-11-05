@@ -6,9 +6,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
+ * A Lecture is an Object attached to a {@link Student}.
+ * <p>It contains:
+ * <ul>
+ * <li>id (Long), unique and auto generated: it defines the Lecture.</li>
+ * <li>name (String), name of the Lecture and can be chosen freely by the {@link Student} (Tutor).</li>
+ * <li>grade (float), grade that the given {@link Student} (Tutor) achieved at the exam of this Lecture.</li>
+ * <li>subject ({@link Subject}), helps sorting lectures into categories. Multiple Lectures can have the same {@link Subject}.</li>
+ * <li>subject ({@link University}), also helps sorting lectures into categories. Multiple Lectures can have the same {@link University}.</li>
+ * <li>tutor ({@link Student}), helps to backtrack to the {@link Student} (Tutor) who gives the Lecture. Multiple Lectures can have the same {@link Student}.</li>
+ * </ul>
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
+ * @see ch.unibe.ese.controller.AddLectureController
+ * @see ch.unibe.ese.controller.pojos.LectureForm
+ * @see ch.unibe.ese.controller.service.SampleServiceImplementation
+ * @see ch.unibe.ese.model.dao.LectureDao
  */
 
 @Entity
@@ -54,27 +68,21 @@ public class Lecture {
 	public void setGrade(float grade) {
 		this.grade = grade;
 	}
-	
 	public University getUniversity(){
 		return university;
 	}
-	
 	public void setUniversity(University university){
 		this.university = university;
+	}
+	public void setTutor(Student tutor) {
+		this.tutor = tutor;
+	}
+	public Student getTutor() {
+		return tutor;
 	}
 	
 	@Override
 	public String toString() {
 		return name + ", " + subject.getName() + ", " + university.getName();
-	}
-	
-	
-	public void setTutor(Student tutor) {
-		this.tutor = tutor;
-		
-	}
-	
-	public Student getTutor() {
-		return tutor;
 	}
 }

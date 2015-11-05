@@ -5,10 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * 
+ * A University is an Object attached to a {@link Lecture}.
+ * <p>It contains:
+ * <ul>
+ * <li>id (Long), unique and auto generated: it defines the University.</li>
+ * <li>name (String), name of the University.</li>
+ * </ul>
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
+ * @see ch.unibe.ese.controller.AddLectureController
+ * @see ch.unibe.ese.controller.service.CommentServiceImplementation
+ * @see ch.unibe.ese.model.dao.UniversityDao
  */
 @Entity
 public class University{

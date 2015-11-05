@@ -5,10 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * 
+ * A Subject is an Object attached to a {@link Lecture}.
+ * <p>It contains:
+ * <ul>
+ * <li>id (Long), unique and auto generated: it defines the Subject.</li>
+ * <li>name (String), name of the Subject.</li>
+ * <li>level (String), level of the Subject (Bachelor, Master, ...).</li>
+ * </ul>
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
+ * @see ch.unibe.ese.controller.AddLectureController
+ * @see ch.unibe.ese.controller.service.CommentServiceImplementation
+ * @see ch.unibe.ese.model.dao.SubjectDao
  */
 @Entity
 public class Subject{
