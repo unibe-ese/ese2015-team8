@@ -9,6 +9,12 @@ import ch.unibe.ese.controller.pojos.OptionForm;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 4.11.2015
+ */
 @Service
 public class OptionServiceImplementation implements OptionService {
 	

@@ -26,6 +26,12 @@ import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.dao.SubjectDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
+/**
+ * 
+ * @author Stefan Jonas
+ * @version 1.0
+ * @since 4.11.2015
+ */
 @Controller
 public class RefinedSearchController {
 

@@ -28,6 +28,12 @@ import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.dao.SubjectDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
+ */
 @Controller
 public class AddLectureController {
 

@@ -1,5 +1,11 @@
 package ch.unibe.ese.controller.pojos;
 
+/**
+ * 
+ * @author Stefan Jonas
+ * @version 1.0
+ * @since 4.11.2015
+ */
 public class RefinedSearchForm {
 	private String name;
 	private Long University;

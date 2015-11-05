@@ -19,6 +19,12 @@ import ch.unibe.ese.controller.pojos.SignupForm;
 import ch.unibe.ese.controller.service.SampleService;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 21.10.2015
+ */
 @Controller
 public class IndexController {
 

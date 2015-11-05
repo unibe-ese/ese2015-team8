@@ -6,6 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import ch.unibe.ese.model.Lecture;
 
+/**
+ * 
+ * @author Till Schnabel, Stefan Jonas
+ * @version 1.0
+ * @since 28.10.2015
+ */
 public interface LectureDao extends CrudRepository<Lecture,Long> {
 	
 	List<Lecture> findByName(String name);
@@ -14,8 +20,4 @@ public interface LectureDao extends CrudRepository<Lecture,Long> {
 	List<Lecture> findByNameAndUniversity_idAndSubject_idAndGradeGreaterThan(String name, Long university_id, Long subject_id, float grade);
 	List<Lecture> findByNameAndUniversity_idAndGradeGreaterThan(String name, Long university_id, float grade);
 	List<Lecture> findByNameAndSubject_idAndGradeGreaterThan(String name,Long subject_id, float grade);
-
-
-
-
 }

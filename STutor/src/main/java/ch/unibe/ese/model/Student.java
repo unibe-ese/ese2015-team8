@@ -18,6 +18,12 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 21.10.2015
+ */
 @Entity
 public class Student{
 

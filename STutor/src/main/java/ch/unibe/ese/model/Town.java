@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Not used yet
+ * @author Christian Zürcher
+ *
+ */
 @Entity
 public class Town {
 	@Id

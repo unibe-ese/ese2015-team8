@@ -1,5 +1,11 @@
 package ch.unibe.ese.controller.pojos;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
+ */
 public class SearchForm {
 	private String name;
 	private Long University;

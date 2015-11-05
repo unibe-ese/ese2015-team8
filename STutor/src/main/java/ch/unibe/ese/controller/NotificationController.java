@@ -14,6 +14,12 @@ import ch.unibe.ese.model.dao.NotificationDao;
 import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.factory.NotificationFactory;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
+ */
 @Controller
 public class NotificationController {
 	

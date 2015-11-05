@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 /**
- * @author Christian
- *
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
  */
 
 @Entity

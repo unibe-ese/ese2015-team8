@@ -1,5 +1,11 @@
 package ch.unibe.ese.controller.pojos;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 4.11.2015
+ */
 public class CommentForm {
 	private int rating;
 	private String comment;

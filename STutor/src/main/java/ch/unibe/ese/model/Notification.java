@@ -7,8 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author Christian
- *
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
  */
 
 @Entity

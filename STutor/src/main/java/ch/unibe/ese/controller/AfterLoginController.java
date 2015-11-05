@@ -11,6 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
+/**
+ * 
+ * @author Stefan Jonas
+ * @version 1.0
+ * @since 21.10.2015
+ */
 @Controller
 public class AfterLoginController {
 

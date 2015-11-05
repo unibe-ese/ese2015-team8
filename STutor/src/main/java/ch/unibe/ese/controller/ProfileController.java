@@ -11,6 +11,12 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.service.SampleService;
 import ch.unibe.ese.model.dao.StudentDao;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 21.10.2015
+ */
 @Controller
 public class ProfileController {
 

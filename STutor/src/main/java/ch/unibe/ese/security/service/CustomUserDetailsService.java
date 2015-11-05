@@ -32,7 +32,9 @@ import ch.unibe.ese.model.dao.StudentDao;
  * for example: Unless you're logged in (= then you have the authority role: "ROLE_USER")
  * you cannot load the page /tutorMain or /studentMain.
  *
- *
+ * @author Stefan Jonas
+ * @version 1.0
+ * @since 21.10.2015
  */
 @Component
 public class CustomUserDetailsService implements UserDetailsService{

@@ -17,6 +17,12 @@ import ch.unibe.ese.controller.service.CommentService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 4.11.2015
+ */
 @Controller
 public class RatingController {
 	

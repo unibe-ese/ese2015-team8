@@ -6,6 +6,12 @@ import java.util.Date;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 
+/**
+ * 
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 28.10.2015
+ */
 public class NotificationFactory {
 	
 	public static Notification getContactNotification(Long senderId, String lecture, Long receverId){

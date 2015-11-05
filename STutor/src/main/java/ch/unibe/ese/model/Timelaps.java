@@ -9,8 +9,9 @@ import javax.persistence.Id;
 import ch.unibe.ese.admin.AdminData;
 
 /**
- * @author Christian
- *
+ * @author Christian Zürcher
+ * @version 1.0
+ * @since 4.11.2015
  */
 
 @Entity
