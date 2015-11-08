@@ -34,6 +34,8 @@ import ch.unibe.ese.model.dao.UniversityDao;
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
+ * This Controller handles the request to add a lecture, which can only
+ * be done by a tutor, of course.
  */
 @Controller
 public class AddLectureController {
@@ -53,6 +55,11 @@ public class AddLectureController {
 	@Autowired
 	SubjectDao subjectDao;
 
+	/**
+	 * This method reads all lectures from the database, saves them 
+	 * in a List and returns that List
+	 * @return List with all lectures included
+	 */
 	@ModelAttribute("lectures")
 	public List<Lecture> allLectures() {
 		List<Lecture> allLectures = new LinkedList<Lecture>();
@@ -65,6 +72,12 @@ public class AddLectureController {
 		return allLectures;
 	}
 
+	/**
+	 * This method reads all Universities from the database, saves them 
+	 * in a List and returns that List. If there's no University yet, 
+	 * the default Universities UNIBE, ETHZ and EPFL are created.
+	 * @return List with all Universities included
+	 */
 	@ModelAttribute("universities")
 	public List<University> allUniversities() {
 		if (universityDao.findOne((long) 1) == null)
@@ -79,6 +92,9 @@ public class AddLectureController {
 		return allUniversities;
 	}
 
+	/**
+	 * creates default Universities
+	 */
 	private void initializeUniversities() {
 		University temp = new University();
 		temp.setName("UNIBE");
@@ -91,6 +107,12 @@ public class AddLectureController {
 		universityDao.save(temp);
 	}
 
+	/**
+	 * This method reads all Subjects from the database, saves them 
+	 * in a List and returns that List. If there's no Subject yet, 
+	 * the default Subjects UNIBE, ETHZ and EPFL are created.
+	 * @return List with all Subjects included
+	 */
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects() {
 		if (subjectDao.findOne((long) 1) == null)
@@ -105,6 +127,9 @@ public class AddLectureController {
 		return allSubjects;
 	}
 
+	/**
+	 * creates default Subjects
+	 */
 	private void initializeSubjects() {
 		Subject temp = new Subject();
 		temp.setLevel("Bachelor");
@@ -120,6 +145,13 @@ public class AddLectureController {
 		subjectDao.save(temp);
 	}
 
+	/**
+	 * This method handles the request to access the addLecture page. If
+	 * the user is only a Student, his access is denied. If he's a Tutor,
+	 * the model with the right lecture form gets returned
+	 * @param principal
+	 * @return model with a new LectureForm
+	 */
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
 	public ModelAndView addLecture(Principal principal) {
 
@@ -137,6 +169,17 @@ public class AddLectureController {
 		return model;
 	}
 
+	/**
+	 * If the Tutor has filled in the form and applied it, this method tries to
+	 * process what he's filled in. If he did everything correctly, the right lecture
+	 * gets added to his personal lectures. If a wrong grade is entered or the user 
+	 * is not correct and if there are no other result errors, this should be the case.
+	 * @param lectureForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param principal
+	 * @return
+	 */
 	@RequestMapping(value = "/addedLecture", method = RequestMethod.POST)
 	public ModelAndView create(@Valid LectureForm lectureForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
