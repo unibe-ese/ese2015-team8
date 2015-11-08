@@ -7,13 +7,23 @@ import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 
 /**
- * 
+ * Factory for handling four different kinds of Notifications:
+ * Contact Request, Request Declined, Request Accepted, Student Info
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
  */
 public class NotificationFactory {
 	
+	/**
+	 * When a Student wants to contact a Tutor, he has to send a request.
+	 * The Tutor then gets this "Contact Request" Notification, which asks him
+	 * for acceptation and also adds a time stamp
+	 * @param senderId
+	 * @param lecture
+	 * @param receverId
+	 * @return the Notification
+	 */
 	public static Notification getContactNotification(Long senderId, String lecture, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Contact Request");
@@ -26,6 +36,14 @@ public class NotificationFactory {
 		return temp;
 	}
 	
+	/**
+	 * When the Tutor gets the Notification "Contact Request" he can choose to decline,
+	 * which the Student gets notified of. He gets a "Request Declined" Notification with
+	 * a time stamp.
+	 * @param tutor
+	 * @param receverId
+	 * @return the Notification
+	 */
 	public static Notification getDeclineNotification(Student tutor, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Request Declined");
@@ -38,6 +56,14 @@ public class NotificationFactory {
 		return temp;
 	}
 	
+	/**
+	 * When the Tutor gets the Notification "Contact Request" he can choose to accept,
+	 * which the Student gets notified of. He gets a "Request Accepted" Notification with
+	 * a time stamp.
+	 * @param tutor
+	 * @param receverId
+	 * @return the Notification
+	 */
 	public static Notification getAcceptNotification(Student tutor, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Request Accepted");
@@ -50,6 +76,14 @@ public class NotificationFactory {
 		return temp;
 	}
 
+	/**
+	 * When the Tutor has paid his fee, he gets the Student's contact information.
+	 * That's what this "Student Infos" Notification is about. It gives the Tutor the Student's 
+	 * email address for further contact and a time stamp.
+	 * @param student
+	 * @param tutorId
+	 * @return the Notification
+	 */
 	public static Notification getStudentContactDetails(Student student, Long tutorId) {
 		Notification temp = new Notification();
 		temp.setTitel("Student Infos");

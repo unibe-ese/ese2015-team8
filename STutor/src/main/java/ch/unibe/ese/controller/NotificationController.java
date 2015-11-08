@@ -20,7 +20,7 @@ import ch.unibe.ese.model.factory.NotificationFactory;
  * accept or decline this request. If he accepts, he gets redirected to
  * a payment page where he has to pay a fee of 5 Fr. After that, the Student
  * gets notified if he was accepted or declined. If he indeed was accepted,
- * he gets the Tutor's email address for further contact.
+ * the Tutor gets the Student's email address for further contact.
  * This Controller handles these Notifications.
  * @author Christian Zürcher
  * @version 1.0
