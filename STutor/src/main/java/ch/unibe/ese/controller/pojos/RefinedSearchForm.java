@@ -1,7 +1,10 @@
 package ch.unibe.ese.controller.pojos;
 
 /**
- * 
+ * Form for refined search. The user can specify what
+ * kind of Tutor he wants. He can set the lecture name,
+ * University, Subject, gender and minimum grade but he can't
+ * search for a tutor name.
  * @author Stefan Jonas
  * @version 1.0
  * @since 4.11.2015

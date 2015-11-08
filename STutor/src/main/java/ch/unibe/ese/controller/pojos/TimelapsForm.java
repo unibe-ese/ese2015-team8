@@ -1,7 +1,8 @@
 package ch.unibe.ese.controller.pojos;
 
 /**
- * 
+ * Form to set time ranges for tutor. He can set the 
+ * day and from when to when.
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015

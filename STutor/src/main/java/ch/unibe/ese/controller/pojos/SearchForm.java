@@ -1,7 +1,8 @@
 package ch.unibe.ese.controller.pojos;
 
 /**
- * 
+ * simpler basic search form. Only lecture name,
+ * University and Subject are settable.
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015

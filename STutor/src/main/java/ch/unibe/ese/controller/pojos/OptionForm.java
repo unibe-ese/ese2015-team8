@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
- * 
+ * Form for editing own parameters. There are "not empty"-restrictions on 
+ * first-, last- and username. The email must have the form "x@x.x". The
+ * user can also change his password gender and being Tutor.
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
