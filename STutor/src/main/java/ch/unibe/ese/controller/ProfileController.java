@@ -12,7 +12,8 @@ import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
- * 
+ * Handles the user's request to see his personal profile. It shows his
+ * personal information.
  * @author Christian Zürcher
  * @version 1.0
  * @since 21.10.2015

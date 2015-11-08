@@ -15,7 +15,13 @@ import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.factory.NotificationFactory;
 
 /**
- * 
+ * If a Student wants to contact a Tutor, he has to send a request to him.
+ * This triggers a Notification on the Tutor's page. The Tutor can either 
+ * accept or decline this request. If he accepts, he gets redirected to
+ * a payment page where he has to pay a fee of 5 Fr. After that, the Student
+ * gets notified if he was accepted or declined. If he indeed was accepted,
+ * he gets the Tutor's email address for further contact.
+ * This Controller handles these Notifications.
  * @author Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
@@ -32,6 +38,11 @@ public class NotificationController {
 	private Student acctualStudent;
 	private Notification acctualNotification;
 	
+	/**
+	 * loads the notification page of a specific user
+	 * @param id of the user
+	 * @return model with user's notifications 
+	 */
 	@RequestMapping("/notifications")
 	public ModelAndView notifications(@RequestParam("userId") long id) {
 		ModelAndView model= new ModelAndView("notifications");
@@ -58,6 +69,10 @@ public class NotificationController {
     	return model;
 	}
 	
+	/**
+	 * If the Tutor accepts, he has to to pay a fee before contact
+	 * @return model with payment fields
+	 */
 	@RequestMapping("/notificationAccept")
 	public ModelAndView notificationAccept() {
 		ModelAndView model= new ModelAndView("notificationAccept");
@@ -67,6 +82,10 @@ public class NotificationController {
 		return model;
 	}
 	
+	/**
+	 * shows real information when payment is done correctly
+	 * @return model with information
+	 */
 	@RequestMapping("/paymentDone")
 	public ModelAndView paymentDone() {
 		
@@ -84,6 +103,10 @@ public class NotificationController {
 		return model;
 	}
 	
+	/**
+	 * If the request is declined, the Student gets notified about it.
+	 * @return model with declined request
+	 */
 	@RequestMapping("/notificationDecline")
 	public ModelAndView notificationDecline() {
 		acctualNotification.setStatus("x");

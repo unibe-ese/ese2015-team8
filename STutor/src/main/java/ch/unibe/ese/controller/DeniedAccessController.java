@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 
+ * Everytime a user (logged in or not) tries to access a page he
+ * is not allowed to access, he gets redirected to this page. If 
+ * he's not logged in, for instance, he can only access the login, 
+ * the create account and the beginning of the search page.
  * @author Stefan Jonas
  * @version 1.0
  * @since 21.10.2015

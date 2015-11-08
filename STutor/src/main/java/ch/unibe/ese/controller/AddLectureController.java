@@ -178,7 +178,7 @@ public class AddLectureController {
 	 * @param result
 	 * @param redirectAttributes
 	 * @param principal
-	 * @return
+	 * @return the model with the user's new parameters
 	 */
 	@RequestMapping(value = "/addedLecture", method = RequestMethod.POST)
 	public ModelAndView create(@Valid LectureForm lectureForm, BindingResult result,

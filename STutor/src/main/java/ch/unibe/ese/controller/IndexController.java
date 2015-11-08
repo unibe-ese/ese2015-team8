@@ -20,7 +20,10 @@ import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
- * 
+ * This Controller handles the request to create a new account. If the 
+ * sign up form is filled in correctly, a new user with the filled in
+ * information is added to the database. If there are errors, like one
+ * field left empty, the page is reloaded.
  * @author Christian Zürcher
  * @version 1.0
  * @since 21.10.2015
@@ -34,12 +37,20 @@ public class IndexController {
 	@Autowired
 	CustomUserDetailsService userDetailsService;
 
+	/**
+	 * redirects to the login page if "/" is the address
+	 * @return model with login view
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
 
+	/**
+	 * Shows the sign up form to create a new account
+	 * @return the model with the sign up form
+	 */
 	@RequestMapping(value = "/newAccount", method = RequestMethod.GET)
 	public ModelAndView newAccount() {
 		ModelAndView model = new ModelAndView("newAccount");
@@ -47,6 +58,14 @@ public class IndexController {
 		return model;
 	}
 
+	/**
+	 * Handles the filled in form. If everything's filled in correctly,
+	 * a new user is added to the database.
+	 * @param signupForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @return model that redirects to the afterlogin page
+	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ModelAndView create(@Valid SignupForm signupForm, BindingResult result,
 			RedirectAttributes redirectAttributes) {

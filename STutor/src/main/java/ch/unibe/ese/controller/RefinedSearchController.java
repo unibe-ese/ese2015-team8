@@ -27,7 +27,10 @@ import ch.unibe.ese.model.dao.SubjectDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
 /**
- * 
+ * A User has to be able to search for a Tutor to fit his needs.
+ * For that, he must be able to search for a lecture and subject, define the 
+ * University, set a minimum grade and be gender specific for those who
+ * prefer a certain gender for a Tutor.
  * @author Stefan Jonas
  * @version 1.0
  * @since 4.11.2015
@@ -50,6 +53,11 @@ public class RefinedSearchController {
 	@Autowired
 	NotificationDao notificationDao;
 
+	/**
+	 * This method reads all Lectured from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Lectures included
+	 */
 	@ModelAttribute("lectures")
 	public List<Lecture> allLectures() {
 		List<Lecture> allLectures = new LinkedList<Lecture>();
@@ -62,6 +70,11 @@ public class RefinedSearchController {
 		return allLectures;
 	}
 
+	/**
+	 * This method reads all Universities from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Universities included
+	 */
 	@ModelAttribute("universities")
 	public List<University> allUniversities() {
 		List<University> allUniversities = new LinkedList<University>();
@@ -74,6 +87,11 @@ public class RefinedSearchController {
 		return allUniversities;
 	}
 
+	/**
+	 * This method reads all Subjects from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Subjects included
+	 */
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects() {
 		List<Subject> allSubjects = new LinkedList<Subject>();
@@ -86,6 +104,10 @@ public class RefinedSearchController {
 		return allSubjects;
 	}
 
+	/**
+	 * choices to either choose gender or let it open
+	 * @return list with these three choices
+	 */
 	@ModelAttribute("gender")
 	public List<String> allGender() {
 		List<String> allGender = new LinkedList<String>();
@@ -96,6 +118,13 @@ public class RefinedSearchController {
 		return allGender;
 	}
 
+	/**
+	 * searches for Tutors with given parameters
+	 * @param refSearchForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @return model with the results
+	 */
 	@RequestMapping(value = "/searchWFilters", method = RequestMethod.POST)
 	public ModelAndView create(@Valid RefinedSearchForm refSearchForm, BindingResult result,
 			RedirectAttributes redirectAttributes) {
@@ -129,14 +158,6 @@ public class RefinedSearchController {
 							(refSearchForm.getMinGrade() - 0.01) );
 				}
 				
-				
-				
-				
-				
-				
-				
-				
-
 				List<Student> tutors = new LinkedList<Student>();
 				List<Lecture> lectures = new LinkedList<Lecture>();
 

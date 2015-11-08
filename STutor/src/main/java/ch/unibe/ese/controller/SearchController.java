@@ -31,7 +31,10 @@ import ch.unibe.ese.model.dao.SubjectDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
 /**
- * 
+ * This is for the basic search. Before a user gets to the refined search,
+ * he has a simple search field on every page where he can enter the subject.
+ * When entered, he gets redirected to the refined search page with already the 
+ * basic parameters set.
  * @author Till Schnabel, Christian Zürcher
  * @version 1.0
  * @since 28.10.2015
@@ -57,6 +60,11 @@ public class SearchController {
 	private Student tempTutor;
 	private String tempLectureName;
 	
+	/**
+	 * This method reads all Lectures from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Lecures included
+	 */
 	@ModelAttribute("lectures")
 	public List<Lecture> allLectures(){
 		List<Lecture> allLectures = new LinkedList<Lecture>();
@@ -69,6 +77,11 @@ public class SearchController {
 		return allLectures;
 	}
 	
+	/**
+	 * This method reads all Universities from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Universities included
+	 */
 	@ModelAttribute("universities")
 	public List<University> allUniversities(){
 		List<University> allUniversities = new LinkedList<University>();
@@ -81,6 +94,11 @@ public class SearchController {
 		return allUniversities;
 	}
 	
+	/**
+	 * This method reads all Subjects from the database, saves them 
+	 * in a List and returns that List. 
+	 * @return List with all Subjects included
+	 */
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects(){
 		List<Subject> allSubjects = new LinkedList<Subject>();
@@ -93,6 +111,10 @@ public class SearchController {
 		return allSubjects;
 	}	
 	
+	/**
+	 * choices to either choose gender or let it open
+	 * @return list with these three choices
+	 */
 	@ModelAttribute("gender")
 	public List<String> allGender(){
 		List<String> allGender = new LinkedList<String>();

@@ -20,7 +20,8 @@ import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
- * 
+ * A Tutor is able to specify when he has time to tutor. This Controller 
+ * handles his doing so.
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
@@ -32,6 +33,10 @@ public class TimelapsController {
 	@Autowired TimelapsService timelapsService;
 	@Autowired StudentDao studentDao;
 	
+	/**
+	 * loads form to specify time
+	 * @return model with form
+	 */
 	@RequestMapping(value = "/addTimelaps", method = RequestMethod.GET)
 	public ModelAndView addLecture() {
 		ModelAndView model = new ModelAndView("selectTimelaps");
@@ -39,6 +44,14 @@ public class TimelapsController {
 		return model;
 	}
 
+	/**
+	 * saves filled in time if there are no errors, like empty fields
+	 * @param timelapsForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param principal
+	 * @return model with profile
+	 */
 	@RequestMapping(value = "/addedTimelaps", method = RequestMethod.POST)
 	public ModelAndView create(@Valid TimelapsForm timelapsForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;

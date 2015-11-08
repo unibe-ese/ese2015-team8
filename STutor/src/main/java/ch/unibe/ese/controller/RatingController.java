@@ -18,7 +18,8 @@ import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
- * 
+ * Tutors can be rated by all Students they have given lessons to. 
+ * Of all ratings a medium is taken and visible to all Students.
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
@@ -32,6 +33,11 @@ public class RatingController {
 	
 	private Student acctualTutor;
 	
+	/**
+	 * form to rate Tutor
+	 * @param id
+	 * @return model
+	 */
 	@RequestMapping(value="/rateTutor", method = RequestMethod.GET)
 	public ModelAndView rateTutor(@RequestParam("tutorId") long id) {
 		acctualTutor = studentDao.findOne(id);
@@ -41,6 +47,13 @@ public class RatingController {
 		return model;
 	}
 	
+	/**
+	 * saves the rating if there are no errors, like empty field or wrong number for rating
+	 * @param commentForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @return
+	 */
 	@RequestMapping(value="/saveTutorRating")
 	public ModelAndView saveTutorRating(@Valid CommentForm commentForm, BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model;

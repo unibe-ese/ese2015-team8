@@ -25,7 +25,9 @@ import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
- * 
+ * A user can edit his information by using the option page that is 
+ * handled by this controller. The user can even change his being a 
+ * Tutor or not and add a gender.
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
@@ -45,6 +47,11 @@ public class OptionController {
 	@Autowired
 	StudentDao studentDao;
 	
+	/**
+	 * loads option form for given user
+	 * @param principal
+	 * @return model with form
+	 */
 	@RequestMapping("/options")
 	public ModelAndView notifications(Principal principal) {
 		ModelAndView model= new ModelAndView("options");
@@ -53,6 +60,15 @@ public class OptionController {
 		return model;
 	}
 	
+	/**
+	 * saves the user's new parameters if there are no errors and 
+	 * redirects to profile page
+	 * @param optionForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param principal
+	 * @return model with profile page etc.
+	 */
 	@RequestMapping("/optionsSaved")
 	public ModelAndView redirect(@Valid OptionForm optionForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {

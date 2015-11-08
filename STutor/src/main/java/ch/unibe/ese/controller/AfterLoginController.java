@@ -26,14 +26,14 @@ public class AfterLoginController {
 	StudentDao studentdao;
 
 	/**
-	 * 
-	 * [TEMPORARY DOCUMENTATION]
-	 * 
 	 * Controller for the page after the login. This page is restricted to
 	 * logged in users only,
 	 * 
 	 * @see springSecurity.xml and web.xml for this. Loads the afterLogin.jsp
 	 *      file and displays it with the new information.
+	 *      
+	 * This page shows only a welcome message to the user and links to option
+	 * pages etc.
 	 * @param principal:
 	 *            Part of spring security, returns the authenticated 'user'
 	 *            (username)
