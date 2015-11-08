@@ -48,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 		Student user = studentDao.findByUsername(username);
 	
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), 
-													user.getPassword(), getAuthorities());
+													user.getPassword(), getAuthorities(user));
 		
 	}
 
@@ -59,7 +59,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	 * TODO: Have roles to a student and tutor, --->if<--- page restriction will become important
 	 * @return a collection of authorities the logged in student/tutor has. 
 	 */
-	private Collection<? extends GrantedAuthority> getAuthorities() {
+	private Collection<? extends GrantedAuthority> getAuthorities(Student student) {
 	
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
 		

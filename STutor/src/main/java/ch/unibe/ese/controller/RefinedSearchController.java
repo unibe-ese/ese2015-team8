@@ -107,18 +107,18 @@ public class RefinedSearchController {
 	
 
 				if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
-					lecturesTemp = lectureDao.findByNameAndGradeGreaterThan(refSearchForm.getName(), (float) (refSearchForm.getMinGrade() - 0.01));
+					lecturesTemp = lectureDao.findByNameAndGradeGreaterThan(refSearchForm.getName(), (refSearchForm.getMinGrade() - 0.01));
 				}
 				
 				else if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() != -1)){
 					lecturesTemp = lectureDao.findByNameAndUniversity_idAndGradeGreaterThan(
-							refSearchForm.getName(), refSearchForm.getUniversity(),(float) (refSearchForm.getMinGrade() - 0.01));
-				}
+							refSearchForm.getName(), refSearchForm.getUniversity(), (refSearchForm.getMinGrade()-0.01));
+				} 
 				
 				else if ((refSearchForm.getSubject() != -1) && (refSearchForm.getUniversity() == -1)){
 					lecturesTemp = lectureDao.findByNameAndSubject_idAndGradeGreaterThan(
 							refSearchForm.getName(), refSearchForm.getSubject(),
-							(float) (refSearchForm.getMinGrade() - 0.01));
+							(refSearchForm.getMinGrade() - 0.01));
 					
 				}
 				
@@ -126,7 +126,7 @@ public class RefinedSearchController {
 				else{
 					 lecturesTemp = lectureDao.findByNameAndUniversity_idAndSubject_idAndGradeGreaterThan(
 							refSearchForm.getName(), refSearchForm.getUniversity(), refSearchForm.getSubject(),
-							(float) (refSearchForm.getMinGrade() - 0.01));
+							(refSearchForm.getMinGrade() - 0.01) );
 				}
 				
 				

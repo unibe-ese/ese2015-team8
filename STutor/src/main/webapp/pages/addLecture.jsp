@@ -50,5 +50,13 @@
             <button type="submit" class="btn btn-primary">Add this lecture.</button>
             <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
         </div>
+        
+        
+        <c:if test="${page_error != null }">
+          <div class="alert alert-error">
+            <h4>Error!</h4>
+                ${page_error}
+        </div>
+        </c:if>
     </fieldset>
 </form:form>

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.SignupForm;
-import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
@@ -29,7 +29,7 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
 public class IndexController {
 
 	@Autowired
-	SampleService sampleService;
+	SignUpService signUpService;
 
 	@Autowired
 	CustomUserDetailsService userDetailsService;
@@ -53,7 +53,7 @@ public class IndexController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				sampleService.saveStudentFrom(signupForm);
+				signUpService.saveStudentFrom(signupForm);
 
 				UserDetails userDetails = userDetailsService.loadUserByUsername(signupForm.getUsername());
 

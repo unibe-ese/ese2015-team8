@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.OptionForm;
 import ch.unibe.ese.controller.service.OptionService;
-import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
@@ -37,7 +37,7 @@ public class OptionController {
 	OptionService optionService;
 	
 	@Autowired
-	SampleService sampleService;
+	SignUpService sampleService;
 	
 	@Autowired
 	CustomUserDetailsService userDetailsService;
@@ -62,9 +62,9 @@ public class OptionController {
 		if (!result.hasErrors()) {
 			try {
 				if(optionForm.getPassword()=="")
-					optionService.saveTutorFrom(student,optionForm,false);
+					optionService.saveStudentFrom(student,optionForm,false);
 				else{
-					optionService.saveTutorFrom(student,optionForm,true);
+					optionService.saveStudentFrom(student,optionForm,true);
 					
 					UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 

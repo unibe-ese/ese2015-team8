@@ -15,5 +15,5 @@ public interface OptionService {
 	public OptionForm getFrom(Long studentId);
 	public OptionForm getFrom(String username);
 	
-	public OptionForm saveTutorFrom(Student student, OptionForm signupForm, boolean hasChangedPassword) throws InvalidUserException;
+	public Student saveStudentFrom(Student student, OptionForm optionForm, boolean hasChangedPassword) throws InvalidUserException;
 }

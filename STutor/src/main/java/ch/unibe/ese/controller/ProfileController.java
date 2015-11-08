@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
-import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
@@ -21,7 +21,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 public class ProfileController {
 
     @Autowired
-    SampleService sampleService;
+    SignUpService sampleService;
     
 	@Autowired
 	StudentDao studentDao;

@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import ch.unibe.ese.controller.exceptions.InvalidGradeException;
+
 /**
  * A Lecture is an Object attached to a {@link Student}.
  * <p>It contains:
@@ -21,7 +23,7 @@ import javax.persistence.ManyToOne;
  * @since 28.10.2015
  * @see ch.unibe.ese.controller.AddLectureController
  * @see ch.unibe.ese.controller.pojos.LectureForm
- * @see ch.unibe.ese.controller.service.SampleServiceImplementation
+ * @see ch.unibe.ese.controller.service.SignUpServiceImplementation
  * @see ch.unibe.ese.model.dao.LectureDao
  */
 
@@ -33,7 +35,7 @@ public class Lecture {
 	private Long id;
 	
 	private String name;
-	private float grade;
+	private double grade;
 	
 	@ManyToOne
 	private Subject subject;
@@ -62,11 +64,15 @@ public class Lecture {
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	public float getGrade() {
+	public double getGrade() {
 		return grade;
 	}
-	public void setGrade(float grade) {
+	public void setGrade(double grade) throws InvalidGradeException {
+		if((grade > 6.0) || (grade < 0)){
+			throw new InvalidGradeException("You've entered an invalid grade");
+		}
 		this.grade = grade;
+		
 	}
 	public University getUniversity(){
 		return university;

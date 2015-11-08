@@ -45,7 +45,7 @@ public class OptionServiceImplementation implements OptionService {
 	}
 	
 	@Transactional
-    public OptionForm saveTutorFrom(Student student, OptionForm optionForm, boolean hasChangedPassword) throws InvalidUserException{
+    public Student saveStudentFrom(Student student, OptionForm optionForm, boolean hasChangedPassword) throws InvalidUserException{
         
         student.setFirstName(optionForm.getFirstName());
         student.setLastName(optionForm.getLastName());
@@ -61,7 +61,7 @@ public class OptionServiceImplementation implements OptionService {
         
         student = studentDao.save(student);   // save object to DB
 
-        return optionForm;
+        return student;
     }
 
 }

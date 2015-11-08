@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Sign Up Complete</title></head>
+<head><title>Access denied!</title></head>
 
 <c:import url="template/header.jsp" />
 <h1>Access denied!</h1>

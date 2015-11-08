@@ -16,9 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import ch.unibe.ese.controller.exceptions.InvalidGradeException;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
-import ch.unibe.ese.controller.service.SampleService;
+import ch.unibe.ese.controller.service.AddLectureService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Subject;
 import ch.unibe.ese.model.Student;
@@ -38,47 +39,47 @@ import ch.unibe.ese.model.dao.UniversityDao;
 public class AddLectureController {
 
 	@Autowired
-	SampleService sampleService;
+	AddLectureService addLectureService;
 
 	@Autowired
 	StudentDao studentDao;
-	
+
 	@Autowired
 	LectureDao lectureDao;
-	
+
 	@Autowired
 	UniversityDao universityDao;
-	
+
 	@Autowired
 	SubjectDao subjectDao;
-	
+
 	@ModelAttribute("lectures")
-	public List<Lecture> allLectures(){
+	public List<Lecture> allLectures() {
 		List<Lecture> allLectures = new LinkedList<Lecture>();
 		Iterable<Lecture> lectures = lectureDao.findAll();
-		
+
 		for (Lecture lecture : lectures) {
 			allLectures.add(lecture);
 		}
-		
+
 		return allLectures;
 	}
-	
+
 	@ModelAttribute("universities")
-	public List<University> allUniversities(){
-		if(universityDao.findOne((long)1)==null)
+	public List<University> allUniversities() {
+		if (universityDao.findOne((long) 1) == null)
 			initializeUniversities();
 		List<University> allUniversities = new LinkedList<University>();
 		Iterable<University> universities = universityDao.findAll();
-		
+
 		for (University university : universities) {
 			allUniversities.add(university);
 		}
-		
+
 		return allUniversities;
 	}
-	
-	private void initializeUniversities(){
+
+	private void initializeUniversities() {
 		University temp = new University();
 		temp.setName("UNIBE");
 		universityDao.save(temp);
@@ -89,22 +90,22 @@ public class AddLectureController {
 		temp.setName("EPFL");
 		universityDao.save(temp);
 	}
-	
+
 	@ModelAttribute("subjects")
-	public List<Subject> allSubjects(){
-		if(subjectDao.findOne((long)1)==null)
+	public List<Subject> allSubjects() {
+		if (subjectDao.findOne((long) 1) == null)
 			initializeSubjects();
 		List<Subject> allSubjects = new LinkedList<Subject>();
 		Iterable<Subject> subjects = subjectDao.findAll();
-		
+
 		for (Subject subject : subjects) {
 			allSubjects.add(subject);
 		}
-		
+
 		return allSubjects;
 	}
-	
-	private void initializeSubjects(){
+
+	private void initializeSubjects() {
 		Subject temp = new Subject();
 		temp.setLevel("Bachelor");
 		temp.setName("Informatics");
@@ -120,27 +121,46 @@ public class AddLectureController {
 	}
 
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
-	public ModelAndView addLecture() {
+	public ModelAndView addLecture(Principal principal) {
+
+		// Students that aren't tutors cannot add any lectures. If they somehow
+		// (impossible without excplicitly trying)
+		// manage to find the site, they'll get redirected to the access denied
+		// page.
+		Student loggedInStudent = studentDao.findByUsername(principal.getName());
+		if (loggedInStudent.getIsTutor() == false) {
+			return new ModelAndView("accessDenied");
+		}
+
 		ModelAndView model = new ModelAndView("addLecture");
 		model.addObject("lectureForm", new LectureForm());
 		return model;
 	}
 
 	@RequestMapping(value = "/addedLecture", method = RequestMethod.POST)
-	public ModelAndView create(@Valid LectureForm lectureForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
+	public ModelAndView create(@Valid LectureForm lectureForm, BindingResult result,
+			RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
 				Student loggedInTutor = studentDao.findByUsername(principal.getName());
-				sampleService.saveFrom(lectureForm, loggedInTutor);
+				addLectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;
 
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("addLecture");
-				model.addObject("page_error", e.getMessage());				
+				model.addObject("page_error", e.getMessage());
 			}
-		} else {
+		
+			catch (InvalidGradeException e2) {
+				model = new ModelAndView("addLecture");
+				model.addObject("page_error", e2.getMessage());
+			}
+		}
+		
+
+		else {
 			model = new ModelAndView("addLecture");
 		}
 

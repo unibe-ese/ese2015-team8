@@ -1,6 +1,7 @@
 package ch.unibe.ese.model;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * @see ch.unibe.ese.controller.IndexController
  * @see ch.unibe.ese.controller.ProfileController
  * @see ch.unibe.ese.controller.pojos.SignupForm
- * @see ch.unibe.ese.controller.service.SampleServiceImplementation
+ * @see ch.unibe.ese.controller.service.SignUpServiceImplementation
  * @see ch.unibe.ese.model.dao.StudentDao
  */
 @Entity
@@ -74,7 +75,7 @@ public class Student{
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @Cascade(CascadeType.ALL)
-	private Set<Lecture> lectures;
+	private List<Lecture> lectures;
     
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -174,11 +175,11 @@ public class Student{
 		this.gender = gender;
 	}
 
-	public Set<Lecture> getLectures() {
+	public List<Lecture> getLectures() {
 		return lectures;
 	}
 	
-	public void setLectures(Set<Lecture> lectures) {
+	public void setLectures(List<Lecture> lectures) {
 		this.lectures = lectures;
 	}
 
@@ -223,14 +224,14 @@ public class Student{
 	}
 	
 	public Set<Timelaps> getTimelapses() {
-		if(isTutor==false)
-			throw new NotTutorException("getTimelapses");
+//		if(isTutor==false)
+//			throw new NotTutorException("getTimelapses");
 		return timelapses;
 	}
 
 	public void setTimelapses(Set<Timelaps> timelapses) {
-		if(isTutor==false)
-			throw new NotTutorException("setTimelapses");
+//		if(isTutor==false)
+//			throw new NotTutorException("setTimelapses");
 		this.timelapses = timelapses;
 	}
 	
