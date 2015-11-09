@@ -48,7 +48,7 @@
                 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Add this lecture.</button>
-            <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
+            <button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
         </div>
         
         
