@@ -55,8 +55,12 @@ public class OptionController {
 	@RequestMapping("/options")
 	public ModelAndView notifications(Principal principal) {
 		ModelAndView model= new ModelAndView("options");
-		model.addObject("student", studentDao.findByUsername(principal.getName()));
-		model.addObject("optionForm",optionService.getFrom(principal.getName()));
+		try{
+			model.addObject("student", studentDao.findByUsername(principal.getName()));
+			model.addObject("optionForm",optionService.getFrom(principal.getName()));
+		}catch(NullPointerException e){
+			model = new ModelAndView("redirect:/");
+		}
 		return model;
 	}
 	
