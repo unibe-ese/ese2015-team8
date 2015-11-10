@@ -10,6 +10,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	ServiceTestSuite1.class,
 	ServiceTestSuite2.class
 })
-public class ServiceTestSuit {
+public class ServiceTestSuite {
 
 }

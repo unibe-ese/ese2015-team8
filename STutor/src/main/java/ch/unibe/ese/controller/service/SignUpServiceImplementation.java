@@ -52,4 +52,26 @@ public class SignUpServiceImplementation implements SignUpService {
         return student;
 
     }
+    
+  
+    
+    
+    @Transactional
+    public Student modifieUserFrom(SignupForm signupForm, Student actualStudent) throws InvalidUserException{
+            	
+        actualStudent.setFirstName(signupForm.getFirstName());
+        actualStudent.setLastName(signupForm.getLastName());
+        actualStudent.setUsername(signupForm.getUsername());
+        actualStudent.setEmail(signupForm.getEmail());
+        actualStudent.setPassword(signupForm.getPassword());
+        actualStudent.setIsTutor(signupForm.getIsTutor());
+        actualStudent.setGender(signupForm.getGender());
+        
+
+        actualStudent = userDao.save(actualStudent);   // save object to DB
+
+        return actualStudent;
+    }
+
+
 }
