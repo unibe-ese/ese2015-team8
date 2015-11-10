@@ -1,3 +1,6 @@
+<!-- This page shows your own profile. Shown parameters are: ID, first name, last name,
+username email and if you're a Tutor: gender, given lectures and free time. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

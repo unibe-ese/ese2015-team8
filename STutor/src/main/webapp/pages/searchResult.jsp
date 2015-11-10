@@ -1,3 +1,8 @@
+<!-- After the simple search, you get some results. If they're not to your 
+convenience, there's a bar on the left to refine your search. Here you can also
+set the University, the subject the minimum grade you expect from the Tutor 
+and what gender he/she should be. -->
+
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

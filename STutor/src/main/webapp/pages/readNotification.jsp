@@ -1,3 +1,7 @@
+<!-- That's the notification itself. It says either that you got a contact request that you
+can accept or decline or that your request was accepted and hence gives you the chance
+to rate the Tutor. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

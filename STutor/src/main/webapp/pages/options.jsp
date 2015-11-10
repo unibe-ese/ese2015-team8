@@ -1,3 +1,6 @@
+<!-- On this page, you can edit your profile information. You can change everything, even your username and
+email address. You can also change if you're a Tutor or not. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

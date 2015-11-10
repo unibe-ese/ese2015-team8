@@ -1,3 +1,7 @@
+<!-- As a Tutor, you can add a parameter to your profile that specifies when you
+have leisure time to tutor. That gives the student additional information on 
+which Tutor he should choose. The Tutor can pick a day and on that day a time. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

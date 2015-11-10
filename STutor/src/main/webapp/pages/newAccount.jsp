@@ -1,3 +1,6 @@
+<!-- On this page, you can sign up, using a unique username and email address, a password, 
+  a first name and a last name. You can also pick a field that you're a Tutor. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

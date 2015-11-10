@@ -1,3 +1,8 @@
+<!-- This is a the profile of another student that a user can see. It only reveals the username, 
+not the real name. Also shown are the rating, gender and if he's a Tutor when
+he has time. The important element on this page is the contact button with which a 
+Student can send a request to the Tutor, which he can either accept or decline. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

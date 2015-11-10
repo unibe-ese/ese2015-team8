@@ -1,3 +1,8 @@
+<!-- Every User has a notification page where he can see his list of notifications. As a Student, you
+can send a request to a Tutor and thus get notified about whether he accepted or declined. As a 
+Tutor, you can do that, too, since you're also a Student, but you can also get request notifications.
+That's what this page serves for.-->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
