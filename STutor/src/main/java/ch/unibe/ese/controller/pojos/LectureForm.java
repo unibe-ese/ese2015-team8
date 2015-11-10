@@ -1,5 +1,8 @@
 package ch.unibe.ese.controller.pojos;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 /**
  * form to add a lecture. The Tutor has to set the University
@@ -12,9 +15,13 @@ package ch.unibe.ese.controller.pojos;
  */
 public class LectureForm {
 
+	@Pattern(regexp = ".+", message = "Name can't be empty")
 	private String name;
 	private Long subject;
 	private Long university;
+	
+	@Min(1)
+	@Max(6)
 	private double grade;
 
 	public String getName() {

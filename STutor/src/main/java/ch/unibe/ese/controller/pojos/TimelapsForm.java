@@ -1,5 +1,8 @@
 package ch.unibe.ese.controller.pojos;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 /**
  * Form to set time ranges for tutor. He can set the 
  * day and from when to when.
@@ -10,8 +13,17 @@ package ch.unibe.ese.controller.pojos;
 public class TimelapsForm {
 
 	private Long id;
+	
+	@Min(0)
+	@Max(24)
 	private int fromTime;
+	
+	@Min(0)
+	@Max(24)
 	private int toTime;
+	
+	@Min(1)
+	@Max(7)
 	private int day;
 	
 	public Long getId() {

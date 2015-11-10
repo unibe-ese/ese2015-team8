@@ -39,7 +39,7 @@ public class TimelapsController {
 	 */
 	@RequestMapping(value = "/addTimelaps", method = RequestMethod.GET)
 	public ModelAndView addLecture() {
-		ModelAndView model = new ModelAndView("selectTimelaps");
+		ModelAndView model = new ModelAndView("addTimelaps");
 		model.addObject("timelapsForm", new TimelapsForm());
 		return model;
 	}
