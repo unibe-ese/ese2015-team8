@@ -20,9 +20,11 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <body>
 	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
+	<br>
 	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
 	<br><br>
 	<a href="<c:url value="addLecture" />" > Add Lectures</a>
+	<br>
 	<a href="<c:url value="addTimelaps" />" > Add Timelaps</a>
 </body>
 </html>

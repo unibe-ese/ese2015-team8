@@ -29,7 +29,7 @@
 							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/basicSearch">
 		        				<input type="search" name="q" size="12" placeholder="Search..."
 		        				required maxlength="120">
-		        				<input type="submit" value="Search" >
+		        				<input type="submit" value="Search for Tutor" >
 							</form>
 												
 							<a href="http://localhost:8080/Stutor/afterLogin"><img src="img/logo.png" align="left"></a>
@@ -40,8 +40,10 @@
 						</div>
 						
 						<input type="button" onclick="location.href='http://localhost:8080/Stutor/logout';" style="float: right;" value="log out" >
+						<br>
+						<br>
 						
-						<input type="button" onclick="location.href='http://localhost:8080/Stutor/options';"  style="float: right;" value="Options" >
+						<input type="button" onclick="location.href='http://localhost:8080/Stutor/options';"  style="float: right;" value="Edit Profile" >
 		        		
 						<br></br>
 					

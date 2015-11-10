@@ -133,7 +133,7 @@ public class AddLectureController {
 	private void initializeSubjects() {
 		Subject temp = new Subject();
 		temp.setLevel("Bachelor");
-		temp.setName("Informatics");
+		temp.setName("Computer Science");
 		subjectDao.save(temp);
 		temp = new Subject();
 		temp.setLevel("Bachelor");

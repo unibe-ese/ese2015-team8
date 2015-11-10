@@ -70,12 +70,17 @@ email address. You can also change if you're a Tutor or not. -->
     		<form:radiobutton path="gender" value="male" label="Male"/>
     		<form:radiobutton path="gender" value="female" label="Female"/>
     		<a href="<c:url value="addLecture" />" > Add Lectures</a>
+    		<br>
+    		<a href="<c:url value="addTimelaps" />" > Add Timelaps</a>
+    		<br>
         </c:if>
+        
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    	<button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
     </fieldset>
     
     <div class="form-actions">
-    	<button type="submit" class="btn btn-primary">Confirm</button>
-    	<button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
+
     </div>
        
 </form:form>
