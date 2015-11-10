@@ -37,7 +37,15 @@ public class SignUpController {
 	@Autowired
 	CustomUserDetailsService userDetailsService;
 
-
+	/**
+	 * redirects to the login page if "/" is the address
+	 * @return model with login view
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView model = new ModelAndView("login");
+		return model;
+	}
 
 	/**
 	 * Shows the sign up form to create a new account
