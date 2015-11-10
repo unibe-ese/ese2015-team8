@@ -6,19 +6,25 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.ModelAndViewAssert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/springMVC.xml", 
 								"file:src/main/webapp/WEB-INF/config/springData.xml"})
+@Transactional
+@TransactionConfiguration(defaultRollback = true)
 public class SignUpControllerTest {
 	
 	@Autowired private WebApplicationContext wac;
@@ -37,6 +43,17 @@ public class SignUpControllerTest {
 				.andExpect(status().isOk())
 				.andExpect(forwardedUrl("/pages/newAccount.jsp"))
 				.andExpect(model().attributeHasFieldErrors("signupForm", "email"));
+		
+	}
+	
+	@Test
+	public void testRequestMapping() throws Exception{
+
+		ModelAndView mav = mockMvc.perform(get("/newAccount")).andReturn().getModelAndView();
+		
+		assertViewName(mav, "newAccount");
+		
+		assertModelAttributeAvailable(mav,"signupForm");
 		
 	}
 	
