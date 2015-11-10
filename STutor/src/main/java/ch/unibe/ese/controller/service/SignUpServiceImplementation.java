@@ -41,6 +41,12 @@ public class SignUpServiceImplementation implements SignUpService {
         else{
         	throw new InvalidUserException("Username already taken");
         }
+        Student temp2 = userDao.findByEmail(signupForm.getEmail());
+        if(temp2==null){
+            student.setEmail(signupForm.getEmail());        }
+        else{
+        	throw new InvalidUserException("Email already taken");
+        }
         student.setEmail(signupForm.getEmail());
         student.setPassword(signupForm.getPassword());
         student.setIsTutor(signupForm.getIsTutor());
