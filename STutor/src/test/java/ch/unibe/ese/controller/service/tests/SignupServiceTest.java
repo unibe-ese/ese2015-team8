@@ -19,6 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.mockito.Mockito.*;
 import static org.mockito.AdditionalAnswers.*;
 
+
+// 60.6% Coverage (modifieUserFrom and Line42 not tested)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class SignupServiceTest {

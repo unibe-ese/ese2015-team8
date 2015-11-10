@@ -1,7 +1,5 @@
 package ch.unibe.ese.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,9 +12,10 @@ import ch.unibe.ese.admin.AdminData;
  * <p>It contains:
  * <ul>
  * <li>id (Long), unique and auto generated: it defines the Timelaps.</li>
- * <li>fromTime (Timestamp), start of the timelaps.</li>
- * <li>toTime (Timestamp), end of the timelaps.</li>
+ * <li>fromTime (int*), start of the timelaps.</li>
+ * <li>toTime (int*), end of the timelaps.</li>
  * </ul>
+ * <p>(*) the int Code is structured as follow: day(1-7)*100 + hour(0-24)
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
@@ -33,8 +32,8 @@ public class Timelaps {
     @GeneratedValue
 	private Long id;
 	
-	private Timestamp fromTime;
-	private Timestamp toTime;
+	private int fromTime;
+	private int toTime;
 	
 	public Long getId() {
 		return id;
@@ -42,21 +41,32 @@ public class Timelaps {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Timestamp getFromTime() {
+	public int getFromTime() {
 		return fromTime;
 	}
-	public void setFromTime(Timestamp fromTime) {
+	public void setFromTime(int fromTime) {
 		this.fromTime = fromTime;
 	}
-	public Timestamp getToTime() {
+	public int getToTime() {
 		return toTime;
 	}
-	public void setToTime(Timestamp toTime) {
+	public void setToTime(int toTime) {
 		this.toTime = toTime;
 	}
 	
-	@SuppressWarnings("deprecation")
+	// Special Methods for the int Code (see javadoc) --------------------------------------------------
+	
+	public int getDay(int intCode){
+		return intCode/100;
+	}
+	
+	public int getHour(int intCode){
+		return intCode-(intCode/100)*100;
+	}
+	
+	//--------------------------------------------------------------------------------------------------
+	
 	public String toString(){
-		return AdminData.getDays().get(fromTime.getDay())+" from "+fromTime.getHours()+"h to "+toTime.getHours()+"h";
+		return AdminData.getDays().get(getDay(fromTime)-1)+" from "+(getHour((fromTime)))+"h to "+getHour(toTime)+"h";
 	}
 }

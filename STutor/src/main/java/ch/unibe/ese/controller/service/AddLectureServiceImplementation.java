@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.controller.exceptions.InvalidGradeException;
-import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;

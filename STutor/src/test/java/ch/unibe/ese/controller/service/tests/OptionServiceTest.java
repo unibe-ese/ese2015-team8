@@ -1,33 +1,31 @@
 package ch.unibe.ese.controller.service.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.AdditionalAnswers.returnsFirstArg;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.OptionForm;
-import ch.unibe.ese.controller.pojos.SignupForm;
 import ch.unibe.ese.controller.service.OptionService;
-import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import static org.mockito.Mockito.*;
-import static org.mockito.AdditionalAnswers.*;
-
+// Coverage 39.1% (Line 25-45, 57, 60 not Tested)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class OptionServiceTest {
 	
 	@Autowired private OptionService optionService;
 	@Autowired private StudentDao studentDao;
-	private OptionForm optionForm;
+	//private OptionForm optionForm;
 	private Student student;
 	
 	//student already has to exist to change his settings in the form

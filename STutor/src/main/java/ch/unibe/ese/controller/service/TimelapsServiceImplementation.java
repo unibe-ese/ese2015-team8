@@ -1,7 +1,5 @@
 package ch.unibe.ese.controller.service;
 
-import java.sql.Timestamp;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,21 +18,17 @@ import ch.unibe.ese.model.dao.StudentDao;
 public class TimelapsServiceImplementation implements TimelapsService {
 	
 	@Autowired StudentDao studentDao;
-	
-	private long dayToMs = 86400000, hourToMs = 3600000;
 
-	private Timestamp getFromTime(TimelapsForm timelapsForm) {
-		Timestamp timestamp = new Timestamp(timelapsForm.getDay()*dayToMs+timelapsForm.getFromTime()*hourToMs);
-		return timestamp;
+	private int getFromTime(TimelapsForm timelapsForm) {
+		return timelapsForm.getDay()*100+timelapsForm.getFromTime();
 	}
 
-	private Timestamp getToTime(TimelapsForm timelapsForm) {
-		Timestamp timestamp = new Timestamp(timelapsForm.getDay()*dayToMs+timelapsForm.getToTime()*hourToMs);
-		return timestamp;
+	private int getToTime(TimelapsForm timelapsForm) {
+		return timelapsForm.getDay()*100+timelapsForm.getToTime();
 	}
 
 	@Override
-	public TimelapsForm saveFrom(TimelapsForm timelapsForm, Student loggedInTutor) {
+	public Student saveFrom(TimelapsForm timelapsForm, Student loggedInTutor) {
 		Timelaps timelaps = new Timelaps();
 		timelaps.setFromTime(getFromTime(timelapsForm));
 		timelaps.setToTime(getToTime(timelapsForm));
@@ -42,6 +36,6 @@ public class TimelapsServiceImplementation implements TimelapsService {
 		loggedInTutor.addTimelaps(timelaps);
 		loggedInTutor = studentDao.save(loggedInTutor);
 		
-		return timelapsForm;
+		return loggedInTutor;
 	}
 }

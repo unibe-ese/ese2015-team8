@@ -6,14 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
-import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.controller.pojos.SignupForm;
-import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.LectureDao;
 import ch.unibe.ese.model.dao.StudentDao;
-import ch.unibe.ese.model.dao.SubjectDao;
-import ch.unibe.ese.model.dao.UniversityDao;
 
 /**
  * 

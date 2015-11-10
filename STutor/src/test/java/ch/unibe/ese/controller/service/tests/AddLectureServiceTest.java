@@ -29,6 +29,7 @@ import java.util.List;
 
 import static org.mockito.AdditionalAnswers.*;
 
+// 100% Coverage
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class AddLectureServiceTest {

@@ -10,5 +10,5 @@ import ch.unibe.ese.model.Student;
  * @since 4.11.2015
  */
 public interface TimelapsService {
-	public TimelapsForm saveFrom(TimelapsForm timelapsForm, Student loggedInTutor);
+	public Student saveFrom(TimelapsForm timelapsForm, Student loggedInTutor);
 }
