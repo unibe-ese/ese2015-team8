@@ -17,7 +17,9 @@ to rate the Tutor. -->
 	<c:choose>
 		<c:when test="${notification.titel == 'Contact Request'}">
 			<a href="http://localhost:8080/Stutor/notificationAccept">Accept</a>
+			<br>
 			<a href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
+			<br>
 		</c:when>
 		<c:when test="${notification.titel == 'Request Accepted'}">
 			<p>Please <a href="http://localhost:8080/Stutor/rateTutor?tutorId=<c:out value='${tutorId}'/>">RATE</a> the Tutor once he finished his teaching</p>

@@ -12,7 +12,7 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 <c:import url="template/header.jsp" />
 
 <body>
-	<h1>Student Profile</h1>
+	<h1>Tutor Profile</h1>
 
 	<table>
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>

@@ -13,7 +13,6 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<h1>Student Profile</h1>
 
 	<table>
-		<tr><td>Id: </td><td><c:out value="${student.id}" /></td></tr>
 		<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
 		<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
@@ -45,6 +44,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 			</div>
 		</c:when>
 	</c:choose>
+	<a href="http://localhost:8080/Stutor/options">Edit Profile Information</a>
 	<br><br>
 	<div>
 		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
