@@ -18,14 +18,13 @@ import ch.unibe.ese.controller.service.OptionService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
-// Coverage 39.1% (Line 25-45, 57, 60 not Tested)
+// Coverage 87% (Line 33, 57, 60 not Tested)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class OptionServiceTest {
 	
 	@Autowired private OptionService optionService;
 	@Autowired private StudentDao studentDao;
-	//private OptionForm optionForm;
 	private Student student;
 	
 	//student already has to exist to change his settings in the form
@@ -40,6 +39,8 @@ public class OptionServiceTest {
 		student.setEmail("email@email.com");
 		
 		when(studentDao.save(any(Student.class))).then(returnsFirstArg());
+		when(studentDao.findOne(any(Long.class))).thenReturn(student);
+		when(studentDao.findByUsername(any(String.class))).thenReturn(student);
 	}
 	
 	
@@ -59,5 +60,34 @@ public class OptionServiceTest {
 		assertEquals("Doe", student.getLastName());
 	}
 	
+	@Test
+	public void getFormFromStudent(){
+		OptionForm optionForm = new OptionForm();
+		optionForm = optionService.getFrom(student);
+		assertEquals("Max",optionForm.getFirstName());
+		assertEquals("Muster",optionForm.getLastName());
+		assertEquals("user1",optionForm.getUsername());
+		assertEquals("email@email.com",optionForm.getEmail());
+	}
+	
+	@Test
+	public void getFormFromStudentId(){
+		OptionForm optionForm = new OptionForm();
+		optionForm = optionService.getFrom(student.getId());
+		assertEquals("Max",optionForm.getFirstName());
+		assertEquals("Muster",optionForm.getLastName());
+		assertEquals("user1",optionForm.getUsername());
+		assertEquals("email@email.com",optionForm.getEmail());
+	}
+	
+	@Test
+	public void getFormFromStudentUsername(){
+		OptionForm optionForm = new OptionForm();
+		optionForm = optionService.getFrom(student.getUsername());
+		assertEquals("Max",optionForm.getFirstName());
+		assertEquals("Muster",optionForm.getLastName());
+		assertEquals("user1",optionForm.getUsername());
+		assertEquals("email@email.com",optionForm.getEmail());
+	}
 }
 	

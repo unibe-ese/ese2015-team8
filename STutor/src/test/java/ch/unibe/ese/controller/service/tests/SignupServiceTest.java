@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.AdditionalAnswers.*;
 
 
-// 60.6% Coverage (modifieUserFrom and Line42 not tested)
+// 92.6% Coverage (Line42 not tested)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class SignupServiceTest {
@@ -66,8 +66,7 @@ public class SignupServiceTest {
 			(pwEncoder.encodePassword("123", student.getUsername()), student.getPassword());
 		
 	}
-	
-	
+		
 	@Test(expected = InvalidUserException.class)
 	public void testEmptyName(){
 		SignupForm signUpForm = new SignupForm();
@@ -78,6 +77,5 @@ public class SignupServiceTest {
 		
 		signupService.saveStudentFrom(signUpForm);
 		
-	}	
-
+	}
 }
