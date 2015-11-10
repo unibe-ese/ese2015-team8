@@ -4,6 +4,8 @@ package ch.unibe.ese.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -21,6 +23,17 @@ public class LoginController {
     @RequestMapping("/login")
 	public String login(Model model) {
 		return "/login";
+	}
+    
+    
+	/**
+	 * redirects to the login page if "/" is the address
+	 * @return model with login view
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView model = new ModelAndView("login");
+		return model;
 	}
 
 

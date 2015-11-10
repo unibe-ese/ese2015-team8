@@ -29,7 +29,7 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
  * @since 21.10.2015
  */
 @Controller
-public class IndexController {
+public class SignUpController {
 
 	@Autowired
 	SignUpService signUpService;
@@ -37,15 +37,7 @@ public class IndexController {
 	@Autowired
 	CustomUserDetailsService userDetailsService;
 
-	/**
-	 * redirects to the login page if "/" is the address
-	 * @return model with login view
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-		ModelAndView model = new ModelAndView("login");
-		return model;
-	}
+
 
 	/**
 	 * Shows the sign up form to create a new account

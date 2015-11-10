@@ -41,7 +41,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * @author Christian Zürcher
  * @version 1.0
  * @since 4.11.2015
- * @see ch.unibe.ese.controller.IndexController
+ * @see ch.unibe.ese.controller.SignUpController
  * @see ch.unibe.ese.controller.ProfileController
  * @see ch.unibe.ese.controller.pojos.SignupForm
  * @see ch.unibe.ese.controller.service.SignUpServiceImplementation

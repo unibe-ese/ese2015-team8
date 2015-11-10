@@ -34,7 +34,7 @@ public class TimelapsServiceImplementation implements TimelapsService {
 	}
 
 	@Override
-	public TimelapsForm saveFrom(TimelapsForm timelapsForm, Student loggedInTutor) {
+	public Student saveFrom(TimelapsForm timelapsForm, Student loggedInTutor) {
 		Timelaps timelaps = new Timelaps();
 		timelaps.setFromTime(getFromTime(timelapsForm));
 		timelaps.setToTime(getToTime(timelapsForm));
@@ -42,6 +42,6 @@ public class TimelapsServiceImplementation implements TimelapsService {
 		loggedInTutor.addTimelaps(timelaps);
 		loggedInTutor = studentDao.save(loggedInTutor);
 		
-		return timelapsForm;
+		return loggedInTutor;
 	}
 }

@@ -6,14 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 
-import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.OptionForm;
-import ch.unibe.ese.controller.pojos.SignupForm;
 import ch.unibe.ese.controller.service.OptionService;
-import ch.unibe.ese.controller.service.SignUpService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
@@ -27,7 +23,6 @@ public class OptionServiceTest {
 	
 	@Autowired private OptionService optionService;
 	@Autowired private StudentDao studentDao;
-	private OptionForm optionForm;
 	private Student student;
 	
 	//student already has to exist to change his settings in the form
