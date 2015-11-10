@@ -1,3 +1,7 @@
+<!-- if a user wants to access a page, he is not allowed to access, he gets redirected to this 
+page. It tells him that he is not allowed to access the page he wanted to access. This happens
+only when he enters a link to a forbidden site manually. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

@@ -1,3 +1,7 @@
+<!-- This is the page where you can login if you've already signed up. You identify
+yourself over the username and the password. The password is encrypted using Spring
+Security. If you don't have an account yet, you can use the link below to sign up. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

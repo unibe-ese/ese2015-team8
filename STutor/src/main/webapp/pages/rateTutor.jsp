@@ -1,3 +1,7 @@
+<!-- When you - as a Student - have been accepted by a Tutor, you can rate that tutor on a 
+scale from 1 to 6 and also leave a comment. This is for other Students to see if a Tutor
+is suitable or not. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

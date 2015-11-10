@@ -1,3 +1,8 @@
+<!-- As a Tutor, you can add a lecture that you have attended to your profile. For that,
+you have to set the University where you attended the lecture, the subject the lecture
+belongs to (like programming 1 belongs to Computer Science) and which grade you got
+in the exam. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

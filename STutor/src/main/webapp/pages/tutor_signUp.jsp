@@ -1,3 +1,6 @@
+<!-- Special page for the Tutor. If he checks the box for being a Tutor during the 
+sign up, he afterwards has to say if he's male or female on this page. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

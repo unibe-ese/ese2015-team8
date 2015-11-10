@@ -1,3 +1,6 @@
+<!-- If a Tutor accepts a request, he has to pay a fee before getting the student's information.
+That's what this page serves for. -->
+
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -25,7 +28,7 @@
 <h1> <c:out value="Payement"/> </h1>
 
 <body>
-	<p>The fea is of <c:out value="${price}"/> Fr.-</p>
+	<p>The fee is of <c:out value="${price}"/> Fr.-</p>
 	
 	<form action=null>
 		Credit Card: <input type="text"><br>
