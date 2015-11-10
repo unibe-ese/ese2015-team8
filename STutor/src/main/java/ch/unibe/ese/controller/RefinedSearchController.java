@@ -193,7 +193,7 @@ public class RefinedSearchController {
 
 			}
 		} else {
-			model = new ModelAndView("searchInitialisation");
+			model = new ModelAndView("afterLogin");
 		}
 
 		return model;

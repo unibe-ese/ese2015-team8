@@ -22,7 +22,7 @@
     	</font>
     	<br><br>
     </c:if>
-	<form class="login-form" action="j_spring_security_check" method="post" >
+	<form class="login-form" action="${login}" method="post" >
 		<fieldset >
 			<legend>Login Here</legend>
 	        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
@@ -36,15 +36,15 @@
     	     
              </c:if>
 			<p>
-			<label for="j_username">Username:</label>
-			<input id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
+			<label for="username">Username:</label>
+			<input id="username" name="username" size="20" maxlength="50" type="text"/>
 			</p>
 			
 			<p>
-			<label for="j_password">Password:</label>
-			<input id="j_password" name="j_password" size="20" maxlength="50" type="password"/>
+			<label for="password">Password:</label>
+			<input id="password" name="password" size="20" maxlength="50" type="password"/>
 			</p>
-			
+						
 			<p><input type="submit" class="submitButton" value="Login"/></p>
 			<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
 		</fieldset>
