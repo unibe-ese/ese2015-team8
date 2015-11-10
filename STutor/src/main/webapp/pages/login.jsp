@@ -26,6 +26,7 @@ Security. If you don't have an account yet, you can use the link below to sign u
     	</font>
     	<br><br>
     </c:if>
+    <c:url var="login" value="/login" />
 	<form class="login-form" action="${login}" method="post" >
 		<fieldset >
 			<legend>Login Here</legend>
