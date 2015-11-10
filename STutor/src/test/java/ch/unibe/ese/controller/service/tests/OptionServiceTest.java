@@ -25,7 +25,7 @@ public class OptionServiceTest {
 	
 	@Autowired private OptionService optionService;
 	@Autowired private StudentDao studentDao;
-	//private OptionForm optionForm;
+
 	private Student student;
 	
 	//student already has to exist to change his settings in the form
