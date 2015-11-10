@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.service.SignUpService;
+import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
@@ -32,9 +33,14 @@ public class ProfileController {
     	ModelAndView model;
         try {
         	model = new ModelAndView("profile");
-        	model.addObject("lectures", studentDao.findOne(id).getLectures().toArray());
-        	model.addObject("timelapses", studentDao.findOne(id).getTimelapses().toArray());
-        	model.addObject("student",studentDao.findOne(id));
+        	Student student = studentDao.findOne(id);
+      
+        	model.addObject("student",student);
+        	
+        	if(student.getIsTutor()){
+          	model.addObject("lectures", student.getLectures().toArray());
+        	model.addObject("timelapses", student.getTimelapses().toArray());
+        	}
 
         } catch (InvalidUserException e) {
         	model = new ModelAndView("index");

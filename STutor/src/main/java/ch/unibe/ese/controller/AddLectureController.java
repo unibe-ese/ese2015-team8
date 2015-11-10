@@ -153,17 +153,7 @@ public class AddLectureController {
 	 * @return model with a new LectureForm
 	 */
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
-	public ModelAndView addLecture(Principal principal) {
-
-		// Students that aren't tutors cannot add any lectures. If they somehow
-		// (impossible without excplicitly trying)
-		// manage to find the site, they'll get redirected to the access denied
-		// page.
-		Student loggedInStudent = studentDao.findByUsername(principal.getName());
-		if (loggedInStudent.getIsTutor() == false) {
-			return new ModelAndView("accessDenied");
-		}
-
+	public ModelAndView addLecture() {
 		ModelAndView model = new ModelAndView("addLecture");
 		model.addObject("lectureForm", new LectureForm());
 		return model;
@@ -196,9 +186,9 @@ public class AddLectureController {
 				model.addObject("page_error", e.getMessage());
 			}
 		
-			catch (InvalidGradeException e2) {
+			catch (InvalidGradeException exc) {
 				model = new ModelAndView("addLecture");
-				model.addObject("page_error", e2.getMessage());
+				model.addObject("page_error", exc.getMessage());
 			}
 		}
 		

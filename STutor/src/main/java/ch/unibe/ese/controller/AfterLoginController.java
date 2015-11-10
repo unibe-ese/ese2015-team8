@@ -1,8 +1,14 @@
 package ch.unibe.ese.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,11 +52,13 @@ public class AfterLoginController {
 		// name of the principal = the *username* of the student/tutor who is
 		// logged in.
 		String username = principal.getName();
+		
+		Collection<? extends GrantedAuthority> list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
 		// we get the student through the dao
 		Student loggedInStudent = studentdao.findByUsername(username);
 
-		
+		GrantedAuthority authority = list.iterator().next();
 		
 		/*
 		 * JUST FOR DEMONSTRATION. It's possible to load different pages/models.
@@ -65,11 +73,12 @@ public class AfterLoginController {
 		 */
 		ModelAndView model;
 
-		if (loggedInStudent.getIsTutor()) {
+		if (authority.toString().contentEquals("ROLE_TUTOR")) {
 
 			model = new ModelAndView("tutorMain");
 
 			String welcomeText = "Hi " + username + ", you're logged in as a TUTOR.";
+
 
 			model.addObject("welcomeMsg", welcomeText);
 

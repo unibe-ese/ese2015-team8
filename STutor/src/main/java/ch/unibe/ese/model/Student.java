@@ -90,6 +90,8 @@ public class Student{
     @ManyToOne
     private Town town;
     
+    
+    
 	private double rating;
 	//-------------------------------------------------------------------------------------------------
     

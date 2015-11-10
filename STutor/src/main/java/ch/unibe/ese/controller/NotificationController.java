@@ -1,5 +1,7 @@
 package ch.unibe.ese.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +46,14 @@ public class NotificationController {
 	 * @return model with user's notifications 
 	 */
 	@RequestMapping("/notifications")
-	public ModelAndView notifications(@RequestParam("userId") long id) {
+	public ModelAndView notifications(Principal principal, @RequestParam("userId") long id) {
+		
+		Student visitor = studentDao.findByUsername(principal.getName());
+		if(!visitor.getId().equals(id)){
+			return new ModelAndView("accessDenied");
+		}
+		
+		
 		ModelAndView model= new ModelAndView("notifications");
 		acctualStudent = studentDao.findOne(id);
 		model.addObject("notificationList", notificationDao.getByToStudentId(acctualStudent.getId()));

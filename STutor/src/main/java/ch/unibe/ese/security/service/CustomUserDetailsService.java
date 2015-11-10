@@ -62,8 +62,15 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private Collection<? extends GrantedAuthority> getAuthorities(Student student) {
 	
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+		SimpleGrantedAuthority roles;
 		
-		SimpleGrantedAuthority roles = new SimpleGrantedAuthority("ROLE_USER");
+		if(student.getIsTutor()){
+		roles = new SimpleGrantedAuthority("ROLE_TUTOR");}
+		
+		else{
+			roles = new SimpleGrantedAuthority("ROLE_STUDENT");
+		}
+		
 		
 		list.add(roles);
 				
