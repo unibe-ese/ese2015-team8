@@ -5,6 +5,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+
+import java.util.LinkedList;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 
@@ -29,8 +33,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.Subject;
+import ch.unibe.ese.model.University;
 import ch.unibe.ese.model.dao.StudentDao;
+import ch.unibe.ese.model.dao.SubjectDao;
+import ch.unibe.ese.model.dao.UniversityDao;
 
 @SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,6 +57,8 @@ public class AddLectureControllerTest {
 	private FilterChainProxy springSecurityFilterChain;
 	
 	@Autowired StudentDao studentDao;
+	@Autowired UniversityDao universityDao;
+	@Autowired SubjectDao subjectDao;
 
 	private MockMvc mockMvc;
 
@@ -82,6 +93,43 @@ public class AddLectureControllerTest {
 						.param("name", "")).andExpect(status().isOk()).
 											andExpect(model().attributeHasFieldErrors("lectureForm", "name"));
 	}
+	
+	@Test
+	public void addingALecture() throws Exception {
+		
+		Student tutor = new Student();
+		tutor.setUsername("tutorForTest");
+		tutor.setId((long) -1);
+		LinkedList<Lecture> lectures = new LinkedList<Lecture>();
+		tutor.setLectures(lectures);
+		tutor = studentDao.save(tutor);
+		
+		
+		University sampleUni = new University();
+		sampleUni.setName("testUni");
+		sampleUni.setId((long) -1);
+		sampleUni = universityDao.save(sampleUni);
+
+		Subject sampleSub = new Subject();
+		sampleSub.setName("testSubject");
+		sampleSub.setId((long) -1);
+		sampleSub = subjectDao.save(sampleSub);
+		
+		
+	
+		mockMvc.perform(post("/addedLecture").with(user("tutorForTest"))
+						.param("name", "Introduction to Testing")
+						.param("university", "-1")
+						.param("subject", "-1")
+						.param("grade", "5.5"))
+							.andDo(print());
+		
+		//assert that lecture was added to our testTutor
+		
+		assertEquals("Introduction to Testing", tutor.getLectures().get(0).getName());
+		
+	}
+	
 	
 	
 	

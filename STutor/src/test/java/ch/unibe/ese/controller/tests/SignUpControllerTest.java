@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/springMVC.xml", 
-								"file:src/main/webapp/WEB-INF/config/springData.xml"})
+								"file:src/main/webapp/WEB-INF/config/springData.xml",
+								"file:src/main/webapp/WEB-INF/config/springSecurity.xml"})
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
 public class SignUpControllerTest {
@@ -44,11 +47,10 @@ public class SignUpControllerTest {
 	@Test
 	public void testInvalidSignupForm() throws Exception{
 
-		mockMvc.perform(post("/create").param("email", "<error>"))
+		mockMvc.perform(post("/create").param("email", "totallyInvalidEmailFormat"))
 				.andExpect(status().isOk())
 				.andExpect(forwardedUrl("/pages/newAccount.jsp"))
-				.andExpect(model().attributeHasFieldErrors("signupForm", "email"));
-		
+				.andExpect(model().attributeHasFieldErrors("signupForm", "email"));	
 	}
 	
 	@Test
@@ -56,11 +58,23 @@ public class SignUpControllerTest {
 	public void testRequestMapping() throws Exception{
 
 		ModelAndView mav = mockMvc.perform(get("/newAccount")).andReturn().getModelAndView();
-		
 		assertViewName(mav, "newAccount");
-		
 		assertModelAttributeAvailable(mav,"signupForm");
 		
+	}
+	
+	@Test
+	public void validSignUp() throws Exception{
+
+		mockMvc.perform(post("/create")
+									.param("firstName", "John")
+									.param("lastName", "Doe")
+									.param("email", "email@email.com")
+									.param("username", "signUpTester")
+									.param("password", "qwertz"))
+									
+						//we should be now registered and directly logged in:
+									.andExpect(redirectedUrl("/afterLogin"));
 	}
 	
 

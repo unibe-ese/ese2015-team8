@@ -24,7 +24,7 @@ import ch.unibe.ese.model.factory.NotificationFactory;
  * gets notified if he was accepted or declined. If he indeed was accepted,
  * the Tutor gets the Student's email address for further contact.
  * This Controller handles these Notifications.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  */

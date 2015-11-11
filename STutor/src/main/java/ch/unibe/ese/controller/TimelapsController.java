@@ -22,7 +22,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 /**
  * A Tutor is able to specify when he has time to tutor. This Controller 
  * handles his doing so.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  *

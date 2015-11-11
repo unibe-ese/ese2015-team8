@@ -8,17 +8,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Everytime a user (logged in or not) tries to access a page he
- * is not allowed to access, he gets redirected to this page. If 
- * he's not logged in, for instance, he can only access the login, 
+ * is not allowed to access, he gets redirected to this page. If a user
+ * iss not logged in, for instance, he can only access the login, 
  * the create account and the beginning of the search page.
- * @author Stefan Jonas
+ *  
+ * 
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */
 @Controller
 public class DeniedAccessController {
 
-	// for 403 access denied page
+	/*
+	 * @see springSecurity.xml, where it's defined that unrestricted access leads to this url, 
+	 * which the controller maps to the accessDenied ModelAndView.
+	 * 
+	 * 
+	 */
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accesssDenied(Principal user) {
 

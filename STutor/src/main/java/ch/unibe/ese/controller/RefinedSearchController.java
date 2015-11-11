@@ -31,7 +31,7 @@ import ch.unibe.ese.model.dao.UniversityDao;
  * For that, he must be able to search for a lecture and subject, define the 
  * University, set a minimum grade and be gender specific for those who
  * prefer a certain gender for a Tutor.
- * @author Stefan Jonas
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

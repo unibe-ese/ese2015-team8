@@ -28,7 +28,7 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
  * A user can edit his information by using the option page that is 
  * handled by this controller. The user can even change his being a 
  * Tutor or not and add a gender.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

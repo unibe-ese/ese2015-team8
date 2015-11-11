@@ -20,7 +20,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 /**
  * Tutors can be rated by all Students they have given lessons to. 
  * Of all ratings a medium is taken and visible to all Students.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

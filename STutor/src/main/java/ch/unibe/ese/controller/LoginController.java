@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
- * (temp.)
- * Unlike in our sign up, we do not need any sort of form handling for the login. Spring security does that for us.
- * We just load the corresponding login form (@see login.jsp) and declare the needed things in the XML files. (web & springSecurity.xml) 
  *
- * @author Stefan Jonas
+ * This controller handles the mapping for the login request. Most of the work is done by spring-security,
+ * @see springSecurity.xml and login.jsp, where the login form is defined.
+ *
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */

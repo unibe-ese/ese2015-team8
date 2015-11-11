@@ -24,7 +24,7 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
  * sign up form is filled in correctly, a new user with the filled in
  * information is added to the database. If there are errors, like one
  * field left empty, the page is reloaded.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */

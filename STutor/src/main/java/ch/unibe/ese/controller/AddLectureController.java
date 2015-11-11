@@ -31,11 +31,14 @@ import ch.unibe.ese.model.dao.UniversityDao;
 
 /**
  * 
- * @author Christian Zürcher
+ * 
+ * This controller handles the mapping to the relevant pages to add a lecture
+ * and the act of adding a lecture as a tutor through a form, @see lectureForm.
+ * 
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
- * This Controller handles the request to add a lecture, which can only
- * be done by a tutor, of course.
+
  */
 @Controller
 public class AddLectureController {
@@ -146,10 +149,8 @@ public class AddLectureController {
 	}
 
 	/**
-	 * This method handles the request to access the addLecture page. If
-	 * the user is only a Student, his access is denied. If he's a Tutor,
-	 * the model with the right lecture form gets returned
-	 * @param principal
+	 * This method handles the request to access the addLecture page. 
+	 * This page has been made available only to tutors, @see springSecurity.xml
 	 * @return model with a new LectureForm
 	 */
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)

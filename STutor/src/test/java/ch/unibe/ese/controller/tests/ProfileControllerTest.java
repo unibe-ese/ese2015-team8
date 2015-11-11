@@ -3,6 +3,11 @@ package ch.unibe.ese.controller.tests;
 import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
@@ -26,7 +31,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.Timelaps;
 import ch.unibe.ese.model.dao.StudentDao;
 
 @SuppressWarnings("deprecation")
@@ -46,7 +53,7 @@ public class ProfileControllerTest {
 	@Autowired
 	private StudentDao studentDao;
 
-	private Student student;
+	private Student student, tutor;
 	private MockMvc mockMvc;
 
 	@Before
@@ -70,8 +77,40 @@ public class ProfileControllerTest {
 
 		student = studentDao.save(this.student);
 
-		mockMvc.perform(get("/profile?userId="+student.getId())).andExpect(model().attribute("student", this.student));
+		mockMvc.perform(get("/profile?userId="+student.getId()))
+							.andExpect(model().attribute("student", this.student))
+							//the information (gives lectures, available during which time) shouldn't be visible in  a student's profile
+							.andExpect(model().attributeDoesNotExist("lectures"))
+							.andExpect(model().attributeDoesNotExist("timelapses"));
+	
+	}
+	
+	@Test
+	public void testProfileForTutor() throws Exception {
+		tutor = new Student();
+		tutor.setFirstName("first");
+		tutor.setLastName("last");
+		tutor.setUsername("tutorForTest");
+		tutor.setPassword("1234");
+		tutor.setEmail("st@test.com");
+		
+		LinkedList<Lecture> lectures = new LinkedList<Lecture>();
+		tutor.setLectures(lectures);
+		
+		Set<Timelaps> timelapses = new HashSet<Timelaps>();
+		tutor.setTimelapses(timelapses);
+		
+		tutor.setIsTutor(true);
 
+		tutor.setId((long) -100);
+
+		tutor = studentDao.save(this.tutor);
+
+		mockMvc.perform(get("/profile?userId="+tutor.getId()))
+							.andExpect(model().attribute("student", this.tutor))
+							.andExpect(model().attributeExists("lectures"))
+							.andExpect(model().attributeExists("timelapses"));
+	
 	}
 
 }
