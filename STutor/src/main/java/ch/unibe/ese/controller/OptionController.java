@@ -39,7 +39,7 @@ public class OptionController {
 	OptionService optionService;
 	
 	@Autowired
-	SignUpService sampleService;
+	SignUpService signUpService;
 	
 	@Autowired
 	CustomUserDetailsService userDetailsService;

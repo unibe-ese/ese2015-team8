@@ -23,7 +23,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 public class ProfileController {
 
     @Autowired
-    SignUpService sampleService;
+    SignUpService signUpService;
     
 	@Autowired
 	StudentDao studentDao;
