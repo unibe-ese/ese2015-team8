@@ -22,7 +22,7 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
         <div class="controls">
         	<form:select path="day">
             	<form:option items="Monday" value="1" label="Monday"/>
-            	<form:option items="Thesday" value="2" label="Thuesday"/>
+            	<form:option items="Thesday" value="2" label="Tuesday"/>
             	<form:option items="Wednesday" value="3" label="Wednesday"/>
             	<form:option items="Thursday" value="4" label="Thursday"/>
             	<form:option items="Friday" value="5" label="Friday"/>

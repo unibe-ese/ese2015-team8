@@ -29,7 +29,7 @@
 							<form id="tfnewsearch" method="get" action="http://localhost:8080/Stutor/basicSearch">
 		        				<input type="search" name="q" size="12" placeholder="Search..."
 		        				required maxlength="120">
-		        				<input type="submit" value="Search for Tutor" >
+		        				<input type="submit" value="Search for Lecture" >
 							</form>
 												
 							<a href="http://localhost:8080/Stutor/afterLogin"><img src="img/logo.png" align="left"></a>
