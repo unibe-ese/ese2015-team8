@@ -125,6 +125,7 @@ public class SearchController {
     public ModelAndView basicSearch(@RequestParam("q") String term) {
     	ModelAndView model;
     	Iterable<Lecture> lecturesTemp = lectureDao.findByName(term);
+    	tempLectureName = term;
 		List<Student> tutors = new LinkedList<Student>();
 		List<Lecture> lectures = new LinkedList<Lecture>();
 		for(Lecture temp : lecturesTemp){
