@@ -49,6 +49,8 @@ public class NotificationController {
 	public ModelAndView notifications(Principal principal, @RequestParam("userId") long id) {
 		
 		Student visitor = studentDao.findByUsername(principal.getName());
+		
+		//not allowed to see other tutor's notifications!
 		if(!visitor.getId().equals(id)){
 			return new ModelAndView("accessDenied");
 		}
