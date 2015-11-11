@@ -105,6 +105,7 @@ public class SearchControllerTest {
 		Student tutor = new Student();
 		tutor.setUsername(username);
 		tutor.setId((long) -1);
+		tutor.setIsTutor(true);
 		tutor = studentDao.save(tutor);
 		
 		return tutor;

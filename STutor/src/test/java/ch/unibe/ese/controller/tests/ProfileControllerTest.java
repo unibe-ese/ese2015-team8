@@ -49,6 +49,9 @@ public class ProfileControllerTest {
 
 	@Before
 	public void setup() {
+		
+		student = initStudent();
+		tutor = initTutor();
 
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain))
 				.build();
@@ -56,17 +59,7 @@ public class ProfileControllerTest {
 
 	@Test
 	public void testProfileForStudent() throws Exception {
-		student = new Student();
-		student.setFirstName("first");
-		student.setLastName("last");
-		student.setUsername("studentForTest");
-		student.setPassword("1234");
-		student.setEmail("st@test.com");
-		student.setIsTutor(false);
-
-		student.setId((long) -1);
-
-		student = studentDao.save(this.student);
+		
 
 		mockMvc.perform(get("/profile?userId="+student.getId()))
 							.andExpect(model().attribute("student", this.student))
@@ -78,12 +71,41 @@ public class ProfileControllerTest {
 	
 	@Test
 	public void testProfileForTutor() throws Exception {
+		
+	
+
+		mockMvc.perform(get("/profile?userId="+tutor.getId()))
+							.andExpect(model().attribute("student", this.tutor))
+							.andExpect(model().attributeExists("lectures"))
+							.andExpect(model().attributeExists("timelapses"));
+	
+	}
+	
+	
+	private Student initStudent(){
+		student = new Student();
+		student.setFirstName("first");
+		student.setLastName("last");
+		student.setUsername("studentForTest");
+		student.setPassword("1234");
+		student.setEmail("st@test.com");
+		student.setIsTutor(false);
+
+		student.setId((long) -1);
+
+		student = studentDao.save(this.student);
+		
+		return student;
+	}
+
+	private Student initTutor(){
 		tutor = new Student();
 		tutor.setFirstName("first");
 		tutor.setLastName("last");
 		tutor.setUsername("tutorForTest");
 		tutor.setPassword("1234");
 		tutor.setEmail("st@test.com");
+		
 		
 		LinkedList<Lecture> lectures = new LinkedList<Lecture>();
 		tutor.setLectures(lectures);
@@ -96,12 +118,8 @@ public class ProfileControllerTest {
 		tutor.setId((long) -100);
 
 		tutor = studentDao.save(this.tutor);
-
-		mockMvc.perform(get("/profile?userId="+tutor.getId()))
-							.andExpect(model().attribute("student", this.tutor))
-							.andExpect(model().attributeExists("lectures"))
-							.andExpect(model().attributeExists("timelapses"));
-	
+		
+		return tutor;
 	}
-
+	
 }
