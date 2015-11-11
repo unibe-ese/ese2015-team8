@@ -120,6 +120,10 @@ public class RefinedSearchController {
 
 	/**
 	 * searches for Tutors with given parameters
+	 * 
+	 * Notice that due to the double standard in Java, we can't search for greaterOrEqual, but rather
+	 * search for a greater grade than the minGrade, which is decreased by a very small number, 
+	 * this way it's basically the same as a greaterOrEqual search.
 	 * @param refSearchForm
 	 * @param result
 	 * @param redirectAttributes
@@ -134,6 +138,7 @@ public class RefinedSearchController {
 				
 				Iterable<Lecture> lecturesTemp = null;
 	
+				//ids with -1 as value represent nonexistent values, so it's like "doesn't matter" which subject/uni etc.
 
 				if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
 					lecturesTemp = lectureDao.findByNameAndGradeGreaterThan(refSearchForm.getName(), (refSearchForm.getMinGrade() - 0.01));
