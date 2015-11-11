@@ -1,9 +1,13 @@
 package ch.unibe.ese.controller.tests;
 
+import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
+import ch.unibe.ese.model.Comment;
 
 
 
@@ -63,7 +68,9 @@ public class RatingControllerTest {
 		tutor.setUsername("tutorForTest");
 		tutor.setPassword("1234");
 		tutor.setEmail("tut@test.com");
-		tutor.setIsTutor(false);
+		tutor.setIsTutor(true);
+		Set<Comment> emptycommentsset = new HashSet<Comment>();
+		tutor.setComments(emptycommentsset);
 
 		tutor.setId((long) -2);
 
@@ -82,8 +89,25 @@ public class RatingControllerTest {
 		assertViewName(mav, "rateTutor");
 	}
 	
-
+	@Test
+	public void saveRating() throws Exception{
+		
+		
+		mockMvc.perform(get("/rateTutor?tutorId="+tutor.getId()).with(user("studentForTest"))).andReturn().getModelAndView();
+		
+		mockMvc.perform(post("/saveTutorRating").with(user("studentForTest"))
+																.param("rating", "10")
+																.param("comment", "fantastic imaginary tutor"));
+		
+		
+		//he received a 10 from the user and a positive comment. Did it save that for the tutor?:
+		assertEquals(10, tutor.getComments().iterator().next().getRating());
+		assertEquals("fantastic imaginary tutor", tutor.getComments().iterator().next().getComment());
+											
+		
 	
+
+	}
 	
 	
 

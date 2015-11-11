@@ -87,12 +87,13 @@ public class NotificationControllerTest {
 						
 		assertViewName(mav, "notifications");
 		
-		//trying to access notifications of a different tutor
+		//trying to access notifications of a different tutor shouldn't be possible
 		ModelAndView mavDenied = mockMvc.perform(get("/notifications?userId="+tutor2.getId()).
 				with(user(tutor.getUsername()))).andReturn().getModelAndView();
 
 		assertViewName(mavDenied, "accessDenied");
 	}
+	
 	
 
 	
