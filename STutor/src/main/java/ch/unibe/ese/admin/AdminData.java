@@ -20,7 +20,7 @@ public class AdminData {
 	private static final List<String> CREDIT_CARDS = Arrays.asList(cards);
 	
 	private static final String[] days = 
-		{"Monday","Thuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+		{"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 	private static final List<String> DAYS = Arrays.asList(days);
 
 	public static double getContactprice() {
