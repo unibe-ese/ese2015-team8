@@ -81,7 +81,7 @@ public class OptionController {
 		
 		if (!result.hasErrors()) {
 			try {
-				if(optionForm.getPassword()=="")
+				if((optionForm.getPassword()).equals(""))
 					optionService.saveStudentFrom(student,optionForm,false);
 				else{
 					optionService.saveStudentFrom(student,optionForm,true);

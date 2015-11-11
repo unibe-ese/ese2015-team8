@@ -28,7 +28,7 @@ public class NotificationFactory {
 		Notification temp = new Notification();
 		temp.setTitel("Contact Request");
 		temp.setStatus("new");
-		temp.setMessage("A Student wants to contact you for the "+lecture+" lecture. Do you accept this?");
+		temp.setMessage("A Student wants to contact you. Do you accept this?");
 		temp.setDate(new Timestamp(new Date().getTime()));
 		temp.setFromStudentId(senderId);
 		temp.setToStudentId(receverId);
