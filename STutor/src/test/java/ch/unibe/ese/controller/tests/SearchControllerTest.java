@@ -7,12 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
-
-
-
 
 import org.junit.Before;
 import org.junit.Test;
