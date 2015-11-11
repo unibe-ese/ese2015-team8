@@ -6,7 +6,7 @@ import ch.unibe.ese.model.University;
 
 /**
  * 
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  */

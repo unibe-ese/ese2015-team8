@@ -6,7 +6,7 @@ import javax.validation.constraints.Min;
 /**
  * Form to set time ranges for tutor. He can set the 
  * day and from when to when.
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

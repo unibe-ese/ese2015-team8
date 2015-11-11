@@ -18,7 +18,7 @@ import ch.unibe.ese.controller.exceptions.InvalidGradeException;
  * <li>subject ({@link University}), also helps sorting lectures into categories. Multiple Lectures can have the same {@link University}.</li>
  * <li>tutor ({@link Student}), helps to backtrack to the {@link Student} (Tutor) who gives the Lecture. Multiple Lectures can have the same {@link Student}.</li>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  * @see ch.unibe.ese.controller.AddLectureController

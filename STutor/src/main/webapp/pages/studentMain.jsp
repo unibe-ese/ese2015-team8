@@ -13,7 +13,7 @@ or his notifications or log out again. -->
 </head>
 
 <c:import url="template/header.jsp" />
-<h1> --Main Page after a log in (for STUDENTS)--</h1>
+<h1>Welcome</h1>
 
 <h2>${welcomeMsg}
 </h2>

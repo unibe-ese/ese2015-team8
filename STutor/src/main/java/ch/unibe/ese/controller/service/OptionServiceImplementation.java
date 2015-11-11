@@ -15,8 +15,9 @@ import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
+ * Handles the processing of editing one's student profile through the option form.
  * 
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

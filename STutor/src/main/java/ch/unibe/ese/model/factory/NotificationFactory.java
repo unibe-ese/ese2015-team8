@@ -9,7 +9,7 @@ import ch.unibe.ese.model.Student;
 /**
  * Factory for handling four different kinds of Notifications:
  * Contact Request, Request Declined, Request Accepted, Student Info
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  */

@@ -82,22 +82,15 @@ public class AddLectureServiceTest {
 	}
 
 	@Test
-	public void addingValidLecture() {
+	public void addingValidLecture() throws InvalidDataException, InvalidGradeException {
 
 		when(universityDao.findOne((long) 1)).thenReturn(sampleUniversity);
 		when(subjectDao.findOne((long) 1)).thenReturn(sampleSubject);
 
 		
-		//can we get rid of this try/catch stuff here?
-		
-		Lecture addedLecture = null;
-		try {
-			addedLecture = addLectureService.saveFrom(lectureForm, loggedInTutor);
-		} catch (InvalidDataException e) {
-			e.printStackTrace();
-		} catch (InvalidGradeException e) {
-			e.printStackTrace();
-		}
+
+		Lecture	addedLecture = addLectureService.saveFrom(lectureForm, loggedInTutor);
+	
 
 		assertEquals("Introduction to Testing", addedLecture.getName());
 		assertEquals(loggedInTutor.getLectures().get(0), addedLecture);
@@ -105,5 +98,6 @@ public class AddLectureServiceTest {
 		assertEquals(sampleUniversity, addedLecture.getUniversity());
 
 	}
+	
 
 }

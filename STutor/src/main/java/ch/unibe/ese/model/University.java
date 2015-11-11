@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * <li>id (Long), unique and auto generated: it defines the University.</li>
  * <li>name (String), name of the University.</li>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  * @see ch.unibe.ese.controller.AddLectureController

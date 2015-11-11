@@ -12,7 +12,7 @@ import javax.persistence.Id;
  * <li>name (String), name of the Subject.</li>
  * <li>level (String), level of the Subject (Bachelor, Master, ...).</li>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  * @see ch.unibe.ese.controller.AddLectureController

@@ -12,7 +12,7 @@ import javax.persistence.Id;
  * <li>rating (int), an Integer between 1 and 6 which helps rating a {@link Student}.</li>
  * <li>comment (String), Contains additional informations about the {@link Student}, next to the rating.</li>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  * @see ch.unibe.ese.controller.RatingController

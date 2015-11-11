@@ -5,11 +5,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 /**
- * form to add a lecture. The Tutor has to set the University
+ * Form to add a lecture. The Tutor has to set the University
  * where he took this lecture, the grade he got, the name of 
  * the lecture and the subject (eg. Computer Science) this lecture
- * belongs to
- * @author Christian Zürcher
+ * belongs to. 
+ * 
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  */

@@ -6,7 +6,7 @@ import ch.unibe.ese.model.Timelaps;
 
 /**
  * 
- * @author Till Schnabel
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

@@ -38,7 +38,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * 		<li>rating (double), a general rating of the Tutor based on the {@link Comment}s he received. The result is rounded to 2 digits after the decimal.</li>
  * 		</ul>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  * @see ch.unibe.ese.controller.IndexController
