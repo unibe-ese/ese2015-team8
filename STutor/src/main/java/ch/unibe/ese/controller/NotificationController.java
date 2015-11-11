@@ -71,7 +71,7 @@ public class NotificationController {
         	acctualNotification = notificationDao.save(acctualNotification);
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
-        	model.addObject("tutorId",studentDao.findOne(acctualNotification.getFromStudentId()));
+        	model.addObject("tutor",studentDao.findOne(acctualNotification.getFromStudentId()));
 
         	
         } catch (InvalidUserException e) {
