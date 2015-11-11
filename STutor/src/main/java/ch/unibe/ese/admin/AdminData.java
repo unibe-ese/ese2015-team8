@@ -8,7 +8,7 @@ import java.util.List;
  * <p>
  * <b>Note:</b> The class could be deleted the Data inserted in the respective classes.
  * 
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 04.11.2015
  */

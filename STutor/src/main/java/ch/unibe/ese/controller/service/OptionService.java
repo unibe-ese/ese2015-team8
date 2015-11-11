@@ -6,7 +6,7 @@ import ch.unibe.ese.model.Student;
 
 /**
  * 
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */
