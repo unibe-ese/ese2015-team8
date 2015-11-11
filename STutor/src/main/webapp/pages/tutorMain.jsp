@@ -13,7 +13,7 @@ or his notifications and he can add lectures and his scheduals. -->
 </head>
 
 <c:import url="template/header.jsp" />
-<h1> --Main Page after a log in (for TUTORS) --</h1>
+<h1>Welcome</h1>
 
 <h2>${welcomeMsg}
 </h2>

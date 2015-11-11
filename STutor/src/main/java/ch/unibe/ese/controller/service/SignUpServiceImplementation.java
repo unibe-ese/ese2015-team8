@@ -12,7 +12,9 @@ import ch.unibe.ese.model.dao.StudentDao;
 
 /**
  * 
- * @author Christian Zürcher
+ * Handles the processing of the @see SignupForm, so saving the inputs into the form for registering into the database
+ * 
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */

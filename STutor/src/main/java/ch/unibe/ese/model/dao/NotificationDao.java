@@ -8,7 +8,7 @@ import ch.unibe.ese.model.Notification;
 
 /**
  * 
- * @author Till Schnabel
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  */

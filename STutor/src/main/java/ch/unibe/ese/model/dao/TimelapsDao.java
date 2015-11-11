@@ -2,7 +2,7 @@ package ch.unibe.ese.model.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import ch.unibe.ese.model.Comment;
+import ch.unibe.ese.model.Timelaps;
 
 /**
  * 
@@ -10,6 +10,6 @@ import ch.unibe.ese.model.Comment;
  * @version 1.0
  * @since 4.11.2015
  */
-public interface CommentDao extends CrudRepository<Comment,Long> {
+public interface TimelapsDao extends CrudRepository<Timelaps,Long> {
 
 }

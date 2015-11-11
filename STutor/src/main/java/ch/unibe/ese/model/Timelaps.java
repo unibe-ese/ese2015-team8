@@ -16,7 +16,7 @@ import ch.unibe.ese.admin.AdminData;
  * <li>toTime (int*), end of the timelaps.</li>
  * </ul>
  * <p>(*) the int Code is structured as follow: day(1-7)*100 + hour(0-24)
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  * @see ch.unibe.ese.controller.TimelapsController

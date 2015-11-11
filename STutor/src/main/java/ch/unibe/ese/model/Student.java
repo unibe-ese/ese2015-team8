@@ -7,7 +7,6 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -38,7 +37,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * 		<li>rating (double), a general rating of the Tutor based on the {@link Comment}s he received. The result is rounded to 2 digits after the decimal.</li>
  * 		</ul>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  * @see ch.unibe.ese.controller.IndexController
@@ -86,12 +85,7 @@ public class Student{
     @LazyCollection(LazyCollectionOption.FALSE)
     @Cascade(CascadeType.ALL)
 	private Set<Timelaps> timelapses;
-    
-    @ManyToOne
-    private Town town;
-    
-    
-    
+           
 	private double rating;
 	//-------------------------------------------------------------------------------------------------
     
@@ -243,12 +237,5 @@ public class Student{
 		timelapses.add(timelaps);
 	}
 	
-	public Town getTown() {
-		return town;
-	}
-
-	public void setTown(Town town) {
-		this.town = town;
-	}
 	//-----------------------------------------------------------------------------------------------
 }

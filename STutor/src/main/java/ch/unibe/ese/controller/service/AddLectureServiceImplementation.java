@@ -13,6 +13,15 @@ import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.dao.SubjectDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
+/**
+ * 
+ * @author ESE Team 8
+ * @version 1.0
+ * 
+ * This implementation of the addLecture service handles the processing of the @see LectureForm
+ *
+ */
+
 @Service
 public class AddLectureServiceImplementation implements AddLectureService {
 
@@ -23,7 +32,9 @@ public class AddLectureServiceImplementation implements AddLectureService {
     
 
 
-    
+    /**
+     * Saves the lecture from the form into the dao. 
+     */
     @Transactional
     public Lecture saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidGradeException{
 		

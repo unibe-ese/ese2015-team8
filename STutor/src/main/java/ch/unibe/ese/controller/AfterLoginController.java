@@ -16,25 +16,26 @@ import ch.unibe.ese.model.dao.StudentDao;
 
 /**
  * 
- * @author Stefan Jonas
+ *  Controller for the page after the login. This page is restricted to
+ *  logged in users only.
+ *  
+ *  @see springSecurity.xml and web.xml for this. Loads the afterLogin.jsp
+ *  file and displays it with the new information.
+ *
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */
 @Controller
 public class AfterLoginController {
 
-	// as we get the username in the mapping, we can find the student by looking
-	// through the repo with the username.
+
 	@Autowired
 	StudentDao studentdao;
 
 	/**
-	 * Controller for the page after the login. This page is restricted to
-	 * logged in users only,
-	 * 
-	 * @see springSecurity.xml and web.xml for this. Loads the afterLogin.jsp
-	 *      file and displays it with the new information.
-	 *      
+	 *
+	 * 	     
 	 * This page shows only a welcome message to the user and links to option
 	 * pages etc.
 	 * @param principal:
@@ -57,24 +58,15 @@ public class AfterLoginController {
 
 		GrantedAuthority authority = list.iterator().next();
 		
-		/*
-		 * JUST FOR DEMONSTRATION. It's possible to load different pages/models.
-		 * Here, it loads a different page based on whether you're a student or
-		 * a tutor.
-		 * 
-		 * Not necessary, technically both could start at the same main page.
-		 * 
-		 * 
-		 * It's also possible to load different things on the same page (i.e all
-		 * on /main but different things loaded by javaScript.)
-		 */
+		
 		ModelAndView model;
 
+		//depending on the role, a different jsp is loaded.
 		if (authority.toString().contentEquals("ROLE_TUTOR")) {
 
 			model = new ModelAndView("tutorMain");
 
-			String welcomeText = "Hi " + username + ", you're logged in as a TUTOR.";
+			String welcomeText = "Hi " + username + ", welcome to Stutor.";
 
 
 			model.addObject("welcomeMsg", welcomeText);
@@ -82,7 +74,7 @@ public class AfterLoginController {
 		} else {
 			model = new ModelAndView("studentMain");
 
-			String welcomeText = "Hi " + username + ", you're logged in as a STUDENT.";
+			String welcomeText = "Hi " + username + ", welcome to Stutor.";
 
 			model.addObject("welcomeMsg", welcomeText);
 

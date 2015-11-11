@@ -13,7 +13,7 @@ in the exam. -->
 <style>.help-inline{color: #BE1E1E}</style>
 </head>
 <c:import url="template/header.jsp" />
-<h1>~~here you can add a lecture to teach~~ ((This page is for tutors only--restrict later))</h1>
+<h1>Add a lecture you want to teach:</h1>
 
 <form:form method="post" modelAttribute="lectureForm" action="addedLecture" id="addLectureForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>

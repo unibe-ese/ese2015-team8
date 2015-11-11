@@ -12,7 +12,7 @@ import ch.unibe.ese.model.dao.StudentDao;
  * in his firstname, lastname, username and password, all of
  * which can't be empty. He can also set if he's a tutor or
  * not and his gender. The email must have the from "x@x.x".
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 21.10.2015
  */

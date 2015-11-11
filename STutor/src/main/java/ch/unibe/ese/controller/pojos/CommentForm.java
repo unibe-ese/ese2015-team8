@@ -1,9 +1,10 @@
 package ch.unibe.ese.controller.pojos;
 
 /**
- * This form serves for rating a Tutor the user has taken lessons
- * from. The user can set a rating and leave a comment
- * @author Christian Zürcher
+ * This form serves for rating a Tutor the user has taken lessonsfrom. 
+ * The user can set a rating and leave a comment
+ * For the processing of the form @see CommentServiceImplementation
+ * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
  */

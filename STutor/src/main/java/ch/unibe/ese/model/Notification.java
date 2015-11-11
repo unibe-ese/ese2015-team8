@@ -18,7 +18,7 @@ import javax.persistence.Id;
  * <li>fromStudentId (Long){@link Student}, helps to backtrack to the {@link Student} who has sent this notification.</li>
  * <li>toStudentId (Long){@link Student}, helps to backtrack to the {@link Student} who should receive this notification.</li>
  * </ul>
- * @author Christian Zürcher
+ * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
  * @see ch.unibe.ese.model.factory.NotificationFactory
