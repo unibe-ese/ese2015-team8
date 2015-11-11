@@ -101,6 +101,18 @@ public class RefinedSearchControllerTest {
 				.build();
 	}
 
+	@Test
+	public void testMappingRequest() throws Exception{
+		ModelAndView mav = mockMvc.perform(post("/searchWFilters")
+				.param("name", "lecture")
+				.param("university", "-1")
+				.param("subject", "-1")
+				.param("gender", "male")
+				.param("minGrade", "0")
+				).andReturn().getModelAndView();
+		
+		assertViewName(mav, "searchResult");
+	}
 	
 
 	@Test
@@ -127,6 +139,8 @@ public class RefinedSearchControllerTest {
 							
 	
 	}
+	
+	
 	
 	@Test
 	public void testValidSearchResult() throws Exception {

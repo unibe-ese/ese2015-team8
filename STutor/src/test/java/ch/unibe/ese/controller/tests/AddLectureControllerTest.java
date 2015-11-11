@@ -119,8 +119,7 @@ public class AddLectureControllerTest {
 						.param("name", "Introduction to Testing")
 						.param("university", "-1")
 						.param("subject", "-1")
-						.param("grade", "5.5"))
-							.andDo(print());
+						.param("grade", "5.5"));
 		
 		//assert that lecture was added to our testTutor
 		
