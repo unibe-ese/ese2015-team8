@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
+import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
 
 
@@ -54,17 +55,8 @@ public class OptionControllerTest {
 	@Before
 	public void setup(){
 		
-		student = new Student();
-		student.setFirstName("first");
-		student.setLastName("last");
-		student.setUsername("studentForTest");
-		student.setPassword("1234");
-		student.setEmail("st@test.com");
-		student.setIsTutor(false);
-
-		student.setId((long) -1);
-
-		student = studentDao.save(this.student);
+		student = initStudent();
+		
 		
 		
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain)).build();
@@ -83,14 +75,49 @@ public class OptionControllerTest {
 	
 	@Test
 	public void testValidForm() throws Exception{
-		
-	
 
 		mockMvc.perform(get("/options").with(user("studentForTest")))
 										.andExpect(model().attributeHasNoErrors("optionForm"));
 						
 	}
 	
+	@Test
+	public void testSavingChanges() throws Exception{
+		//let's change the email of our student:
+
+		String differentEmail = "totallydifferent@email.com";
+		mockMvc.perform(post("/optionsSaved").with(user("studentForTest"))
+										.param("firstName", student.getFirstName())
+										.param("lastName", student.getFirstName())
+										.param("username", student.getUsername())
+										.param("password", "")
+										.param("email", differentEmail)
+										.param("isTutor", "false"));
+		
+		assertEquals(differentEmail, student.getEmail());
+						
+	}
+	
+	
+	
+	
+	private Student initStudent(){
+		student = new Student();
+		student.setFirstName("first");
+		student.setLastName("last");
+		student.setUsername("studentForTest");
+		student.setPassword("1234");
+		student.setEmail("st@test.com");
+		student.setIsTutor(false);
+
+		student.setId((long) -1);
+
+		student = studentDao.save(this.student);
+		
+		return student;
+		
+		
+	}
 	
 	
 
