@@ -51,10 +51,8 @@ import ch.unibe.ese.model.dao.UniversityDao;
 @TransactionConfiguration(defaultRollback = true)
 public class AddLectureControllerTest {
 
-	@Autowired
-	private WebApplicationContext wac;
-	@Autowired
-	private FilterChainProxy springSecurityFilterChain;
+	@Autowired private WebApplicationContext wac;
+	@Autowired private FilterChainProxy springSecurityFilterChain;
 	
 	@Autowired StudentDao studentDao;
 	@Autowired UniversityDao universityDao;
