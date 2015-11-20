@@ -14,16 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.RefinedSearchForm;
+import ch.unibe.ese.controller.service.DataService;
+import ch.unibe.ese.controller.service.LectureSearchService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.Subject;
 import ch.unibe.ese.model.University;
-import ch.unibe.ese.model.dao.LectureDao;
-import ch.unibe.ese.model.dao.NotificationDao;
-import ch.unibe.ese.model.dao.StudentDao;
-import ch.unibe.ese.model.dao.SubjectDao;
-import ch.unibe.ese.model.dao.UniversityDao;
+
 
 /**
  * This is for the basic search. Before a user gets to the refined search,
@@ -38,19 +37,14 @@ import ch.unibe.ese.model.dao.UniversityDao;
 public class SearchController {
 	
 	@Autowired
-	StudentDao studentDao;
+	DataService dataService;
+	
+	@Autowired 
+	LectureSearchService lectureSearchService;
+
 	
 	@Autowired
-	LectureDao lectureDao;
-	
-	@Autowired
-	UniversityDao universityDao;
-	
-	@Autowired
-	SubjectDao subjectDao;
-	
-	@Autowired
-	NotificationDao notificationDao;
+	StudentSearchService studentSearchService;
 	
 	private Student tempTutor;
 	private String tempLectureName;
@@ -61,15 +55,8 @@ public class SearchController {
 	 * @return List with all Lecures included
 	 */
 	@ModelAttribute("lectures")
-	public List<Lecture> allLectures(){
-		List<Lecture> allLectures = new LinkedList<Lecture>();
-		Iterable<Lecture> lectures = lectureDao.findAll();
-		
-		for (Lecture lecture : lectures) {
-			allLectures.add(lecture);
-		}
-		
-		return allLectures;
+	public List<Lecture> allLectures(){		
+		return lectureSearchService.getAllLectures();
 	}
 	
 	/**
@@ -79,14 +66,7 @@ public class SearchController {
 	 */
 	@ModelAttribute("universities")
 	public List<University> allUniversities(){
-		List<University> allUniversities = new LinkedList<University>();
-		Iterable<University> universities = universityDao.findAll();
-		
-		for (University university : universities) {
-			allUniversities.add(university);
-		}
-		
-		return allUniversities;
+		return dataService.getAllUniversities();
 	}
 	
 	/**
@@ -96,14 +76,7 @@ public class SearchController {
 	 */
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects(){
-		List<Subject> allSubjects = new LinkedList<Subject>();
-		Iterable<Subject> subjects = subjectDao.findAll();
-		
-		for (Subject subject : subjects) {
-			allSubjects.add(subject);
-		}
-		
-		return allSubjects;
+		return dataService.getAllSubjects();
 	}	
 	
 	/**
@@ -124,12 +97,11 @@ public class SearchController {
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
     public ModelAndView basicSearch(@RequestParam("q") String term) {
     	ModelAndView model;
-    	Iterable<Lecture> lecturesTemp = lectureDao.findByName(term);
-    	tempLectureName = term;
+    	Iterable<Lecture> lecturesTemp = lectureSearchService.findLecturesByName(term);
 		List<Student> tutors = new LinkedList<Student>();
 		List<Lecture> lectures = new LinkedList<Lecture>();
 		for(Lecture temp : lecturesTemp){
-			tutors.add(studentDao.findOne(temp.getTutor().getId()));
+			tutors.add(studentSearchService.findTutorById(temp.getTutor().getId()));
 			lectures.add(temp);
 		}
 		model = new ModelAndView("searchResult");
@@ -148,9 +120,9 @@ public class SearchController {
     	ModelAndView model;
         try {
         	model = new ModelAndView("hiddenProfile");
-        	model.addObject("lectures", studentDao.findOne(id).getLectures().toArray());
-        	model.addObject("timelapses", studentDao.findOne(id).getTimelapses().toArray());
-        	tempTutor = studentDao.findOne(id);
+        	model.addObject("lectures", studentSearchService.findTutorById(id).getLectures().toArray());
+        	model.addObject("timelapses", studentSearchService.findTutorById(id).getTimelapses().toArray());
+        	tempTutor = studentSearchService.findTutorById(id);
         	model.addObject("student",tempTutor);
         	
 
@@ -165,10 +137,10 @@ public class SearchController {
 	 public ModelAndView contact(Principal principal) {
     	try
     	{
-    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentDao.findByUsername(principal.getName()).getId(),tempLectureName, tempTutor.getId());
+    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(),tempLectureName, tempTutor.getId());
     	tempTutor.addNotification(notification);
-    	notification = notificationDao.save(notification);
-    	tempTutor = studentDao.save(tempTutor);
+    	notification = dataService.saveNotification(notification);
+    	tempTutor = studentSearchService.saveStudentIntoDB(tempTutor);
     	ModelAndView model = new ModelAndView("/show");
     	model.addObject("text","Notification was sent!");
     	return model;

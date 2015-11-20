@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.service.SignUpService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.StudentDao;
 
 /**
  * Handles the user's request to see his personal profile. It shows his
@@ -26,14 +26,14 @@ public class ProfileController {
     SignUpService signUpService;
     
 	@Autowired
-	StudentDao studentDao;
+	StudentSearchService studentSearchService;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile(@RequestParam("userId") long id) {
     	ModelAndView model;
         try {
         	model = new ModelAndView("profile");
-        	Student student = studentDao.findOne(id);
+        	Student student = studentSearchService.findTutorById(id);
       
         	model.addObject("student",student);
         	

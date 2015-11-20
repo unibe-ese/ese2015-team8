@@ -14,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese.controller.exceptions.InvalidDataException;
 import ch.unibe.ese.controller.pojos.CommentForm;
 import ch.unibe.ese.controller.service.CommentService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.StudentDao;
 
 /**
  * Tutors can be rated by all Students they have given lessons to. 
@@ -26,12 +26,13 @@ import ch.unibe.ese.model.dao.StudentDao;
  */
 @Controller
 public class RatingController {
+
 	
-	@Autowired StudentDao studentDao;
+	@Autowired StudentSearchService studentSearchService;
 	
 	@Autowired CommentService commentService;
 	
-	private Student acctualTutor;
+	private Student actualTutor;
 	
 	/**
 	 * form to rate Tutor
@@ -40,10 +41,10 @@ public class RatingController {
 	 */
 	@RequestMapping(value="/rateTutor", method = RequestMethod.GET)
 	public ModelAndView rateTutor(@RequestParam("tutorId") long id) {
-		acctualTutor = studentDao.findOne(id);
+		actualTutor = studentSearchService.findTutorById(id);
 		ModelAndView model = new ModelAndView("rateTutor");
 		model.addObject("commentForm",new CommentForm());
-		model.addObject("tutor",acctualTutor);
+		model.addObject("tutor",actualTutor);
 		return model;
 	}
 	
@@ -58,8 +59,8 @@ public class RatingController {
 	public ModelAndView saveTutorRating(@Valid CommentForm commentForm, BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model;
 		try{
-			acctualTutor.addComment(commentService.getFrom(commentForm));
-			acctualTutor = studentDao.save(acctualTutor);
+			actualTutor.addComment(commentService.getFrom(commentForm));
+			actualTutor = studentSearchService.saveStudentIntoDB(actualTutor);
 			model = new ModelAndView("/show");
 			model.addObject("text","Comment Added Sucessfully!");
 		}catch(InvalidDataException e){

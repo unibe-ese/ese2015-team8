@@ -1,7 +1,6 @@
 package ch.unibe.ese.controller;
 
 import java.security.Principal;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,14 +19,13 @@ import ch.unibe.ese.controller.exceptions.InvalidGradeException;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.controller.service.AddLectureService;
+import ch.unibe.ese.controller.service.DataService;
+import ch.unibe.ese.controller.service.LectureSearchService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Subject;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.University;
-import ch.unibe.ese.model.dao.LectureDao;
-import ch.unibe.ese.model.dao.StudentDao;
-import ch.unibe.ese.model.dao.SubjectDao;
-import ch.unibe.ese.model.dao.UniversityDao;
 
 /**
  * 
@@ -47,16 +45,13 @@ public class AddLectureController {
 	AddLectureService addLectureService;
 
 	@Autowired
-	StudentDao studentDao;
+	DataService dataService;
+	
+	@Autowired
+	LectureSearchService lectureSearchService;
 
 	@Autowired
-	LectureDao lectureDao;
-
-	@Autowired
-	UniversityDao universityDao;
-
-	@Autowired
-	SubjectDao subjectDao;
+	StudentSearchService studentSearchService;
 
 	/**
 	 * This method reads all lectures from the database, saves them 
@@ -64,15 +59,8 @@ public class AddLectureController {
 	 * @return List with all lectures included
 	 */
 	@ModelAttribute("lectures")
-	public List<Lecture> allLectures() {
-		List<Lecture> allLectures = new LinkedList<Lecture>();
-		Iterable<Lecture> lectures = lectureDao.findAll();
-
-		for (Lecture lecture : lectures) {
-			allLectures.add(lecture);
-		}
-
-		return allLectures;
+	public List<Lecture> allLectures(){		
+		return lectureSearchService.getAllLectures();
 	}
 
 	/**
@@ -83,32 +71,14 @@ public class AddLectureController {
 	 */
 	@ModelAttribute("universities")
 	public List<University> allUniversities() {
-		if (universityDao.findOne((long) 1) == null)
-			initializeUniversities();
-		List<University> allUniversities = new LinkedList<University>();
-		Iterable<University> universities = universityDao.findAll();
-
-		for (University university : universities) {
-			allUniversities.add(university);
+		if (dataService.universitiesAreEmpty()){
+			dataService.initializeUniversities();
 		}
+		
+		return dataService.getAllUniversities();
 
-		return allUniversities;
 	}
 
-	/**
-	 * creates default Universities
-	 */
-	private void initializeUniversities() {
-		University temp = new University();
-		temp.setName("UNIBE");
-		universityDao.save(temp);
-		temp = new University();
-		temp.setName("ETHZ");
-		universityDao.save(temp);
-		temp = new University();
-		temp.setName("EPFL");
-		universityDao.save(temp);
-	}
 
 	/**
 	 * This method reads all Subjects from the database, saves them 
@@ -118,35 +88,13 @@ public class AddLectureController {
 	 */
 	@ModelAttribute("subjects")
 	public List<Subject> allSubjects() {
-		if (subjectDao.findOne((long) 1) == null)
-			initializeSubjects();
-		List<Subject> allSubjects = new LinkedList<Subject>();
-		Iterable<Subject> subjects = subjectDao.findAll();
-
-		for (Subject subject : subjects) {
-			allSubjects.add(subject);
+		if (dataService.subjectsAreEmpty()){
+			dataService.initializeSubjects();
 		}
-
-		return allSubjects;
+		
+		return dataService.getAllSubjects();
 	}
 
-	/**
-	 * creates default Subjects
-	 */
-	private void initializeSubjects() {
-		Subject temp = new Subject();
-		temp.setLevel("Bachelor");
-		temp.setName("Computer Science");
-		subjectDao.save(temp);
-		temp = new Subject();
-		temp.setLevel("Bachelor");
-		temp.setName("Mathematics");
-		subjectDao.save(temp);
-		temp = new Subject();
-		temp.setLevel("Bachelor");
-		temp.setName("Physics");
-		subjectDao.save(temp);
-	}
 
 	/**
 	 * This method handles the request to access the addLecture page. 
@@ -177,7 +125,7 @@ public class AddLectureController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				Student loggedInTutor = studentDao.findByUsername(principal.getName());
+				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				addLectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;

@@ -20,8 +20,8 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.OptionForm;
 import ch.unibe.ese.controller.service.OptionService;
 import ch.unibe.ese.controller.service.SignUpService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
@@ -44,8 +44,9 @@ public class OptionController {
 	@Autowired
 	CustomUserDetailsService userDetailsService;
 	
+	
 	@Autowired
-	StudentDao studentDao;
+	StudentSearchService studentSearchService;
 	
 	/**
 	 * loads option form for given user
@@ -56,7 +57,7 @@ public class OptionController {
 	public ModelAndView notifications(Principal principal) {
 		ModelAndView model= new ModelAndView("options");
 		try{
-			model.addObject("student", studentDao.findByUsername(principal.getName()));
+			model.addObject("student", studentSearchService.getStudentByUsername(principal.getName()));
 			model.addObject("optionForm",optionService.getFrom(principal.getName()));
 		}catch(NullPointerException e){
 			model = new ModelAndView("redirect:/");
@@ -77,7 +78,7 @@ public class OptionController {
 	public ModelAndView redirect(@Valid OptionForm optionForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
-		Student student = studentDao.findByUsername(principal.getName());
+		Student student = studentSearchService.getStudentByUsername(principal.getName());
 		
 		if (!result.hasErrors()) {
 			try {

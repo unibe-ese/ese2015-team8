@@ -15,9 +15,10 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.TimelapsForm;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.controller.service.TimelapsService;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.StudentDao;
+
 
 /**
  * A Tutor is able to specify when he has time to tutor. This Controller 
@@ -31,7 +32,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 public class TimelapsController {
 	
 	@Autowired TimelapsService timelapsService;
-	@Autowired StudentDao studentDao;
+	@Autowired StudentSearchService studentSearchService;
 	
 	/**
 	 * loads form to specify time
@@ -57,7 +58,7 @@ public class TimelapsController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				Student loggedInTutor = studentDao.findByUsername(principal.getName());
+				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				timelapsService.saveFrom(timelapsForm, loggedInTutor);
 				
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());

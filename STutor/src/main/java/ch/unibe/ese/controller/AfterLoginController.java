@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.controller.service.DataService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.StudentDao;
 
 /**
  * 
@@ -31,7 +32,10 @@ public class AfterLoginController {
 
 
 	@Autowired
-	StudentDao studentdao;
+	DataService dataService;
+	
+	@Autowired
+	StudentSearchService studentSearchService;
 
 	/**
 	 *
@@ -54,7 +58,7 @@ public class AfterLoginController {
 		Collection<? extends GrantedAuthority> list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
 		// we get the student through the dao
-		Student loggedInStudent = studentdao.findByUsername(username);
+		Student loggedInStudent = studentSearchService.getStudentByUsername(username);
 
 		GrantedAuthority authority = list.iterator().next();
 		
