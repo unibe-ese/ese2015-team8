@@ -10,10 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.admin.AdminData;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.NotificationDao;
-import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.factory.NotificationFactory;
 
 /**
@@ -35,7 +35,7 @@ public class NotificationController {
 	NotificationDao notificationDao;
 	
 	@Autowired
-	StudentDao studentDao;
+	StudentSearchService studentSearchService;
 	
 	private Student acctualStudent;
 	private Notification acctualNotification;
@@ -48,7 +48,7 @@ public class NotificationController {
 	@RequestMapping("/notifications")
 	public ModelAndView notifications(Principal principal, @RequestParam("userId") long id) {
 		
-		Student visitor = studentDao.findByUsername(principal.getName());
+		Student visitor = studentSearchService.getStudentByUsername(principal.getName());
 		
 		//not allowed to see other tutor's notifications!
 		if(!visitor.getId().equals(id)){
@@ -57,7 +57,7 @@ public class NotificationController {
 		
 		
 		ModelAndView model= new ModelAndView("notifications");
-		acctualStudent = studentDao.findOne(id);
+		acctualStudent = studentSearchService.findTutorById(id);
 		model.addObject("notificationList", notificationDao.getByToStudentId(acctualStudent.getId()));
 		return model;
 	}
@@ -71,7 +71,7 @@ public class NotificationController {
         	acctualNotification = notificationDao.save(acctualNotification);
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
-        	model.addObject("tutor",studentDao.findOne(acctualNotification.getFromStudentId()));
+        	model.addObject("tutor",studentSearchService.findTutorById(acctualNotification.getFromStudentId()));
 
         	
         } catch (InvalidUserException e) {
@@ -102,13 +102,13 @@ public class NotificationController {
 	public ModelAndView paymentDone() {
 		
 		acctualNotification.setStatus("_/");
-		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
+		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
-		temp = studentDao.save(temp);
+		temp = studentSearchService.saveStudentIntoDB(temp);
 		acctualNotification = notificationDao.save(acctualNotification);
 		
-		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentDao.findOne(acctualNotification.getFromStudentId()), acctualStudent.getId()));
-		acctualStudent = studentDao.save(acctualStudent);
+		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));
+		acctualStudent = studentSearchService.saveStudentIntoDB(acctualStudent);
 		
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Payment Done!");
@@ -122,9 +122,9 @@ public class NotificationController {
 	@RequestMapping("/notificationDecline")
 	public ModelAndView notificationDecline() {
 		acctualNotification.setStatus("x");
-		Student temp = studentDao.findOne(acctualNotification.getFromStudentId());
+		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getDeclineNotification(acctualStudent, acctualNotification.getFromStudentId()));
-		temp = studentDao.save(temp);
+		temp = studentSearchService.saveStudentIntoDB(temp);
 		acctualNotification = notificationDao.save(acctualNotification);
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Request Declined!");
