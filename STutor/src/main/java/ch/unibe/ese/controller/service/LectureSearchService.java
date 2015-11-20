@@ -8,6 +8,8 @@ public interface LectureSearchService {
 
 	public List<Lecture> getAllLectures();
 	
+	public Lecture findById(long id);
+	
 	public Iterable<Lecture> findLecturesByName(String searchTerm);
 	
 	public Iterable<Lecture> findByNameAndGradeGreaterThan(String lectureName, double grade);

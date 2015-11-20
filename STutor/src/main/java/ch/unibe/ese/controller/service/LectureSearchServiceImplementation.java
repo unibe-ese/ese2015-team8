@@ -60,4 +60,10 @@ public class LectureSearchServiceImplementation implements LectureSearchService 
 	}
 
 
+	public Lecture findById(long id) {
+		Lecture lecture = lectureDao.findOne(id);
+		return lecture;
+	}
+
+
 }

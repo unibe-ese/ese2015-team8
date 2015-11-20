@@ -15,16 +15,17 @@ import javax.validation.constraints.Pattern;
  * @since 28.10.2015
  */
 public class LectureForm {
+	
 
 	@Pattern(regexp = ".+", message = "Name can't be empty")
 	private String name;
 	private Long subject;
 	private Long university;
-	
+		
 	@Min(1)
 	@Max(6)
 	private double grade;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -57,4 +58,5 @@ public class LectureForm {
 		this.grade = grade;
 	}
 
+	
 }

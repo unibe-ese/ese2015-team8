@@ -31,6 +31,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 				<c:forEach items="${lectures}" var="lecture">
 					<div id="table">
 						<label><c:out value="${lecture}" /></label>
+						<a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
 					</div>
 				</c:forEach>
 			</div>

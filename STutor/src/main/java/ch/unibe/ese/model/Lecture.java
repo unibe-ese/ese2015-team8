@@ -46,7 +46,7 @@ public class Lecture {
 	@ManyToOne
 	private Student tutor;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(long id) {

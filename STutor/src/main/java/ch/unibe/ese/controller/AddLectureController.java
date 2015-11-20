@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -20,6 +21,7 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.controller.service.AddLectureService;
 import ch.unibe.ese.controller.service.DataService;
+import ch.unibe.ese.controller.service.EditLectureService;
 import ch.unibe.ese.controller.service.LectureSearchService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
@@ -45,6 +47,9 @@ public class AddLectureController {
 	AddLectureService addLectureService;
 
 	@Autowired
+	EditLectureService editLectureService;
+	
+	@Autowired
 	DataService dataService;
 	
 	@Autowired
@@ -52,6 +57,8 @@ public class AddLectureController {
 
 	@Autowired
 	StudentSearchService studentSearchService;
+
+	private long lectureId;
 
 	/**
 	 * This method reads all lectures from the database, saves them 
@@ -148,4 +155,65 @@ public class AddLectureController {
 
 		return model;
 	}
+
+
+
+
+	@RequestMapping(value = "/editLecture", method = RequestMethod.GET)
+	public ModelAndView editLecture(@RequestParam("id") long lectureId, Principal principal) {
+		
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
+		Lecture chosenLecture = lectureSearchService.findById(lectureId);
+		ModelAndView model;
+		
+		if(!chosenLecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
+			model = new ModelAndView("accessDenied");
+		}
+		
+		else{
+		model = new ModelAndView("editLecture");
+		this.lectureId = lectureId;
+		LectureForm editForm = new LectureForm();
+		editForm.setName(chosenLecture.getName());
+		editForm.setSubject(chosenLecture.getSubject().getId());
+		editForm.setUniversity(chosenLecture.getUniversity().getId());
+		editForm.setGrade(chosenLecture.getGrade());
+		
+		model.addObject("lectureForm", editForm);
+		}
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/editedLecture", method = RequestMethod.POST)
+	public ModelAndView editedLecture(@Valid LectureForm lectureForm, BindingResult result,
+			RedirectAttributes redirectAttributes, Principal principal) {
+		ModelAndView model;
+		if (!result.hasErrors()) {
+			try {
+				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
+				editLectureService.editFrom(lectureForm, lectureId);
+				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
+				return model;
+
+			} catch (InvalidUserException e) {
+				model = new ModelAndView("editLecture");
+				model.addObject("page_error", e.getMessage());
+			}
+		
+			catch (InvalidGradeException exc) {
+				model = new ModelAndView("editLecture");
+				model.addObject("page_error", exc.getMessage());
+			}
+		}
+		
+
+		else {
+			model = new ModelAndView("editLecture");
+		}
+
+		return model;
+	}
+
+
 }
