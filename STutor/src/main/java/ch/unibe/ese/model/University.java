@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
- * @see ch.unibe.ese.controller.AddLectureController
+ * @see ch.unibe.ese.controller.LectureController
  * @see ch.unibe.ese.controller.service.CommentServiceImplementation
  * @see ch.unibe.ese.model.dao.UniversityDao
  */

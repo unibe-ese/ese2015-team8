@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import ch.unibe.ese.controller.exceptions.InvalidDataException;
 import ch.unibe.ese.controller.exceptions.InvalidGradeException;
 import ch.unibe.ese.controller.pojos.LectureForm;
-import ch.unibe.ese.controller.service.AddLectureService;
+import ch.unibe.ese.controller.service.LectureService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.Subject;
@@ -24,17 +24,17 @@ import ch.unibe.ese.model.dao.UniversityDao;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.mockito.Mockito.*;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.mockito.AdditionalAnswers.*;
 
 // 100% Coverage
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
-public class AddLectureServiceTest {
+public class LectureServiceTest {
 	
-	@Autowired private AddLectureService addLectureService;
+	@Autowired private LectureService lectureService;
 	@Autowired private StudentDao studentDao;
 	@Autowired private LectureDao lectureDao;
 	@Autowired private UniversityDao universityDao;
@@ -65,7 +65,7 @@ public class AddLectureServiceTest {
 		loggedInTutor = new Student();
 		loggedInTutor.setIsTutor(true);
 
-		List<Lecture> lectures = new LinkedList<Lecture>();
+		Set<Lecture> lectures = new HashSet<Lecture>();
 		loggedInTutor.setLectures(lectures);
 	}
 
@@ -89,11 +89,11 @@ public class AddLectureServiceTest {
 
 		
 
-		Lecture	addedLecture = addLectureService.saveFrom(lectureForm, loggedInTutor);
+		Lecture	addedLecture = lectureService.saveFrom(lectureForm, loggedInTutor);
 	
 
 		assertEquals("Introduction to Testing", addedLecture.getName());
-		assertEquals(loggedInTutor.getLectures().get(0), addedLecture);
+		assertTrue(loggedInTutor.getLectures().contains(addedLecture));
 		assertEquals(loggedInTutor, addedLecture.getTutor());
 		assertEquals(sampleUniversity, addedLecture.getUniversity());
 

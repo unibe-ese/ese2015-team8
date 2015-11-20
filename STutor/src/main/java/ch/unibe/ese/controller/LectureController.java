@@ -19,10 +19,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import ch.unibe.ese.controller.exceptions.InvalidGradeException;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.LectureForm;
-import ch.unibe.ese.controller.service.AddLectureService;
 import ch.unibe.ese.controller.service.DataService;
-import ch.unibe.ese.controller.service.EditLectureService;
 import ch.unibe.ese.controller.service.LectureSearchService;
+import ch.unibe.ese.controller.service.LectureService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Subject;
@@ -41,13 +40,11 @@ import ch.unibe.ese.model.University;
 
  */
 @Controller
-public class AddLectureController {
+public class LectureController {
+
 
 	@Autowired
-	AddLectureService addLectureService;
-
-	@Autowired
-	EditLectureService editLectureService;
+	LectureService lectureService;
 	
 	@Autowired
 	DataService dataService;
@@ -133,7 +130,7 @@ public class AddLectureController {
 		if (!result.hasErrors()) {
 			try {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
-				addLectureService.saveFrom(lectureForm, loggedInTutor);
+				lectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;
 
@@ -192,7 +189,7 @@ public class AddLectureController {
 		if (!result.hasErrors()) {
 			try {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
-				editLectureService.editFrom(lectureForm, lectureId);
+				lectureService.editFrom(lectureForm, lectureId);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;
 
@@ -215,5 +212,43 @@ public class AddLectureController {
 		return model;
 	}
 
+	
+	@RequestMapping(value = "/deleteLecture", method = RequestMethod.GET)
+	public ModelAndView deleteLecture(@RequestParam("id") long lectureId, Principal principal) {
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
+		Lecture lecture = lectureSearchService.findById(lectureId);
+		ModelAndView model;
+		if(!lecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
+			model = new ModelAndView("accessDenied");
+		}
+		else{
+		model = new ModelAndView("deleteLecture");
+		model.addObject("lecture", lecture);
+		}
+		return model;
+	}
+	
+	
+	
+	@RequestMapping(value = "/deletedLecture", method = RequestMethod.GET)
+	public ModelAndView deletedLecture(@RequestParam("id") long lectureId, Principal principal) {
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
+		
+		ModelAndView model;
+		
+		Lecture lecture = lectureSearchService.findById(lectureId);
+
+		if(!lecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
+			model = new ModelAndView("accessDenied");
+		}
+		else{
+		
+		lecture = lectureService.remove(lecture);
+		
+		model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
+		}
+		
+		return model;
+	}
 
 }

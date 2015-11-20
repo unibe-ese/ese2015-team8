@@ -1,7 +1,6 @@
 package ch.unibe.ese.model;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -71,10 +70,11 @@ public class Student{
     
     private String gender;
     
-    @OneToMany
+        
+    @OneToMany(mappedBy="tutor")
     @LazyCollection(LazyCollectionOption.FALSE)
-    @Cascade(CascadeType.ALL)
-	private List<Lecture> lectures;
+    private Set<Lecture> lectures;
+    
     
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -171,11 +171,11 @@ public class Student{
 		this.gender = gender;
 	}
 
-	public List<Lecture> getLectures() {
+	public Set<Lecture> getLectures() {
 		return lectures;
 	}
 	
-	public void setLectures(List<Lecture> lectures) {
+	public void setLectures(Set<Lecture> lectures) {
 		this.lectures = lectures;
 	}
 

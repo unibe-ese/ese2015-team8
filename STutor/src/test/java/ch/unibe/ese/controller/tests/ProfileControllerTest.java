@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 
 import org.junit.Before;
@@ -107,7 +106,7 @@ public class ProfileControllerTest {
 		tutor.setEmail("st@test.com");
 		
 		
-		LinkedList<Lecture> lectures = new LinkedList<Lecture>();
+		Set<Lecture> lectures = new HashSet<Lecture>();
 		tutor.setLectures(lectures);
 		
 		Set<Timelaps> timelapses = new HashSet<Timelaps>();

@@ -19,7 +19,7 @@
 
 	<!-- AUTOWIRE services -->
 	<bean class="ch.unibe.ese.controller.service.SignUpServiceImplementation" />
-	<bean class="ch.unibe.ese.controller.service.AddLectureServiceImplementation" />
+	<bean class="ch.unibe.ese.controller.service.LectureServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.OptionServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.CommentServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.TimelapsServiceImplementation" />

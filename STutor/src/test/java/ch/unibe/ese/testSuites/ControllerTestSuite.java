@@ -8,7 +8,7 @@ import ch.unibe.ese.controller.tests.*;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	AddLectureControllerTest.class,
+	LectureControllerTest.class,
 	AfterLoginControllerTest.class,
 	NotificationControllerTest.class,
 	OptionControllerTest.class,

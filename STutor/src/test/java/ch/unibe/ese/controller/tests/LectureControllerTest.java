@@ -1,6 +1,6 @@
 package ch.unibe.ese.controller.tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
@@ -10,7 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ import ch.unibe.ese.model.dao.UniversityDao;
 									"file:src/main/webapp/WEB-INF/config/springSecurity.xml" })
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
-public class AddLectureControllerTest {
+public class LectureControllerTest {
 
 	@Autowired private WebApplicationContext wac;
 	@Autowired private FilterChainProxy springSecurityFilterChain;
@@ -92,7 +93,7 @@ public class AddLectureControllerTest {
 		Student tutor = new Student();
 		tutor.setUsername("tutorForTest");
 		tutor.setId((long) -1);
-		LinkedList<Lecture> lectures = new LinkedList<Lecture>();
+		Set<Lecture> lectures = new HashSet<Lecture>();
 		tutor.setLectures(lectures);
 		tutor = studentDao.save(tutor);
 		
@@ -107,8 +108,6 @@ public class AddLectureControllerTest {
 		sampleSub.setId((long) -1);
 		sampleSub = subjectDao.save(sampleSub);
 		
-		
-	
 		mockMvc.perform(post("/addedLecture").with(user("tutorForTest"))
 						.param("name", "Introduction to Testing")
 						.param("university", "-1")
@@ -117,7 +116,7 @@ public class AddLectureControllerTest {
 		
 		//assert that lecture was added to our testTutor
 		
-		assertEquals("Introduction to Testing", tutor.getLectures().get(0).getName());
+		assertEquals(1, tutor.getLectures().size());
 		
 	}
 	

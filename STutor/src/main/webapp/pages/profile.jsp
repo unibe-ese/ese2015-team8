@@ -32,6 +32,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 					<div id="table">
 						<label><c:out value="${lecture}" /></label>
 						<a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
+						<a href="http://localhost:8080/Stutor/deleteLecture?id=${lecture.id}">Remove</a>
 					</div>
 				</c:forEach>
 			</div>
