@@ -121,7 +121,7 @@ public class SearchController {
         try {
         	model = new ModelAndView("hiddenProfile");
         	model.addObject("lectures", studentSearchService.findTutorById(id).getLectures().toArray());
-        	model.addObject("timelapses", studentSearchService.findTutorById(id).getTimelapses().toArray());
+        	model.addObject("timelapses", studentSearchService.findTutorById(id).getTimeframes().toArray());
         	tempTutor = studentSearchService.findTutorById(id);
         	model.addObject("student",tempTutor);
         	

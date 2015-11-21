@@ -39,7 +39,7 @@ public class ProfileController {
         	
         	if(student.getIsTutor()){
           	model.addObject("lectures", student.getLectures().toArray());
-        	model.addObject("timelapses", student.getTimelapses().toArray());
+        	model.addObject("timeframes", student.getTimeframes().toArray());
         	}
 
         } catch (InvalidUserException e) {

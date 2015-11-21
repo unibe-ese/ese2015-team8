@@ -8,13 +8,13 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <head>
-	<title>Timelaps</title>
+	<title>Timeframe</title>
 <style>.help-inline{color: #BE1E1E}</style>
 </head>
 <c:import url="template/header.jsp" />
 <h1></h1>
 
-<form:form method="post" modelAttribute="timelapsForm" action="addedTimelaps" id="addTimelapsForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="timeframeForm" action="editedTimeframe" id="editTimeframeForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend></legend>
 		
@@ -50,8 +50,10 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
         </div>
                 
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Add Timelaps</button>
+            <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
         </div>
+        <form:input path="id" id="field-id" type="hidden"/>
+        
     </fieldset>
 </form:form>

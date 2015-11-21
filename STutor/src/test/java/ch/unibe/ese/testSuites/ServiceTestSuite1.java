@@ -12,6 +12,6 @@ import ch.unibe.ese.controller.service.tests.*;
 	LectureServiceTest.class,
 	SignupServiceTest.class,
 	CommentServiceTest.class,
-	TimelapsServiceTest.class
+	TimeframeServiceTest.class
 })
 public class ServiceTestSuite1 {}

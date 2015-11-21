@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Subject;
+import ch.unibe.ese.model.Timeframe;
 import ch.unibe.ese.model.University;
 import ch.unibe.ese.model.dao.NotificationDao;
 import ch.unibe.ese.model.dao.SubjectDao;
+import ch.unibe.ese.model.dao.TimeframeDao;
 import ch.unibe.ese.model.dao.UniversityDao;
 
 @Service("DataService")
@@ -23,6 +25,8 @@ public class DataServiceImplementation implements DataService {
 	SubjectDao subjectDao;
 	@Autowired
 	NotificationDao notificationDao;
+	@Autowired
+	TimeframeDao timeframeDao;
 
 
 	public List<University> getAllUniversities() {
@@ -97,6 +101,7 @@ public class DataServiceImplementation implements DataService {
 		notification = notificationDao.save(notification);
 		return notification;
 	}
+
 
 
 

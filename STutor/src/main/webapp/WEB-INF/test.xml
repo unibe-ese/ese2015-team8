@@ -16,12 +16,15 @@
 	<bean class="org.mockito.Mockito" factory-method="mock">
 		<constructor-arg value="ch.unibe.ese.model.dao.UniversityDao" />
 	</bean>
+	<bean class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="ch.unibe.ese.model.dao.TimeframeDao" />
+	</bean>
 
 	<!-- AUTOWIRE services -->
 	<bean class="ch.unibe.ese.controller.service.SignUpServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.LectureServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.OptionServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.CommentServiceImplementation" />
-	<bean class="ch.unibe.ese.controller.service.TimelapsServiceImplementation" />
+	<bean class="ch.unibe.ese.controller.service.TimeframeServiceImplementation" />
 	
 </beans>

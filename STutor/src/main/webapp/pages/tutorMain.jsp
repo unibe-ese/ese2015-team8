@@ -25,6 +25,6 @@ or his notifications and he can add lectures and his scheduals. -->
 	<br><br>
 	<a href="<c:url value="addLecture" />" > Add Lectures</a>
 	<br>
-	<a href="<c:url value="addTimelaps" />" > Add Timelaps</a>
+	<a href="<c:url value="addTimeframe" />" > Add Timeframe</a>
 </body>
 </html>

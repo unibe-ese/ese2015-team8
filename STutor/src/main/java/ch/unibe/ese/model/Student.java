@@ -32,7 +32,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * 		<ul>
  * 		<li>lectures (Set<{@link Lecture}>), the collection of all {@link Lecture}s the Tutor proposes. This collection is not Lazy and Cascades to Student.</li>
  * 		<li>comments (Set<{@link Comment}>), the collection of all {@link Comment}s the Tutor has received. This collection is not Lazy and Cascades to Student.</li>
- * 		<li>timelapses (Set<{@link Timelaps}>), the collection of all {@link Timelaps}s where the Tutor is free. This collection is not Lazy and Cascades to Student.</li>
+ * 		<li>timelapses (Set<{@link Timeframe}>), the collection of all {@link Timeframe}s where the Tutor is free. This collection is not Lazy and Cascades to Student.</li>
  * 		<li>rating (double), a general rating of the Tutor based on the {@link Comment}s he received. The result is rounded to 2 digits after the decimal.</li>
  * 		</ul>
  * </ul>
@@ -84,7 +84,7 @@ public class Student{
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @Cascade(CascadeType.ALL)
-	private Set<Timelaps> timelapses;
+	private Set<Timeframe> timeframes;
            
 	private double rating;
 	//-------------------------------------------------------------------------------------------------
@@ -219,22 +219,22 @@ public class Student{
 		this.rating = rating;
 	}
 	
-	public Set<Timelaps> getTimelapses() {
+	public Set<Timeframe> getTimeframes() {
 //		if(isTutor==false)
 //			throw new NotTutorException("getTimelapses");
-		return timelapses;
+		return timeframes;
 	}
 
-	public void setTimelapses(Set<Timelaps> timelapses) {
+	public void setTimeframes(Set<Timeframe> timeframes) {
 //		if(isTutor==false)
 //			throw new NotTutorException("setTimelapses");
-		this.timelapses = timelapses;
+		this.timeframes = timeframes;
 	}
 	
-	public void addTimelaps(Timelaps timelaps) {
+	public void addTimeframe(Timeframe timeframe) {
 		if(isTutor==false)
-			throw new NotTutorException("addTimelaps");
-		timelapses.add(timelaps);
+			throw new NotTutorException("addTimeframe");
+		timeframes.add(timeframe);
 	}
 	
 	//-----------------------------------------------------------------------------------------------

@@ -10,7 +10,7 @@ import javax.validation.constraints.Min;
  * @version 1.0
  * @since 4.11.2015
  */
-public class TimelapsForm {
+public class TimeframeForm {
 
 	private Long id;
 	

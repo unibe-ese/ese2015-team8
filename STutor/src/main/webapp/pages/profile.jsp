@@ -36,11 +36,13 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 					</div>
 				</c:forEach>
 			</div>
-			<div id="timelapsList">
+			<div id="timeframeList">
 				<h1>Is free during:</h1>
-				<c:forEach items="${timelapses}" var="timelaps">
+				<c:forEach items="${timeframes}" var="timeframe">
 					<div id="table">
-						<label><c:out value="${timelaps}" /></label>
+						<label><c:out value="${timeframe}" /></label>
+						<a href="http://localhost:8080/Stutor/editTimeframe?id=${timeframe.id}">Edit</a>
+						<a href="http://localhost:8080/Stutor/deleteTimeframe?id=${timeframe.id}">Remove</a>
 					</div>
 				</c:forEach>
 			</div>

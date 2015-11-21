@@ -23,7 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.Timelaps;
+import ch.unibe.ese.model.Timeframe;
 import ch.unibe.ese.model.dao.StudentDao;
 
 @SuppressWarnings("deprecation")
@@ -109,8 +109,8 @@ public class ProfileControllerTest {
 		Set<Lecture> lectures = new HashSet<Lecture>();
 		tutor.setLectures(lectures);
 		
-		Set<Timelaps> timelapses = new HashSet<Timelaps>();
-		tutor.setTimelapses(timelapses);
+		Set<Timeframe> timelapses = new HashSet<Timeframe>();
+		tutor.setTimeframes(timelapses);
 		
 		tutor.setIsTutor(true);
 
