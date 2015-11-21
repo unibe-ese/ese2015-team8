@@ -16,6 +16,7 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.RefinedSearchForm;
 import ch.unibe.ese.controller.service.DataService;
 import ch.unibe.ese.controller.service.LectureSearchService;
+import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Notification;
@@ -38,6 +39,8 @@ public class SearchController {
 	
 	@Autowired
 	DataService dataService;
+	@Autowired
+	NotificationService notificationService;
 	
 	@Autowired 
 	LectureSearchService lectureSearchService;
@@ -139,7 +142,7 @@ public class SearchController {
     	{
     	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(),tempLectureName, tempTutor.getId());
     	tempTutor.addNotification(notification);
-    	notification = dataService.saveNotification(notification);
+    	notification = notificationService.saveNotification(notification);
     	tempTutor = studentSearchService.saveStudentIntoDB(tempTutor);
     	ModelAndView model = new ModelAndView("/show");
     	model.addObject("text","Notification was sent!");

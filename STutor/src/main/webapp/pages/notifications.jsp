@@ -36,6 +36,8 @@ That's what this page serves for.-->
 				<li><c:out value="${notification.titel}" /></li>
 				<li><c:out value="${notification.date}" /></li>
 				<li><a href="readNotification?notificationId=<c:out value="${notification.id}"/>">read</a></li>
+								<li><a href="deletedNotification?notificationId=<c:out value="${notification.id}"/>">remove</a></li>
+				
 			</ul>
 			</c:forEach>
 		</div>

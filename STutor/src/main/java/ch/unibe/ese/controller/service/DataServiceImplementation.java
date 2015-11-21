@@ -5,11 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Subject;
-import ch.unibe.ese.model.Timeframe;
 import ch.unibe.ese.model.University;
 import ch.unibe.ese.model.dao.NotificationDao;
 import ch.unibe.ese.model.dao.SubjectDao;
@@ -95,16 +92,5 @@ public class DataServiceImplementation implements DataService {
 		
 		return false;
 	}
-	
-	@Transactional
-	public Notification saveNotification(Notification notification) {
-		notification = notificationDao.save(notification);
-		return notification;
-	}
-
-
-
-
-
 
 }

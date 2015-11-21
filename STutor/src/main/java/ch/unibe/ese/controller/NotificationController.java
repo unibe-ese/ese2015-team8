@@ -5,15 +5,16 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.admin.AdminData;
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
+import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.NotificationDao;
 import ch.unibe.ese.model.factory.NotificationFactory;
 
 /**
@@ -32,7 +33,7 @@ import ch.unibe.ese.model.factory.NotificationFactory;
 public class NotificationController {
 	
 	@Autowired
-	NotificationDao notificationDao;
+	NotificationService notificationService;
 	
 	@Autowired
 	StudentSearchService studentSearchService;
@@ -58,7 +59,7 @@ public class NotificationController {
 		
 		ModelAndView model= new ModelAndView("notifications");
 		acctualStudent = studentSearchService.findTutorById(id);
-		model.addObject("notificationList", notificationDao.getByToStudentId(acctualStudent.getId()));
+		model.addObject("notificationList", notificationService.getNotificationsByStudentId(acctualStudent.getId()));
 		return model;
 	}
 	
@@ -66,9 +67,9 @@ public class NotificationController {
 	public ModelAndView notification(@RequestParam("notificationId") long id) {
 		ModelAndView model;
         try {
-        	acctualNotification = notificationDao.findOne(id);
+        	acctualNotification = notificationService.findById(id);
         	acctualNotification.setStatus("");
-        	acctualNotification = notificationDao.save(acctualNotification);
+        	acctualNotification = notificationService.saveNotification(acctualNotification);
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
         	model.addObject("tutor",studentSearchService.findTutorById(acctualNotification.getFromStudentId()));
@@ -105,7 +106,7 @@ public class NotificationController {
 		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentSearchService.saveStudentIntoDB(temp);
-		acctualNotification = notificationDao.save(acctualNotification);
+		acctualNotification = notificationService.saveNotification(acctualNotification);
 		
 		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));
 		acctualStudent = studentSearchService.saveStudentIntoDB(acctualStudent);
@@ -125,9 +126,30 @@ public class NotificationController {
 		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getDeclineNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentSearchService.saveStudentIntoDB(temp);
-		acctualNotification = notificationDao.save(acctualNotification);
+		acctualNotification = notificationService.saveNotification(acctualNotification);
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Request Declined!");
+		return model;
+	}
+	
+	@RequestMapping(value = "/deletedNotification", method = RequestMethod.GET)
+	public ModelAndView deletedLecture(@RequestParam("notificationId") long notificationId, Principal principal) {
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
+		
+		ModelAndView model;
+		
+		Notification chosenNotification = notificationService.findById(notificationId);
+		
+		if(!loggedInTutor.getNotifications().contains(chosenNotification)){
+			model = new ModelAndView("accessDenied");
+		}
+		else{
+		
+			chosenNotification = notificationService.remove(chosenNotification, loggedInTutor);
+		
+		model = new ModelAndView("redirect:" + "/notifications?userId="+loggedInTutor.getId());
+		}
+		
 		return model;
 	}
 	
