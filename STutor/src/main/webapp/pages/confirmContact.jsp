@@ -11,6 +11,8 @@
 Are you sure you want to contact this Tutor? (temporary jsp..)
 </h3>
 
-<input type="button" onclick="location.href='http://localhost:8080/Stutor/contact';"  value="Yes" >
+<input type="button" onclick="location.href='http://localhost:8080/Stutor/contact';"  value="Confirm" >
+<input type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" value="Cancel" >
+							
 </body>
 </html>
