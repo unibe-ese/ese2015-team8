@@ -71,7 +71,7 @@ email address. You can also change if you're a Tutor or not. -->
     		<form:radiobutton path="gender" value="female" label="Female"/>
     		<a href="<c:url value="addLecture" />" > Add Lectures</a>
     		<br>
-    		<a href="<c:url value="addTimelaps" />" > Add Timelaps</a>
+    		<a href="<c:url value="addTimeframe" />" > Add Timeframe</a>
     		<br>
         </c:if>
         

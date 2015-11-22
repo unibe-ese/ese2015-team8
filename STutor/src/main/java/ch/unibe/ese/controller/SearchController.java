@@ -154,4 +154,21 @@ public class SearchController {
     		return model;
     	}		
 	 }
+    
+    @RequestMapping(value = "/confirmContact", method = RequestMethod.GET)
+	 public ModelAndView confirmContact(Principal principal) {
+    	try
+    	{
+    	ModelAndView model = new ModelAndView("/confirmContact");
+    	model.addObject(principal);
+    	return model;
+    	}
+    	catch(NullPointerException n)
+    	{
+    		ModelAndView model = new ModelAndView("/login");
+    		return model;
+    	}		
+	 }
+    
+	
 }

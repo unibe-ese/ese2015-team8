@@ -41,7 +41,7 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 		</c:when>
 	</c:choose>
 	<br><br>
-	<input type="button" onclick="location.href='http://localhost:8080/Stutor/contact';"  value="contact" >
+	<input type="button" onclick="location.href='http://localhost:8080/Stutor/confirmContact';"  value="contact" >
 	<div>
 		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 	</div>
