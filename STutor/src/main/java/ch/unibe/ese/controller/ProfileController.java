@@ -1,5 +1,7 @@
 package ch.unibe.ese.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,15 @@ public class ProfileController {
 	StudentSearchService studentSearchService;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile(@RequestParam("userId") long id) {
+    public ModelAndView profile(Principal principal, @RequestParam("userId") long id) {
     	ModelAndView model;
         try {
+        	Student visitor = studentSearchService.getStudentByUsername(principal.getName());
+    		
+    		//not allowed to see other user's profile page!
+    		if(!visitor.getId().equals(id)){
+    			return new ModelAndView("accessDenied");
+    		}
         	model = new ModelAndView("profile");
         	Student student = studentSearchService.findTutorById(id);
       
@@ -45,7 +53,10 @@ public class ProfileController {
         } catch (InvalidUserException e) {
         	model = new ModelAndView("index");
         	model.addObject("page_error", e.getMessage());
-        } 	
+        } 	catch (NullPointerException e) {
+        	model = new ModelAndView("index");
+        	model.addObject("page_error", e.getMessage());
+        }
     	return model;
     }
 }
