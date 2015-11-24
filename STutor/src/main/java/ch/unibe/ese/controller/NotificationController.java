@@ -103,7 +103,7 @@ public class NotificationController {
 		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentSearchService.saveStudentIntoDB(temp);
-		notificationService.remove(acctualNotification, studentSearchService.findTutorById(acctualNotification.getToStudentId()));
+		acctualStudent = notificationService.remove(acctualNotification, studentSearchService.findTutorById(acctualNotification.getToStudentId()));
 		
 		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));
 		acctualStudent = studentSearchService.saveStudentIntoDB(acctualStudent);

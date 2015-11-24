@@ -30,8 +30,6 @@ import ch.unibe.ese.model.dao.StudentDao;
  * (containing username, password and authorities).
  * 
  */
-
-
 @Component
 public class CustomUserDetailsService implements UserDetailsService{
 
@@ -63,19 +61,16 @@ public class CustomUserDetailsService implements UserDetailsService{
 	 * @param Student: the student that gets converted to userdetails is missing authorities which he is given to here.
 	 * @return A collection of authorities
 	 */
-	
 	private Collection<? extends GrantedAuthority> getAuthorities(Student student) {
 	
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
 		SimpleGrantedAuthority roles;
 		
 		if(student.getIsTutor()){
-		roles = new SimpleGrantedAuthority("ROLE_TUTOR");}
-		
+			roles = new SimpleGrantedAuthority("ROLE_TUTOR");}
 		else{
 			roles = new SimpleGrantedAuthority("ROLE_STUDENT");
 		}
-		
 		
 		list.add(roles);
 				

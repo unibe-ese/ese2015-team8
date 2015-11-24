@@ -13,5 +13,5 @@ public interface NotificationService {
 
 	public Notification findById(long id);
 
-	public void remove(Notification chosenNotification, Student loggedInTutor);
+	public Student remove(Notification chosenNotification, Student loggedInTutor);
 }

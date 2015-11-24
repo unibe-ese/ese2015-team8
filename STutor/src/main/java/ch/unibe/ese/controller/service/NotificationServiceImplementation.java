@@ -1,6 +1,5 @@
 package ch.unibe.ese.controller.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +34,10 @@ public class NotificationServiceImplementation implements NotificationService{
 	}
 
 	@Transactional
-	public void remove(Notification chosenNotification, Student loggedInTutor) {
-		LinkedList<Notification> before = new LinkedList<Notification>(loggedInTutor.getNotifications());
+	public Student remove(Notification chosenNotification, Student loggedInTutor) {
 		loggedInTutor.getNotifications().remove(chosenNotification);
 		loggedInTutor = studentDao.save(loggedInTutor);
 		notificationDao.delete(chosenNotification);
-		LinkedList<Notification> after = new LinkedList<Notification>(loggedInTutor.getNotifications());
-		before = before;
+		return loggedInTutor;
 	}
 }
