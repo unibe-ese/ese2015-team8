@@ -75,7 +75,7 @@ public class OptionController {
 	 * @return model with profile page etc.
 	 */
 	@RequestMapping("/optionsSaved")
-	public ModelAndView redirect(@Valid OptionForm optionForm, BindingResult result,
+	public ModelAndView saveOptions(@Valid OptionForm optionForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
 		Student student = studentSearchService.getStudentByUsername(principal.getName());
@@ -93,7 +93,6 @@ public class OptionController {
 							userDetails.getPassword(), userDetails.getAuthorities());
 					SecurityContextHolder.getContext().setAuthentication(auth);	
 				}
-		
 				model = new ModelAndView(new RedirectView("profile"), "userId", student.getId());
 			}catch(InvalidUserException e) {
 				model = new ModelAndView("options");
@@ -101,6 +100,8 @@ public class OptionController {
 			}
 		}else{
 			model = new ModelAndView("options");
+			model.addObject("student", student);
+			model.addObject("optionForm",optionForm);
 		}
 		return model;
 	}

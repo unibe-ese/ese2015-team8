@@ -80,13 +80,9 @@ public class SignUpController {
 						userDetails.getPassword(), userDetails.getAuthorities());
 				SecurityContextHolder.getContext().setAuthentication(auth);
 				model = new ModelAndView("redirect:/afterLogin");
-
-				return model;
-
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("newAccount");
 				model.addObject("page_error", e.getMessage());	
-			
 			} 
 			
 		} else {
