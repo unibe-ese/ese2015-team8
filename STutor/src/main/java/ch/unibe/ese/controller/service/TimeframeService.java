@@ -17,6 +17,6 @@ public interface TimeframeService {
 	
 	public Timeframe findTimeframeById(long timeframeId);
 
-	public Timeframe remove(Timeframe timeframe, Student tutor);
+	public void remove(Timeframe timeframe, Student tutor);
 	
 }

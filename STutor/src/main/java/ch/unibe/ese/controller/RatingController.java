@@ -14,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese.controller.exceptions.InvalidDataException;
 import ch.unibe.ese.controller.pojos.CommentForm;
 import ch.unibe.ese.controller.service.CommentService;
+import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.StudentSearchService;
+import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 
 /**
@@ -29,10 +31,11 @@ public class RatingController {
 
 	
 	@Autowired StudentSearchService studentSearchService;
-	
 	@Autowired CommentService commentService;
+	@Autowired NotificationService notificationService;
 	
 	private Student actualTutor;
+	private Notification actualNotification;
 	
 	/**
 	 * form to rate Tutor
@@ -40,8 +43,9 @@ public class RatingController {
 	 * @return model
 	 */
 	@RequestMapping(value="/rateTutor", method = RequestMethod.GET)
-	public ModelAndView rateTutor(@RequestParam("tutorId") long id) {
-		actualTutor = studentSearchService.findTutorById(id);
+	public ModelAndView rateTutor(@RequestParam("notificationId") long id) {
+		actualNotification = notificationService.findById(id);
+		actualTutor = studentSearchService.findTutorById(actualNotification.getFromStudentId());
 		ModelAndView model = new ModelAndView("rateTutor");
 		model.addObject("commentForm",new CommentForm());
 		model.addObject("tutor",actualTutor);
@@ -61,6 +65,7 @@ public class RatingController {
 		try{
 			actualTutor.addComment(commentService.getFrom(commentForm));
 			actualTutor = studentSearchService.saveStudentIntoDB(actualTutor);
+			notificationService.remove(actualNotification, studentSearchService.findTutorById(actualNotification.getToStudentId()));
 			model = new ModelAndView("/show");
 			model.addObject("text","Comment Added Sucessfully!");
 		}catch(InvalidDataException e){

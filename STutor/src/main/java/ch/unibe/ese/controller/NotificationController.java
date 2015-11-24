@@ -32,11 +32,8 @@ import ch.unibe.ese.model.factory.NotificationFactory;
 @Controller
 public class NotificationController {
 	
-	@Autowired
-	NotificationService notificationService;
-	
-	@Autowired
-	StudentSearchService studentSearchService;
+	@Autowired NotificationService notificationService;
+	@Autowired StudentSearchService studentSearchService;
 	
 	private Student acctualStudent;
 	private Notification acctualNotification;
@@ -106,7 +103,7 @@ public class NotificationController {
 		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentSearchService.saveStudentIntoDB(temp);
-		acctualNotification = notificationService.saveNotification(acctualNotification);
+		notificationService.remove(acctualNotification, studentSearchService.findTutorById(acctualNotification.getToStudentId()));
 		
 		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));
 		acctualStudent = studentSearchService.saveStudentIntoDB(acctualStudent);
@@ -126,7 +123,7 @@ public class NotificationController {
 		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
 		temp.addNotification(NotificationFactory.getDeclineNotification(acctualStudent, acctualNotification.getFromStudentId()));
 		temp = studentSearchService.saveStudentIntoDB(temp);
-		acctualNotification = notificationService.saveNotification(acctualNotification);
+		notificationService.remove(acctualNotification, studentSearchService.findTutorById(acctualNotification.getToStudentId()));
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Request Declined!");
 		return model;
@@ -145,7 +142,7 @@ public class NotificationController {
 		}
 		else{
 		
-			chosenNotification = notificationService.remove(chosenNotification, loggedInTutor);
+			notificationService.remove(chosenNotification, loggedInTutor);
 		
 		model = new ModelAndView("redirect:" + "/notifications?userId="+loggedInTutor.getId());
 		}

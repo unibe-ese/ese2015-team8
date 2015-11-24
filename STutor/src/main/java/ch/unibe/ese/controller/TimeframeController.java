@@ -154,7 +154,7 @@ public class TimeframeController {
 		}
 		else{
 		
-		timeframe = timeframeService.remove(timeframe, loggedInTutor);
+		timeframeService.remove(timeframe, loggedInTutor);
 		
 		model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
 		}

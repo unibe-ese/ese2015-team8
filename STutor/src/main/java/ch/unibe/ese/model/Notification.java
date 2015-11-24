@@ -29,7 +29,6 @@ import javax.persistence.Id;
 @Entity
 public class Notification {
 	
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -84,8 +83,6 @@ public class Notification {
 		this.toStudentId = toStudentId;
 	}
 	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,6 +95,7 @@ public class Notification {
 		result = prime * result + ((toStudentId == null) ? 0 : toStudentId.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

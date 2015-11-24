@@ -24,7 +24,7 @@ public class NotificationFactory {
 	 * @param receverId
 	 * @return the Notification
 	 */
-	public static Notification getContactNotification(Long senderId, String lecture, Long receverId){
+	public static Notification getContactNotification(Long senderId, Long receverId){
 		Notification temp = new Notification();
 		temp.setTitel("Contact Request");
 		temp.setStatus("new");

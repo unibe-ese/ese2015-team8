@@ -37,20 +37,12 @@ import ch.unibe.ese.model.University;
 @Controller
 public class SearchController {
 	
-	@Autowired
-	DataService dataService;
-	@Autowired
-	NotificationService notificationService;
-	
-	@Autowired 
-	LectureSearchService lectureSearchService;
-
-	
-	@Autowired
-	StudentSearchService studentSearchService;
+	@Autowired DataService dataService;
+	@Autowired NotificationService notificationService;
+	@Autowired LectureSearchService lectureSearchService;
+	@Autowired StudentSearchService studentSearchService;
 	
 	private Student tempTutor;
-	private String tempLectureName;
 	
 	/**
 	 * This method reads all Lectures from the database, saves them 
@@ -96,7 +88,6 @@ public class SearchController {
 		return allGender;
 	}	
 	
-    
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
     public ModelAndView basicSearch(@RequestParam("q") String term) {
     	ModelAndView model;
@@ -140,7 +131,7 @@ public class SearchController {
 	 public ModelAndView contact(Principal principal) {
     	try
     	{
-    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(),tempLectureName, tempTutor.getId());
+    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(), tempTutor.getId());
     	tempTutor.addNotification(notification);
     	notification = notificationService.saveNotification(notification);
     	tempTutor = studentSearchService.saveStudentIntoDB(tempTutor);
@@ -168,7 +159,5 @@ public class SearchController {
     		ModelAndView model = new ModelAndView("/login");
     		return model;
     	}		
-	 }
-    
-	
+	 }	
 }

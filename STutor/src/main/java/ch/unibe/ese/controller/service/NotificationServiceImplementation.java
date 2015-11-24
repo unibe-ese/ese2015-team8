@@ -34,15 +34,10 @@ public class NotificationServiceImplementation implements NotificationService{
 	}
 
 	@Transactional
-	public Notification remove(Notification chosenNotification, Student loggedInTutor) {
+	public void remove(Notification chosenNotification, Student loggedInTutor) {
 
 		loggedInTutor.getNotifications().remove(chosenNotification);
-		
 		loggedInTutor = studentDao.save(loggedInTutor);
-		
 		notificationDao.delete(chosenNotification);
-		
-		return null;
 	}
-
 }

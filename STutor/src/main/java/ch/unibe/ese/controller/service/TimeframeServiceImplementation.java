@@ -37,7 +37,6 @@ public class TimeframeServiceImplementation implements TimeframeService {
 		return loggedInTutor;
 	}
 	
-	
 	@Transactional
 	public Timeframe editFrom(TimeframeForm timeframeForm, long timeframeId) {
 
@@ -59,18 +58,10 @@ public class TimeframeServiceImplementation implements TimeframeService {
 	}
 
 	@Transactional
-	public Timeframe remove(Timeframe timeframe, Student tutor) {
+	public void remove(Timeframe timeframe, Student tutor) {
 		
 		tutor.getTimeframes().remove(timeframe);
 		tutor = studentDao.save(tutor);
 		timeframeDao.delete(timeframe);
-		
-		return timeframe;
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }
