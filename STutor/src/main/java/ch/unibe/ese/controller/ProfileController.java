@@ -24,11 +24,8 @@ import ch.unibe.ese.model.Student;
 @Controller
 public class ProfileController {
 
-    @Autowired
-    SignUpService signUpService;
-    
-	@Autowired
-	StudentSearchService studentSearchService;
+    @Autowired SignUpService signUpService;
+	@Autowired StudentSearchService studentSearchService;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile(Principal principal, @RequestParam("userId") long id) {

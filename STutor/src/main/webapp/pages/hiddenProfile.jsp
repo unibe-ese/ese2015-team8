@@ -16,7 +16,7 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 
 	<table>
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
-		<tr><td>Rating: </td><td><c:out value="${student.rating}" /></td></tr>
+		<tr><td>Rating: </td><td><c:out value="${student.rating}" /> <a href="showComments?tutorId='${student.id}'">see</a></td></tr>
 		<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
 	</table>
 	
