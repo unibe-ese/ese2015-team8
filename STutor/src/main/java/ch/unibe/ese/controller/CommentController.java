@@ -28,6 +28,7 @@ public class CommentController {
     	ModelAndView model;
         model = new ModelAndView("showComments");
         model.addObject("comments",studentSearchService.findTutorById(id).getComments());
+        model.addObject("tutorId",id);
         return model;
 	}
 }

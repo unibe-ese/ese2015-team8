@@ -33,7 +33,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 		<tr id="showCommentsTableIndex">
 			<th>Rating</th>
 			<th>Comment</th>
-		</tr>	
+		</tr>
 		<c:forEach var="comment" items="${comments}">
 			<tr>
 				<th id="showCommentsTableContentRating"><c:out value="${comment.rating}" /></th>
@@ -41,6 +41,11 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<br>
+	<div>
+		<a href="http://localhost:8080/Stutor/hiddenProfile?userId=${tutorId}">return</a>
+	</div>
 	
 	<br><br>
 	<div>
