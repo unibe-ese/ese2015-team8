@@ -110,6 +110,7 @@ and what gender he/she should be. -->
 				<li>rating</li>
 				<li>grade</li>
 				<li>wage (Fr./h)</li>
+				<li>University</li>
 				<li>profile</li>
 				
 			</ul>
@@ -119,6 +120,7 @@ and what gender he/she should be. -->
 					<li><c:out value="${tutors[status.index].rating}" /></li>
 					<li><c:out value="${lectures[status.index].grade}" /></li>
 					<li><c:out value="${tutors[status.index].wage}" /></li>
+					<li><c:out value="${lectures[status.index].university}" /></li>
 					<li><a
 						href="hiddenProfile?userId=<c:out value="${tutors[status.index].id}"/>">See
 							Profile</a></li>
