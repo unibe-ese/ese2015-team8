@@ -16,7 +16,9 @@ public class RefinedSearchForm {
 	
 	private String gender;
 	
-	private float minGrade;
+	private double minGrade;
+	
+	private String sortBy;
 	
 	public String getName() {
 		return name;
@@ -44,11 +46,18 @@ public class RefinedSearchForm {
 		this.gender = gender;
 	}
 	
-	public float getMinGrade(){
+	public double getMinGrade(){
 		return minGrade;
 	}
 	
-	public void setMinGrade(float minGrade){
+	public void setMinGrade(double minGrade){
 		this.minGrade = minGrade;
+	}
+	
+	public String getSortBy() {
+		return sortBy;
+	}
+	public void setSortBy(String sortBy) {
+		this.sortBy = sortBy;
 	}
 }

@@ -20,7 +20,6 @@ import ch.unibe.ese.controller.service.DataService;
 import ch.unibe.ese.controller.service.LectureSearchService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Lecture;
-import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.Subject;
 import ch.unibe.ese.model.University;
 
@@ -113,50 +112,45 @@ public class RefinedSearchController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-
+				
+				String sortBy = refSearchForm.getSortBy();
+				String lectureName = refSearchForm.getName();
+				Double minGrade = refSearchForm.getMinGrade();
 				Iterable<Lecture> lecturesTemp = null;
 
 				// ids with -1 as value represent nonexistent values, so it's
 				// like "doesn't matter" which subject/uni etc.
 
 				if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
-					lecturesTemp = lectureSearchService.findByNameAndGradeGreaterThan(refSearchForm.getName(),
-							(refSearchForm.getMinGrade() - 0.01));
+					lecturesTemp = lectureSearchService.findByNameAndGradeGreaterThan(lectureName,
+							minGrade, sortBy);
 				}
 
 				else if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() != -1)) {
-					lecturesTemp = lectureSearchService.findByNameAndUniversityAndGradeGreaterThan(refSearchForm.getName(),
-							refSearchForm.getUniversity(), (refSearchForm.getMinGrade() - 0.01));
+					lecturesTemp = lectureSearchService.findByNameAndUniversityAndGradeGreaterThan(lectureName,
+							refSearchForm.getUniversity(), minGrade, sortBy);
 				}
 
 				else if ((refSearchForm.getSubject() != -1) && (refSearchForm.getUniversity() == -1)) {
-					lecturesTemp = lectureSearchService.findByNameAndSubjectAndGradeGreaterThan(refSearchForm.getName(),
-							refSearchForm.getSubject(), (refSearchForm.getMinGrade() - 0.01));
+					lecturesTemp = lectureSearchService.findByNameAndSubjectAndGradeGreaterThan(lectureName,
+							refSearchForm.getSubject(), minGrade, sortBy);
 
 				}
 
 				// subject and university given:
 				else {
 					lecturesTemp = lectureSearchService.findByNameAndUniversityAndSubjectAndGradeGreaterThan(
-							refSearchForm.getName(), refSearchForm.getUniversity(), refSearchForm.getSubject(),
-							(refSearchForm.getMinGrade() - 0.01));
+							lectureName, refSearchForm.getUniversity(), refSearchForm.getSubject(),
+							minGrade, sortBy);
 				}
 
-				List<Student> tutors = new LinkedList<Student>();
 				List<Lecture> lectures = new LinkedList<Lecture>();
-
-				for (Lecture temp : lecturesTemp) {
-					Student tempTut = studentSearchService.findTutorById(temp.getTutor().getId());
-
-					if ((refSearchForm.getGender().equals(allGender().get(0)))
-							|| refSearchForm.getGender().equals(tempTut.getGender())) {
-						tutors.add(studentSearchService.findTutorById(temp.getTutor().getId()));
-						lectures.add(temp);
-					}
+				
+				for (Lecture lecture : lecturesTemp) {
+					lectures.add(lecture);
 				}
-				model = new ModelAndView("searchResult");
 
-				model.addObject("tutors", tutors);
+				model = new ModelAndView("searchResult");
 				model.addObject("lectures", lectures);
 
 				RefinedSearchForm refSearchFormNew = new RefinedSearchForm();
@@ -166,6 +160,7 @@ public class RefinedSearchController {
 				refSearchFormNew.setUniversity(refSearchForm.getUniversity());
 				refSearchFormNew.setGender(refSearchForm.getGender());
 				refSearchFormNew.setMinGrade(refSearchForm.getMinGrade());
+				refSearchFormNew.setSortBy(refSearchForm.getSortBy());
 
 				model.addObject("refinedSearchForm", refSearchFormNew);
 

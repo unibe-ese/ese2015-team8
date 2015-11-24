@@ -10,15 +10,14 @@ public interface LectureSearchService {
 	
 	public Lecture findById(long id);
 	
-	public Iterable<Lecture> findLecturesByName(String searchTerm);
+	public List<Lecture> findLecturesByName(String searchTerm);
 	
-	public Iterable<Lecture> findByNameAndGradeGreaterThan(String lectureName, double grade);
+	public List<Lecture> findByNameAndGradeGreaterThan(String lectureName, double grade, String sortBy);
 
-	public Iterable<Lecture> findByNameAndUniversityAndGradeGreaterThan(String lectureName, long universityId, double grade);
+	public List<Lecture> findByNameAndUniversityAndGradeGreaterThan(String lectureName, long universityId, double grade, String sortBy);
 
-	public Iterable<Lecture> findByNameAndSubjectAndGradeGreaterThan(String lectureName, long subjectId, double grade);
+	public List<Lecture> findByNameAndSubjectAndGradeGreaterThan(String lectureName, long subjectId, double grade, String sortBy);
 
-	public Iterable<Lecture> findByNameAndUniversityAndSubjectAndGradeGreaterThan(String lectureName,
-			long universityId, long subjectId, double grade);
+	public List<Lecture> findByNameAndUniversityAndSubjectAndGradeGreaterThan(String lectureName,long universityId, long subjectId, double grade, String sortBy);
 
 }

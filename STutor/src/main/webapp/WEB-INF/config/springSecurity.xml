@@ -18,6 +18,8 @@
 		<intercept-url pattern="/afterLogin" access="hasAnyRole('TUTOR', 'STUDENT')" />
 		<intercept-url pattern="/newAccount" access="isAnonymous()" />
 		<intercept-url pattern="/addLecture" access="hasRole('TUTOR')" />
+		<intercept-url pattern="/options" access="hasAnyRole('TUTOR', 'STUDENT')" />
+		<intercept-url pattern="/confirmContact" access="hasAnyRole('TUTOR', 'STUDENT')" />
 		<form-login login-page="/login" authentication-failure-url="/login?error=true"
 			default-target-url="/afterLogin" />
 		<logout invalidate-session="true" logout-success-url="/login"

@@ -80,12 +80,20 @@ and what gender he/she should be. -->
 				grade</label>
 
 			<form:select path="minGrade">
-				<option>0</option>
-				<option>4.0</option>
-				<option>4.5</option>
-				<option>5.0</option>
-				<option>5.5</option>
-				<option>6.0</option>
+				<form:option value="0">0</form:option>
+				<form:option value="4.0">4.0</form:option>
+				<form:option value="4.5">4.5</form:option>
+				<form:option value="5.0">5</form:option>
+				<form:option value="5.5">5.5</form:option>
+				<form:option value="6.0">6.0</form:option>
+			</form:select>
+			
+			<label class="control-label" for="field-minGrade">Sort by: </label>
+			<form:select path="sortBy">
+				<form:option value="name">-</form:option>
+				<form:option value="tutor.rating">Rating</form:option>
+				<form:option value="grade">Grade</form:option>
+				<form:option value="tutor.wage">Fee</form:option>
 			</form:select>
 
 
@@ -116,13 +124,13 @@ and what gender he/she should be. -->
 			</ul>
 			<c:forEach var="loop" items="${lectures}" varStatus="status">
 				<ul>
-					<li><c:out value="${tutors[status.index].username}" /></li>
-					<li><c:out value="${tutors[status.index].rating}" /></li>
+					<li><c:out value="${lectures[status.index].tutor.username}" /></li>
+					<li><c:out value="${lectures[status.index].tutor.rating}" /></li>
 					<li><c:out value="${lectures[status.index].grade}" /></li>
-					<li><c:out value="${tutors[status.index].wage}" /></li>
+					<li><c:out value="${lectures[status.index].tutor.wage}" /></li>
 					<li><c:out value="${lectures[status.index].university}" /></li>
 					<li><a
-						href="hiddenProfile?userId=<c:out value="${tutors[status.index].id}"/>">See
+						href="hiddenProfile?userId=<c:out value="${lectures[status.index].tutor.id}"/>">See
 							Profile</a></li>
 				</ul>
 			</c:forEach>
