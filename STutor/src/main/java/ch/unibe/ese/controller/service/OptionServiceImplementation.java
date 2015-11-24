@@ -32,6 +32,7 @@ public class OptionServiceImplementation implements OptionService {
 		optionForm.setIsTutor(student.getIsTutor());
 		if(student.getIsTutor()){
 			optionForm.setGender(student.getGender());
+			optionForm.setWage(student.getWage());
 		}
 		
 		return optionForm;
@@ -57,7 +58,10 @@ public class OptionServiceImplementation implements OptionService {
         student.setIsTutor(optionForm.getIsTutor());
         
         if(optionForm.getIsTutor())
+        {
 			student.setGender(optionForm.getGender());
+			student.setWage(optionForm.getWage());
+        }
         
         if(hasChangedPassword)
         	student.setPassword(optionForm.getPassword());

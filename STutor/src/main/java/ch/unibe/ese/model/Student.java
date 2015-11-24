@@ -85,7 +85,17 @@ public class Student{
     @LazyCollection(LazyCollectionOption.FALSE)
     @Cascade(CascadeType.ALL)
 	private Set<Timeframe> timeframes;
+    
+    private String wage;
            
+	public String getWage() {
+		return wage;
+	}
+
+	public void setWage(String wage) {
+		this.wage = wage;
+	}
+
 	private double rating;
 	//-------------------------------------------------------------------------------------------------
     

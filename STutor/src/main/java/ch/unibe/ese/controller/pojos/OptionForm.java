@@ -38,6 +38,18 @@ public class OptionForm {
 	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Must be valid email address")
 	private String email;
 
+	@Pattern(regexp = "^[0-9]*?(\\.)?[0-9]{0,2}", message = "Please enter a valid price")
+	private String wage;
+	
+	public String getWage() {
+		return wage;
+	}
+
+	public void setWage(String wage) {
+		
+		this.wage = wage;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

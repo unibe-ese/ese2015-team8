@@ -109,13 +109,16 @@ and what gender he/she should be. -->
 				<li>username</li>
 				<li>rating</li>
 				<li>grade</li>
+				<li>wage (Fr./h)</li>
 				<li>profile</li>
+				
 			</ul>
 			<c:forEach var="loop" items="${lectures}" varStatus="status">
 				<ul>
 					<li><c:out value="${tutors[status.index].username}" /></li>
 					<li><c:out value="${tutors[status.index].rating}" /></li>
 					<li><c:out value="${lectures[status.index].grade}" /></li>
+					<li><c:out value="${tutors[status.index].wage}" /></li>
 					<li><a
 						href="hiddenProfile?userId=<c:out value="${tutors[status.index].id}"/>">See
 							Profile</a></li>

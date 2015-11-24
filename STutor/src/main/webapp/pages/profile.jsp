@@ -20,6 +20,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 		<c:choose>
 			<c:when test="${student.isTutor}">
 				<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
+				<tr><td>Wage: </td><td><c:out value="${student.wage} Fr./h" /></td></tr>
 			</c:when>
 		</c:choose>
 	</table>

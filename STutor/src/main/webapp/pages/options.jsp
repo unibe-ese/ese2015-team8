@@ -13,7 +13,7 @@ email address. You can also change if you're a Tutor or not. -->
 <c:import url="template/header.jsp" />
 <h1>Options</h1>
 
-<form:form method="post" modelAttribute="optionForm" action="optionsSaved" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="optionForm" action="optionsSaved" id="optionsForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Information</legend>
 
@@ -61,6 +61,16 @@ email address. You can also change if you're a Tutor or not. -->
                 <form:errors path="password" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        <c:if test="${student.isTutor}">
+        <c:set var="wageErrors"><form:errors path="wage"/></c:set>
+        	<div class="control-group<c:if test="${not empty wageErrors}"> error</c:if>">
+           		<label class="control-label" for="field-wage">Wage (Fr./h)</label>
+           		<div class="controls">
+               		<form:input type="wage" path="wage" id="field-wage" tabindex="4" maxlength="10"/>
+               		<form:errors path="wage" cssClass="help-inline" element="span"/>
+           		</div>
+       		</div>
+       	</c:if>
         
         <c:set var="isTutorErrors"><form:errors path="isTutor"/></c:set>
     	<form:checkbox path="isTutor" value="true" label="Sign Up as Tutor" />
@@ -69,6 +79,7 @@ email address. You can also change if you're a Tutor or not. -->
         	<c:set var="genderErrors"><form:errors path="gender"/></c:set>
     		<form:radiobutton path="gender" value="male" label="Male"/>
     		<form:radiobutton path="gender" value="female" label="Female"/>
+    		
     		<a href="<c:url value="addLecture" />" > Add Lectures</a>
     		<br>
     		<a href="<c:url value="addTimeframe" />" > Add Timeframe</a>
