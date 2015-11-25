@@ -16,6 +16,44 @@ Security. If you don't have an account yet, you can use the link below to sign u
 </head>
 
 <body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+     <div class="navbar-header">
+      <a class="navbar-brand" href="http://localhost:8080/Stutor/afterLogin">STutor</a>
+    </div>
+ 
+    <div class="collapse navbar-collapse">
+      <form class="navbar-form navbar-left" method="get" action="http://localhost:8080/Stutor/basicSearch" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" placeholder="Search..." name="q" >
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>
+        <li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="jumbotron home home-fullscreen" id="home">
+		<div class="mask"></div>
+		<div class="mask"></div>
+		<div class="container">
+			<div class="header-info">
+				<font color=ececed><h1>Welcome to STutor!</h1></font>
+				<p>STutor helps you to find private tutors and to be sure that tutor is actually good at the subject!<br>
+				Our client reviews mean you can select private tutors who will lift your grade, raise confidence<br>
+				 and help you to discover the joy of learning through their private tuition journey.
+				</p>
+				<a href="#" class="btn btn-primary btn-lg">Get Started</a>
+			</div>
+		</div>
+	</div>
+	
+	
 	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
     	<font color=BE1E1E>
         	Your login attempt was not successful due to 
