@@ -16,7 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.SignupForm;
+import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.SignUpService;
+import ch.unibe.ese.model.Notification;
+import ch.unibe.ese.model.Student;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
@@ -31,11 +34,9 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
 @Controller
 public class SignUpController {
 
-	@Autowired
-	SignUpService signUpService;
-
-	@Autowired
-	CustomUserDetailsService userDetailsService;
+	@Autowired SignUpService signUpService;
+	@Autowired NotificationService notificationService;
+	@Autowired CustomUserDetailsService userDetailsService;
 
 	/**
 	 * redirects to the login page if "/" is the address
@@ -72,7 +73,7 @@ public class SignUpController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				signUpService.saveStudentFrom(signupForm);
+				Student newStudent = signUpService.saveStudentFrom(signupForm);
 
 				UserDetails userDetails = userDetailsService.loadUserByUsername(signupForm.getUsername());
 

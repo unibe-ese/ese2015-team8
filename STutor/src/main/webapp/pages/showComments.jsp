@@ -25,27 +25,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	font-weight: normal;
 }
 </style>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-     <div class="navbar-header">
-      <a class="navbar-brand" href="http://localhost:8080/Stutor/afterLogin">STutor</a>
-    </div>
- 
-    <div class="collapse navbar-collapse">
-      <form class="navbar-form navbar-left" method="get" action="http://localhost:8080/Stutor/basicSearch" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" placeholder="Search..." name="q" >
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>
-        <li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
-        
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+
 <body>
 	<h1>Comments:</h1>
 	

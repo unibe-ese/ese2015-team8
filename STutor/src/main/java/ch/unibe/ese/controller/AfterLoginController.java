@@ -72,7 +72,6 @@ public class AfterLoginController {
 
 			String welcomeText = "Hi " + username + ", welcome to Stutor.";
 
-
 			model.addObject("welcomeMsg", welcomeText);
 
 		} else {

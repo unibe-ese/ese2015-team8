@@ -94,4 +94,17 @@ public class NotificationFactory {
 		temp.setToStudentId(tutorId);
 		return temp;
 	}
+	
+	public static Notification getTutorSignupDetails(Long tutorId) {
+		Notification temp = new Notification();
+		temp.setTitel("Welcome");
+		temp.setStatus("new");
+		temp.setMessage("Welcome to STutor!\n"
+				+ "We recommand you to update your Profile with the follow Informations: gender, wage, free timeframes, lectures you want to teach.\n"
+				+ "These are acessible through the Edit Profile button.");
+		temp.setDate(new Timestamp(new Date().getTime()));
+		temp.setFromStudentId((long)-1);
+		temp.setToStudentId(tutorId);
+		return temp;
+	}
 }
