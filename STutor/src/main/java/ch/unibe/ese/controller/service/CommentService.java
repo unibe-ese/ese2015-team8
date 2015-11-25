@@ -1,7 +1,11 @@
 package ch.unibe.ese.controller.service;
 
+import java.util.LinkedList;
+import java.util.Set;
+
 import ch.unibe.ese.controller.pojos.CommentForm;
 import ch.unibe.ese.model.Comment;
+import ch.unibe.ese.model.Student;
 
 /**
  * 
@@ -12,5 +16,8 @@ import ch.unibe.ese.model.Comment;
 public interface CommentService {
 
 	public Comment getFrom(CommentForm commentForm);
+	public Student findTutorById(Long id);
+	public LinkedList<Comment> sortComments(Set<Comment> comments);
+	public Object sortCommentsDecending(Set<Comment> comments);
 
 }

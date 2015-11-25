@@ -29,6 +29,9 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 <body>
 	<h1>Comments:</h1>
 	
+	<a href="http://localhost:8080/Stutor/showSortedCommentsUp?tutorId=${tutorId}">Sort by lowest</a> -
+	<a href="http://localhost:8080/Stutor/showSortedCommentsDown?tutorId=${tutorId}">Sort by higest</a>
+	
 	<table>
 		<tr id="showCommentsTableIndex">
 			<th>Rating</th>

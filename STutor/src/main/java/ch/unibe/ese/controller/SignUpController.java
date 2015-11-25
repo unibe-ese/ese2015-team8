@@ -18,8 +18,6 @@ import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.SignupForm;
 import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.SignUpService;
-import ch.unibe.ese.model.Notification;
-import ch.unibe.ese.model.Student;
 import ch.unibe.ese.security.service.CustomUserDetailsService;
 
 /**
@@ -73,7 +71,7 @@ public class SignUpController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				Student newStudent = signUpService.saveStudentFrom(signupForm);
+				signUpService.saveStudentFrom(signupForm);
 
 				UserDetails userDetails = userDetailsService.loadUserByUsername(signupForm.getUsername());
 

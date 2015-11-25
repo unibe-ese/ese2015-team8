@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.unibe.ese.controller.service.StudentSearchService;
+import ch.unibe.ese.controller.service.CommentService;
 
 
 /**
@@ -21,13 +21,31 @@ import ch.unibe.ese.controller.service.StudentSearchService;
 @Controller
 public class CommentController {
 	
-	@Autowired StudentSearchService studentSearchService;
+	@Autowired CommentService commentService;
 	
 	@RequestMapping(value = "/showComments", method = RequestMethod.GET)
     public ModelAndView showComments(Principal principal, @RequestParam("tutorId") long id) {
     	ModelAndView model;
         model = new ModelAndView("showComments");
-        model.addObject("comments",studentSearchService.findTutorById(id).getComments());
+        model.addObject("comments",commentService.findTutorById(id).getComments());
+        model.addObject("tutorId",id);
+        return model;
+	}
+	
+	@RequestMapping(value = "/showSortedCommentsUp", method = RequestMethod.GET)
+    public ModelAndView showCommentsSortedByHighestRating(Principal principal, @RequestParam("tutorId") long id) {
+    	ModelAndView model;
+        model = new ModelAndView("showComments");
+        model.addObject("comments",commentService.sortComments(commentService.findTutorById(id).getComments()));
+        model.addObject("tutorId",id);
+        return model;
+	}
+	
+	@RequestMapping(value = "/showSortedCommentsDown", method = RequestMethod.GET)
+    public ModelAndView showCommentsSortedByLowestRating(Principal principal, @RequestParam("tutorId") long id) {
+    	ModelAndView model;
+        model = new ModelAndView("showComments");
+        model.addObject("comments",commentService.sortCommentsDecending(commentService.findTutorById(id).getComments()));
         model.addObject("tutorId",id);
         return model;
 	}
