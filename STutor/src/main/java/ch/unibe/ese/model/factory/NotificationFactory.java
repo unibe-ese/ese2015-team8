@@ -99,9 +99,9 @@ public class NotificationFactory {
 		Notification temp = new Notification();
 		temp.setTitel("Welcome");
 		temp.setStatus("new");
-		temp.setMessage("Welcome to STutor!<br />"
-				+ "We recommand you to update your Profile with the follow Informations: gender, wage, free timeframes, lectures you want to teach.<br />"
-				+ "Else you may not be displayed when Students search with specific Filters.<br />");
+		temp.setMessage("Welcome to STutor!<br>"
+				+ "We recommand you to update your Profile with the follow Informations: gender, wage, free timeframes, lectures you want to teach.<br>"
+				+ "Else you may not be displayed when Students search with specific Filters.");
 		temp.setDate(new Timestamp(new Date().getTime()));
 		temp.setFromStudentId((long)-1);
 		temp.setToStudentId(tutorId);

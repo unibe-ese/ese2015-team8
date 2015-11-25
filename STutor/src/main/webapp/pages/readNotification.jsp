@@ -14,7 +14,7 @@ to rate the Tutor. -->
 <h1> <c:out value="${notification.titel}"/> </h1>
 
 <body>
-	<p><c:out value="${notification.message}" /> </p>
+	<p>${notification.message}</p>
 	<c:choose>
 		<c:when test="${notification.titel == 'Contact Request'}">
 			<a href="http://localhost:8080/Stutor/notificationAccept">Accept</a>
