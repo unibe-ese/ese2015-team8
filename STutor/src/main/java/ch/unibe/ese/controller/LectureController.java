@@ -132,8 +132,6 @@ public class LectureController {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				lectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
-				return model;
-
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("addLecture");
 				model.addObject("page_error", e.getMessage());
