@@ -86,7 +86,7 @@ public class Student{
     @Cascade(CascadeType.ALL)
 	private Set<Timeframe> timeframes;
     
-    private String wage;
+    private String wage = "1000";//set initial value to 1000 Fr
            
 	public String getWage() {
 		return wage;
