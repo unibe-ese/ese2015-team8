@@ -69,10 +69,11 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
                 <form:errors path="toTime" cssClass="help-inline" element="span"/>
             </div>
         </div>
-                
+          <br>       
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-md">Save changes</button>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Cancel</a>
+            
         </div>
         <form:input path="id" id="field-id" type="hidden"/>
         

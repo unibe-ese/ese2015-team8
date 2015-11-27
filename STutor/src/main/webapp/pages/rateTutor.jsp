@@ -39,8 +39,9 @@ is suitable or not. -->
         </div>
                 
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-md">Submit</button>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/Stutor" role="button">Cancel</a>
+            
         </div>
     </fieldset>
 </form:form>

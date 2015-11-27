@@ -67,7 +67,7 @@ Security. If you don't have an account yet, you can use the link below to sign u
 			<input id="password" name="password" size="20" maxlength="50" type="password"/>
 			</p>
 						
-			<p><input type="submit" class="submitButton" value="Login"/></p>
+			<p><button type="submit" class="btn btn-primary btn-md">Log In</button></p>
 			<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
 		</fieldset>
 	</form>

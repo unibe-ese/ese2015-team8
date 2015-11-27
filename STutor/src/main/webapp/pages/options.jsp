@@ -86,8 +86,9 @@ email address. You can also change if you're a Tutor or not. -->
     		<br>
         </c:if>
         
-        <button type="submit" class="btn btn-primary">Confirm</button>
-    	<button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
+         <button type="submit" class="btn btn-primary btn-md">Submit</button>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Cancel</a>
+         
     </fieldset>
     
     <div class="form-actions">

@@ -44,7 +44,8 @@ That's what this page serves for. -->
 	</form>
 	
 	<div class="subButton">
-    	<a href="paymentDone">Pay</a>
+    	
+            <a class="btn btn-default btn-md" href="paymentDone">Pay</a>
 	</div>
 </body>
 <a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>

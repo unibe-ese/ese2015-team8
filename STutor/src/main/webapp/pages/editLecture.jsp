@@ -51,10 +51,11 @@ in the exam. -->
                 <form:errors path="grade" cssClass="help-inline" element="span"/>
             </div>
         </div>
-                
+                <br>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button type="button" onclick="location.href='http://localhost:8080/Stutor/afterLogin';" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-md">Save changes</button>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Cancel</a>
+            
         </div>
         
         

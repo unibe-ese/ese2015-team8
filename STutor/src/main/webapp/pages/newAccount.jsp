@@ -67,8 +67,10 @@
     	<form:checkbox path="isTutor" value="true" label="Sign Up as Tutor" />
         
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Sign up</button>
-            <button type="button" onclick="location.href='http://localhost:8080/Stutor';" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-md">Sign up</button>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/STutor" role="button">Cancel</a>
+  
+            
         </div>
     </fieldset>
 </form:form>

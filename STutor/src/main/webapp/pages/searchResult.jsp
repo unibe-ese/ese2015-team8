@@ -99,7 +99,8 @@ and what gender he/she should be. -->
 
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary">Apply Filter</button>
+			    
+				<button type="submit" class="btn btn-primary btn-md">Apply Filter</button>
 
 			</div>
 
