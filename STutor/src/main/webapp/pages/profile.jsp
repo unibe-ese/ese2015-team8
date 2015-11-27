@@ -21,6 +21,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 			<c:when test="${student.isTutor}">
 				<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
 				<tr><td>Wage: </td><td><c:out value="${student.wage} Fr./h" /></td></tr>
+				<tr><td>Rating: </td><td><c:out value="${student.rating}" /> <a href="showComments?tutorId=${student.id}">see</a></td></tr>
 			</c:when>
 		</c:choose>
 	</table>

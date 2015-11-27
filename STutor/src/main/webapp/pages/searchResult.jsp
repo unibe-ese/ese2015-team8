@@ -93,7 +93,7 @@ and what gender he/she should be. -->
 				<form:option value="name">-</form:option>
 				<form:option value="tutor.rating">Rating</form:option>
 				<form:option value="grade">Grade</form:option>
-				<form:option value="tutor.wage">Fee</form:option>
+				<form:option value="tutor.wage">Wage</form:option>
 			</form:select>
 
 

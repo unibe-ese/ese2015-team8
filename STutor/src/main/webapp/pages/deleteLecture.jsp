@@ -14,5 +14,6 @@ Are you sure you want to delete this lecture? (temporary jsp..)
 ${lecture}
 
 <button type="button" onclick="location.href='/Stutor/deletedLecture?id=${lecture.id}'"> YES </button>
+<button type="button" onclick="location.href='/Stutor/profile?userId=${user.id}'"> Cancel </button>
 </body>
 </html>

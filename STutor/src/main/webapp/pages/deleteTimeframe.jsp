@@ -14,5 +14,6 @@ Are you sure you want to delete this time frame? (temporary jsp..)
 ${timeframe}
 
 <button type="button" onclick="location.href='/Stutor/deletedTimeframe?id=${timeframe.id}'"> YES </button>
+<button type="button" onclick="location.href='/Stutor/profile?userId=${user.id}'"> Cancel </button>
 </body>
 </html>

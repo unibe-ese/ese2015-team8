@@ -222,6 +222,7 @@ public class LectureController {
 		else{
 		model = new ModelAndView("deleteLecture");
 		model.addObject("lecture", lecture);
+		model.addObject("user", loggedInTutor);
 		}
 		return model;
 	}

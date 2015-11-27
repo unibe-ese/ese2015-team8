@@ -135,6 +135,7 @@ public class TimeframeController {
 		else{
 		model = new ModelAndView("deleteTimeframe");
 		model.addObject("timeframe", timeframe);
+		model.addObject("user", loggedInTutor);
 		}
 		return model;
 	}
