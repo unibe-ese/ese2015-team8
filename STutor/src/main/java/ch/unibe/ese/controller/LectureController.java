@@ -209,27 +209,8 @@ public class LectureController {
 
 		return model;
 	}
-
 	
 	@RequestMapping(value = "/deleteLecture", method = RequestMethod.GET)
-	public ModelAndView deleteLecture(@RequestParam("id") long lectureId, Principal principal) {
-		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
-		Lecture lecture = lectureSearchService.findById(lectureId);
-		ModelAndView model;
-		if(!lecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
-			model = new ModelAndView("accessDenied");
-		}
-		else{
-		model = new ModelAndView("deleteLecture");
-		model.addObject("lecture", lecture);
-		model.addObject("user", loggedInTutor);
-		}
-		return model;
-	}
-	
-	
-	
-	@RequestMapping(value = "/deletedLecture", method = RequestMethod.GET)
 	public ModelAndView deletedLecture(@RequestParam("id") long lectureId, Principal principal) {
 		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 		

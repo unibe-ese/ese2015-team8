@@ -69,8 +69,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 						<!-- Popup window for timeframe deletion-->
 							<div id="popUpDivT${timeframe.id}" class="white_content" style="display:none">
 								<h3>Are you sure you want to delete this Timeframe?</h3>
-								 <a class="btn btn-success btn-md" href="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'" role="button">Yes</a>
-								 <button type="button" onclick="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'"> YES </button>
+								<button type="button" onclick="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'"> YES </button>
 								<button type="button" onclick="closePopup('T',${timeframe.id});" >NO</button>
 							</div>
 							<a href="#" onclick="openPopup('T',${timeframe.id});">Remove</a>

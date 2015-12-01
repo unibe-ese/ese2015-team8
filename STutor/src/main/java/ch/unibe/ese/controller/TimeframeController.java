@@ -123,26 +123,7 @@ public class TimeframeController {
 		return model;
 	}
 	
-	
 	@RequestMapping(value = "/deleteTimeframe", method = RequestMethod.GET)
-	public ModelAndView deleteLecture(@RequestParam("id") long timeframeId, Principal principal) {
-		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
-		Timeframe timeframe = timeframeService.findTimeframeById(timeframeId);
-		ModelAndView model;
-		if(!loggedInTutor.getTimeframes().contains(timeframe)){
-			model = new ModelAndView("accessDenied");
-		}
-		else{
-		model = new ModelAndView("deleteTimeframe");
-		model.addObject("timeframe", timeframe);
-		model.addObject("user", loggedInTutor);
-		}
-		return model;
-	}
-	
-	
-	
-	@RequestMapping(value = "/deletedTimeframe", method = RequestMethod.GET)
 	public ModelAndView deletedLecture(@RequestParam("id") long timeframeId, Principal principal) {
 		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 		
