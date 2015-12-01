@@ -9,7 +9,7 @@
 		<meta name="keywords" content="" />
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/style-desktop.css">
+
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon">				
 	</head>
@@ -32,7 +32,7 @@
         <li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
         
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 	

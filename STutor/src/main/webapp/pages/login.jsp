@@ -27,7 +27,7 @@ Security. If you don't have an account yet, you can use the link below to sign u
 				Our client reviews mean you can select private tutors who will lift your grade, raise confidence<br>
 				 and help you to discover the joy of learning through their private tuition journey.
 				</p>
-				<a href="#" class="btn btn-primary btn-lg">Get Started</a>
+				
 			</div>
 		</div>
 	</div>

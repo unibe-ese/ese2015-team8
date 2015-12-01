@@ -12,26 +12,37 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 <c:import url="template/header.jsp" />
 
 <body>
-	<h1>Tutor Profile</h1>
+	<table class="table-nonfluid">
+  <tr>
+    <td><h1>Tutor Profile</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-success btn-lg" href="http://localhost:8080/Stutor/confirmContact" role="button">Contact Tutor</a></td></tr>
+    </table>
 
-	<table>
+	<table class="table table-hover">
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
-		<tr><td>Rating: </td><td><c:out value="${student.rating}" /> <a href="showComments?tutorId=${student.id}">see</a></td></tr>
+		<tr><td>Rating: </td><td><c:out value="${student.rating}" /> </td></tr>
 		<tr><td>Gender: </td><td><c:out value="${student.gender}" /></td></tr>
 		<tr><td>Wage: </td><td><c:out value="${student.wage} Fr./h" /></td></tr>
 	</table>
-	
+	 <c:choose>
+			<c:when test="${student.isTutor}">
+			<a class="btn btn-primary btn-md" href="showComments?tutorId=${student.id}" role="button">See students' comments</a>
+			</c:when>
+		</c:choose>
+	 
 	<c:choose>
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
-				<h1>Gives the following Lecture:</h1>
-				<c:forEach items="${lectures}" var="lecture">
-					<div id="table">
-						<label><c:out value="${lecture}" /></label>
-					</div>
+				<h1>Lecture(s) given:</h1>
+				<table class="table table-hover">
+				 <c:forEach items="${lectures}" var="lecture">
+				        <tr><td><c:out value="${lecture}" /></td>
+						</tr>
 				</c:forEach>
+				</table>
 			</div>
 			<div id="timelapsList">
+				
 				<h1>Is free during:</h1>
 				<c:forEach items="${timelapses}" var="timelaps">
 					<div id="table">
@@ -42,7 +53,7 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 		</c:when>
 	</c:choose>
 	<br><br>
-	<input type="button" onclick="location.href='http://localhost:8080/Stutor/confirmContact';"  value="contact" >
+	
 	<div>
 		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 	</div>
