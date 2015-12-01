@@ -6,7 +6,11 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Profile</title></head>
+<head>
+	<title>Profile</title>
+	<link rel="stylesheet" type="text/css" href="css/popupStyle.css">
+	<script src="js/popup.js"></script>
+</head>
 <c:import url="template/header.jsp" />
 
 <body>
@@ -34,7 +38,14 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 					<div id="table">
 						<label><c:out value="${lecture}" /></label>
 						<a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
-						<a href="http://localhost:8080/Stutor/deleteLecture?id=${lecture.id}">Remove</a>
+						<!-- Popup window for lectures deletion-->
+							<div id="popUpDivL${lecture.id}" class="white_content" style="display:none">
+								<h3>Are you sure you want to delete this Lecture?</h3>
+								<button type="button" onclick="location.href='/Stutor/deleteLecture?id=${lecture.id}'"> YES </button>
+								<button type="button" onclick="closePopup('L',${lecture.id});" >NO</button>
+							</div>
+							<a href="#" onclick="openPopup('L',${lecture.id});">Remove</a>
+						<!-- Popup window end-->
 					</div>
 				</c:forEach>
 			</div>
@@ -44,12 +55,23 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 					<div id="table">
 						<label><c:out value="${timeframe}" /></label>
 						<a href="http://localhost:8080/Stutor/editTimeframe?id=${timeframe.id}">Edit</a>
-						<a href="http://localhost:8080/Stutor/deleteTimeframe?id=${timeframe.id}">Remove</a>
+						<!-- Popup window for timeframe deletion-->
+							<div id="popUpDivT${timeframe.id}" class="white_content" style="display:none">
+								<h3>Are you sure you want to delete this Timeframe?</h3>
+								<button type="button" onclick="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'"> YES </button>
+								<button type="button" onclick="closePopup('T',${timeframe.id});" >NO</button>
+							</div>
+							<a href="#" onclick="openPopup('T',${timeframe.id});">Remove</a>
+						<!-- Popup window end-->
 					</div>
 				</c:forEach>
 			</div>
 		</c:when>
 	</c:choose>
+	
+	<!-- Fade background when popup -->
+	<div id="fade" class="black_overlay" style="display:none"></div>
+	
 	<a href="http://localhost:8080/Stutor/options">Edit Profile Information</a>
 	<br><br>
 	<div>

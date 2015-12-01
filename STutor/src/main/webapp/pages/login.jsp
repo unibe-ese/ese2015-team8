@@ -74,15 +74,3 @@ Security. If you don't have an account yet, you can use the link below to sign u
 	<p class="message">${message}</p>
 </body>
 </html>
-
-
-
-
-
-<%-- 	<c:if test="${page_error != null }">
-        <div class="alert alert-error">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Error!</h4>
-                ${page_error}
-        </div>
-    </c:if> --%>
