@@ -12,6 +12,7 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 <c:import url="template/header.jsp" />
 
 <body>
+
 	<h1>Tutor Profile</h1>
 
 	<table>
@@ -22,6 +23,9 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 	</table>
 	
 	<c:choose>
+	<c:when test="${student.id == searchingStudent.id}">
+		<c:redirect url="http://localhost:8080/Stutor/profile?userId=${searchingStudent.id}"/>
+	</c:when>
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
 				<h1>Gives the following Lecture:</h1>
