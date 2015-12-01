@@ -19,6 +19,6 @@ public interface DataService {
 	
 	boolean universitiesAreEmpty();
 
-
+	List<String> getAllGender();
 	
 }

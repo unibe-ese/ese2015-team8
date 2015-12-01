@@ -4,13 +4,17 @@ import java.security.Principal;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.controller.exceptions.InvalidUserException;
 import ch.unibe.ese.controller.pojos.RefinedSearchForm;
@@ -42,51 +46,55 @@ public class SearchController {
 	@Autowired LectureSearchService lectureSearchService;
 	@Autowired StudentSearchService studentSearchService;
 	
-	private Student tempTutor;
+	private Student tempTutor;	
 	
 	/**
-	 * This method reads all Lectures from the database, saves them 
-	 * in a List and returns that List. 
-	 * @return List with all Lecures included
+	 * This method reads all Lectured from the database, saves them in a List
+	 * and returns that List.
+	 * 
+	 * @return List with all Lectures included
 	 */
 	@ModelAttribute("lectures")
-	public List<Lecture> allLectures(){		
+	public List<Lecture> allLectures() {
 		return lectureSearchService.getAllLectures();
 	}
-	
+
 	/**
-	 * This method reads all Universities from the database, saves them 
-	 * in a List and returns that List. 
+	 * This method reads all Universities from the database, saves them in a
+	 * List and returns that List.
+	 * 
 	 * @return List with all Universities included
 	 */
 	@ModelAttribute("universities")
-	public List<University> allUniversities(){
+	public List<University> allUniversities() {
 		return dataService.getAllUniversities();
 	}
-	
+
 	/**
-	 * This method reads all Subjects from the database, saves them 
-	 * in a List and returns that List. 
+	 * This method reads all Subjects from the database, saves them in a List
+	 * and returns that List.
+	 * 
 	 * @return List with all Subjects included
 	 */
 	@ModelAttribute("subjects")
-	public List<Subject> allSubjects(){
+	public List<Subject> allSubjects() {
 		return dataService.getAllSubjects();
-	}	
-	
+	}
+
 	/**
 	 * choices to either choose gender or let it open
+	 * 
 	 * @return list with these three choices
 	 */
 	@ModelAttribute("gender")
-	public List<String> allGender(){
+	public List<String> allGender() {
 		List<String> allGender = new LinkedList<String>();
 		allGender.add("doesn't matter");
 		allGender.add("male");
 		allGender.add("female");
-	
+
 		return allGender;
-	}	
+	}
 	
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
     public ModelAndView basicSearch(@RequestParam("q") String term) {
@@ -108,6 +116,58 @@ public class SearchController {
 		
 		return model;
     }
+    
+    /**
+	 * searches for Tutors with given parameters
+	 * 
+	 * Notice that due to the double standard in Java, we can't search for
+	 * greaterOrEqual, but rather search for a greater grade than the minGrade,
+	 * which is decreased by a very small number, this way it's basically the
+	 * same as a greaterOrEqual search.
+	 * 
+	 * @param refSearchForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @return model with the results
+	 */
+	@RequestMapping(value = "/searchWFilters", method = RequestMethod.POST)
+	public ModelAndView create(@Valid RefinedSearchForm refSearchForm, BindingResult result,
+			RedirectAttributes redirectAttributes) {
+		ModelAndView model;
+		if (!result.hasErrors()) {
+			try {
+				String sortBy = refSearchForm.getSortBy();
+				String lectureName = refSearchForm.getName();
+				Double minGrade = refSearchForm.getMinGrade();
+				Iterable<Lecture> lecturesTemp = null;
+
+				lecturesTemp = lectureSearchService.getCorrectTempLecture(refSearchForm, sortBy, lectureName, minGrade);
+
+				List<Lecture> lectures = new LinkedList<Lecture>();
+				
+				for (Lecture lecture : lecturesTemp) {
+					lectures.add(lecture);
+				}
+
+				model = new ModelAndView("searchResult");
+				model.addObject("lectures", lectures);
+
+				RefinedSearchForm refSearchFormNew = lectureSearchService.getNewRefinedSearchForm(refSearchForm);
+				model.addObject("refinedSearchForm", refSearchFormNew);
+
+				return model;
+
+			} catch (InvalidUserException e) {
+				model = new ModelAndView("searchInitialisation");
+				model.addObject("page_error", e.getMessage());
+
+			}
+		} else {
+			model = new ModelAndView("afterLogin");
+		}
+
+		return model;
+	}
     
     @RequestMapping(value = "/hiddenProfile", method = RequestMethod.GET)
     public ModelAndView profile(@RequestParam("userId") long id) {

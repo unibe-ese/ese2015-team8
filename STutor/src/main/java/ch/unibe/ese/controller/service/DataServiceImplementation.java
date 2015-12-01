@@ -80,17 +80,28 @@ public class DataServiceImplementation implements DataService {
 	}
 
 	public boolean subjectsAreEmpty() {
-
 		if(subjectDao.findOne((long) 1) == null){return true;}
 		
 		return false;
 	}
 	
 	public boolean universitiesAreEmpty() {
-
 		if(universityDao.findOne((long) 1) == null){return true;}
 		
 		return false;
 	}
 
+	/**
+	 * choices to either choose gender or let it open
+	 * 
+	 * @return list with these three choices
+	 */
+	public List<String> getAllGender() {
+		List<String> allGender = new LinkedList<String>();
+		allGender.add("doesn't matter");
+		allGender.add("male");
+		allGender.add("female");
+
+		return allGender;
+	}
 }

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import ch.unibe.ese.controller.pojos.RefinedSearchForm;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.dao.LectureDao;
 
@@ -93,6 +94,45 @@ public class LectureSearchServiceImplementation implements LectureSearchService 
 	public Lecture findById(long id) {
 		Lecture lecture = lectureDao.findOne(id);
 		return lecture;
+	}
+	
+	// ids with -1 as value represent nonexistent values, so it's
+	// like "doesn't matter" which subject/uni etc.
+	public Iterable<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName,
+			Double minGrade) {
+		Iterable<Lecture> lecturesTemp;
+		if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
+			lecturesTemp = findByNameAndGradeGreaterThan(lectureName,
+					minGrade, sortBy);
+		}
+		else if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() != -1)) {
+			lecturesTemp = findByNameAndUniversityAndGradeGreaterThan(lectureName,
+					refSearchForm.getUniversity(), minGrade, sortBy);
+		}
+		else if ((refSearchForm.getSubject() != -1) && (refSearchForm.getUniversity() == -1)) {
+			lecturesTemp = findByNameAndSubjectAndGradeGreaterThan(lectureName,
+					refSearchForm.getSubject(), minGrade, sortBy);
+
+		}
+		// subject and university given:
+		else {
+			lecturesTemp = findByNameAndUniversityAndSubjectAndGradeGreaterThan(
+					lectureName, refSearchForm.getUniversity(), refSearchForm.getSubject(),
+					minGrade, sortBy);
+		}
+		return lecturesTemp;
+	}
+
+	public RefinedSearchForm getNewRefinedSearchForm(RefinedSearchForm refSearchForm) {
+		RefinedSearchForm refSearchFormNew = new RefinedSearchForm();
+
+		refSearchFormNew.setName(refSearchForm.getName());
+		refSearchFormNew.setSubject(refSearchForm.getSubject());
+		refSearchFormNew.setUniversity(refSearchForm.getUniversity());
+		refSearchFormNew.setGender(refSearchForm.getGender());
+		refSearchFormNew.setMinGrade(refSearchForm.getMinGrade());
+		refSearchFormNew.setSortBy(refSearchForm.getSortBy());
+		return refSearchFormNew;
 	}
 
 }

@@ -2,6 +2,7 @@ package ch.unibe.ese.controller.service;
 
 import java.util.List;
 
+import ch.unibe.ese.controller.pojos.RefinedSearchForm;
 import ch.unibe.ese.model.Lecture;
 
 public interface LectureSearchService {
@@ -19,5 +20,9 @@ public interface LectureSearchService {
 	public List<Lecture> findByNameAndSubjectAndGradeGreaterThan(String lectureName, long subjectId, double grade, String sortBy);
 
 	public List<Lecture> findByNameAndUniversityAndSubjectAndGradeGreaterThan(String lectureName,long universityId, long subjectId, double grade, String sortBy);
+	
+	public Iterable<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName, Double minGrade);
+	
+	public RefinedSearchForm getNewRefinedSearchForm(RefinedSearchForm refSearchForm);
 
 }
