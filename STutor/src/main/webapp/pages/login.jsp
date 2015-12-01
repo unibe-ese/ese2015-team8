@@ -22,7 +22,7 @@ Security. If you don't have an account yet, you can use the link below to sign u
 		<div class="mask"></div>
 		<div class="container">
 			<div class="header-info">
-				<font color=ececed><h1>Welcome to STutor!</h1></font>
+				<h1><font color=ececed>Welcome to STutor!</font></h1>
 				<p>STutor helps you to find private tutors and to be sure that tutor is actually good at the subject!<br>
 				Our client reviews mean you can select private tutors who will lift your grade, raise confidence<br>
 				 and help you to discover the joy of learning through their private tuition journey.
