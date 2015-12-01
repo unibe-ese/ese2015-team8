@@ -12,11 +12,16 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 <c:import url="template/header.jsp" />
 
 <body>
+<<<<<<< HEAD
 	<table class="table-nonfluid">
   <tr>
     <td><h1>Tutor Profile</h1></td>
     <td><br>&nbsp;&nbsp;<a class="btn btn-success btn-lg" href="http://localhost:8080/Stutor/confirmContact" role="button">Contact Tutor</a></td></tr>
     </table>
+=======
+
+	<h1>Tutor Profile</h1>
+>>>>>>> origin/master
 
 	<table class="table table-hover">
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
@@ -31,6 +36,9 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 		</c:choose>
 	 
 	<c:choose>
+	<c:when test="${student.id == searchingStudent.id}">
+		<c:redirect url="http://localhost:8080/Stutor/profile?userId=${searchingStudent.id}"/>
+	</c:when>
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
 				<h1>Lecture(s) given:</h1>

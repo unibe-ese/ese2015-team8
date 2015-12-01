@@ -170,15 +170,17 @@ public class SearchController {
 	}
     
     @RequestMapping(value = "/hiddenProfile", method = RequestMethod.GET)
-    public ModelAndView profile(@RequestParam("userId") long id) {
+    public ModelAndView profile(Principal principal, @RequestParam("userId") long id) {
     	ModelAndView model;
         try {
+        	
         	model = new ModelAndView("hiddenProfile");
         	model.addObject("lectures", studentSearchService.findTutorById(id).getLectures().toArray());
         	model.addObject("timelapses", studentSearchService.findTutorById(id).getTimeframes().toArray());
         	tempTutor = studentSearchService.findTutorById(id);
         	model.addObject("student",tempTutor);
-        	
+        	Student visitor = studentSearchService.getStudentByUsername(principal.getName());
+        	model.addObject("searchingStudent", visitor);
 
         } catch (InvalidUserException e) {
         	model = new ModelAndView("index");
