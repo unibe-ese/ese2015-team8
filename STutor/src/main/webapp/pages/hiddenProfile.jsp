@@ -8,7 +8,11 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Profile</title></head>
+<head>
+	<title>Profile</title>
+	<link rel="stylesheet" type="text/css" href="css/popupStyle.css">
+	<script src="js/popup.js"></script>
+</head>
 <c:import url="template/header.jsp" />
 
 <body>
@@ -16,11 +20,20 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 	<table class="table-nonfluid">
   		<tr>
     		<td><h1>Tutor Profile</h1></td>
-   			<td><br>&nbsp;&nbsp;<a class="btn btn-success btn-lg" href="http://localhost:8080/Stutor/confirmContact" role="button">Contact Tutor</a></td>
+   			<td><br>&nbsp;&nbsp;<a class="btn btn-success btn-lg" href="#" onclick="openPopup('','');" role="button">Contact Tutor</a></td>   			
    		</tr>
     </table>
-
-
+    
+    <!-- popup -->
+    <div id="popUpDiv" class="white_content" style="display:none">
+		<h3>Are you sure you want to contact this Tutor?</h3>
+		<button type="button" onclick="location.href='/Stutor/contact'"> YES </button>
+		<button type="button" onclick="closePopup('','');" >NO</button>
+	</div>
+	
+	<!-- Fade background when popup -->
+	<div id="fade" class="black_overlay" style="display:none"></div>
+	
 	<table class="table table-hover">
 		<tr><td>Username: </td><td><c:out value="${student.username}" /></td></tr>
 		<tr><td>Rating: </td><td><c:out value="${student.rating}" /> </td></tr>
