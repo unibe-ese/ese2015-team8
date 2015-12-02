@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+#mail-box{
+	top:8px;
+	width: 50px;
+	height: 40px;
+	border-radius: 10px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
