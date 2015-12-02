@@ -12,7 +12,7 @@ or his notifications or log out again. -->
 <title>Main Page</title>
 </head>
 
-<c:import url="template/header.jsp" />
+<c:import url="template/loggedInHeader.jsp" />
 
 <h1>Welcome</h1>
 
