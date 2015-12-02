@@ -50,10 +50,5 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<div>
 		<a href="http://localhost:8080/Stutor/hiddenProfile?userId=${tutorId}">Return</a>
 	</div>
-	
-	<br>
-	<div>
-		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
-	</div>
 </body>
 </html>

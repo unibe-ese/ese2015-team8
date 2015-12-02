@@ -19,8 +19,8 @@ to rate the Tutor. -->
 		<c:when test="${notification.titel == 'Contact Request'}">
 			
 			
-            <a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/notificationDecline" role="button">Accept</a>
-            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/notificationDecline" role="button">Decline</a>
+            <a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/notificationDecline">Accept</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
             
 			<br>
 		</c:when>
@@ -28,8 +28,6 @@ to rate the Tutor. -->
 			<p>Please <a href="http://localhost:8080/Stutor/rateTutor?notificationId=<c:out value='${notification.id}'/>">RATE</a> the Tutor once he finished his teaching</p>
 		</c:when>
 	</c:choose>
-	<br>
-	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </body>
 
 </html>

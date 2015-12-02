@@ -79,11 +79,6 @@ email address. You can also change if you're a Tutor or not. -->
         	<c:set var="genderErrors"><form:errors path="gender"/></c:set>
     		<form:radiobutton path="gender" value="male" label="Male"/>
     		<form:radiobutton path="gender" value="female" label="Female"/>
-    		
-    		<a href="<c:url value="addLecture" />" > Add Lectures</a>
-    		<br>
-    		<a href="<c:url value="addTimeframe" />" > Add Timeframe</a>
-    		<br>
         </c:if>
         
          <button type="submit" class="btn btn-primary btn-md">Submit</button>
@@ -96,10 +91,6 @@ email address. You can also change if you're a Tutor or not. -->
     </div>
        
 </form:form>
-
-		<div>
-			<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
-		</div>
 
 	<c:if test="${page_error != null }">
         <div class="alert alert-error">

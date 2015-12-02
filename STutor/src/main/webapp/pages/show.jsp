@@ -12,5 +12,3 @@ clicking on the link and get automatically logged in. -->
 <c:import url="template/header.jsp" />
 
 <h1><c:out value="${text}"></c:out></h1>
-
-<a href="/Stutor/afterLogin">Return to main</a>

@@ -43,6 +43,8 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
 				<h1>Lecture(s) given:</h1>
+				<a href="<c:url value="addLecture" />" > Add Lectures</a>
+    			<br>
 				<table class="table table-hover">
 				 <c:forEach items="${lectures}" var="lecture">
 				        <tr><td><c:out value="${lecture}" /></td>
@@ -62,6 +64,8 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 			</div>
 			<div id="timeframeList">
 				<h1>Is free during:</h1>
+				<a href="<c:url value="addTimeframe" />" >Add Timeframe</a>
+    			<br>
 				<c:forEach items="${timeframes}" var="timeframe">
 					<div id="table">
 						<label><c:out value="${timeframe}" /></label>
@@ -82,10 +86,5 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	
 	<!-- Fade background when popup -->
 	<div id="fade" class="black_overlay" style="display:none"></div>
-	
-	<br>
-	<div>
-		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
-	</div>
 </body>
 </html>

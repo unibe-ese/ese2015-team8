@@ -44,5 +44,4 @@ That's what this page serves for.-->
 		</div>
 	</div>
 </body>
-<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </html>

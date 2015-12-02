@@ -48,5 +48,4 @@ That's what this page serves for. -->
             <a class="btn btn-default btn-md" href="paymentDone">Pay</a>
 	</div>
 </body>
-<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </html>

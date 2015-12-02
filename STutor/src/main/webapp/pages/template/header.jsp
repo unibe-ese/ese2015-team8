@@ -28,9 +28,9 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>
-        <li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
-        
+      	<li><a href="http://localhost:8080/Stutor/afterLogin">Main Page</a></li>
+      	<li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
+        <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>       
       </ul>
     </div>
   </div>

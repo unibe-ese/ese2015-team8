@@ -96,22 +96,15 @@ and what gender he/she should be. -->
 				<form:option value="tutor.wage">Wage</form:option>
 			</form:select>
 
-
-
 			<div class="form-actions">
-			    
 				<button type="submit" class="btn btn-primary btn-md">Apply Filter</button>
-
 			</div>
 
 		</form:form>
 
 	</div>
 
-
-
 	<div id="lectureList">
-
 		<h1>Tutors for this Lecture:</h1>
 		<div id="table_list">
 			<ul>
@@ -131,16 +124,10 @@ and what gender he/she should be. -->
 					<li><c:out value="${lectures[status.index].tutor.wage}" /></li>
 					<li><c:out value="${lectures[status.index].university}" /></li>
 					<li><a
-						href="hiddenProfile?userId=<c:out value="${lectures[status.index].tutor.id}"/>">See
-							Profile</a></li>
+						href="hiddenProfile?userId=<c:out value="${lectures[status.index].tutor.id}"/>">See Profile</a></li>
 				</ul>
 			</c:forEach>
 		</div>
 	</div>
-
-
-
-
-
 </body>
 </html>

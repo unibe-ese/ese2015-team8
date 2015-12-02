@@ -72,9 +72,5 @@ Student can send a request to the Tutor, which he can either accept or decline. 
 		</c:when>
 	</c:choose>
 	<br><br>
-	
-	<div>
-		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
-	</div>
 </body>
 </html>

@@ -49,7 +49,20 @@ public class DataServiceImplementation implements DataService {
 	}
 
 
-
+	/*
+	 * University of Basel (UNIBAS)
+	 * University of Bern (UNIBE)
+	 * University of Fribourg (UNIFR)
+	 * University of Geneva (UNIGE)
+	 * Ecole Polytechnique Fédérale de Lausanne (EPFL)
+	 * University of Lausanne (UNIL)
+	 * University of Lucerne
+	 * University of Neuchâtel (UniNE)
+	 * Università della Svizzera italiana (USI)
+	 * University of St.Gallen (HSG)
+	 * ETH Zurich (ETHZ)
+	 * University of Zurich (UZH)
+	 */
 	public void initializeUniversities() {
 		University temp = new University();
 		temp.setName("UNIBE");
@@ -60,6 +73,33 @@ public class DataServiceImplementation implements DataService {
 		temp = new University();
 		temp.setName("EPFL");
 		universityDao.save(temp);
+		temp.setName("UNIBAS");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("UNIFR");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("UNIGE");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("UNIL");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("Universität Luzern");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("UniNE");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("USI");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("HSG");
+		universityDao.save(temp);
+		temp = new University();
+		temp.setName("UZH");
+		universityDao.save(temp);
+		temp = new University();
 
 	}
 
@@ -76,6 +116,34 @@ public class DataServiceImplementation implements DataService {
 		temp = new Subject();
 		temp.setLevel("Bachelor");
 		temp.setName("Physics");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Linguistic");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("History");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Philosophy");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Biology");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Chemistry");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Economics");
+		subjectDao.save(temp);
+		temp = new Subject();
+		temp.setLevel("Bachelor");
+		temp.setName("Law");
 		subjectDao.save(temp);
 	}
 
