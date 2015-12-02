@@ -20,32 +20,32 @@ in the exam. -->
     <fieldset>
         <legend>Edit this lecture</legend>
 		
-		<label class="control-label" for="field-university">Choose University</label>
+		<label for="uni">Choose University</label>
         <div class="controls">
         	<form:select path="university">
             	<form:options items="${universities}" itemValue="id"/>
             </form:select>
         </div>
-		
-        <label class="control-label" for="field-subject">Choose Subject</label>
+		<br>
+        <label for="subject">Choose Subject</label>
         <div class="controls">
         	<form:select path="subject">
             	<form:options items="${subjects}" itemValue="id"/>
             </form:select>
         </div>
-        
+        <br>
         <c:set var="nameErrors"><form:errors path="name"/></c:set>
         <div class="control-group<c:if test="${not empty nameErrors}"> error</c:if>">
-            <label class="control-label" for="field-email">Name</label>
+            <label for="name">Name</label>
             <div class="controls">
                 <form:input path="name" id="field-name" tabindex="1" maxlength="45" placeholder="Name"/>
                 <form:errors path="name" cssClass="help-inline" element="span"/>
             </div>
         </div>
-        
+        <br>
         <c:set var="gradeErrors"><form:errors path="grade"/></c:set>
         <div class="control-group<c:if test="${not empty gradeErrors}"> error</c:if>">
-            <label class="control-label" for="field-grade">Grade</label>
+            <label for="grade">Grade</label>
             <div class="controls">
                 <form:input path="grade" id="field-grade" tabindex="2" maxlength="45" placeholder="Grade"/>
                 <form:errors path="grade" cssClass="help-inline" element="span"/>

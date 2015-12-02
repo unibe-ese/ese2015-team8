@@ -8,17 +8,19 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <head>
-	<title>Timelaps</title>
+	<title>Timeframe</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 <style>.help-inline{color: #BE1E1E}</style>
 </head>
 <c:import url="template/header.jsp" />
-<h1></h1>
+<h1>Add preffered Times when to tutor</h1>
 
 <form:form method="post" modelAttribute="timeframeForm" action="addedTimeframe" id="addTimeframeForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend></legend>
 		
-		<label class="control-label" for="field-day">Choose Day</label>
+		
+		<label for="chooseDay">Choose Day:</label>
         <div class="controls">
         	<form:select path="day">
             	<form:option items="Monday" value="1" label="Monday"/>
@@ -30,19 +32,19 @@ which Tutor he should choose. The Tutor can pick a day and on that day a time. -
             	<form:option items="Sunday" value="7" label="Sunday"/>
             </form:select>
         </div>
-        
+        <br>
         <c:set var="fromTimeErrors"><form:errors path="fromTime"/></c:set>
         <div class="control-group<c:if test="${not empty fromTimeErrors}"> error</c:if>">
-            <label class="control-label" for="field-fromTime">From (hour):</label>
+            <label for="from">From (hour):</label>
             <div class="controls">
                 <form:input path="fromTime" id="field-fromTime" tabindex="1" maxlength="2"/>
                 <form:errors path="fromTime" cssClass="help-inline" element="span"/>
             </div>
         </div>
-        
+        <br>
         <c:set var="toTimeErrors"><form:errors path="toTime"/></c:set>
         <div class="control-group<c:if test="${not empty toTimeErrors}"> error</c:if>">
-            <label class="control-label" for="field-toTime">To (hour):</label>
+            <label for="to">To (hour):</label>
             <div class="controls">
                 <form:input path="toTime" id="field-toTime" tabindex="2" maxlength="2"/>
                 <form:errors path="toTime" cssClass="help-inline" element="span"/>

@@ -34,6 +34,7 @@
 		font-weight: 300;
 	}
 	
+	
 	a
 	{
 		color: #0090c5;
@@ -666,6 +667,10 @@ a:focus{
 
 		.icon > .label {
 			display: none;
+		}
+		
+		.control-label label {
+		text-align: left;
 		}
 
 
