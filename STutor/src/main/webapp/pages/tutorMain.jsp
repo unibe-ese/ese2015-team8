@@ -16,16 +16,25 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <h1>Welcome</h1>
 
-<h2>${welcomeMsg}
-</h2>
+
 
 <body>
-	<a class="btn btn-primary btn-md" href="profile?userId=<c:out value="${user.id}"/>" role="button">See Profile</a>
-	<br><br>
-	<a class="btn btn-primary btn-md" href="notifications?userId=<c:out value="${user.id}"/>" role="button">Notifications</a>
-	<br><br><br>
-	<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a>
-	<br><br>
-	<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a>
+<div class="panel panel-default">
+ <div class="panel-heading">${welcomeMsg}</div>
+ <div class="panel-body">Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+ </div>
+</div>
 </body>
 </html>
