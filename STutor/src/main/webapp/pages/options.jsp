@@ -19,7 +19,7 @@ email address. You can also change if you're a Tutor or not. -->
 
         <c:set var="emailErrors"><form:errors path="email"/></c:set>
         <div class="control-group<c:if test="${not empty emailErrors}"> error</c:if>">
-            <label class="control-label" for="field-email">Change Email</label>
+            <label for="change">Change Email</label>
             <div class="controls">
                 <form:input path="email" id="field-email" tabindex="1" maxlength="45"/>
                 <form:errors path="email" cssClass="help-inline" element="span"/>
@@ -28,7 +28,7 @@ email address. You can also change if you're a Tutor or not. -->
         
         <c:set var="firstNameErrors"><form:errors path="firstName"/></c:set>
         <div class="control-group<c:if test="${not empty firstNameErrors}"> error</c:if>">
-            <label class="control-label" for="field-firstName">First Name</label>
+            <label for="first">First Name</label>
             <div class="controls">
                 <form:input path="firstName" id="field-firstName" tabindex="2" maxlength="35"/>
                 <form:errors path="firstName" cssClass="help-inline" element="span"/>
@@ -37,7 +37,7 @@ email address. You can also change if you're a Tutor or not. -->
         
         <c:set var="lastNameErrors"><form:errors path="lastName"/></c:set>
         <div class="control-group<c:if test="${not empty lastNameErrors}"> error</c:if>">
-            <label class="control-label" for="field-lastName">Last Name</label>
+            <label for="last">Last Name</label>
             <div class="controls">
                 <form:input path="lastName" id="field-lastName" tabindex="3" maxlength="35"/>
                 <form:errors path="lastName" cssClass="help-inline" element="span"/>
@@ -46,7 +46,7 @@ email address. You can also change if you're a Tutor or not. -->
         
         <c:set var="usernameErrors"><form:errors path="username"/></c:set>
         <div class="control-group<c:if test="${not empty usernameErrors}"> error</c:if>">
-            <label class="control-label" for="field-username">Username</label>
+            <label for="username">Username</label>
             <div class="controls">
                 <form:input path="username" id="field-username" tabindex="3" maxlength="35"/>
                 <form:errors path="username" cssClass="help-inline" element="span"/>
@@ -55,7 +55,7 @@ email address. You can also change if you're a Tutor or not. -->
         
         <c:set var="passwordErrors"><form:errors path="password"/></c:set>
         <div class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
-            <label class="control-label" for="field-password">Password</label>
+            <label for="password">Password</label>
             <div class="controls">
                 <form:input type="password" path="password" id="field-password" tabindex="3" maxlength="35" placeholder="new password"/>
                 <form:errors path="password" cssClass="help-inline" element="span"/>
@@ -64,7 +64,7 @@ email address. You can also change if you're a Tutor or not. -->
         <c:if test="${student.isTutor}">
         <c:set var="wageErrors"><form:errors path="wage"/></c:set>
         	<div class="control-group<c:if test="${not empty wageErrors}"> error</c:if>">
-           		<label class="control-label" for="field-wage">Wage (Fr./h)</label>
+           		<label for="wage">Wage (Fr./h)</label>
            		<div class="controls">
                		<form:input type="wage" path="wage" id="field-wage" tabindex="4" maxlength="10"/>
                		<form:errors path="wage" cssClass="help-inline" element="span"/>
