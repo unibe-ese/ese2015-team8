@@ -43,8 +43,11 @@ public class ProfileController {
         	model.addObject("student",student);
         	
         	if(student.getIsTutor()){
+        		
           	model.addObject("lectures", student.getLectures().toArray());
         	model.addObject("timeframes", student.getTimeframes().toArray());
+        	model.addObject("lecturesCount", student.getLectures().toArray().length);
+        	model.addObject("timeframesCount", student.getTimeframes().toArray().length);
         	}
 
         } catch (InvalidUserException e) {

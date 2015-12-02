@@ -20,12 +20,12 @@ or his notifications and he can add lectures and his scheduals. -->
 </h2>
 
 <body>
-	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
-	<br>
-	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
+	<a class="btn btn-primary btn-md" href="profile?userId=<c:out value="${user.id}"/>" role="button">See Profile</a>
 	<br><br>
-	<a href="<c:url value="addLecture" />" > Add Lectures</a>
-	<br>
-	<a href="<c:url value="addTimeframe" />" > Add Timeframe</a>
+	<a class="btn btn-primary btn-md" href="notifications?userId=<c:out value="${user.id}"/>" role="button">Notifications</a>
+	<br><br><br>
+	<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a>
+	<br><br>
+	<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a>
 </body>
 </html>

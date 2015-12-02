@@ -42,10 +42,30 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<c:choose>
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
-				<h1>Lecture(s) given:</h1>
-				<a href="<c:url value="addLecture" />" > Add Lectures</a>
-    			<br>
+    			
+				<c:choose>
+					<c:when test="${lecturesCount == 1}">
+						<table class="table-nonfluid">
+  <tr>
+    <td><h1>Lecture given:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
+    </table>
+    
+					</c:when>
+					<c:when test="${lecturesCount != 1}">
+						<table class="table-nonfluid">
+						<tr><td><h1>Lectures given:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
+    </table>
+					</c:when>
+				</c:choose>
 				<table class="table table-hover">
+				<c:choose>
+					<c:when test="${lecturesCount == 0}">
+						no lectures given
+					</c:when>
+					
+				</c:choose>
 				 <c:forEach items="${lectures}" var="lecture">
 				        <tr><td><c:out value="${lecture}" /></td>
 						<td><a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
@@ -60,14 +80,25 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 						
 					    </td></tr>
 				</c:forEach>
+				
 				</table>
 			</div>
 			<div id="timeframeList">
-				<h1>Is free during:</h1>
-				<a href="<c:url value="addTimeframe" />" >Add Timeframe</a>
-    			<br>
+				<table class="table-nonfluid">
+  <tr>
+    <td><h1>Is free during:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a></td></tr>
+    </table>
+    	<c:choose>
+							<c:when test="${timeframesCount == 0}">
+								no time frame available
+							</c:when>
+						</c:choose>
+						
+				
 				<c:forEach items="${timeframes}" var="timeframe">
 					<div id="table">
+
 						<label><c:out value="${timeframe}" /></label>
 						<a href="http://localhost:8080/Stutor/editTimeframe?id=${timeframe.id}">Edit</a>
 						<!-- Popup window for timeframe deletion-->
@@ -86,5 +117,10 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	
 	<!-- Fade background when popup -->
 	<div id="fade" class="black_overlay" style="display:none"></div>
+	
+	<br>
+	<div>
+		<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Back to main page</a>
+	</div>
 </body>
 </html>
