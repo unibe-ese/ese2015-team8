@@ -28,20 +28,33 @@ That's what this page serves for.-->
 <body>
 
 <h1>Notifications:</h1>
-	<div id="lectureList">
-		<div id="table_list">
-			<ul><li>status</li><li>titel</li><li>date</li><li>open</li></ul>
+	
+		
+		<table class="table table-hover">
+			<thead>
+			  <tr>
+			   <th>Status</th>
+			   <th>Title</th>
+			   <th>Date</th>
+			   <th>Actions</th>
+			  </tr>
+			</thead>
+			<tbody>
 			<c:forEach var="notification" items="${notificationList}" >
-			<ul>
-				<li><c:out value="${notification.status}" /></li>
-				<li><c:out value="${notification.titel}" /></li>
-				<li><c:out value="${notification.date}" /></li>
-				<li><a href="readNotification?notificationId=<c:out value="${notification.id}"/>">read</a></li>
-								<li><a href="deletedNotification?notificationId=<c:out value="${notification.id}"/>">remove</a></li>
+			<tr>
+				<td><c:out value="${notification.status}" /></td>
+				<td><c:out value="${notification.titel}" /></td>
+				<td><c:out value="${notification.date}" /></td>
+				<td><a href="readNotification?notificationId=<c:out value="${notification.id}"/>">read</a>
+				<a href="deletedNotification?notificationId=<c:out value="${notification.id}"/>">remove</a>
+				</td>
 				
-			</ul>
+				
+			</tr>
 			</c:forEach>
-		</div>
-	</div>
+			</tbody>
+			</table>
+		
+	
 </body>
 </html>
