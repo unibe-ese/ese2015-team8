@@ -21,6 +21,7 @@ or his notifications or log out again. -->
 
 <body>
 	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
+	<a class="btn btn-primary btn-md" href="profile?userId=<c:out value="${user.id}"/>" role="button">See Profile</a>
 	<br>
 	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
 	
