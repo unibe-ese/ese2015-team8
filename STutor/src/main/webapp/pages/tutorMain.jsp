@@ -16,10 +16,25 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <h1>Welcome</h1>
 
-<h2>${welcomeMsg}
-</h2>
+
 
 <body>
-	
+<div class="panel panel-default">
+ <div class="panel-heading">${welcomeMsg}</div>
+ <div class="panel-body">Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+ </div>
+</div>
 </body>
 </html>
