@@ -40,4 +40,9 @@ public class NotificationServiceImplementation implements NotificationService{
 		notificationDao.delete(chosenNotification);
 		return loggedInTutor;
 	}
+
+	@Transactional
+	public Long numberOfUnreadNotifications(Student loggedInTutor) {
+		return notificationDao.countByToStudentIdAndStatus(loggedInTutor.getId(), "new");
+	}
 }

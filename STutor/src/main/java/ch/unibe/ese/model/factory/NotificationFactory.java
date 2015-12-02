@@ -100,7 +100,7 @@ public class NotificationFactory {
 		temp.setTitel("Welcome");
 		temp.setStatus("new");
 		temp.setMessage("Welcome to STutor!<br>"
-				+ "We recommand you to <a href='profile?userId=<c:out value='${user.id}'/>'>update</a> your Profile with acctual informations.<br>"
+				+ "We recommand you to update your Profile with acctual informations.<br>"
 				+ "Else you may not be displayed when Students search with specific Filters.");
 		temp.setDate(new Timestamp(new Date().getTime()));
 		temp.setFromStudentId((long)-1);

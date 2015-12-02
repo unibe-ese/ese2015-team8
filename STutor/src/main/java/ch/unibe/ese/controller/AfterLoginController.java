@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.controller.service.DataService;
+import ch.unibe.ese.controller.service.NotificationService;
 import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Student;
 
@@ -31,11 +32,9 @@ import ch.unibe.ese.model.Student;
 public class AfterLoginController {
 
 
-	@Autowired
-	DataService dataService;
-	
-	@Autowired
-	StudentSearchService studentSearchService;
+	@Autowired DataService dataService;
+	@Autowired NotificationService notificationService;
+	@Autowired StudentSearchService studentSearchService;
 
 	/**
 	 *
@@ -63,20 +62,16 @@ public class AfterLoginController {
 		GrantedAuthority authority = list.iterator().next();
 		
 		
-		ModelAndView model;
+		ModelAndView model = new ModelAndView("main");
+;
 
 		//depending on the role, a different jsp is loaded.
 		if (authority.toString().contentEquals("ROLE_TUTOR")) {
-
-			model = new ModelAndView("tutorMain");
-
 			String welcomeText = "Hi " + username + ", welcome to Stutor.";
 
 			model.addObject("welcomeMsg", welcomeText);
 
 		} else {
-			model = new ModelAndView("studentMain");
-
 			String welcomeText = "Hi " + username + ", welcome to Stutor.";
 
 			model.addObject("welcomeMsg", welcomeText);
@@ -84,6 +79,7 @@ public class AfterLoginController {
 		}
 		
 		model.addObject("user",loggedInStudent);
+		model.addObject("notificationNumber",notificationService.numberOfUnreadNotifications(loggedInStudent));
 		
 		return model;
 	}

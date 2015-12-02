@@ -11,12 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon">
-		
-		<link rel="stylesheet" type="text/css" href="css/mailbox.css">
-		<script src="js/mailbox.js"></script>				
+		<link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon">			
 	</head>
-<body  onload="mailBoxColour(${user.notifications})"></body>
+
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
      <div class="navbar-header">

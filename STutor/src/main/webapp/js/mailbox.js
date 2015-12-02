@@ -1,5 +1,4 @@
-function mailBoxColour(notifications) {
-	var newMessages = notifications.length;
+function mailBoxColour(newMessages) {
 	if(newMessages==0){
 		document.getElementById('mail-box').style.backgroundColor = 'transparent';
 	}else{

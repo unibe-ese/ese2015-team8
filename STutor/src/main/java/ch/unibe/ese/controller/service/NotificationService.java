@@ -14,4 +14,6 @@ public interface NotificationService {
 	public Notification findById(long id);
 
 	public Student remove(Notification chosenNotification, Student loggedInTutor);
+	
+	public Long numberOfUnreadNotifications(Student loggedInTutor);
 }
