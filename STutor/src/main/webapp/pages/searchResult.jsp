@@ -14,34 +14,16 @@ and what gender he/she should be. -->
 </head>
 <c:import url="template/header.jsp" />
 
-<style>
-#table_list {
-	list-style-type: none;
-	margin: 0;
-	padding: 0px;
-}
 
-#table_list ul li {
-	display: inline-block;
-	width: 150px;
-	padding: 0px;
-	padding-left: 15px;
-}
-
-#filter {
-	height: 100%;
-	width: 300px;
-	float: left;
-	padding: 10px;
-	padding-right: 5px;
-	border-right: thick solid #0892d0;
-}
-</style>
 
 <body>
+	<div class="row">
+	<div class="col-md-4" >
+	<div class="filter">
+	
 	<h1>Search Results</h1>
 
-	<div id="filter">
+
 		<h4>Refine your search:</h4>
 
 		<form:form method="post" modelAttribute="refinedSearchForm"
@@ -95,6 +77,8 @@ and what gender he/she should be. -->
 				<form:option value="grade">Grade</form:option>
 				<form:option value="tutor.wage">Wage</form:option>
 			</form:select>
+			
+			<br>
 
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary btn-md">Apply Filter</button>
@@ -103,31 +87,37 @@ and what gender he/she should be. -->
 		</form:form>
 
 	</div>
+	</div>
 
-	<div id="lectureList">
+	<div class="col-md-8">
 		<h1>Tutors for this Lecture:</h1>
 		<div id="table_list">
-			<ul>
-				<li>username</li>
-				<li>rating</li>
-				<li>grade</li>
-				<li>wage (Fr./h)</li>
-				<li>University</li>
-				<li>profile</li>
-				
-			</ul>
+			<table class="table table-hover">
+                <thead>
+				 <tr>
+				  <th>Username</th>
+				  <th>Rating</th>
+				  <th>Grade</th>
+				  <th>Wage (Fr./h)</th>
+				  <th>University</th>
+				  <th>Profile</th>
+				</tr>
+			</thead>
 			<c:forEach var="loop" items="${lectures}" varStatus="status">
-				<ul>
-					<li><c:out value="${lectures[status.index].tutor.username}" /></li>
-					<li><c:out value="${lectures[status.index].tutor.rating}" /></li>
-					<li><c:out value="${lectures[status.index].grade}" /></li>
-					<li><c:out value="${lectures[status.index].tutor.wage}" /></li>
-					<li><c:out value="${lectures[status.index].university}" /></li>
-					<li><a
-						href="hiddenProfile?userId=<c:out value="${lectures[status.index].tutor.id}"/>">See Profile</a></li>
-				</ul>
+				<tbody>
+					<tr>
+					 <td><c:out value="${lectures[status.index].tutor.username}" /></td>
+					 <td><c:out value="${lectures[status.index].tutor.rating}" /></td>
+					 <td><c:out value="${lectures[status.index].grade}" /></td>
+					 <td><c:out value="${lectures[status.index].tutor.wage}" /></td>
+					 <td><c:out value="${lectures[status.index].university}" /></td>
+					 <td><a href="hiddenProfile?userId=<c:out value="${lectures[status.index].tutor.id}"/>">See Profile</a></td>
+					</tr>
+				</tbody>
 			</c:forEach>
+			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

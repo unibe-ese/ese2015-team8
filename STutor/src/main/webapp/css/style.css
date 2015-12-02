@@ -448,6 +448,13 @@ a:focus{
 				{
 				}
 
+.filter {
+    background-color: transparent;
+    padding: 5px;
+    padding-right: 5px;
+	border-right: thick solid #0892d0;
+}
+
 	/* Image */
 
 		.image
