@@ -28,8 +28,8 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="http://localhost:8080/Stutor/afterLogin">Main Page</a></li>
-      	<li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
+      	<li><a href="profile?userId=<c:out value="${user.id}"/>">My Profile</a></li>
+      	<li><a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a></li>
         <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>       
       </ul>
     </div>

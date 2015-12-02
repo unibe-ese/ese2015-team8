@@ -45,10 +45,18 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
     			
 				<c:choose>
 					<c:when test="${lecturesCount == 1}">
-						<h1>Lecture given:</h1>
+						<table class="table-nonfluid">
+  <tr>
+    <td><h1>Lecture given:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
+    </table>
+    
 					</c:when>
 					<c:when test="${lecturesCount != 1}">
-						<h1>Lectures given:</h1>
+						<table class="table-nonfluid">
+						<tr><td><h1>Lectures given:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
+    </table>
 					</c:when>
 				</c:choose>
 				<table class="table table-hover">
@@ -72,22 +80,22 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 						
 					    </td></tr>
 				</c:forEach>
-				<br>
-				<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a>
+				
 				</table>
 			</div>
 			<div id="timeframeList">
-				<h1>Is free during:</h1>
-
-    			<br>
-
-						<c:choose>
+				<table class="table-nonfluid">
+  <tr>
+    <td><h1>Is free during:</h1></td>
+    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a></td></tr>
+    </table>
+    	<c:choose>
 							<c:when test="${timeframesCount == 0}">
 								no time frame available
 							</c:when>
 						</c:choose>
-						<br>
-				<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a>
+						
+				
 				<c:forEach items="${timeframes}" var="timeframe">
 					<div id="table">
 
