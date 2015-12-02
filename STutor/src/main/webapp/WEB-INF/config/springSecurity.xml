@@ -16,6 +16,8 @@
 		<csrf disabled="true" />
 		<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')" />
 		<intercept-url pattern="/afterLogin" access="hasAnyRole('TUTOR', 'STUDENT')" />
+		<intercept-url pattern="/notifications*" access="hasAnyRole('TUTOR', 'STUDENT')" />
+		<intercept-url pattern="/profile*" access="hasAnyRole('TUTOR', 'STUDENT')" />
 		<intercept-url pattern="/newAccount" access="isAnonymous()" />
 		<intercept-url pattern="/addLecture" access="hasRole('TUTOR')" />
 		<intercept-url pattern="/options" access="hasAnyRole('TUTOR', 'STUDENT')" />

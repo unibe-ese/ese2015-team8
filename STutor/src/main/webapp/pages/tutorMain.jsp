@@ -16,12 +16,15 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <h1>Welcome</h1>
 
-
+<div><a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>">Profile</a></div>
+<div id="mail-box">
+    <a href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail45x39.png"/></a>
+</div>
 
 <body>
 <div class="panel panel-default">
  <div class="panel-heading">${welcomeMsg}</div>
- <div class="panel-body">See Notifications, Profile on the top right corner<br>
+ <div class="panel-body">
 Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
 Some welcome text Some welcome text Some welcome text
 Some welcome text Some welcome text Some welcome text

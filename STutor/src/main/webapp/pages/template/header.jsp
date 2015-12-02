@@ -31,11 +31,7 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      	<li id="mail-box">
-      		<a href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail45x39.png"/></a>
-    	</li>
       	<li><a href="http://localhost:8080/Stutor/afterLogin">Main Page</a></li>
-      	<li><a href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>">Profile</a></li>
         <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>       
       </ul>
     </div>
