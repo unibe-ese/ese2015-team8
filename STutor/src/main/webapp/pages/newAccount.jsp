@@ -68,7 +68,7 @@
         
         <div class="form-actions">
             <button type="submit" class="btn btn-primary btn-md">Sign up</button>
-            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/STutor" role="button">Cancel</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/" role="button">Cancel</a>
   
             
         </div>
