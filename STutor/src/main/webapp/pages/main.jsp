@@ -16,30 +16,46 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <c:import url="template/header.jsp" />
 
-<h1>Welcome</h1>
 <body  onload="mailBoxColour(${notificationNumber})">
-<div><a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>">Profile</a></div>
+
 <div id="mail-box">
 	<a id="mail-image" href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail113x84.png"/></a>
 	<p id="mail-text">${notificationNumber}</p>
-</div>
+</div> </body>
 
-<div class="panel panel-default">
-	<div class="panel-heading">${welcomeMsg}</div>
-	<div class="panel-body">Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-							Some welcome text Some welcome text Some welcome text
-	</div>
-</div>
+    
+  
+<div class="row">
+            <div class="col-lg-4">
+               
+		         <a href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>"><img class="img-responsive img-rounded" src="css/images/profile.jpg"></a>
+               
+            </div>
+            <div class="col-lg-7">
+                
+                    
+                    <h2>${welcomeMsg}</h2>
+                   
+                    <p>
+                        Sme welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+                    </p>
+                
+            
+        </div>
+        </div>
+       
+
 </body>
 </html>

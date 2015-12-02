@@ -33,7 +33,7 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<a href="http://localhost:8080/Stutor/showSortedCommentsDown?tutorId=${tutorId}">Sort by higest</a>
 	<br>
 	<br>
-	<table class="table">
+	<table class="table table-hover">
 		<tr id="showCommentsTableIndex">
 			<th>Rating</th>
 			<th>Comment</th>
