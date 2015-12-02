@@ -19,7 +19,7 @@ to rate the Tutor. -->
 		<c:when test="${notification.titel == 'Contact Request'}">
 			
 			
-            <a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/notificationDecline">Accept</a>
+            <a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/notificationAccept">Accept</a>
             <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
             
 			<br>
