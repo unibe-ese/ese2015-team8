@@ -17,15 +17,19 @@ to rate the Tutor. -->
 	<p>${notification.message}</p>
 	<c:choose>
 		<c:when test="${notification.titel == 'Contact Request'}">
-			<a href="http://localhost:8080/Stutor/notificationAccept">Accept</a>
-			<br>
-			<a href="http://localhost:8080/Stutor/notificationDecline">Decline</a>
+			
+			
+            <a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/notificationDecline" role="button">Accept</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/notificationDecline" role="button">Decline</a>
+            
 			<br>
 		</c:when>
 		<c:when test="${notification.titel == 'Request Accepted'}">
 			<p>Please <a href="http://localhost:8080/Stutor/rateTutor?notificationId=<c:out value='${notification.id}'/>">RATE</a> the Tutor once he finished his teaching</p>
 		</c:when>
 	</c:choose>
+	<br>
+	<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 </body>
-<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
+
 </html>

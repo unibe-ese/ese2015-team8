@@ -31,8 +31,9 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	
 	<a href="http://localhost:8080/Stutor/showSortedCommentsUp?tutorId=${tutorId}">Sort by lowest</a> -
 	<a href="http://localhost:8080/Stutor/showSortedCommentsDown?tutorId=${tutorId}">Sort by higest</a>
-	
-	<table>
+	<br>
+	<br>
+	<table class="table">
 		<tr id="showCommentsTableIndex">
 			<th>Rating</th>
 			<th>Comment</th>
@@ -47,10 +48,10 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	
 	<br>
 	<div>
-		<a href="http://localhost:8080/Stutor/hiddenProfile?userId=${tutorId}">return</a>
+		<a href="http://localhost:8080/Stutor/hiddenProfile?userId=${tutorId}">Return</a>
 	</div>
 	
-	<br><br>
+	<br>
 	<div>
 		<a href="http://localhost:8080/Stutor/afterLogin">Back to main page</a>
 	</div>
