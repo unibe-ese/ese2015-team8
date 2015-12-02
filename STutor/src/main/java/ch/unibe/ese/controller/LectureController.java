@@ -106,9 +106,11 @@ public class LectureController {
 	 * @return model with a new LectureForm
 	 */
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
-	public ModelAndView addLecture() {
+	public ModelAndView addLecture(Principal principal) {
 		ModelAndView model = new ModelAndView("addLecture");
+		Student user = studentSearchService.getStudentByUsername(principal.getName());
 		model.addObject("lectureForm", new LectureForm());
+		model.addObject("user", user);
 		return model;
 	}
 
@@ -165,6 +167,8 @@ public class LectureController {
 			model = new ModelAndView("accessDenied");
 		}
 		
+
+		
 		else{
 		model = new ModelAndView("editLecture");
 		this.lectureId = lectureId;
@@ -175,6 +179,7 @@ public class LectureController {
 		editForm.setGrade(chosenLecture.getGrade());
 		
 		model.addObject("lectureForm", editForm);
+		model.addObject("user", loggedInTutor);
 		}
 		
 		return model;

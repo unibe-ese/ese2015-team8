@@ -41,9 +41,11 @@ public class TimeframeController {
 	 * @return model with form
 	 */
 	@RequestMapping(value = "/addTimeframe", method = RequestMethod.GET)
-	public ModelAndView addLecture() {
+	public ModelAndView addLecture(Principal principal) {
+		Student user = studentSearchService.getStudentByUsername(principal.getName());
 		ModelAndView model = new ModelAndView("addTimeframe");
 		model.addObject("timeframeForm", new TimeframeForm());
+		model.addObject("user", user);
 		return model;
 	}
 
@@ -97,6 +99,7 @@ public class TimeframeController {
 		editForm.setToTime(chosenTimeframe.getToTime());
 		editForm.setId(chosenTimeframe.getId());
 		model.addObject("timeframeForm", editForm);
+		model.addObject("user", loggedInTutor);
 		}
 		return model;
 	}

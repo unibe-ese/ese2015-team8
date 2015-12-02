@@ -54,7 +54,7 @@ in the exam. -->
                 <br>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary btn-md">Save changes</button>
-            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Cancel</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>" role="button">Cancel</a>
             
         </div>
         
