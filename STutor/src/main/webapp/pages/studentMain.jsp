@@ -20,6 +20,23 @@ or his notifications or log out again. -->
 </h2>
 
 <body>
-	
+	<div class="panel panel-default">
+ <div class="panel-heading">${welcomeMsg}</div>
+ <div class="panel-body">See Notifications, Profile on the top right corner<br>
+Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+Some welcome text Some welcome text Some welcome text
+ </div>
+</div>
 </body>
 </html>

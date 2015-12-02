@@ -26,9 +26,9 @@
     <div class="collapse navbar-collapse">
       <form class="navbar-form navbar-left" method="get" action="http://localhost:8080/Stutor/basicSearch" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" placeholder="Search..." name="q" >
+          <input type="search" class="form-control" placeholder="lecture name..." name="q" >
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
       	<li id="mail-box">
