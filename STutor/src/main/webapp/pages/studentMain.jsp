@@ -12,7 +12,7 @@ or his notifications or log out again. -->
 <title>Main Page</title>
 </head>
 
-<c:import url="template/loggedInHeader.jsp" />
+<c:import url="template/header.jsp" />
 
 <h1>Welcome</h1>
 
@@ -20,12 +20,6 @@ or his notifications or log out again. -->
 </h2>
 
 <body>
-	<a href="profile?userId=<c:out value="${user.id}"/>">See Profile</a>
-	<a class="btn btn-primary btn-md" href="profile?userId=<c:out value="${user.id}"/>" role="button">See Profile</a>
-	<br>
-	<a href="notifications?userId=<c:out value="${user.id}"/>">Notifications</a>
 	
-	<br><br>
-	<a href="<c:url value="logout" />" > Logout</a>
 </body>
 </html>

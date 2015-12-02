@@ -11,9 +11,12 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon">				
+		<link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon">
+		
+		<link rel="stylesheet" type="text/css" href="css/mailbox.css">
+		<script src="js/mailbox.js"></script>				
 	</head>
-	
+<body  onload="mailBoxColour(${user.notifications})"></body>
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
      <div class="navbar-header">
@@ -27,13 +30,14 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-
-      <ul class="nav navbar-nav navbar-right"> 
+      <ul class="nav navbar-nav navbar-right">
+      	<li id="mail-box">
+      		<a href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail45x39.png"/></a>
+    	</li>
       	<li><a href="http://localhost:8080/Stutor/afterLogin">Main Page</a></li>
-      	<li><a href="http://localhost:8080/Stutor/options">Edit Profile</a></li>
+      	<li><a href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>">Profile</a></li>
         <li><a href="http://localhost:8080/Stutor/logout">Log Out</a></li>       
       </ul>
     </div>
   </div>
 </nav>
-	
