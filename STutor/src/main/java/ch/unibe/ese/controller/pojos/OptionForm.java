@@ -42,12 +42,17 @@ public class OptionForm {
 	private String wage;
 	
 	public String getWage() {
+		if(wage == null)
+			return "1000";
 		return wage;
 	}
 
 	public void setWage(String wage) {
+		if(wage == null)
+			wage = "1000";
+		else
+			this.wage = wage;
 		
-		this.wage = wage;
 	}
 
 	public String getFirstName() {

@@ -89,11 +89,16 @@ public class Student{
     private String wage = "1000";//set initial value to 1000 Fr
            
 	public String getWage() {
+		if(wage == null)
+			return "1000";
 		return wage;
 	}
 
 	public void setWage(String wage) {
-		this.wage = wage;
+		if(wage == null)
+			wage = "1000";
+		else
+			this.wage = wage;
 	}
 
 	private double rating;
