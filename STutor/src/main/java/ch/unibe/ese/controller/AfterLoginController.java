@@ -58,26 +58,13 @@ public class AfterLoginController {
 
 		// we get the student through the dao
 		Student loggedInStudent = studentSearchService.getStudentByUsername(username);
-
-		GrantedAuthority authority = list.iterator().next();
 		
 		
 		ModelAndView model = new ModelAndView("main");
-;
 
-		//depending on the role, a different jsp is loaded.
-		if (authority.toString().contentEquals("ROLE_TUTOR")) {
-			String welcomeText = "Hi " + username + ", welcome to Stutor.";
+		String welcomeText = "Hi " + username + ", welcome to STutor.";
 
-			model.addObject("welcomeMsg", welcomeText);
-
-		} else {
-			String welcomeText = "Hi " + username + ", welcome to Stutor.";
-
-			model.addObject("welcomeMsg", welcomeText);
-
-		}
-		
+		model.addObject("welcomeMsg", welcomeText);	
 		model.addObject("user",loggedInStudent);
 		model.addObject("notificationNumber",notificationService.numberOfUnreadNotifications(loggedInStudent));
 		

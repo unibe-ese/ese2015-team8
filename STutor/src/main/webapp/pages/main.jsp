@@ -41,15 +41,15 @@ or his notifications and he can add lectures and his scheduals. -->
                     </p>
                      <blockquote>
                          We are so pleased to have an excellent long term working relationship with Lizelle. She is always professional, dependable, and her expertise is outstanding. We are truly fortunate to have her as our tutor
-                        <footer>Evelyn, student</footer>
+                        <footer>Evelyn, Student</footer>
                        </blockquote>
                        <blockquote>
                          As a tutor who also works full time, it is a great time saver and asset to find a web service that gives my profile lots of web exposure, manages credit checks and client payments, and has an easy to maintain platform that is up to date and appealing
-                        <footer>Mary, tutor</footer>
+                        <footer>Mary, Tutor</footer>
                        </blockquote>
                      <blockquote>
                          I had no idea where to start finding a tutor for a project I was working on. STutor did all the work for me and I found someone excellent!
-                        <footer>Jim, student</footer>
+                        <footer>Jim, Student</footer>
                        </blockquote>
             
         </div>
