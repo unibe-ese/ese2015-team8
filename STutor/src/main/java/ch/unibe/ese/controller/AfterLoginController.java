@@ -1,11 +1,8 @@
 package ch.unibe.ese.controller;
 
 import java.security.Principal;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,30 +51,17 @@ public class AfterLoginController {
 		// logged in.
 		String username = principal.getName();
 		
-		Collection<? extends GrantedAuthority> list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		/*never used*///Collection<? extends GrantedAuthority> list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
 		// we get the student through the dao
 		Student loggedInStudent = studentSearchService.getStudentByUsername(username);
-
-		GrantedAuthority authority = list.iterator().next();
 		
 		
 		ModelAndView model = new ModelAndView("main");
-;
 
-		//depending on the role, a different jsp is loaded.
-		if (authority.toString().contentEquals("ROLE_TUTOR")) {
-			String welcomeText = "Hi " + username + ", welcome to Stutor.";
+		String welcomeText = "Hi " + username + ", welcome to STutor.";
 
-			model.addObject("welcomeMsg", welcomeText);
-
-		} else {
-			String welcomeText = "Hi " + username + ", welcome to Stutor.";
-
-			model.addObject("welcomeMsg", welcomeText);
-
-		}
-		
+		model.addObject("welcomeMsg", welcomeText);	
 		model.addObject("user",loggedInStudent);
 		model.addObject("notificationNumber",notificationService.numberOfUnreadNotifications(loggedInStudent));
 		
