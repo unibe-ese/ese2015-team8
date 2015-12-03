@@ -82,7 +82,7 @@ email address. You can also change if you're a Tutor or not. -->
         </c:if>
         
          <button type="submit" class="btn btn-primary btn-md">Submit</button>
-            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Cancel</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/profile?userId=${student.id}" role="button">Cancel</a>
          
     </fieldset>
     

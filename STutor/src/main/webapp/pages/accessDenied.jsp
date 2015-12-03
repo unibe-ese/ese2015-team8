@@ -14,7 +14,7 @@ only when he enters a link to a forbidden site manually. -->
 
 <body>
 
-<h1><a href="http://localhost:8080/Stutor/afterLogin" 
-style="text-decoration:none; color:black; font-family: Tahoma;">Go back to main page</a></h1>
+<h1><a class="btn btn-primary btn-md" role="button" href="http://localhost:8080/Stutor/afterLogin" 
+>Go back to main page</a></h1>
 
 </body>

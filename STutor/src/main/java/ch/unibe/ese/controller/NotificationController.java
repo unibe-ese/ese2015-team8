@@ -98,11 +98,6 @@ public class NotificationController {
 	 */
 	@RequestMapping("/paymentDone")
 	public ModelAndView paymentDone() {
-		
-		acctualNotification.setStatus("_/");
-		Student temp = studentSearchService.findTutorById(acctualNotification.getFromStudentId());
-		temp.addNotification(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
-		temp = studentSearchService.saveStudentIntoDB(temp);
 		acctualStudent = notificationService.remove(acctualNotification, studentSearchService.findTutorById(acctualNotification.getToStudentId()));
 		
 		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));

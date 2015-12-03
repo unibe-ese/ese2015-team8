@@ -43,9 +43,6 @@ That's what this page serves for. -->
 		Code: <input type="text" onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));" maxlength="3"><br>
 	</form>
 	
-	<div class="subButton">
-    	
-            <a class="btn btn-default btn-md" href="paymentDone">Pay</a>
-	</div>
+	<div class="subButton"><a class="btn btn-default btn-md" href="paymentDone">Pay</a></div>
 </body>
 </html>

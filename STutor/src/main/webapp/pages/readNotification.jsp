@@ -6,7 +6,7 @@ to rate the Tutor. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <c:import url="template/header.jsp" />
@@ -31,6 +31,10 @@ to rate the Tutor. -->
 			<p>You can access your Profile <a href="http://localhost:8080/Stutor/profile?userId=<c:out value='${notification.toStudentId}'/>">HERE</a> or on the <a href="http://localhost:8080/Stutor/afterLogin">Main Page</a> </p>
 		</c:when>
 	</c:choose>
+	<br>
+	<div>
+		<a class="btn btn-primary btn-md" href="notifications?userId=<c:out value="${notification.toStudentId}"/>">Back to Notifications</a>
+	</div>
 </body>
 
 </html>

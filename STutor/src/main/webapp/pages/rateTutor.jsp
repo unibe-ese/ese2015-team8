@@ -40,7 +40,7 @@ is suitable or not. -->
                 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary btn-md">Submit</button>
-            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/Stutor" role="button">Cancel</a>
+            <a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Back to main page</a>
             
         </div>
     </fieldset>

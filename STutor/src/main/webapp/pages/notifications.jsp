@@ -26,35 +26,32 @@ That's what this page serves for.-->
 </style>
 
 <body>
-
-<h1>Notifications:</h1>
-	
-		
-		<table class="table table-hover">
-			<thead>
-			  <tr>
-			   <th>Status</th>
-			   <th>Title</th>
-			   <th>Date</th>
-			   <th>Actions</th>
-			  </tr>
-			</thead>
-			<tbody>
-			<c:forEach var="notification" items="${notificationList}" >
+	<h1>Notifications:</h1>
+	<table class="table table-hover">
+		<thead>
 			<tr>
-				<td><c:out value="${notification.status}" /></td>
-				<td><c:out value="${notification.titel}" /></td>
-				<td><c:out value="${notification.date}" /></td>
-				<td><a href="readNotification?notificationId=<c:out value="${notification.id}"/>">read</a>
-				<a href="deletedNotification?notificationId=<c:out value="${notification.id}"/>">remove</a>
-				</td>
-				
-				
+				<th>Status</th>
+				<th>Title</th>
+				<th>Date</th>
+				<th>Actions</th>
 			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="notification" items="${notificationList}" >
+				<tr>
+					<td><c:out value="${notification.status}" /></td>
+					<td><c:out value="${notification.titel}" /></td>
+					<td><c:out value="${notification.date}" /></td>
+					<td><a href="readNotification?notificationId=<c:out value="${notification.id}"/>">read</a>
+						<a href="deletedNotification?notificationId=<c:out value="${notification.id}"/>">remove</a>
+					</td>
+				</tr>
 			</c:forEach>
-			</tbody>
-			</table>
-		
-	
+		</tbody>
+	</table>
+			
+	<div>
+		<a class="btn btn-primary btn-md" role="button" href="http://localhost:8080/Stutor/afterLogin">Return</a>
+	</div>
 </body>
 </html>
