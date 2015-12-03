@@ -19,7 +19,10 @@ public class NotificationServiceImplementation implements NotificationService{
 	
 	@Transactional
 	public Notification saveNotification(Notification notification) {
-		notification = notificationDao.save(notification);
+		//notification = notificationDao.save(notification);
+		Student temp = studentDao.findOne(notification.getToStudentId());
+		temp.addNotification(notification);
+		studentDao.save(temp);
 		return notification;
 	}
 
