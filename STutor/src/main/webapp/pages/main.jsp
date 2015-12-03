@@ -6,7 +6,7 @@ or his notifications and he can add lectures and his scheduals. -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="css/mailbox.css">
@@ -18,43 +18,29 @@ or his notifications and he can add lectures and his scheduals. -->
 
 <body  onload="mailBoxColour(${notificationNumber})">
 
-<div id="mail-box">
-	<a id="mail-image" href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail113x84.png"/></a>
-	<p id="mail-text">${notificationNumber}</p>
-</div> </body>
+	<div id="mail-box">
+		<a id="mail-image" href="notifications?userId=<c:out value="${user.id}"/>"><img src="img/mail113x84.png"/></a>
+		<p id="mail-text">${notificationNumber}</p>
+	</div>
 
-    
-  
-<div class="row">
-            <div class="col-lg-4">
-               
-		         <a href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>"><img class="img-responsive img-rounded" src="css/images/profile.jpg"></a>
-               
-            </div>
-            <div class="col-lg-7">
-                
-                    
-                    <h2>${welcomeMsg}</h2>
-                   
-                    <p>
-                      STutor is a learning platform that is easy to use for both: tutors and students. And no one can prove it better than our clients! 
-                    </p>
-                     <blockquote>
-                         We are so pleased to have an excellent long term working relationship with Lizelle. She is always professional, dependable, and her expertise is outstanding. We are truly fortunate to have her as our tutor
-                        <footer>Evelyn, student</footer>
-                       </blockquote>
-                       <blockquote>
-                         As a tutor who also works full time, it is a great time saver and asset to find a web service that gives my profile lots of web exposure, manages credit checks and client payments, and has an easy to maintain platform that is up to date and appealing
-                        <footer>Mary, tutor</footer>
-                       </blockquote>
-                     <blockquote>
-                         I had no idea where to start finding a tutor for a project I was working on. STutor did all the work for me and I found someone excellent!
-                        <footer>Jim, student</footer>
-                       </blockquote>
-            
-        </div>
-        </div>
-       
-
+	<div class="row">
+		<div class="col-lg-4">
+			<a href="http://localhost:8080/Stutor/profile?userId=<c:out value="${user.id}"/>"><img class="img-responsive img-rounded" src="css/images/profile.jpg"></a>
+		</div>
+		<div class="col-lg-7">
+			<h2>${welcomeMsg}</h2>
+			<p>STutor is a learning platform that is easy to use for both: tutors and students. And no one can prove it better than our clients!</p>
+			<blockquote>We are so pleased to have an excellent long term working relationship with Lizelle. She is always professional, dependable, and her expertise is outstanding. We are truly fortunate to have her as our tuto
+				<footer>Evelyn, student</footer>
+			</blockquote>
+			<blockquote>As a tutor who also works full time, it is a great time saver and asset to find a web service that gives my profile lots of web exposure, manages credit checks and client payments, and has an easy to maintain platform that is up to date and appealing
+				<footer>Mary, tutor</footer>
+			</blockquote>
+			<blockquote>I had no idea where to start finding a tutor for a project I was working on. STutor did all the work for me and I found someone excellent!
+				<footer>Jim, student</footer>
+			</blockquote>
+		</div>
+	</div>
 </body>
-</html>
+
+<c:import url="template/footer.jsp" />

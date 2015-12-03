@@ -11,16 +11,16 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<link rel="stylesheet" type="text/css" href="css/popupStyle.css">
 	<script src="js/popup.js"></script>
 </head>
+
 <c:import url="template/header.jsp" />
 
 <body>
-<table class="table-nonfluid">
-  <tr>
-    <td><h1>User Profile</h1></td>
-    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/options" role="button">Edit</a></td></tr>
-    </table>
-
-
+	<table class="table-nonfluid">
+		<tr>
+			<td><h1>User Profile</h1></td>
+			<td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/options" role="button">Edit</a></td>
+		</tr>
+	</table>
 	<table class="table table-hover">
 		<tr><td>First Name: </td><td><c:out value="${student.firstName}" /></td></tr>
 		<tr><td>Last Name: </td><td><c:out value="${student.lastName}" /></td></tr>
@@ -35,82 +35,71 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 		</c:choose>
 	</table>
 	<c:choose>
-			<c:when test="${student.isTutor}">
+		<c:when test="${student.isTutor}">
 			<a class="btn btn-primary btn-md" href="showComments?tutorId=${student.id}" role="button">See students' comments</a>
-			</c:when>
-		</c:choose>
+		</c:when>
+	</c:choose>
 	<c:choose>
 		<c:when test="${student.isTutor}">
 			<div id="lectureList">
-    			
-				<c:choose>
-					<c:when test="${lecturesCount == 1}">
-						<table class="table-nonfluid">
-  <tr>
-    <td><h1>Lecture given:</h1></td>
-    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
-    </table>
-    
-					</c:when>
-					<c:when test="${lecturesCount != 1}">
-						<table class="table-nonfluid">
-						<tr><td><h1>Lectures given:</h1></td>
-    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td></tr>
-    </table>
-					</c:when>
-				</c:choose>
+				<table class="table-nonfluid">
+					<tr>
+						<td><h1>Lectures given:</h1></td>
+						<td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addLecture" role="button">Add Lectures</a></td>
+					</tr>
+				</table>
 				<table class="table table-hover">
-				<c:choose>
-					<c:when test="${lecturesCount == 0}">
-						no lectures given
-					</c:when>
-					
-				</c:choose>
-				 <c:forEach items="${lectures}" var="lecture">
-				        <tr><td><c:out value="${lecture}" /></td>
-						<td><a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
-						<!-- Popup window for lectures deletion-->
-							<div id="popUpDivL${lecture.id}" class="white_content" style="display:none">
-								<h3>Are you sure you want to delete this Lecture?</h3>
-								<button type="button" onclick="location.href='/Stutor/deleteLecture?id=${lecture.id}'"> YES </button>
-								<button type="button" onclick="closePopup('L',${lecture.id});" >NO</button>
-							</div>
-							<a href="#" onclick="openPopup('L',${lecture.id});">Remove</a>
-						<!-- Popup window end-->
-						
-					    </td></tr>
-				</c:forEach>
-				
+					<c:choose>
+						<c:when test="${lecturesCount == 0}">no lectures given</c:when>
+					</c:choose>
+					<c:forEach items="${lectures}" var="lecture">
+						<tr>
+							<td><c:out value="${lecture}" /></td>
+							<td>
+								<a href="http://localhost:8080/Stutor/editLecture?id=${lecture.id}">Edit</a>
+							
+								<!-- Popup window for lectures deletion-->
+								<div id="popUpDivL${lecture.id}" class="white_content" style="display:none">
+									<h3>Are you sure you want to delete this Lecture?</h3>
+									<button type="button" onclick="location.href='/Stutor/deleteLecture?id=${lecture.id}'"> YES </button>
+									<button type="button" onclick="closePopup('L',${lecture.id});" >NO</button>
+								</div>
+								<a href="#" onclick="openPopup('L',${lecture.id});">Remove</a>
+								<!-- Popup window end-->
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<div id="timeframeList">
 				<table class="table-nonfluid">
-  <tr>
-    <td><h1>Is free during:</h1></td>
-    <td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a></td></tr>
-    </table>
-    	<c:choose>
-							<c:when test="${timeframesCount == 0}">
-								no time frame available
-							</c:when>
-						</c:choose>
-						
-				
-				<c:forEach items="${timeframes}" var="timeframe">
-					<div id="table">
-
-						<label><c:out value="${timeframe}" /></label>
-						<a href="http://localhost:8080/Stutor/editTimeframe?id=${timeframe.id}">Edit</a>
-						<!-- Popup window for timeframe deletion-->
-							<div id="popUpDivT${timeframe.id}" class="white_content" style="display:none">
-								<h3>Are you sure you want to delete this Timeframe?</h3>
-								<button type="button" onclick="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'"> YES </button>
-								<button type="button" onclick="closePopup('T',${timeframe.id});" >NO</button>
-							</div>
-							<a href="#" onclick="openPopup('T',${timeframe.id});">Remove</a>
-						<!-- Popup window end-->
-					</div>
-				</c:forEach>
+					<tr>
+						<td><h1>Is free during:</h1></td>
+						<td><br>&nbsp;&nbsp;<a class="btn btn-default btn-md" href="http://localhost:8080/Stutor/addTimeframe" role="button">Add Timeframe</a></td>
+					</tr>
+				</table>
+				<table class="table table-hover">
+					<c:choose>
+						<c:when test="${timeframesCount == 0}">no time frame available</c:when>
+					</c:choose>
+					<c:forEach items="${timeframes}" var="timeframe">
+						<tr>
+							<td><c:out value="${timeframe}" /></td>
+							<td>
+								<a href="http://localhost:8080/Stutor/editTimeframe?id=${timeframe.id}">Edit</a>
+			
+								<!-- Popup window for timeframe deletion-->
+								<div id="popUpDivT${timeframe.id}" class="white_content" style="display:none">
+									<h3>Are you sure you want to delete this Timeframe?</h3>
+									<button type="button" onclick="location.href='/Stutor/deleteTimeframe?id=${timeframe.id}'"> YES </button>
+									<button type="button" onclick="closePopup('T',${timeframe.id});" >NO</button>
+								</div>
+								<a href="#" onclick="openPopup('T',${timeframe.id});">Remove</a>
+								<!-- Popup window end-->
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
 			</div>
 		</c:when>
 	</c:choose>
@@ -119,8 +108,10 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	<div id="fade" class="black_overlay" style="display:none"></div>
 	
 	<br>
+	
 	<div>
 		<a class="btn btn-primary btn-md" href="http://localhost:8080/Stutor/afterLogin" role="button">Back to main page</a>
 	</div>
 </body>
-</html>
+
+<c:import url="template/footer.jsp"></c:import>

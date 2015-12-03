@@ -6,15 +6,18 @@ only when he enters a link to a forbidden site manually. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
 
-<head><title>Access denied!</title></head>
+<head>
+	<title>Access denied!</title>
+</head>
 
 <c:import url="template/header.jsp" />
-<h1>Access denied!</h1>
 
 <body>
+	<h1>Access denied!</h1>
 
-<h1><a class="btn btn-primary btn-md" role="button" href="http://localhost:8080/Stutor/afterLogin" 
->Go back to main page</a></h1>
-
+	<h1><a class="btn btn-primary btn-md" role="button" href="http://localhost:8080/Stutor/afterLogin">Go back to main page</a></h1>
 </body>
+
+<c:import url="template/footer.jsp" />

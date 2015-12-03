@@ -6,33 +6,21 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<head><title>Comments</title></head>
+<head>
+	<title>Comments</title>
+	<link rel="stylesheet" type="text/css" href="css/showComment.css">
+</head>
+
 <c:import url="template/header.jsp" />
-
-<style>
-#showCommentsTableIndex th{
-	text-align:left;
-	font-weight: bold;
-}
-
-#showCommentsTableContentRating{
-	text-align:center;
-	font-weight: normal;
-}
-
-#showCommentsTableContentText{
-	text-align:left;
-	font-weight: normal;
-}
-</style>
 
 <body>
 	<h1>Comments:</h1>
 	
 	<a href="http://localhost:8080/Stutor/showSortedCommentsUp?tutorId=${tutorId}">Sort by lowest</a> -
 	<a href="http://localhost:8080/Stutor/showSortedCommentsDown?tutorId=${tutorId}">Sort by higest</a>
-	<br>
-	<br>
+	
+	<br><br>
+	
 	<table class="table table-hover">
 		<tr id="showCommentsTableIndex">
 			<th>Rating</th>
@@ -47,8 +35,10 @@ username email and if you're a Tutor: gender, given lectures and free time. -->
 	</table>
 	
 	<br>
+	
 	<div>
 		<a class="btn btn-primary btn-md" role="button" href="http://localhost:8080/Stutor/hiddenProfile?userId=${tutorId}">Return</a>
 	</div>
 </body>
-</html>
+
+<c:import url="template/footer.jsp" />

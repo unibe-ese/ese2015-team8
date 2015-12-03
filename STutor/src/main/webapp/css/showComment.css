@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+#showCommentsTableIndex th{
+	text-align:left;
+	font-weight: bold;
+}
+
+#showCommentsTableContentRating{
+	text-align:center;
+	font-weight: normal;
+}
+
+#showCommentsTableContentText{
+	text-align:left;
+	font-weight: normal;
+}
