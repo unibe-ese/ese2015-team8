@@ -18,12 +18,11 @@ public class NotificationServiceImplementation implements NotificationService{
 	@Autowired StudentDao studentDao;
 	
 	@Transactional
-	public Notification saveNotification(Notification notification) {
-		//notification = notificationDao.save(notification);
+	public Student saveNotificationToStudent(Notification notification) {
 		Student temp = studentDao.findOne(notification.getToStudentId());
 		temp.addNotification(notification);
 		studentDao.save(temp);
-		return notification;
+		return temp;
 	}
 
 	public List<Notification> getNotificationsByStudentId(Long id) {
@@ -42,6 +41,11 @@ public class NotificationServiceImplementation implements NotificationService{
 		loggedInTutor = studentDao.save(loggedInTutor);
 		notificationDao.delete(chosenNotification);
 		return loggedInTutor;
+	}
+	
+	@Transactional
+	public Notification modifie(Notification notification) {
+		return notificationDao.save(notification);
 	}
 
 	@Transactional

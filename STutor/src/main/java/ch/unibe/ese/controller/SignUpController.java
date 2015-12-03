@@ -74,7 +74,7 @@ public class SignUpController {
 		if (!result.hasErrors()) {
 			try {
 				Student student = signUpService.saveStudentFrom(signupForm);
-				notificationService.saveNotification(NotificationFactory.getTutorSignupDetails(student.getId()));
+				notificationService.saveNotificationToStudent(NotificationFactory.getTutorSignupDetails(student.getId()));
 
 				UserDetails userDetails = userDetailsService.loadUserByUsername(signupForm.getUsername());
 

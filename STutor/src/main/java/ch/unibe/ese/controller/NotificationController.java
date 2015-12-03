@@ -66,7 +66,7 @@ public class NotificationController {
         try {
         	acctualNotification = notificationService.findById(id);
         	acctualNotification.setStatus("");
-        	acctualNotification = notificationService.saveNotification(acctualNotification);
+        	acctualNotification = notificationService.modifie(acctualNotification);
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
         	model.addObject("tutor",studentSearchService.findTutorById(acctualNotification.getFromStudentId()));

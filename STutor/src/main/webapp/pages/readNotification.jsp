@@ -27,6 +27,9 @@ to rate the Tutor. -->
 		<c:when test="${notification.titel == 'Request Accepted'}">
 			<p>Please <a href="http://localhost:8080/Stutor/rateTutor?notificationId=<c:out value='${notification.id}'/>">RATE</a> the Tutor once he finished his teaching</p>
 		</c:when>
+		<c:when test="${notification.titel == 'Welcome'}">
+			<p>You can access your Profile <a href="http://localhost:8080/Stutor/profile?userId=<c:out value='${notification.toStudentId}'/>">HERE</a> or on the <a href="http://localhost:8080/Stutor/afterLogin">Main Page</a> </p>
+		</c:when>
 	</c:choose>
 </body>
 

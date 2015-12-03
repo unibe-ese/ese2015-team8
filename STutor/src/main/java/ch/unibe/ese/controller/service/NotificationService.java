@@ -7,13 +7,15 @@ import ch.unibe.ese.model.Student;
 
 public interface NotificationService {
 	
-	public Notification saveNotification(Notification notificiation);
+	public Student saveNotificationToStudent(Notification notificiation);
 
 	public List<Notification> getNotificationsByStudentId(Long id);
 
 	public Notification findById(long id);
 
 	public Student remove(Notification chosenNotification, Student loggedInTutor);
+	
+	public Notification modifie(Notification notification);
 	
 	public Long numberOfUnreadNotifications(Student loggedInTutor);
 }

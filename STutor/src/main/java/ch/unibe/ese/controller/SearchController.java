@@ -194,9 +194,7 @@ public class SearchController {
     	try
     	{
     	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(), tempTutor.getId());
-    	tempTutor.addNotification(notification);
-    	notification = notificationService.saveNotification(notification);
-    	tempTutor = studentSearchService.saveStudentIntoDB(tempTutor);
+    	tempTutor = notificationService.saveNotificationToStudent(notification);
     	ModelAndView model = new ModelAndView("/show");
     	model.addObject("text","Notification was sent!");
     	return model;
