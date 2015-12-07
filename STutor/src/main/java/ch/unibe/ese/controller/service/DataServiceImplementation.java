@@ -100,6 +100,8 @@ public class DataServiceImplementation implements DataService {
 		temp.setName("UZH");
 		universityDao.save(temp);
 		temp = new University();
+		temp.setName("EPFL");
+		universityDao.save(temp);
 
 	}
 
