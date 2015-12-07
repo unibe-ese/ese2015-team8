@@ -114,4 +114,4 @@ and what gender he/she should be. -->
 	</div>
 </body>
 
-<c:import url="template/footerr.jsp" />
+<c:import url="template/footer.jsp" />

@@ -103,6 +103,8 @@ public class NotificationController {
 		acctualStudent.addNotification(NotificationFactory.getStudentContactDetails(studentSearchService.findTutorById(acctualNotification.getFromStudentId()), acctualStudent.getId()));
 		acctualStudent = studentSearchService.saveStudentIntoDB(acctualStudent);
 		
+		notificationService.saveNotificationToStudent(NotificationFactory.getAcceptNotification(acctualStudent, acctualNotification.getFromStudentId()));
+		
 		ModelAndView model= new ModelAndView("/show");
 		model.addObject("text","Payment Done!");
 		return model;
