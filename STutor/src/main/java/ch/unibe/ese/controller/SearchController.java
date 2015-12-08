@@ -145,17 +145,11 @@ public class SearchController {
 			try {
 				String sortBy = refSearchForm.getSortBy();
 				String lectureName = refSearchForm.getName();
+				String gender = refSearchForm.getGender();
 				Double minGrade = refSearchForm.getMinGrade();
-				Iterable<Lecture> lecturesTemp = null;
-
-				lecturesTemp = lectureSearchService.getCorrectTempLecture(refSearchForm, sortBy, lectureName, minGrade);
-
-				List<Lecture> lectures = new LinkedList<Lecture>();
 				
-				for (Lecture lecture : lecturesTemp) {
-					lectures.add(lecture);
-				}
-
+				List<Lecture> lectures = lectureSearchService.getCorrectTempLecture(refSearchForm, sortBy, lectureName, minGrade, gender);				
+				
 				model = new ModelAndView("searchResult");
 				model.addObject("lectures", lectures);
 

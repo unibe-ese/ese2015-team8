@@ -183,7 +183,11 @@ public class Student{
 	public void setGender(String gender) {
 		if(isTutor==false)
 			throw new NotTutorException("setSexe");
-		this.gender = gender;
+		else if(gender == null)
+			this.gender = "-";
+		else{
+			this.gender = gender;
+		}
 	}
 
 	public Set<Lecture> getLectures() {

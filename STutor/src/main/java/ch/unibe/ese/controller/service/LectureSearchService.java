@@ -26,7 +26,7 @@ public interface LectureSearchService {
 
 	public List<Lecture> findByNameAndUniversityAndSubjectAndGradeGreaterThan(String lectureName,long universityId, long subjectId, double grade, String sortBy);
 	
-	public Iterable<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName, Double minGrade);
+	public List<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName, Double minGrade, String gender);
 	
 	public RefinedSearchForm getNewRefinedSearchForm(RefinedSearchForm refSearchForm);
 

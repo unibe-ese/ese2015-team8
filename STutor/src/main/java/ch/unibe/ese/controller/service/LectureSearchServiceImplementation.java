@@ -98,8 +98,8 @@ public class LectureSearchServiceImplementation implements LectureSearchService 
 	
 	// ids with -1 as value represent nonexistent values, so it's
 	// like "doesn't matter" which subject/uni etc.
-	public Iterable<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName,
-			Double minGrade) {
+	public List<Lecture> getCorrectTempLecture(RefinedSearchForm refSearchForm, String sortBy, String lectureName,
+			Double minGrade, String gender) {
 		Iterable<Lecture> lecturesTemp;
 		if ((refSearchForm.getSubject() == -1) && (refSearchForm.getUniversity() == -1)) {
 			lecturesTemp = findByNameAndGradeGreaterThan(lectureName,
@@ -120,7 +120,25 @@ public class LectureSearchServiceImplementation implements LectureSearchService 
 					lectureName, refSearchForm.getUniversity(), refSearchForm.getSubject(),
 					minGrade, sortBy);
 		}
-		return lecturesTemp;
+		
+		List<Lecture> lectures = new LinkedList<Lecture>();
+
+		if(gender.contentEquals("doesn't matter")){
+			
+			for (Lecture lecture : lecturesTemp) {
+				lectures.add(lecture);
+			}
+		}
+		
+		else{
+			for (Lecture lecture : lecturesTemp) {
+				if(lecture.getTutor().getGender().contentEquals(gender)){
+					lectures.add(lecture);
+				}
+			}
+		}
+		
+		return lectures;
 	}
 
 	public RefinedSearchForm getNewRefinedSearchForm(RefinedSearchForm refSearchForm) {
