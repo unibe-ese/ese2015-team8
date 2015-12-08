@@ -107,7 +107,7 @@ public class LectureControllerTest {
 	@Test
 	public void invalidNameLectureForm() throws Exception {
 	
-		mockMvc.perform(post("/addedLecture")
+		mockMvc.perform(post("/addedLecture").with(user("tutorForTest").roles("TUTOR"))
 						.param("name", "")).andExpect(status().isOk()).
 											andExpect(model().attributeHasFieldErrors("lectureForm", "name"));
 	}
