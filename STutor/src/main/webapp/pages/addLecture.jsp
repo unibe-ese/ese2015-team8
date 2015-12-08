@@ -67,3 +67,5 @@ in the exam. -->
 		</fieldset>
 	</form:form>
 </body>
+
+<c:import url="template/footer.jsp" />
