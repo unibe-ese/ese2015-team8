@@ -108,9 +108,8 @@ public class LectureController {
 	@RequestMapping(value = "/addLecture", method = RequestMethod.GET)
 	public ModelAndView addLecture(Principal principal) {
 		ModelAndView model = new ModelAndView("addLecture");
-		Student user = studentSearchService.getStudentByUsername(principal.getName());
 		model.addObject("lectureForm", new LectureForm());
-		model.addObject("user", user);
+		model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		return model;
 	}
 
@@ -134,22 +133,19 @@ public class LectureController {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				lectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
-			} catch (InvalidUserException e) {
+			}catch (InvalidUserException e) {
 				model = new ModelAndView("addLecture");
 				model.addObject("page_error", e.getMessage());
-			}
-		
-			catch (InvalidGradeException exc) {
+				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
+			}catch (InvalidGradeException exc) {
 				model = new ModelAndView("addLecture");
 				model.addObject("page_error", exc.getMessage());
+				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 			}
-		}
-		
-
-		else {
+		}else{
 			model = new ModelAndView("addLecture");
+			model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		}
-
 		return model;
 	}
 

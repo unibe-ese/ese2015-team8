@@ -42,10 +42,9 @@ public class TimeframeController {
 	 */
 	@RequestMapping(value = "/addTimeframe", method = RequestMethod.GET)
 	public ModelAndView addLecture(Principal principal) {
-		Student user = studentSearchService.getStudentByUsername(principal.getName());
 		ModelAndView model = new ModelAndView("addTimeframe");
 		model.addObject("timeframeForm", new TimeframeForm());
-		model.addObject("user", user);
+		model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		return model;
 	}
 
@@ -64,16 +63,15 @@ public class TimeframeController {
 			try {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				timeframeService.saveFrom(timeframeForm, loggedInTutor);
-				
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
-				return model;
-
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("addTimeframe");
-				model.addObject("page_error", e.getMessage());				
+				model.addObject("page_error", e.getMessage());		
+				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 			}
 		} else {
 			model = new ModelAndView("addTimeframe");
+			model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		}
 
 		return model;
