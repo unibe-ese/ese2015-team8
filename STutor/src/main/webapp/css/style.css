@@ -185,7 +185,7 @@
 			{
 				-webkit-appearance: none;
 				display: block;
-				width: 90%;
+				width: 50%;
 				border-radius: 8px;
 				border: solid 1px #eee;
 			}
@@ -206,6 +206,7 @@
 			{
 				line-height: 3em;
 				padding: 0 1em;
+				
 			}
 				
 			form textarea

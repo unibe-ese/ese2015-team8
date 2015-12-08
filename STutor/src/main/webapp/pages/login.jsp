@@ -12,6 +12,12 @@ Security. If you don't have an account yet, you can use the link below to sign u
 <head>
 	<title>Login</title>
 </head>
+<style>
+#login_input {
+	width: 30%;
+}
+
+</style>
 
 <c:import url="template/header.jsp" />
 
@@ -45,8 +51,8 @@ Security. If you don't have an account yet, you can use the link below to sign u
 					</c:choose>
 				</font>
 			</c:if>
-			<p><label for="username">Username:</label> <input id="username" name="username" size="20" maxlength="50" type="text" /></p>
-			<p><label for="password">Password:</label> <input id="password" name="password" size="20" maxlength="50" type="password" /></p>
+			<p><label for="username">Username:</label> <input id="login_input" name="username" size="20" maxlength="50" type="text" /></p>
+			<p><label for="password">Password:</label> <input id="login_input" name="password" size="20" maxlength="50" type="password" /></p>
 			<p><button type="submit" class="btn btn-primary btn-md">Log In</button></p>
 			
 			<a href="/Stutor/newAccount"> If you don't have an account, click here to sign up!</a>
