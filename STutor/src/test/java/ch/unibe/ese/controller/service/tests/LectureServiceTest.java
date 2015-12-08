@@ -43,8 +43,8 @@ public class LectureServiceTest {
 
 	
 	private LectureForm lectureForm;
-	private Subject sampleSubject;
-	private University sampleUniversity;
+	private Subject sampleSubject, sampleSubject2;
+	private University sampleUniversity, sampleUniversity2; 
 
 	private Student loggedInTutor;
 
@@ -54,6 +54,7 @@ public class LectureServiceTest {
 		when(lectureDao.save(any(Lecture.class))).then(returnsFirstArg());
 		when(studentDao.save(any(Student.class))).then(returnsFirstArg());
 
+
 		sampleSubject = new Subject();
 		sampleSubject.setName("sampleSubject");
 		sampleSubject.setId((long) 1);
@@ -61,6 +62,19 @@ public class LectureServiceTest {
 		sampleUniversity = new University();
 		sampleUniversity.setName("sampleUniversity");
 		sampleUniversity.setId((long) 1);
+		
+		
+		sampleSubject2 = new Subject();
+		sampleSubject2.setName("sampleSubject2");
+		sampleSubject2.setId((long) 2);
+		
+		sampleUniversity2 = new University();
+		sampleUniversity2.setName("sampleUniversity2");
+		sampleUniversity2.setId((long) 2);
+		
+		when(subjectDao.findOne(sampleSubject2.getId())).thenReturn(sampleSubject2);
+		when(universityDao.findOne(sampleUniversity2.getId())).thenReturn(sampleUniversity2);
+		
 
 		loggedInTutor = new Student();
 		loggedInTutor.setIsTutor(true);
@@ -97,6 +111,56 @@ public class LectureServiceTest {
 		assertEquals(loggedInTutor, addedLecture.getTutor());
 		assertEquals(sampleUniversity, addedLecture.getUniversity());
 
+	}
+	
+	@Test
+	public void editLecture() throws InvalidGradeException{
+		
+		
+		//first we create the lecture we'll edit
+		Lecture toBeEdited = new Lecture();
+		toBeEdited.setId(-2L);
+		toBeEdited.setName("Intro to Editing");
+		toBeEdited.setGrade(6.0);
+		toBeEdited.setSubject(sampleSubject);
+		toBeEdited.setTutor(loggedInTutor);
+		
+		when(lectureDao.findOne(-2L)).thenReturn(toBeEdited);
+		
+		
+		//now we change all the values of that lecture
+		LectureForm editForm = new LectureForm();
+		editForm.setGrade(5.5);
+		editForm.setName("Editing 301");
+		editForm.setSubject(sampleSubject2.getId());
+		editForm.setUniversity(sampleUniversity2.getId());		
+		
+		lectureService.editFrom(editForm, toBeEdited.getId());
+		
+		//check if it has only the new values:
+		assertEquals("Editing 301", toBeEdited.getName());
+		assertEquals(sampleSubject2, toBeEdited.getSubject());
+		assertEquals(sampleUniversity2, toBeEdited.getUniversity());
+		assertEquals(5.5, toBeEdited.getGrade(), 0.01);
+		
+		
+	}
+	
+	@Test
+	public void removeLecture(){
+		
+		Lecture toBeRemoved = new Lecture();
+		toBeRemoved.setId(-2L);
+		toBeRemoved.setTutor(loggedInTutor);
+		toBeRemoved.setName("Soon to be deleted");
+		toBeRemoved = lectureDao.save(toBeRemoved);
+
+		lectureService.remove(toBeRemoved);
+		assertTrue(toBeRemoved.getTutor()==null);
+
+		
+		
+		
 	}
 	
 

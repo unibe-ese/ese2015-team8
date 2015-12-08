@@ -18,7 +18,7 @@ import ch.unibe.ese.controller.service.OptionService;
 import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
-// Coverage 87% (Line 33, 57, 60 not Tested)
+// Coverage 80% (only the obvious if conditions are not checked)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class OptionServiceTest {
@@ -89,5 +89,6 @@ public class OptionServiceTest {
 		assertEquals("user1",optionForm.getUsername());
 		assertEquals("email@email.com",optionForm.getEmail());
 	}
+	
 }
 	

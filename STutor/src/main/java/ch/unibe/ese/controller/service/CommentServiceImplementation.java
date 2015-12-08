@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.controller.pojos.CommentForm;
 import ch.unibe.ese.model.Comment;
-import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.dao.StudentDao;
 
 /**
@@ -31,9 +30,6 @@ public class CommentServiceImplementation implements CommentService {
 		return temp;
 	}
 	
-	public Student findTutorById(Long id){
-		return studentDao.findOne(id);
-	}
 	
 	public LinkedList<Comment> sortComments(Set<Comment> comments){
 		LinkedList<Comment> sortedComments = new LinkedList<Comment>(comments);
@@ -48,7 +44,7 @@ public class CommentServiceImplementation implements CommentService {
 	}
 
 	@Override
-	public Object sortCommentsDecending(Set<Comment> comments) {
+	public LinkedList<Comment> sortCommentsDecending(Set<Comment> comments) {
 		LinkedList<Comment> sortedComments = new LinkedList<Comment>(comments);
 		Comparator<Comment> comparator = new Comparator<Comment>(){
 			@Override

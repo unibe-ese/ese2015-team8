@@ -1,6 +1,6 @@
 package ch.unibe.ese.controller.service.tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
@@ -21,7 +21,7 @@ import ch.unibe.ese.model.Timeframe;
 import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.dao.TimeframeDao;
 
-// 100 % Coverage
+// 92 % Coverage, as simple Dao search was not tested (unnecessary)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/test.xml"})
 public class TimeframeServiceTest {
@@ -76,6 +76,53 @@ public class TimeframeServiceTest {
 		assertEquals(testFromTime,tutor.getTimeframes().iterator().next().getFromTime());
 		
 		assertEquals(testToTime,tutor.getTimeframes().iterator().next().getToTime());
+	}
+	
+	
+	
+	@Test
+	public void editTimeFromForm(){
+		
+		//first we create a time frame with certain values
+		
+		Timeframe timeframe = new Timeframe();
+		timeframe.setDay(1);
+		timeframe.setFromTime(10);
+		timeframe.setToTime(12);
+		timeframe.setId(100L);
+		
+		when(timeframeDao.findOne(timeframe.getId())).thenReturn(timeframe);
+		
+		
+		// now we'll try to edit those values through a form
+		
+		TimeframeForm editForm = new TimeframeForm();
+		editForm.setDay(2);
+		editForm.setFromTime(1);
+		editForm.setToTime(5);
+		
+		timeframeService.editFrom(editForm, timeframe.getId());
+		
+		//check if new values applied
+		
+		assertEquals(2, timeframe.getDay());
+		assertEquals(1, timeframe.getFromTime());
+		assertEquals(5, timeframe.getToTime());
+	}
+	
+	
+	@Test
+	public void removeTime(){
+		Timeframe timeframe = new Timeframe();
+		timeframe.setId(100L);
+		tutor.addTimeframe(timeframe);
+		
+		when(timeframeDao.findOne(timeframe.getId())).thenReturn(timeframe);
+		
+		timeframeService.remove(timeframe, tutor);
+		
+		assertTrue(tutor.getTimeframes().isEmpty());
+		
 	}
 	
 }

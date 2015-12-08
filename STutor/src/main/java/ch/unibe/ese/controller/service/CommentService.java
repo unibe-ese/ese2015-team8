@@ -5,7 +5,6 @@ import java.util.Set;
 
 import ch.unibe.ese.controller.pojos.CommentForm;
 import ch.unibe.ese.model.Comment;
-import ch.unibe.ese.model.Student;
 
 /**
  * Provides processing of comments that are given to a tutor by the students
@@ -20,7 +19,6 @@ public interface CommentService {
 	 * @return form with commentForm's rating and comment
 	 */
 	public Comment getFrom(CommentForm commentForm);
-	public Student findTutorById(Long id);
 	/**
 	 * @param comments
 	 * @return LinkedList with comments sorted by rating
@@ -30,6 +28,6 @@ public interface CommentService {
 	 * @param comments
 	 * @return LinkedList with comments sorted by rating reversed
 	 */
-	public Object sortCommentsDecending(Set<Comment> comments);
+	public LinkedList<Comment> sortCommentsDecending(Set<Comment> comments);
 
 }
