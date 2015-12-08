@@ -11,5 +11,5 @@ import ch.unibe.ese.model.Subject;
  * @since 28.10.2015
  */
 public interface SubjectDao extends CrudRepository<Subject,Long> {
-	
+	Iterable<Subject> findAll();
 }

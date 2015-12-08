@@ -12,8 +12,11 @@ import ch.unibe.ese.model.Student;
  * Processes the editing of the user's profile page.
  */
 public interface OptionService {
+	
 	public OptionForm getFrom(Student student) throws InvalidUserException;
+	
 	public OptionForm getFrom(Long studentId);
+	
 	public OptionForm getFrom(String username);
 	
 	public Student saveStudentFrom(Student student, OptionForm optionForm, boolean hasChangedPassword) throws InvalidUserException;

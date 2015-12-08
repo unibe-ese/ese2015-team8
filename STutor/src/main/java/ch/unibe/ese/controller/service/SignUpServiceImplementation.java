@@ -21,7 +21,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 @Service
 public class SignUpServiceImplementation implements SignUpService {
 
-    @Autowired		StudentDao userDao;
+    @Autowired StudentDao userDao;
     
     @Transactional
     public Student saveStudentFrom(SignupForm signupForm) throws InvalidUserException{
@@ -58,11 +58,7 @@ public class SignUpServiceImplementation implements SignUpService {
         signupForm.setId(student.getId());
 
         return student;
-
     }
-    
-  
-    
     
     @Transactional
     public Student modifieUserFrom(SignupForm signupForm, Student actualStudent) throws InvalidUserException{
@@ -75,11 +71,8 @@ public class SignUpServiceImplementation implements SignUpService {
         actualStudent.setIsTutor(signupForm.getIsTutor());
         actualStudent.setGender(signupForm.getGender());
         
-
         actualStudent = userDao.save(actualStudent);   // save object to DB
 
         return actualStudent;
     }
-
-
 }

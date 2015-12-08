@@ -15,16 +15,11 @@ import ch.unibe.ese.model.dao.UniversityDao;
 @Service("LectureService")
 public class LectureServiceImplementation implements LectureService {
 
-	@Autowired
-	StudentDao userDao;
-	@Autowired
-	LectureDao lectureDao;
-	@Autowired
-	SubjectDao subjectDao;
-	@Autowired
-	StudentDao studentDao;
-	@Autowired
-	UniversityDao universityDao;
+	@Autowired StudentDao userDao;
+	@Autowired LectureDao lectureDao;
+	@Autowired SubjectDao subjectDao;
+	@Autowired StudentDao studentDao;
+	@Autowired UniversityDao universityDao;
 
 	/**
 	 * Saves the lecture from the form into the dao.

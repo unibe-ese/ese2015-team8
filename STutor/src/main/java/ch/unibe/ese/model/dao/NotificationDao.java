@@ -14,8 +14,7 @@ import ch.unibe.ese.model.Notification;
  */
 public interface NotificationDao extends CrudRepository<Notification,Long> {
 	List<Notification> getByToStudentId(Long toStudentId);
+	
 	Long countByToStudentIdAndStatus(Long toStudentId, String status);
-	//Long countByToStudentId(Long toStudentId);
-	//Long countByStatus(String status);
-
+	
 }

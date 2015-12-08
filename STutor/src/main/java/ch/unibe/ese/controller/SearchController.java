@@ -148,7 +148,7 @@ public class SearchController {
 				String gender = refSearchForm.getGender();
 				Double minGrade = refSearchForm.getMinGrade();
 				
-				List<Lecture> lectures = lectureSearchService.getCorrectTempLecture(refSearchForm, sortBy, lectureName, minGrade, gender);				
+				List<Lecture> lectures = lectureSearchService.getCorrectTempLectures(refSearchForm, sortBy, lectureName, minGrade, gender);				
 				
 				model = new ModelAndView("searchResult");
 				model.addObject("lectures", lectures);
