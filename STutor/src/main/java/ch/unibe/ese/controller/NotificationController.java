@@ -60,6 +60,11 @@ public class NotificationController {
 		return model;
 	}
 	
+	/** you can click on "read" on a notification to read it. After that the Status doesn't say
+	 * "new" anymore
+	 * @param id
+	 * @return model with specific notification
+	 */
 	@RequestMapping("/readNotification")
 	public ModelAndView notification(@RequestParam("notificationId") long id) {
 		ModelAndView model;
@@ -126,6 +131,13 @@ public class NotificationController {
 		return model;
 	}
 	
+	/**
+	 * You can remove a notification if you have no use for it anymore. This method saves the deletion of the notification
+	 * so it's not shown anymore
+	 * @param notificationId id (long) of the specific to be deleted notification
+	 * @param principal
+	 * @return model with notifications
+	 */
 	@RequestMapping(value = "/deletedNotification", method = RequestMethod.GET)
 	public ModelAndView deletedLecture(@RequestParam("notificationId") long notificationId, Principal principal) {
 		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());

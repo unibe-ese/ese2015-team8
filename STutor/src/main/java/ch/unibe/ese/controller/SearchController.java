@@ -96,6 +96,13 @@ public class SearchController {
 		return allGender;
 	}
 	
+    /**
+     * Before the specific search, you can make a basic search by just entering the lecture name
+     * into the search field in the header. Shown are all the users that give that lecture and the 
+     * possibility to refine your search (see create method)
+     * @param term
+     * @return model with search result and refined search form
+     */
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
     public ModelAndView basicSearch(@RequestParam("q") String term) {
     	ModelAndView model;

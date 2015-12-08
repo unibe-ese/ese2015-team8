@@ -5,6 +5,11 @@ import java.util.List;
 import ch.unibe.ese.controller.pojos.RefinedSearchForm;
 import ch.unibe.ese.model.Lecture;
 
+/**
+ * @author Till
+ * Processes the lecture searching. You can get all lectures with an id or you can search for lectures
+ * with specific filters on the tutors. The methods are self-explaining.
+ */
 public interface LectureSearchService {
 
 	public List<Lecture> getAllLectures();

@@ -6,6 +6,10 @@ import ch.unibe.ese.controller.pojos.LectureForm;
 import ch.unibe.ese.model.Lecture;
 import ch.unibe.ese.model.Student;
 
+/**
+ * @author Till
+ * Processes saving, editing and deleting the lectures.
+ */
 public interface LectureService {
 	
     public Lecture saveFrom(LectureForm lectureForm, Student loggedInTutor) throws InvalidDataException, InvalidGradeException;

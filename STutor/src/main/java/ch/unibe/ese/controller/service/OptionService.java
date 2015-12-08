@@ -9,6 +9,7 @@ import ch.unibe.ese.model.Student;
  * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
+ * Processes the editing of the user's profile page.
  */
 public interface OptionService {
 	public OptionForm getFrom(Student student) throws InvalidUserException;

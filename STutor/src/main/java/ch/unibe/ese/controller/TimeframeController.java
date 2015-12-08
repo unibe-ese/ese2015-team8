@@ -79,6 +79,13 @@ public class TimeframeController {
 		return model;
 	}
 	
+	/**
+	 * If the tutor has mistyped a timeframe or filled something else in wrong, he can later edit
+	 * this timeframe. That's what this method is for. 
+	 * @param timeframeId The id (long) of the specific lecture to edit
+	 * @param principal all information about current user etc. 
+	 * @return the model with the to be edited timeframe form
+	 */
 	@RequestMapping(value = "/editTimeframe", method = RequestMethod.GET)
 	public ModelAndView editLecture(@RequestParam("id") long timeframeId, Principal principal) {
 		
@@ -104,6 +111,15 @@ public class TimeframeController {
 		return model;
 	}
 	
+
+	/**
+	 * This method checks if the edited timeframe was edited correctly and if so, it's saved in the db
+	 * @param timeframeForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param principal
+	 * @return model with profile
+	 */
 	@RequestMapping(value = "/editedTimeframe", method = RequestMethod.POST)
 	public ModelAndView editedTime (@Valid TimeframeForm timeframeForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
@@ -126,6 +142,12 @@ public class TimeframeController {
 		return model;
 	}
 	
+	/**
+	 * If a tutor added a wrong timeframe he can delete it afterwards
+	 * @param timeframeId id (long) of the specific to be deleted lecture
+	 * @param principal
+	 * @return model of profile page
+	 */
 	@RequestMapping(value = "/deleteTimeframe", method = RequestMethod.GET)
 	public ModelAndView deletedLecture(@RequestParam("id") long timeframeId, Principal principal) {
 		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());

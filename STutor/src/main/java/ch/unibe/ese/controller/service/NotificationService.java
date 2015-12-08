@@ -5,6 +5,10 @@ import java.util.List;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
 
+/**
+ * Handles procession of notifications. A notification belongs to a specific student. It can be 
+ * found by the id, be removed etc. Self-explaining methods.
+ */
 public interface NotificationService {
 	
 	public Student saveNotificationToStudent(Notification notificiation);

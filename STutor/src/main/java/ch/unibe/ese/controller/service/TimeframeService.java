@@ -9,6 +9,7 @@ import ch.unibe.ese.model.Timeframe;
  * @author ESE Team 8
  * @version 1.0
  * @since 4.11.2015
+ * Processes the saving, editing and deletion of timeframes.
  */
 public interface TimeframeService {
 	public Student saveFrom(TimeframeForm timelapsForm, Student loggedInTutor);

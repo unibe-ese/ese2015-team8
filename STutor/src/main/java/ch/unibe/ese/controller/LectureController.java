@@ -156,6 +156,13 @@ public class LectureController {
 
 
 
+	/**
+	 * If the tutor has mistyped a lecture or filled something else in wrong, he can later edit
+	 * this lecture. That's what this method is for. 
+	 * @param lectureId The id (long) of the specific lecture to edit
+	 * @param principal all information about current user etc. 
+	 * @return the model with the to be edited lecture form
+	 */
 	@RequestMapping(value = "/editLecture", method = RequestMethod.GET)
 	public ModelAndView editLecture(@RequestParam("id") long lectureId, Principal principal) {
 		
@@ -185,6 +192,13 @@ public class LectureController {
 		return model;
 	}
 	
+	/**This method checks if the edited lecture was edited correctly and if so, it's saved in the db
+	 * @param lectureForm 
+	 * @param result
+	 * @param redirectAttributes
+	 * @param principal for user info
+	 * @return model with edited lecture form
+	 */
 	@RequestMapping(value = "/editedLecture", method = RequestMethod.POST)
 	public ModelAndView editedLecture(@Valid LectureForm lectureForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
@@ -215,6 +229,12 @@ public class LectureController {
 		return model;
 	}
 	
+	/**
+	 * If a tutor added a wrong lecture he can delete it afterwards
+	 * @param lectureId id (long) of the specific to be deleted lecture
+	 * @param principal
+	 * @return model of profile page
+	 */
 	@RequestMapping(value = "/deleteLecture", method = RequestMethod.GET)
 	public ModelAndView deletedLecture(@RequestParam("id") long lectureId, Principal principal) {
 		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());

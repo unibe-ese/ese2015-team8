@@ -17,6 +17,10 @@ import ch.unibe.ese.controller.service.CommentService;
  * @author ESE Team 8
  * @version 2.0
  * @since 24.11.2015
+ * Controller for showing the comments made by students to rate a tutor 
+ * Once a tutor accepted a student's contact request, this student can rate the tutor exactly 
+ * once. That means that he can give him a grade from 1 to 6 and make a comment.
+ * Every user can see a tutor's rating and all the comments and even sort the ratings by grade
  */
 @Controller
 public class CommentController {
