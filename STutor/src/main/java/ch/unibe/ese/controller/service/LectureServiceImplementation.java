@@ -15,16 +15,11 @@ import ch.unibe.ese.model.dao.UniversityDao;
 @Service("LectureService")
 public class LectureServiceImplementation implements LectureService {
 
-	@Autowired
-	StudentDao userDao;
-	@Autowired
-	LectureDao lectureDao;
-	@Autowired
-	SubjectDao subjectDao;
-	@Autowired
-	StudentDao studentDao;
-	@Autowired
-	UniversityDao universityDao;
+	@Autowired StudentDao userDao;
+	@Autowired LectureDao lectureDao;
+	@Autowired SubjectDao subjectDao;
+	@Autowired StudentDao studentDao;
+	@Autowired UniversityDao universityDao;
 
 	/**
 	 * Saves the lecture from the form into the dao.
@@ -63,12 +58,20 @@ public class LectureServiceImplementation implements LectureService {
 
 	@Transactional
 	public Lecture remove(Lecture lecture) {
-		
-
 		lecture.setTutor(null);
 		lectureDao.delete(lecture);
 		
 		return lecture;
+	}
+	
+	@Transactional
+	public LectureForm getLectureFormFrom(Lecture chosenLecture) {
+		LectureForm editForm = new LectureForm();
+		editForm.setName(chosenLecture.getName());
+		editForm.setSubject(chosenLecture.getSubject().getId());
+		editForm.setUniversity(chosenLecture.getUniversity().getId());
+		editForm.setGrade(chosenLecture.getGrade());
+		return editForm;
 	}
 
 }

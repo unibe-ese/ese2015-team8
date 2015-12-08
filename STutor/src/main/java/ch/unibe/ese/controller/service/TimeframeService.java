@@ -20,4 +20,6 @@ public interface TimeframeService {
 
 	public void remove(Timeframe timeframe, Student tutor);
 	
+	public TimeframeForm getTimeframeFormFrom(Timeframe chosenLecture);
+	
 }

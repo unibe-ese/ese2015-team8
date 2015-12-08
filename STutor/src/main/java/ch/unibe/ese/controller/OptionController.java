@@ -5,10 +5,6 @@ import java.security.Principal;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,18 +31,10 @@ import ch.unibe.ese.security.service.CustomUserDetailsService;
 @Controller
 public class OptionController {
 	
-	@Autowired
-	OptionService optionService;
-	
-	@Autowired
-	SignUpService signUpService;
-	
-	@Autowired
-	CustomUserDetailsService userDetailsService;
-	
-	
-	@Autowired
-	StudentSearchService studentSearchService;
+	@Autowired OptionService optionService;
+	@Autowired SignUpService signUpService;
+	@Autowired CustomUserDetailsService userDetailsService;
+	@Autowired StudentSearchService studentSearchService;
 	
 	/**
 	 * loads option form for given user
@@ -66,8 +54,8 @@ public class OptionController {
 	}
 	
 	/**
-	 * saves the user's new parameters if there are no errors and 
-	 * redirects to profile page
+	 * Saves the user's new parameters if there are no errors and redirects to profile page.
+	 * <p>Password has to be handled specially because of the the Spring Security.
 	 * @param optionForm
 	 * @param result
 	 * @param redirectAttributes
@@ -86,12 +74,7 @@ public class OptionController {
 					optionService.saveStudentFrom(student,optionForm,false);
 				else{
 					optionService.saveStudentFrom(student,optionForm,true);
-					
-					UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
-
-					Authentication auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(),
-							userDetails.getPassword(), userDetails.getAuthorities());
-					SecurityContextHolder.getContext().setAuthentication(auth);	
+					userDetailsService.encryptePassword(principal.getName());
 				}
 				model = new ModelAndView(new RedirectView("profile"), "userId", student.getId());
 			}catch(InvalidUserException e) {

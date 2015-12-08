@@ -11,5 +11,5 @@ import ch.unibe.ese.model.University;
  * @since 28.10.2015
  */
 public interface UniversityDao extends CrudRepository<University,Long> {
-
+	Iterable<University> findAll();
 }

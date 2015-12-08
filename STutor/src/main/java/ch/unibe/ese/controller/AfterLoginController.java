@@ -51,11 +51,8 @@ public class AfterLoginController {
 		// logged in.
 		String username = principal.getName();
 		
-		/*never used*///Collection<? extends GrantedAuthority> list = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-
 		// we get the student through the dao
 		Student loggedInStudent = studentSearchService.getStudentByUsername(username);
-		
 		
 		ModelAndView model = new ModelAndView("main");
 

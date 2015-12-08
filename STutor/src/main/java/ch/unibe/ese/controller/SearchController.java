@@ -148,7 +148,7 @@ public class SearchController {
 				String gender = refSearchForm.getGender();
 				Double minGrade = refSearchForm.getMinGrade();
 				
-				List<Lecture> lectures = lectureSearchService.getCorrectTempLecture(refSearchForm, sortBy, lectureName, minGrade, gender);				
+				List<Lecture> lectures = lectureSearchService.getCorrectTempLectures(refSearchForm, sortBy, lectureName, minGrade, gender);				
 				
 				model = new ModelAndView("searchResult");
 				model.addObject("lectures", lectures);
@@ -192,27 +192,22 @@ public class SearchController {
     
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
 	 public ModelAndView contact(Principal principal) {
-    	try
-    	{
-    	Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(), tempTutor.getId());
-    	tempTutor = notificationService.saveNotificationToStudent(notification);
-    	ModelAndView model = new ModelAndView("/show");
-    	model.addObject("text","Notification was sent!");
-    	return model;
+    	ModelAndView model;
+    	try {
+    		Notification notification = ch.unibe.ese.model.factory.NotificationFactory.getContactNotification(studentSearchService.getStudentByUsername(principal.getName()).getId(), tempTutor.getId());
+    		tempTutor = notificationService.saveNotificationToStudent(notification);
+    		model = new ModelAndView("/show");
+    		model.addObject("text","Notification was sent!");
+    	} catch(NullPointerException n) {
+    		model = new ModelAndView("/login");
     	}
-    	catch(NullPointerException n)
-    	{
-    		ModelAndView model = new ModelAndView("/login");
-    		return model;
-    	}		
+    	return model;
 	 }
     
     @RequestMapping(value = "/confirmContact", method = RequestMethod.GET)
 	 public ModelAndView confirmContact(Principal principal) { 	
     	ModelAndView model = new ModelAndView("/confirmContact");
     	model.addObject(principal);
-    	
     	return model;
-    	
 	 }	
 }

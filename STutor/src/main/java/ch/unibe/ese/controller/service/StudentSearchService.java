@@ -9,7 +9,5 @@ public interface StudentSearchService {
 	public Student getStudentByUsername(String name);
 	
 	public Student saveStudentIntoDB(Student student);
-
-
 	
 }

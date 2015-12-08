@@ -63,5 +63,15 @@ public class TimeframeServiceImplementation implements TimeframeService {
 		tutor.getTimeframes().remove(timeframe);
 		tutor = studentDao.save(tutor);
 		timeframeDao.delete(timeframe);
-	}	
+	}
+
+	@Transactional
+	public TimeframeForm getTimeframeFormFrom(Timeframe chosenTimeframe) {
+		TimeframeForm editForm = new TimeframeForm();
+		editForm.setDay(chosenTimeframe.getDay());
+		editForm.setFromTime(chosenTimeframe.getFromTime());
+		editForm.setToTime(chosenTimeframe.getToTime());
+		editForm.setId(chosenTimeframe.getId());
+		return editForm;
+	}
 }

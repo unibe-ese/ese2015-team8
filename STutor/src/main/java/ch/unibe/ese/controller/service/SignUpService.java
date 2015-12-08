@@ -13,6 +13,7 @@ import ch.unibe.ese.model.Student;
 public interface SignUpService {
 
     public Student saveStudentFrom(SignupForm signupForm) throws InvalidUserException;
+    
     public Student modifieUserFrom(SignupForm signupForm, Student acctualStudent) throws InvalidUserException;
 
 }
