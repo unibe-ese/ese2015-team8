@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,8 +22,7 @@ import ch.unibe.ese.model.dao.StudentDao;
  * 
  * @author ESE Team 8
  * @version 1.0
- * 
- * 
+ *
  * This class is needed for Spring Security and linked in its XML File @see springSecurity.xml
  * 
  * Based on that link, it forwards the username from the login form to this, where through the studentDao the 
@@ -33,9 +35,7 @@ import ch.unibe.ese.model.dao.StudentDao;
 @Component
 public class CustomUserDetailsService implements UserDetailsService{
 
-	@Autowired
-	StudentDao studentDao;
-	
+	@Autowired StudentDao studentDao;
 	
 	//finds the user/student in the studentDao, converts the student to userdetails
 	@Override
@@ -45,13 +45,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), 
 													user.getPassword(), getAuthorities(user));
-		
 	}
 
 	
 	/**
-	 * 
-	 * 
 	 * Authorities handle mostly the access to restricted sites, e.g. a student cannot access the adding lectures page.
 	 * Here, a student is given these authorities based on wheter he is a tutor or not. 
 	 * If the student is a tutor, he receives the "ROLE_TUTOR" authority, otherwise the "ROLE_STUDENT" authority.
@@ -75,6 +72,18 @@ public class CustomUserDetailsService implements UserDetailsService{
 		list.add(roles);
 				
 		return list;
+	}
+	
+	/**
+	 * Encryptes and saves password to User
+	 * @param principal
+	 */
+	public void encryptePassword(String user) {
+		UserDetails userDetails = loadUserByUsername(user);
+
+		Authentication auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(),
+				userDetails.getPassword(), userDetails.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 
 }

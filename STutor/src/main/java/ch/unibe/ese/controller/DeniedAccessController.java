@@ -32,11 +32,9 @@ public class DeniedAccessController {
 		ModelAndView model = new ModelAndView("accessDenied");
 
 		if (user != null) {
-			model.addObject("msg", "Hi " + user.getName() 
-			+ ", you do not have permission to access this page!");
+			model.addObject("msg", "Hi " + user.getName() + ", you do not have permission to access this page!");
 		} else {
-		model.addObject("msg", 
-			"You do not have permission to access this page!");
+			model.addObject("msg","You do not have permission to access this page!");
 		}
 		return model;
 

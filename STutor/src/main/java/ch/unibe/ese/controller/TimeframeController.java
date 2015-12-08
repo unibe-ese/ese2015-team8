@@ -66,14 +66,13 @@ public class TimeframeController {
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("addTimeframe");
-				model.addObject("page_error", e.getMessage());		
 				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
+				model.addObject("page_error", e.getMessage());		
 			}
 		} else {
 			model = new ModelAndView("addTimeframe");
 			model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		}
-
 		return model;
 	}
 	
@@ -91,24 +90,16 @@ public class TimeframeController {
 		Timeframe chosenTimeframe = timeframeService.findTimeframeById(timeframeId);
 		ModelAndView model;
 
-		
 		if(!loggedInTutor.getTimeframes().contains(chosenTimeframe)){
 			model = new ModelAndView("accessDenied");
 		}
 		else{
-		model = new ModelAndView("editTimeframe");
-		TimeframeForm editForm = new TimeframeForm();
-		
-		editForm.setDay(chosenTimeframe.getDay());
-		editForm.setFromTime(chosenTimeframe.getFromTime());
-		editForm.setToTime(chosenTimeframe.getToTime());
-		editForm.setId(chosenTimeframe.getId());
-		model.addObject("timeframeForm", editForm);
-		model.addObject("user", loggedInTutor);
+			model = new ModelAndView("editTimeframe");
+			model.addObject("timeframeForm", timeframeService.getTimeframeFormFrom(chosenTimeframe));
+			model.addObject("user", loggedInTutor);
 		}
 		return model;
-	}
-	
+	}	
 
 	/**
 	 * This method checks if the edited timeframe was edited correctly and if so, it's saved in the db

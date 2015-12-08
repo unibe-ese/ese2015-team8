@@ -17,5 +17,7 @@ public interface LectureService {
 	public Lecture editFrom(LectureForm lectureForm, long lectureId) throws InvalidGradeException;
 	
 	public Lecture remove(Lecture lecture);
+	
+	public LectureForm getLectureFormFrom(Lecture chosenLecture);
 
 }

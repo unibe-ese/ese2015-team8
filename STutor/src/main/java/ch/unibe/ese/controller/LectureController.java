@@ -29,31 +29,20 @@ import ch.unibe.ese.model.Student;
 import ch.unibe.ese.model.University;
 
 /**
- * 
- * 
  * This controller handles the mapping to the relevant pages to add a lecture
  * and the act of adding a lecture as a tutor through a form, @see lectureForm.
  * 
  * @author ESE Team 8
  * @version 1.0
  * @since 28.10.2015
-
  */
 @Controller
 public class LectureController {
 
-
-	@Autowired
-	LectureService lectureService;
-	
-	@Autowired
-	DataService dataService;
-	
-	@Autowired
-	LectureSearchService lectureSearchService;
-
-	@Autowired
-	StudentSearchService studentSearchService;
+	@Autowired LectureService lectureService;
+	@Autowired DataService dataService;
+	@Autowired LectureSearchService lectureSearchService;
+	@Autowired StudentSearchService studentSearchService;
 
 	private long lectureId;
 
@@ -78,11 +67,8 @@ public class LectureController {
 		if (dataService.universitiesAreEmpty()){
 			dataService.initializeUniversities();
 		}
-		
 		return dataService.getAllUniversities();
-
 	}
-
 
 	/**
 	 * This method reads all Subjects from the database, saves them 
@@ -95,10 +81,8 @@ public class LectureController {
 		if (dataService.subjectsAreEmpty()){
 			dataService.initializeSubjects();
 		}
-		
 		return dataService.getAllSubjects();
 	}
-
 
 	/**
 	 * This method handles the request to access the addLecture page. 
@@ -133,24 +117,21 @@ public class LectureController {
 				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				lectureService.saveFrom(lectureForm, loggedInTutor);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
-			}catch (InvalidUserException e) {
+			} catch (InvalidUserException e) {
 				model = new ModelAndView("addLecture");
+				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 				model.addObject("page_error", e.getMessage());
-				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
-			}catch (InvalidGradeException exc) {
+			} catch (InvalidGradeException exc) {
 				model = new ModelAndView("addLecture");
-				model.addObject("page_error", exc.getMessage());
 				model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
+				model.addObject("page_error", exc.getMessage());
 			}
-		}else{
+		} else {
 			model = new ModelAndView("addLecture");
 			model.addObject("user", studentSearchService.getStudentByUsername(principal.getName()));
 		}
 		return model;
 	}
-
-
-
 
 	/**
 	 * If the tutor has mistyped a lecture or filled something else in wrong, he can later edit
@@ -168,23 +149,12 @@ public class LectureController {
 		
 		if(!chosenLecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
 			model = new ModelAndView("accessDenied");
+		} else {
+			model = new ModelAndView("editLecture");
+			this.lectureId = lectureId;
+			model.addObject("lectureForm", lectureService.getLectureFormFrom(chosenLecture));
+			model.addObject("user", loggedInTutor);
 		}
-		
-
-		
-		else{
-		model = new ModelAndView("editLecture");
-		this.lectureId = lectureId;
-		LectureForm editForm = new LectureForm();
-		editForm.setName(chosenLecture.getName());
-		editForm.setSubject(chosenLecture.getSubject().getId());
-		editForm.setUniversity(chosenLecture.getUniversity().getId());
-		editForm.setGrade(chosenLecture.getGrade());
-		
-		model.addObject("lectureForm", editForm);
-		model.addObject("user", loggedInTutor);
-		}
-		
 		return model;
 	}
 	
@@ -209,16 +179,11 @@ public class LectureController {
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("editLecture");
 				model.addObject("page_error", e.getMessage());
-			}
-		
-			catch (InvalidGradeException exc) {
+			} catch (InvalidGradeException exc) {
 				model = new ModelAndView("editLecture");
 				model.addObject("page_error", exc.getMessage());
 			}
-		}
-		
-
-		else {
+		} else {
 			model = new ModelAndView("editLecture");
 		}
 
@@ -241,14 +206,10 @@ public class LectureController {
 
 		if(!lecture.getTutor().getUsername().contentEquals(loggedInTutor.getUsername())){
 			model = new ModelAndView("accessDenied");
+		}else{
+			lecture = lectureService.remove(lecture);
+			model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
 		}
-		else{
-		
-		lecture = lectureService.remove(lecture);
-		
-		model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
-		}
-		
 		return model;
 	}
 

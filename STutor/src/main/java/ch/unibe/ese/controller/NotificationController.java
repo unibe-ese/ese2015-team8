@@ -53,7 +53,6 @@ public class NotificationController {
 			return new ModelAndView("accessDenied");
 		}
 		
-		
 		ModelAndView model= new ModelAndView("notifications");
 		acctualStudent = studentSearchService.findTutorById(id);
 		model.addObject("notificationList", notificationService.getNotificationsByStudentId(acctualStudent.getId()));
@@ -75,7 +74,6 @@ public class NotificationController {
         	model = new ModelAndView("readNotification");
         	model.addObject("notification", acctualNotification);
         	model.addObject("tutor",studentSearchService.findTutorById(acctualNotification.getFromStudentId()));
-
         	
         } catch (InvalidUserException e) {
         	model = new ModelAndView("notifications");
@@ -117,6 +115,7 @@ public class NotificationController {
 	
 	/**
 	 * If the request is declined, the Student gets notified about it.
+	 * Also the Request Notification from the Tutor is deleted.
 	 * @return model with declined request
 	 */
 	@RequestMapping("/notificationDecline")
@@ -146,16 +145,12 @@ public class NotificationController {
 		
 		Notification chosenNotification = notificationService.findById(notificationId);
 		
-		if(!loggedInTutor.getNotifications().contains(chosenNotification)){
+		if (!loggedInTutor.getNotifications().contains(chosenNotification)){
 			model = new ModelAndView("accessDenied");
-		}
-		else{
-		
+		} else {
 			notificationService.remove(chosenNotification, loggedInTutor);
-		
-		model = new ModelAndView("redirect:" + "/notifications?userId="+loggedInTutor.getId());
+			model = new ModelAndView("redirect:" + "/notifications?userId="+loggedInTutor.getId());
 		}
-		
 		return model;
 	}
 	

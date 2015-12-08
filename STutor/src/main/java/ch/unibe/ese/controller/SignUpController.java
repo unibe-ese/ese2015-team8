@@ -3,10 +3,6 @@ package ch.unibe.ese.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,25 +64,18 @@ public class SignUpController {
 	 * @return model that redirects to the afterlogin page
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ModelAndView create(@Valid SignupForm signupForm, BindingResult result,
-			RedirectAttributes redirectAttributes) {
+	public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
 				Student student = signUpService.saveStudentFrom(signupForm);
 				notificationService.saveNotificationToStudent(NotificationFactory.getTutorSignupDetails(student.getId()));
-
-				UserDetails userDetails = userDetailsService.loadUserByUsername(signupForm.getUsername());
-
-				Authentication auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(),
-						userDetails.getPassword(), userDetails.getAuthorities());
-				SecurityContextHolder.getContext().setAuthentication(auth);
+				userDetailsService.encryptePassword(signupForm.getUsername());
 				model = new ModelAndView("redirect:/afterLogin");
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("newAccount");
 				model.addObject("page_error", e.getMessage());	
 			} 
-			
 		} else {
 			model = new ModelAndView("newAccount");
 		}

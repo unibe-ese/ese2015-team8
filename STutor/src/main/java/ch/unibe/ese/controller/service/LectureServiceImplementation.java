@@ -63,12 +63,20 @@ public class LectureServiceImplementation implements LectureService {
 
 	@Transactional
 	public Lecture remove(Lecture lecture) {
-		
-
 		lecture.setTutor(null);
 		lectureDao.delete(lecture);
 		
 		return lecture;
+	}
+	
+	@Transactional
+	public LectureForm getLectureFormFrom(Lecture chosenLecture) {
+		LectureForm editForm = new LectureForm();
+		editForm.setName(chosenLecture.getName());
+		editForm.setSubject(chosenLecture.getSubject().getId());
+		editForm.setUniversity(chosenLecture.getUniversity().getId());
+		editForm.setGrade(chosenLecture.getGrade());
+		return editForm;
 	}
 
 }

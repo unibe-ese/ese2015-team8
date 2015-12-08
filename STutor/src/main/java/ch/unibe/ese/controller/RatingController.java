@@ -72,7 +72,6 @@ public class RatingController {
 			model = new ModelAndView("rateTutor");
         	model.addObject("page_error", e.getMessage());
 		}
-		
 		return model;
 	}
 }
