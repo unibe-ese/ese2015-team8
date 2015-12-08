@@ -161,7 +161,7 @@ public class Student{
 		this.notifications = notifications;
 	}
 	
-	public void addNotification(Notification notification) {
+	public void addNotification(Notification notification) {	
 		notifications.add(notification);
 	}
 

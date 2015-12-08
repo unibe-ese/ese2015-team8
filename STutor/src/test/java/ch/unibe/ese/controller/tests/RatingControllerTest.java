@@ -1,6 +1,5 @@
 package ch.unibe.ese.controller.tests;
 
-import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
@@ -25,8 +24,10 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.model.Student;
+import ch.unibe.ese.model.dao.NotificationDao;
 import ch.unibe.ese.model.dao.StudentDao;
 import ch.unibe.ese.model.Comment;
+import ch.unibe.ese.model.Notification;
 
 
 
@@ -43,13 +44,16 @@ public class RatingControllerTest {
 	@Autowired private WebApplicationContext wac;
 	@Autowired private FilterChainProxy springSecurityFilterChain;
 	@Autowired StudentDao studentDao;
+	@Autowired NotificationDao notificationDao;
 	
 	private Student student, tutor;
+	private Notification notification;
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup(){
-		
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain)).build();
+
 		student = new Student();
 		student.setFirstName("first");
 		student.setLastName("last");
@@ -57,9 +61,7 @@ public class RatingControllerTest {
 		student.setPassword("1234");
 		student.setEmail("st@test.com");
 		student.setIsTutor(false);
-
-		student.setId((long) -1);
-
+		student.setId((long) 1);
 		student = studentDao.save(this.student);
 		
 		tutor = new Student();
@@ -71,42 +73,29 @@ public class RatingControllerTest {
 		tutor.setIsTutor(true);
 		Set<Comment> emptycommentsset = new HashSet<Comment>();
 		tutor.setComments(emptycommentsset);
-
-		tutor.setId((long) -2);
-
+		tutor.setId((long) 2);
 		tutor = studentDao.save(this.tutor);
 		
 		
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain)).build();
+		
+		notification = new Notification();
+		notification.setFromStudentId(student.getId());
+		notification.setToStudentId(tutor.getId());
+		notification.setId(1L);
+		notification = notificationDao.save(notification);
+		
+
+		
+		
 	}
 
 	
 	@Test
 	public void testRequestMapping() throws Exception{
 		
-		ModelAndView mav = mockMvc.perform(get("/rateTutor?tutorId="+tutor.getId()).with(user("studentForTest"))).andReturn().getModelAndView();
+		ModelAndView mav = mockMvc.perform(get("/rateTutor?notificationId="+notification.getId()).with(user("studentForTest").roles("TUTOR"))).andReturn().getModelAndView();
 						
 		assertViewName(mav, "rateTutor");
-	}
-	
-	@Test
-	public void saveRating() throws Exception{
-		
-		
-		mockMvc.perform(get("/rateTutor?tutorId="+tutor.getId()).with(user("studentForTest"))).andReturn().getModelAndView();
-		
-		mockMvc.perform(post("/saveTutorRating").with(user("studentForTest"))
-																.param("rating", "10")
-																.param("comment", "fantastic imaginary tutor"));
-		
-		
-		//he received a 10 from the user and a positive comment. Did it save that for the tutor?:
-		assertEquals(10, tutor.getComments().iterator().next().getRating());
-		assertEquals("fantastic imaginary tutor", tutor.getComments().iterator().next().getComment());
-											
-		
-	
-
 	}
 	
 	

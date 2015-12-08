@@ -1,5 +1,6 @@
 package ch.unibe.ese.controller.tests;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -48,24 +49,24 @@ public class ProfileControllerTest {
 
 	@Before
 	public void setup() {
-		
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain))
+				.build();
+
 		student = initStudent();
 		tutor = initTutor();
 
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain))
-				.build();
+		
 	}
 
 	@Test
 	public void testProfileForStudent() throws Exception {
 		
 
-		mockMvc.perform(get("/profile?userId="+student.getId()))
-							.andExpect(model().attribute("student", this.student))
+		mockMvc.perform(get("/profile?userId="+student.getId()).with(user("studentForTest").roles("STUDENT")))
+						.andExpect(model().attribute("student", this.student))
 							//the information (gives lectures, available during which time) shouldn't be visible in  a student's profile
 							.andExpect(model().attributeDoesNotExist("lectures"))
-							.andExpect(model().attributeDoesNotExist("timelapses"));
-	
+							.andExpect(model().attributeDoesNotExist("timelapses"));	
 	}
 	
 	@Test
@@ -73,10 +74,10 @@ public class ProfileControllerTest {
 		
 	
 
-		mockMvc.perform(get("/profile?userId="+tutor.getId()))
+		mockMvc.perform(get("/profile?userId="+tutor.getId()).with(user("tutorForTest").roles("TUTOR")))
 							.andExpect(model().attribute("student", this.tutor))
 							.andExpect(model().attributeExists("lectures"))
-							.andExpect(model().attributeExists("timelapses"));
+							.andExpect(model().attributeExists("timeframes"));
 	
 	}
 	

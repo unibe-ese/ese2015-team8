@@ -47,12 +47,12 @@ public class OptionControllerTest {
 
 	@Before
 	public void setup(){
-		
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain)).build();
+
 		student = initStudent();
 		
 		
 		
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain)).build();
 	}
 
 	
@@ -61,7 +61,7 @@ public class OptionControllerTest {
 		
 
 
-		ModelAndView mav = mockMvc.perform(get("/options").with(user("studentForTest"))).andReturn().getModelAndView();
+		ModelAndView mav = mockMvc.perform(get("/options").with(user("studentForTest").roles("TUTOR"))).andReturn().getModelAndView();
 						
 		assertViewName(mav, "options");
 	}
@@ -69,7 +69,7 @@ public class OptionControllerTest {
 	@Test
 	public void testValidForm() throws Exception{
 
-		mockMvc.perform(get("/options").with(user("studentForTest")))
+		mockMvc.perform(get("/options").with(user("studentForTest").roles("STUDENT")))
 										.andExpect(model().attributeHasNoErrors("optionForm"));
 						
 	}
@@ -111,7 +111,6 @@ public class OptionControllerTest {
 		
 		
 	}
-	
 	
 
 }

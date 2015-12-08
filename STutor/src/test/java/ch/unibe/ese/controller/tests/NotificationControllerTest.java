@@ -2,7 +2,6 @@ package ch.unibe.ese.controller.tests;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -25,11 +24,14 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
+import static org.springframework.test.web.ModelAndViewAssert.assertViewName;
 
+
+import ch.unibe.ese.controller.service.NotificationService;
+import ch.unibe.ese.controller.service.StudentSearchService;
 import ch.unibe.ese.model.Notification;
 import ch.unibe.ese.model.Student;
-import ch.unibe.ese.model.dao.NotificationDao;
-import ch.unibe.ese.model.dao.StudentDao;
+
 
 @SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,9 +48,9 @@ public class NotificationControllerTest {
 	@Autowired
 	private FilterChainProxy springSecurityFilterChain;
 	@Autowired
-	StudentDao studentDao;
+	StudentSearchService studentSearchService;
 	@Autowired
-	NotificationDao notificationDao;
+	NotificationService notificationService;
 
 	private Student student, tutor, tutor2;
 	private Notification notification;
@@ -56,37 +58,38 @@ public class NotificationControllerTest {
 
 	@Before
 	public void setup() {
-
-		student = initStudent();
-		tutor = initTutor();
-
-		tutor2 = new Student();
-		tutor2.setId((long) -10);
-		tutor2 = studentDao.save(this.tutor2);
-
-		notification = initNotification();
-
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain))
 				.build();
+
+		student = initStudent();
+		tutor = initTutor();		
+		tutor2 = initTutor2();
+		notification = initNotification();
+
+	
 	}
 
+	
 	@Test
 	public void testRequestMapping() throws Exception {
-
-		ModelAndView mav = mockMvc.perform(get("/notifications?userId=" + tutor.getId()).with(user("tutorForTest")))
-				.andReturn().getModelAndView();
-
-		assertViewName(mav, "notifications");
-
-		// trying to access notifications of a different tutor shouldn't be
-		// possible
-		ModelAndView mavDenied = mockMvc
-				.perform(get("/notifications?userId=" + tutor2.getId()).with(user(tutor.getUsername()))).andReturn()
+		ModelAndView mav = mockMvc
+				.perform(get("/notifications?userId=" + tutor2.getId()).with(user(tutor2.getUsername()).roles("TUTOR"))).andReturn()
 				.getModelAndView();
 
-		assertViewName(mavDenied, "accessDenied");
+		assertViewName(mav, "notifications");
 	}
+	
+	@Test
+	public void testDeniedAccess() throws Exception {
+		
+		//let's try to access tutor2's notifications as the user tutor
+		ModelAndView mav = mockMvc
+				.perform(get("/notifications?userId=" + tutor2.getId()).with(user(tutor.getUsername()).roles("TUTOR"))).andReturn()
+				.getModelAndView();
 
+		assertViewName(mav, "accessDenied");
+	}
+	
 	@Test
 	public void readNotification() throws Exception {
 		
@@ -115,7 +118,7 @@ public class NotificationControllerTest {
 
 		student.setId((long) -1);
 
-		student = studentDao.save(this.student);
+		student =  studentSearchService.saveStudentIntoDB(this.student);
 
 		return student;
 	}
@@ -127,13 +130,29 @@ public class NotificationControllerTest {
 		tutor.setUsername("tutorForTest");
 		tutor.setPassword("1234");
 		tutor.setEmail("tut@test.com");
-		tutor.setIsTutor(false);
+		tutor.setIsTutor(true);
 
-		tutor.setId((long) -2);
+		tutor.setId((long) 1);
 
-		tutor = studentDao.save(this.tutor);
+		tutor = studentSearchService.saveStudentIntoDB(this.tutor);
 		return tutor;
 	}
+	
+	private Student initTutor2() {
+		tutor2 = new Student();
+		tutor2.setFirstName("secondTutor");
+		tutor2.setLastName("secondLastTutor");
+		tutor2.setUsername("tutor2ForTest");
+		tutor2.setPassword("1234");
+		tutor2.setEmail("tut2@test2.com");
+		tutor2.setIsTutor(true);
+
+		tutor2.setId((long) 2);
+
+		tutor2 = studentSearchService.saveStudentIntoDB(this.tutor2);
+		return tutor2;
+	}
+	
 	
 	
 	private Notification initNotification(){
@@ -143,8 +162,8 @@ public class NotificationControllerTest {
 		notification.setFromStudentId((long) -1);
 		notification.setMessage("Testing notification");
 		notification.setTitel("Notification!");
-		notification.setId((long) -1);
-		notification = notificationDao.save(notification);
+		notification.setId((long) 1);
+		notification = notificationService.modifie(notification);
 		
 		
 		return notification;

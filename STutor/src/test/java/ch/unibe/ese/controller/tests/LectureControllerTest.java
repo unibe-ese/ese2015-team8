@@ -54,11 +54,36 @@ public class LectureControllerTest {
 	@Autowired SubjectDao subjectDao;
 
 	private MockMvc mockMvc;
+	private Student tutor, notATutor;
+	private University sampleUni;
+	private Subject sampleSub;
 
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity(springSecurityFilterChain))
-				.build();
+				.build();		
+		tutor = new Student();
+		tutor.setUsername("tutorForTest");
+		tutor.setId((long) 1);
+		Set<Lecture> lectures = new HashSet<Lecture>();
+		tutor.setLectures(lectures);
+		tutor = studentDao.save(tutor);
+		
+		notATutor = new Student();
+		notATutor.setUsername("notATutor");
+		notATutor.setId((long) 2);
+		notATutor = studentDao.save(notATutor);
+		
+		
+		sampleUni = new University();
+		sampleUni.setName("testUni");
+		sampleUni.setId((long) -1);
+		sampleUni = universityDao.save(sampleUni);
+
+		sampleSub = new Subject();
+		sampleSub.setName("testSubject");
+		sampleSub.setId((long) -1);
+		sampleSub = subjectDao.save(sampleSub);
 	}
 
 	@Test
@@ -89,24 +114,7 @@ public class LectureControllerTest {
 	
 	@Test
 	public void addingALecture() throws Exception {
-		
-		Student tutor = new Student();
-		tutor.setUsername("tutorForTest");
-		tutor.setId((long) -1);
-		Set<Lecture> lectures = new HashSet<Lecture>();
-		tutor.setLectures(lectures);
-		tutor = studentDao.save(tutor);
-		
-		
-		University sampleUni = new University();
-		sampleUni.setName("testUni");
-		sampleUni.setId((long) -1);
-		sampleUni = universityDao.save(sampleUni);
-
-		Subject sampleSub = new Subject();
-		sampleSub.setName("testSubject");
-		sampleSub.setId((long) -1);
-		sampleSub = subjectDao.save(sampleSub);
+	
 		
 		mockMvc.perform(post("/addedLecture").with(user("tutorForTest"))
 						.param("name", "Introduction to Testing")
@@ -120,7 +128,16 @@ public class LectureControllerTest {
 		
 	}
 	
+	@Test
+	public void tryToDeleteLectureNotOwner() throws Exception{
+				
+		mockMvc.perform(get("/deleteLecture?id=1").with(user("notATutor")))
+											.andExpect(forwardedUrl("/pages/accessDenied.jsp"));
+		
+	}
 	
 	
 	
+	
+
 }

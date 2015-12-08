@@ -16,7 +16,6 @@ import ch.unibe.ese.controller.tests.*;
 	RatingControllerTest.class,
 	SearchControllerTest.class,
 	SignUpControllerTest.class,
-	RefinedSearchControllerTest.class
 })
 public class ControllerTestSuite {
 
