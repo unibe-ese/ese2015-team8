@@ -30,4 +30,6 @@
 	<bean class="ch.unibe.ese.controller.service.CommentServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.TimeframeServiceImplementation" />
 	<bean class="ch.unibe.ese.controller.service.NotificationServiceImplementation" />
+	<bean class="ch.unibe.ese.controller.service.DataServiceImplementation" />
+	<bean class="ch.unibe.ese.controller.service.LectureSearchServiceImplementation" />
 </beans>

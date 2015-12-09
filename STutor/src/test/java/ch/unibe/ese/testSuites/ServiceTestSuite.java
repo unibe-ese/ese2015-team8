@@ -4,12 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import ch.unibe.ese.controller.service.tests.CommentServiceTest;
-import ch.unibe.ese.controller.service.tests.LectureServiceTest;
-import ch.unibe.ese.controller.service.tests.NotificationServiceTest;
-import ch.unibe.ese.controller.service.tests.OptionServiceTest;
-import ch.unibe.ese.controller.service.tests.SignupServiceTest;
-import ch.unibe.ese.controller.service.tests.TimeframeServiceTest;
+import ch.unibe.ese.controller.service.tests.*;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -18,7 +13,8 @@ import ch.unibe.ese.controller.service.tests.TimeframeServiceTest;
 	CommentServiceTest.class,
 	TimeframeServiceTest.class,
 	OptionServiceTest.class,
-	NotificationServiceTest.class
+	NotificationServiceTest.class,
+	DataServiceTest.class
 })
 public class ServiceTestSuite {
 

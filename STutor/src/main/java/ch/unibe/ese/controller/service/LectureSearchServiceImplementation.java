@@ -14,8 +14,7 @@ import ch.unibe.ese.model.dao.LectureDao;
 
 @Service("LectureSearchService")
 public class LectureSearchServiceImplementation implements LectureSearchService {
-	@Autowired
-	LectureDao lectureDao;
+	@Autowired LectureDao lectureDao;
 
 	private Sort sort;
 
