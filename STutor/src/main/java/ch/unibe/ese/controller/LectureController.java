@@ -169,13 +169,12 @@ public class LectureController {
 	public ModelAndView editedLecture(@Valid LectureForm lectureForm, BindingResult result,
 			RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 		if (!result.hasErrors()) {
 			try {
-				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				lectureService.editFrom(lectureForm, lectureId);
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
 				return model;
-
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("editLecture");
 				model.addObject("page_error", e.getMessage());
@@ -186,7 +185,7 @@ public class LectureController {
 		} else {
 			model = new ModelAndView("editLecture");
 		}
-
+		model.addObject("user",loggedInTutor);
 		return model;
 	}
 	

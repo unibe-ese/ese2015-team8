@@ -112,9 +112,9 @@ public class TimeframeController {
 	@RequestMapping(value = "/editedTimeframe", method = RequestMethod.POST)
 	public ModelAndView editedTime (@Valid TimeframeForm timeframeForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model;
+		Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 		if (!result.hasErrors()) {
 			try {
-				Student loggedInTutor = studentSearchService.getStudentByUsername(principal.getName());
 				timeframeService.editFrom(timeframeForm, timeframeForm.getId());
 				
 				model = new ModelAndView(new RedirectView("profile"), "userId", loggedInTutor.getId());
@@ -122,10 +122,12 @@ public class TimeframeController {
 
 			} catch (InvalidUserException e) {
 				model = new ModelAndView("editTimeframe");
-				model.addObject("page_error", e.getMessage());				
+				model.addObject("page_error", e.getMessage());
+				model.addObject("student",loggedInTutor);
 			}
 		} else {
 			model = new ModelAndView("editTimeframe");
+			model.addObject("user",loggedInTutor);
 		}
 
 		return model;
@@ -147,12 +149,9 @@ public class TimeframeController {
 		
 		if(!loggedInTutor.getTimeframes().contains(timeframe)){
 			model = new ModelAndView("accessDenied");
-		}
-		else{
-		
-		timeframeService.remove(timeframe, loggedInTutor);
-		
-		model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
+		}else{
+			timeframeService.remove(timeframe, loggedInTutor);
+			model = new ModelAndView("redirect:" + "/profile?userId="+loggedInTutor.getId());
 		}
 		
 		return model;

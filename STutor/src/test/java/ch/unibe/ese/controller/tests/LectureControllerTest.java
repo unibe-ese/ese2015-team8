@@ -135,9 +135,4 @@ public class LectureControllerTest {
 											.andExpect(forwardedUrl("/pages/accessDenied.jsp"));
 		
 	}
-	
-	
-	
-	
-
 }
